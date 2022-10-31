@@ -1,4 +1,4 @@
-package project;
+package Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Profile {
     private int age;
     private String gender;
     private String orientation;
-    private int[] location;
+    private double[] location;
     private BufferedImage image;
     private String bio;
     private List<String> hobbies;
@@ -22,7 +22,17 @@ public class Profile {
         this.password = password;
     }
 
-    public Profile(String name, int age, String gender, String orientation, int[] location, BufferedImage image,
+    public Profile(String email, String password, String name, int age, String gender, double[] location) {
+        // for registration
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.location = location;
+    }
+
+    public Profile(String name, int age, String gender, String orientation, double[] location, BufferedImage image,
                    String bio, List<String> hobbies, String socialMedia) {
         this.name = name;
         this.age = age;
@@ -87,11 +97,11 @@ public class Profile {
         this.orientation = orientation;
     }
 
-    public int[] getLocation() {
+    public double[] getLocation() {
         return location;
     }
 
-    public void setLocation(int[] location) {
+    public void setLocation(double[] location) {
         this.location = location;
     }
 
