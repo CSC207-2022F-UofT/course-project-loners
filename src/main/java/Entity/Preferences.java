@@ -1,4 +1,4 @@
-package project;
+package Entity;
 
 public class Preferences {
     private int preferredAge;
