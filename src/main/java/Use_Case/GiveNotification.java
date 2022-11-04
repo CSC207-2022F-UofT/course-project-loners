@@ -21,7 +21,7 @@ public class GiveNotification {
         // We do this because we want to know if we have a match and we want the match message to show in the inbox
         for (Profile profile : profiles) {
             List<String> likes2 = profile.getLikes();
-            //profile1 is our profile while profile2 is the other profile
+            //profile1 is our profile while profile is the other profile
             for (String emails : likes2) {
                 if (profile1.getEmail().equals(emails)) {
                     return new String[]{"match", "You have a match with " + profile.getName() + "!"};
