@@ -1,17 +1,16 @@
-package Entity;
+package project;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
-import Use_Case.Swipe;
 
-public class Profile implements Swipe{
+public class Profile {
     private String email;
     private String name;
     private String password;
     private int age;
     private String gender;
     private String orientation;
-    private double[] location;
+    private int[] location;
     private BufferedImage image;
     private String bio;
     private List<String> hobbies;
@@ -23,7 +22,7 @@ public class Profile implements Swipe{
         this.password = password;
     }
 
-    public Profile(String name, int age, String gender, String orientation, double[] location, BufferedImage image,
+    public Profile(String name, int age, String gender, String orientation, int[] location, BufferedImage image,
                    String bio, List<String> hobbies, String socialMedia) {
         this.name = name;
         this.age = age;
@@ -36,7 +35,6 @@ public class Profile implements Swipe{
         this.socialMedia = socialMedia;
     }
 
-    @Override
     public void addLike(String email){
         likes.add(email);
     }
@@ -89,11 +87,11 @@ public class Profile implements Swipe{
         this.orientation = orientation;
     }
 
-    public double[] getLocation() {
+    public int[] getLocation() {
         return location;
     }
 
-    public void setLocation(double[] location) {
+    public void setLocation(int[] location) {
         this.location = location;
     }
 
