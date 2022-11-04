@@ -3,6 +3,7 @@ package project;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+
 public class Profile {
     private String email;
     private String name;
