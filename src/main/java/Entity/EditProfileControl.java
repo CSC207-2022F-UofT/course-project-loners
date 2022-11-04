@@ -31,5 +31,8 @@ public class EditProfileControl implements DataFetchSend{
             return false;
         }
     }
+    public void main(String[] args){
+        this.send();
+    }
 
 }
