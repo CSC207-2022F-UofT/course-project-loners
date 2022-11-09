@@ -19,8 +19,9 @@ public class EditProfileControl implements DataFetchSend{
     public boolean send() {
         /*String.format("User1: %s", this.name))*/
         try {
-            FileWriter myWriter = new FileWriter("user_data.txt", StandardCharsets.UTF_8, true);
-            myWriter.write("Hello");
+            FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
+            myWriter.write("\n");
+            myWriter.write(this.name+", ");
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
 
@@ -31,8 +32,10 @@ public class EditProfileControl implements DataFetchSend{
             return false;
         }
     }
-    public void main(String[] args){
-        this.send();
+
+    public static void main(String[] args){
+        EditProfileControl edit = new EditProfileControl("Rick");
+        edit.send();
     }
 
 }
