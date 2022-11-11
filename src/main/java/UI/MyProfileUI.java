@@ -23,8 +23,6 @@ public class MyProfileUI {
     }
     public static void main(String[] args) {
         new MyProfileUI();
-        EditProfileControl control = new EditProfileControl("Rick");
-        control.send();
     }
 }
 
