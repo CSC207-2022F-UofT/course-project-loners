@@ -1,5 +1,6 @@
 package Entity;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.Test;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.util.*;
 public class EditProfileControl implements DataFetchSend{
     public String name;
     public Set<Object> objects = new HashSet<>();
+    public Authenticator authenticator = new Authenticator();
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
@@ -19,7 +21,7 @@ public class EditProfileControl implements DataFetchSend{
 
     }
 
-    public boolean edit(Map<String, Object> info){
+    public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
         if (info.keySet().size() == 0){
@@ -28,11 +30,25 @@ public class EditProfileControl implements DataFetchSend{
         }
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
-                profile.name = (String) values[k];
+                if(authenticator.is_valid_name((String) values[k])){
+                    profile.name = (String) values[k];
+                }else {
+                    System.out.println("Invalid Name");
+                    return false;
+                }
             } else if (keys[k] == "email") {
-                profile.email = (String) values[k];
+                if(authenticator.is_valid_email((String) values[k])){
+                    profile.email = (String) values[k];
+                } else {
+                    System.out.println("Invalid Email");
+                    return false;
+                }
             } else if (keys[k] == "age") {
-                profile.age = (int) values[k];
+                if(authenticator.is_valid_age((int) values[k])){
+                    profile.age = (int) values[k];
+                } else {
+                    return false;
+                }
             } else if (keys[k] == "gender") {
                 profile.gender = (String) values[k];
             } else if (keys[k] == "location") {
@@ -40,9 +56,17 @@ public class EditProfileControl implements DataFetchSend{
             } else if (keys[k] == "image") {
                 profile.image = (BufferedImage) values[k];
             } else if (keys[k] == "bio") {
-                profile.bio = (String) values[k];
+                if(authenticator.is_valid_bio((String) values[k])) {
+                    profile.bio = (String) values[k];
+                } else {
+                    return false;
+                }
             } else if (keys[k] == "hobbies") {
-                profile.hobbies = (List<String>) values[k];
+                if(authenticator.is_valid_hobbies((List<String>) values[k])){
+                    profile.hobbies = (List<String>) values[k];
+                } else {
+                    return false;
+                }
             } else if (keys[k] == "socialMedia") {
                 profile.socialMedia = (String) values[k];
             } else if (keys[k] == "likes") {
@@ -55,7 +79,7 @@ public class EditProfileControl implements DataFetchSend{
     }
 
     @Override
-    public boolean send(Map<String, Object> info) {
+    public boolean send(HashMap<String, Object> info) {
         /*String.format("User1: %s", this.name))*/
         System.out.println("This part is successfully executed");
         if(this.edit(info)){
