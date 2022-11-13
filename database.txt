@@ -1,11 +1,2 @@
 Hello
 Hello, 
-Rick,
-Name, 
-John, 
-Mike, 
-Rick, rick@gmail, female, 
-Name, rick@rick, 21, bio, male, straight,
-Rick, rick@mail, 21, This is Rick, female, bisexual,
-Rick, rick@mail, 21, student, female, bisexual,
-Rick, rick@mail, 30, student, female, bisexual,
