@@ -1,5 +1,5 @@
-package Entity.UIs;
-import Entity.EditProfileControl;
+package UIs;
+import Controllers_Presenters.EditProfileControl;
 
 import javax.swing.*;
 import java.awt.*;

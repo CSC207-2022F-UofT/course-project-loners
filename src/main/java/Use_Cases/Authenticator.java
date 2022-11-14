@@ -1,4 +1,4 @@
-package Entity;
+package Use_Cases;
 
 import java.awt.image.BufferedImage;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Entity;
+package Use_Cases;
 
 import java.util.Set;
 

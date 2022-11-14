@@ -1,13 +1,13 @@
-package Entity;
-import Entity.UIs.EditProfileUI;
+package Controllers_Presenters;
+
+import Use_Cases.DataFetchSend;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EditProfileControl implements DataFetchSend{
+public class EditProfileControl implements DataFetchSend {
     public String name;
     public Set<Object> objects = new HashSet<>();
     public EditProfileControl(String name){

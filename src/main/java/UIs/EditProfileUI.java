@@ -1,5 +1,4 @@
-package Entity.UIs;
-import Entity.EditProfileControl;
+package UIs;
 
 import javax.swing.*;
 

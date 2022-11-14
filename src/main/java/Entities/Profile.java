@@ -1,8 +1,8 @@
-package Entity;
+package Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
-import Use_Case.Swipe;
+import Use_Cases.Swipe;
 
 public class Profile implements Swipe{
     private String email;
