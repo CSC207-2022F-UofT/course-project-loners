@@ -1,4 +1,4 @@
-package Entity;
+package Use_Case;
 
 import java.util.HashMap;
 import java.util.Map;

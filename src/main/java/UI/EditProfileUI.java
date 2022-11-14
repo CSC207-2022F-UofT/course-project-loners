@@ -1,16 +1,12 @@
 package UI;
 
-import Entity.EditProfileControl;
-import Entity.Profile;
-import org.w3c.dom.ranges.Range;
+import Controllers_Presenters.EditProfileControl;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class EditProfileUI implements ActionListener {
     JFrame f;

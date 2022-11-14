@@ -1,4 +1,6 @@
-package Entity;
+package Use_Case;
+
+import Entity.Profile;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;

@@ -1,13 +1,17 @@
-package Entity;
+package Controllers_Presenters;
 
 
-import javax.swing.*;
-import java.awt.image.BufferedImage;
+import Entity.Preferences;
+import Entity.Profile;
+import Use_Case.Authenticator;
+import Use_Case.DataFetchSend;
+import Use_Case.EditProfile;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class EditProfileControl implements DataFetchSend{
+public class EditProfileControl implements DataFetchSend {
     public String name;
     public Set<Object> objects = new HashSet<>();
     public Authenticator authenticator = new Authenticator();
@@ -28,14 +32,22 @@ public class EditProfileControl implements DataFetchSend{
         if(editProfile.edit(info, profile)){
             System.out.println("This part is successfully executed2");
             try {
-                int id = 0;
-                FileReader myReader = new FileReader("database.txt");
-                System.out.println((char) myReader.read());
 
+                char id1 = '0';
+                char id2 = '0';
+                char id3 = '0';
+
+                FileReader myReader = new FileReader("database.txt");
+                id1 = (char) myReader.read();
+                id2 = (char) myReader.read();
+                id3 = (char) myReader.read();
+                int k;
+                while((k=myReader.read())!=-1){}
+                // On my Profile UI, there should be id that referes to the id pf the user in the database
                 myReader.close();
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
-                myWriter.write(id + profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
+                myWriter.write(id1+id2+id3 + profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
                         profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
                         preferences.getPreferredAge()+", "+preferences.getPreferredGender()+", "+
                         preferences.getPreferredLocation());
