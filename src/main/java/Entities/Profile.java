@@ -5,18 +5,18 @@ import java.util.List;
 import Use_Cases.Swipe;
 
 public class Profile implements Swipe{
-    private String email;
-    private String name;
-    private String password;
-    private int age;
-    private String gender;
-    private String orientation;
-    private double[] location;
-    private BufferedImage image;
-    private String bio;
-    private List<String> hobbies;
-    private String socialMedia;
-    private List<String> likes;
+    public String email;
+    public String name;
+    public String password;
+    public int age;
+    public String gender;
+    public String orientation;
+    public double[] location;
+    public BufferedImage image;
+    public String bio;
+    public List<String> hobbies;
+    public String socialMedia;
+    public List<String> likes;
 
     public Profile(String email, String password) {
         this.email = email;

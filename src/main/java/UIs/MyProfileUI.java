@@ -1,5 +1,5 @@
-package UIs;
-import Controllers_Presenters.EditProfileControl;
+package UI;
+import Entity.EditProfileControl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,16 +11,18 @@ public class MyProfileUI {
         f=new JFrame();
 
         JButton b=new JButton("click");
+        JTextField textField = new JTextField(20);
+        String text = textField.getText();
         b.setBounds(130,100,100, 40);
         f.add(b);
+        f.add(textField);
         f.setSize(400,500);
         f.setLayout(null);
         f.setVisible(true);
+        System.out.println(text);
     }
     public static void main(String[] args) {
         new MyProfileUI();
-        EditProfileControl control = new EditProfileControl("Rick");
-        control.send();
     }
 }
 
