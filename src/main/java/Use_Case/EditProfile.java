@@ -1,5 +1,6 @@
 package Use_Case;
 
+import Entity.Authenticator;
 import Entity.Profile;
 
 import java.awt.image.BufferedImage;
