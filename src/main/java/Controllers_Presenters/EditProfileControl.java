@@ -29,48 +29,48 @@ public class EditProfileControl implements DataFetchSend{
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
                 if(authenticator.is_valid_name((String) values[k])){
-                    profile.name = (String) values[k];
+                    profile.setName((String) values[k]);
                 }else {
                     System.out.println("Invalid Name");
                     return false;
                 }
             } else if (keys[k] == "email") {
                 if(authenticator.is_valid_email((String) values[k])){
-                    profile.email = (String) values[k];
+                    profile.setEmail( (String) values[k]);
                 } else {
                     System.out.println("Invalid Email");
                     return false;
                 }
             } else if (keys[k] == "age") {
                 if(authenticator.is_valid_age((int) values[k])){
-                    profile.age = (int) values[k];
+                    profile.setAge((int) values[k]);
                 } else {
                     return false;
                 }
             } else if (keys[k] == "gender") {
-                profile.gender = (String) values[k];
+                profile.setGender((String) values[k]);
             } else if (keys[k] == "location") {
-                profile.location = (double[]) values[k];
+                profile.setLocation((double[]) values[k]);
             } else if (keys[k] == "image") {
-                profile.image = (BufferedImage) values[k];
+                profile.setImage((BufferedImage) values[k]);
             } else if (keys[k] == "bio") {
                 if(authenticator.is_valid_bio((String) values[k])) {
-                    profile.bio = (String) values[k];
+                    profile.setBio((String) values[k]);
                 } else {
                     return false;
                 }
             } else if (keys[k] == "hobbies") {
                 if(authenticator.is_valid_hobbies((List<String>) values[k])){
-                    profile.hobbies = (List<String>) values[k];
+                    profile.setHobbies((List<String>) values[k]);
                 } else {
                     return false;
                 }
             } else if (keys[k] == "socialMedia") {
-                profile.socialMedia = (String) values[k];
+                profile.setSocialMedia((String) values[k]);
             } else if (keys[k] == "likes") {
-                profile.likes = (List<String>) values[k];
+                profile.setLikes((List<String>) values[k]);
             } else if (keys[k] == "orientation") {
-                profile.orientation = (String) values[k];
+                profile.setOrientation((String) values[k]);
             }
         }
         return true;
@@ -85,7 +85,8 @@ public class EditProfileControl implements DataFetchSend{
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
-                myWriter.write(profile.name+", "+profile.email+", "+ profile.age+", "+profile.bio+ ", "+profile.gender+", "+profile.orientation+",");
+                myWriter.write(profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
+                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+",");
                 myWriter.close();
                 System.out.println("Successfully wrote to the file.");
 
