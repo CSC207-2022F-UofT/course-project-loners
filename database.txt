@@ -1,1 +1,2 @@
-Rick, rick@mail, 25, student, female, bisexual,
+0Name, rick@rick, 20, bio, male, straight, 21, male, null
+0Name, email@email, 20, bio, male, straight, 21, male, null

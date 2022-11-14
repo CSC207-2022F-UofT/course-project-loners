@@ -29,6 +29,7 @@ public class EditProfileUI implements ActionListener {
     JComboBox orientationField = new JComboBox<String>(orientations);
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
+    JSpinner preferredAgeField = new JSpinner(model);
 
     public EditProfileUI(){
 
@@ -42,6 +43,7 @@ public class EditProfileUI implements ActionListener {
         bioField.setBounds(20, 125, 300, 60);
         genderField.setBounds(20, 190, 90, 30);
         orientationField.setBounds(20, 225, 90, 30);
+        preferredAgeField.setBounds(20, 260, 90, 30);
         b.setBounds(130,420,100, 40);
 
         f.setSize(600,300);
@@ -51,6 +53,7 @@ public class EditProfileUI implements ActionListener {
         f.add(bioField);
         f.add(genderField);
         f.add(orientationField);
+        f.add(preferredAgeField);
         f.add(b);
         f.setLayout(experimentLayout);
         f.setVisible(true);
