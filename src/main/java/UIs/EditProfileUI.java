@@ -1,7 +1,7 @@
-package UI;
+package UIs;
 
-import Entity.EditProfileControl;
-import Entity.Profile;
+import Controllers_Presenters.EditProfileControl;
+import Entities.Profile;
 import org.w3c.dom.ranges.Range;
 
 import javax.swing.*;
