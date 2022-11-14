@@ -4,13 +4,11 @@ public class Preferences {
     private int preferredAge;
     private String preferredGender;
     private double[] preferredLocation;
-    private Profile user;
 
-    public Preferences(int preferredAge, String preferredGender, double[] preferredLocation, Profile user) {
+    public Preferences(int preferredAge, String preferredGender, double[] preferredLocation) {
         this.preferredAge = preferredAge;
         this.preferredGender = preferredGender;
         this.preferredLocation = preferredLocation;
-        this.user = user;
     }
 
     public int getPreferredAge() {
