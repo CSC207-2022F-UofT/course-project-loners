@@ -1,4 +1,4 @@
-package Use_Case;
+package Use_Cases;
 
 public class PreferredLocationConnector {
 
