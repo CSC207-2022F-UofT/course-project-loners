@@ -1,16 +1,11 @@
 package UIs;
-
-import Entity.Profile;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class MyProfileUI {
     JFrame f;
     Color red  = new Color(255, 0, 0);
-    public static Profile profile = new Profile("Rick", 21, "male",
-            "straight", null, null, "This is Rick", null, null);
-    public MyProfileUI (Profile profile){
+    public MyProfileUI (){
         f=new JFrame();
 
         JButton b=new JButton("click");
@@ -25,7 +20,7 @@ public class MyProfileUI {
         System.out.println(text);
     }
     public static void main(String[] args) {
-        new MyProfileUI(profile);
+        new MyProfileUI();
     }
 }
 

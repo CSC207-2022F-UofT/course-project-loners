@@ -1,7 +1,6 @@
-package Use_Case;
+package Use_Cases;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public interface DataFetchSend {

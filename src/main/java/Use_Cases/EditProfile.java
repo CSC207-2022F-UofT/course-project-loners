@@ -1,7 +1,6 @@
-package Use_Case;
+package Use_Cases;
 
-import Entity.Authenticator;
-import Entity.Profile;
+import Entities.Profile;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;

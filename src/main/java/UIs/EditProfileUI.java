@@ -1,13 +1,16 @@
 package UIs;
 
 import Controllers_Presenters.EditProfileControl;
-import Entity.Profile;
+import Entities.Profile;
+import org.w3c.dom.ranges.Range;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public class EditProfileUI implements ActionListener {
     JFrame f;
@@ -15,8 +18,6 @@ public class EditProfileUI implements ActionListener {
     GridLayout experimentLayout = new GridLayout(4,2,10, 20);
     String[] genders = {"male", "female", "other"};
     String[] orientations = {"straight", "gay", "bisexual", "other"};
-    public static Profile profile = new Profile("Rick", 21, "male",
-            "straight", null, null, "This is Rick", null, null);
 
 
     public static String name;
@@ -28,7 +29,6 @@ public class EditProfileUI implements ActionListener {
     JComboBox orientationField = new JComboBox<String>(orientations);
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
-    JSpinner preferredAgeField = new JSpinner(model);
 
     public EditProfileUI(){
 
@@ -42,7 +42,6 @@ public class EditProfileUI implements ActionListener {
         bioField.setBounds(20, 125, 300, 60);
         genderField.setBounds(20, 190, 90, 30);
         orientationField.setBounds(20, 225, 90, 30);
-        preferredAgeField.setBounds(20, 260, 90, 30);
         b.setBounds(130,420,100, 40);
 
         f.setSize(600,300);
@@ -52,7 +51,6 @@ public class EditProfileUI implements ActionListener {
         f.add(bioField);
         f.add(genderField);
         f.add(orientationField);
-        f.add(preferredAgeField);
         f.add(b);
         f.setLayout(experimentLayout);
         f.setVisible(true);
@@ -75,6 +73,5 @@ public class EditProfileUI implements ActionListener {
 
     public static void main(String[] args) {
         new EditProfileUI();
-        new MyProfileUI(profile);
     }
 }
