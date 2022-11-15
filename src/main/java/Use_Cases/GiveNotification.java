@@ -1,5 +1,5 @@
 package Use_Cases;
-import Entities.Profile;
+import Entities.*;
 
 import java.util.List;
 

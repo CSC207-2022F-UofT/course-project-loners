@@ -3,9 +3,9 @@ package Entities;
 public class Preferences {
     private int preferredAge;
     private String preferredGender;
-    private int[] preferredLocation;
+    private double[] preferredLocation;
 
-    public Preferences(int preferredAge, String preferredGender, int[] preferredLocation) {
+    public Preferences(int preferredAge, String preferredGender, double[] preferredLocation) {
         this.preferredAge = preferredAge;
         this.preferredGender = preferredGender;
         this.preferredLocation = preferredLocation;
@@ -27,11 +27,11 @@ public class Preferences {
         this.preferredGender = preferredGender;
     }
 
-    public int[] getPreferredLocation() {
+    public double[] getPreferredLocation() {
         return preferredLocation;
     }
 
-    public void setPreferredLocation(int[] preferredLocation) {
+    public void setPreferredLocation(double[] preferredLocation) {
         this.preferredLocation = preferredLocation;
     }
 }
