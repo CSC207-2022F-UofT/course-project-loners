@@ -1,4 +1,4 @@
-package Use_Cases;
+package Use_Case;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class LocationConverter {
+
     private static Scanner loadFile(){
         try{
             File file = new File("location_converter.csv");
@@ -69,4 +70,5 @@ public class LocationConverter {
         }
         return null;
     }
+
 }
