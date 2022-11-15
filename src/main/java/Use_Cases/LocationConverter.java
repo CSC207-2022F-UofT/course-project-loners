@@ -1,4 +1,4 @@
-package Use_Case;
+package Use_Cases;
 
 import java.io.File;
 import java.io.FileNotFoundException;

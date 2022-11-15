@@ -1,5 +1,9 @@
-package Entity;
+package Controllers_Presenters;
 
+
+import Entities.Profile;
+import Use_Cases.Authenticator;
+import Use_Cases.DataFetchSend;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -7,7 +11,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class EditProfileControl implements DataFetchSend{
+public class EditProfileControl implements DataFetchSend {
     public String name;
     public Set<Object> objects = new HashSet<>();
     public Authenticator authenticator = new Authenticator();
