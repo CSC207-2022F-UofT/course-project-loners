@@ -1,4 +1,4 @@
-package UI;
+package UIs;
 
 import Entity.Profile;
 

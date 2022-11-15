@@ -1,4 +1,4 @@
-package UI;
+package UIs;
 
 import Controllers_Presenters.EditProfileControl;
 import Entity.Profile;
