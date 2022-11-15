@@ -3,7 +3,7 @@ package Controllers_Presenters;
 
 import Entity.Preferences;
 import Entity.Profile;
-import Entity.Authenticator;
+import Use_Case.Authenticator;
 import Use_Case.DataFetchSend;
 import Use_Case.EditProfile;
 

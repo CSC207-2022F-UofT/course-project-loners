@@ -1,2 +1,2 @@
-0Name, rick@rick, 20, bio, male, straight, 21, male, null
-0Name, email@email, 20, bio, male, straight, 21, male, null
+000, Name, email, age, bio, gender, orientation, password, male, null,
+001, Name, email@email, 20, bio, male, straight, 21, male, null

@@ -1,6 +1,7 @@
 package UI;
 
 import Controllers_Presenters.EditProfileControl;
+import Entity.Profile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,8 @@ public class EditProfileUI implements ActionListener {
     GridLayout experimentLayout = new GridLayout(4,2,10, 20);
     String[] genders = {"male", "female", "other"};
     String[] orientations = {"straight", "gay", "bisexual", "other"};
+    public static Profile profile = new Profile("Rick", 21, "male",
+            "straight", null, null, "This is Rick", null, null);
 
 
     public static String name;
@@ -72,5 +75,6 @@ public class EditProfileUI implements ActionListener {
 
     public static void main(String[] args) {
         new EditProfileUI();
+        new MyProfileUI(profile);
     }
 }
