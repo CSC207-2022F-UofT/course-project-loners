@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
-import Entity.Authenticator;
-import Entity.DataFetchSend;
+import Use_Cases.Authenticator;
+import Use_Cases.DataFetchSend;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
