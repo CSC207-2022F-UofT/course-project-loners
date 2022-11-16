@@ -69,4 +69,31 @@ public class Authenticator{
         // Maybe we don't need to validate socialMedia if you can choose from several options
         return true;
     }
+
+    public boolean email_dne(String email){
+        // run fetch data function and fetch email
+        // suppose datafetch.email() is the function to fetch the email
+        // let datafetch.email() = database_email
+        // if (database_email == NULL){return true;}
+        // else {return false;}
+        return false;
+    }
+
+    public boolean email_match_password(String email, String password){
+        // Case 1: email does not exist in database
+        // given email input, how to get the corresponding email from database.txt
+        // datafetch.email() = database_email
+        // run email_dne(); if email_dne() is true, return false
+
+
+        // Case 2: email does not match password (wrong password)
+        // if (email == database_email):
+            // if (password != database_password){
+                // return false;}
+        // Case 3: email matches password (login successful)
+            // else{ return true;}
+
+        // if this function returns true, in LogUI, show login successful
+        return false;
+    }
 }
