@@ -87,6 +87,20 @@ public class EditProfileControl implements DataFetchSend {
         if(this.edit(info)){
             System.out.println("This part is successfully executed2");
             try {
+                FileReader myReader = new FileReader("database.txt");
+                char id1 = '0';
+                char id2 = '0';
+                char id3 = '0';
+                String name = new String("");
+
+                while(id1 != '1' && id2 != '2' && id3 != '3'){
+                    id1 = (char) myReader.read();
+                    id2 = (char) myReader.read();
+                    id3 = (char) myReader.read();
+                    while(!(myReader.read() ==-1));
+                }
+
+
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
                 myWriter.write(profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+

@@ -1,2 +1,2 @@
-000, Name, email, age, bio, gender, orientation, password, male, null,
+000, Name, email, password, age, bio, gender, orientation, password, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
 001, Name, email@email, 20, bio, male, straight, 21, male, null
