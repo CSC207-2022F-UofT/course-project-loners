@@ -2,6 +2,7 @@ package UIs;
 
 import Controllers_Presenters.EditProfileControl;
 import Entities.Profile;
+import Use_Cases.LoadFile;
 import org.w3c.dom.ranges.Range;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class EditProfileUI implements ActionListener {
 
     public static String name;
     JButton b=new JButton("Update!");
+    JButton file_load = new JButton("Upload Image");
     JTextField nameField = new JTextField("Name", 20);
     JTextField emailField = new JTextField("email", 20);
     JTextField bioField = new JTextField("bio", 100);
@@ -29,6 +31,7 @@ public class EditProfileUI implements ActionListener {
     JComboBox orientationField = new JComboBox<String>(orientations);
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
+    LoadFile loadFile = new LoadFile(f, file_load);
 
     public EditProfileUI(){
 
@@ -52,6 +55,7 @@ public class EditProfileUI implements ActionListener {
         f.add(genderField);
         f.add(orientationField);
         f.add(b);
+        loadFile.setLoader();
         f.setLayout(experimentLayout);
         f.setVisible(true);
         b.addActionListener(this);
