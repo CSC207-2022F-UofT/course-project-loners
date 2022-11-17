@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class DataFetch {
+public class DataFetchControl {
     public Object[] fetch_byid(String id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -30,22 +30,17 @@ public class DataFetch {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             StringBuffer inputBuffer = new StringBuffer();
             String line = myReader.readLine();
-            inputBuffer.append(line);
-            inputBuffer.append('\n');
-            System.out.println(line.charAt(0));
-            System.out.println(line.charAt(1));
-            System.out.println(line.charAt(2));
-            while (line.charAt(0) != "001".charAt(0) && line.charAt(1) != "001".charAt(1) && line.charAt(2) != "001".charAt(2) ){
-                line = myReader.readLine();
+            while (line.charAt(0) != id.charAt(0) || line.charAt(1) != id.charAt(1) || line.charAt(2) != id.charAt(2) ){
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
-
+                line = myReader.readLine();
             }
-            String modified_data = data[0]+", "+data[1]+", "+data[2] + ", " + data[3];
+            String modified_data = id +", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
+                    ", "+ data[6] + ", "+ data[7] + ", "+ data[8] + ", "+ data[9] + ", "+ data[10] + ", "+ data[11] +
+                    ", "+ data[12] + ", "+ data[13];
 
             inputBuffer.append(modified_data);
             inputBuffer.append('\n');
-            myReader.readLine();
             line = myReader.readLine();
             while (!(line==null)){
                 inputBuffer.append(line);

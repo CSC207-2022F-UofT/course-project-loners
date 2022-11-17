@@ -1,6 +1,7 @@
 package Controllers_Presenters;
 
 
+import Entities.Preferences;
 import Entities.Profile;
 import Use_Cases.Authenticator;
 import Use_Cases.DataFetchSend;
@@ -14,10 +15,11 @@ public class EditProfileControl implements DataFetchSend {
     public String name;
     public Set<Object> objects = new HashSet<>();
     public Authenticator authenticator = new Authenticator();
-    public DataFetch dataFetch = new DataFetch();
+    public DataFetchControl dataFetch = new DataFetchControl();
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
+    static Preferences preferences = new Preferences(20, "male",null);
 
     public  EditProfileControl(){
 
@@ -88,9 +90,12 @@ public class EditProfileControl implements DataFetchSend {
             System.out.println("This part is successfully executed2");
             System.out.println(dataFetch.fetch_byid("000")[3]);
             try {
-                String str_data = "001, " + profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
-                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation();
-                dataFetch.send_toid("001", str_data.split(", "));
+                String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
+                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
+                        profile.getLocation()+", "+profile.getImage()+", "+profile.getHobbies()+", "+
+                        profile.getSocialMedia()+", "+profile.getLikes()+", "+preferences.getPreferredAge()+", "+
+                        preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
+                dataFetch.send_toid("002", str_data.split(", "));
 
 
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);

@@ -1,5 +1,4 @@
 000, Name, email, password, age, bio, gender, orientation, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
-001Rick, rick@mail, 20, bio
-002, Name, email, password, age, bio, gender, orientation, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
-
-Rick, rick@mail, 20, bio, male, straight,
+001, Name, email@, null, 20, bio, male, straight, null, null, null, null, null, 20, male
+002, John, John@mail, null, 18, student, other, gay, null, null, null, null, null, 20, male
+003, Name, email, password, age, bio, gender, orientation, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
