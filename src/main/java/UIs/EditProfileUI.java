@@ -31,7 +31,7 @@ public class EditProfileUI implements ActionListener {
     JComboBox orientationField = new JComboBox<String>(orientations);
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
-    LoadFile loadFile = new LoadFile(f, file_load);
+    LoadFile loadFile = new LoadFile(f, file_load, this);
 
     public EditProfileUI(){
 

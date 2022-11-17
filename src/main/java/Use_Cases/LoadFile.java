@@ -8,14 +8,15 @@ import java.awt.event.ActionListener;
 public class LoadFile implements ActionListener {
     JFrame f;
     JButton b;
-    public LoadFile(JFrame f,JButton b){
+    ActionListener l;
+    public LoadFile(JFrame f,JButton b, ActionListener l){
         this.f = f;
         this.b = b;
-
+        this.l = l;
     }
     public void setLoader(){
         this.f.add(b);
-        this.b.addActionListener(this);
+        this.b.addActionListener(this.l);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
