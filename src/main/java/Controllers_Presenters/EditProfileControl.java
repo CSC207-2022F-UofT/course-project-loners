@@ -5,7 +5,6 @@ import Entities.Profile;
 import Use_Cases.Authenticator;
 import Use_Cases.DataFetchSend;
 
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +14,7 @@ public class EditProfileControl implements DataFetchSend {
     public String name;
     public Set<Object> objects = new HashSet<>();
     public Authenticator authenticator = new Authenticator();
+    public DataFetch dataFetch = new DataFetch();
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
@@ -86,26 +86,14 @@ public class EditProfileControl implements DataFetchSend {
         System.out.println("This part is successfully executed");
         if(this.edit(info)){
             System.out.println("This part is successfully executed2");
+            System.out.println(dataFetch.fetch_byid("000")[3]);
             try {
-                FileReader myReader = new FileReader("database.txt");
-                char id1 = '0';
-                char id2 = '0';
-                char id3 = '0';
-                String name = new String("");
-
-                while(id1 != '1' && id2 != '2' && id3 != '3'){
-                    id1 = (char) myReader.read();
-                    id2 = (char) myReader.read();
-                    id3 = (char) myReader.read();
-                    while(!(myReader.read() ==-1));
-                }
+                String str_data = "001, " + profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
+                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation();
+                dataFetch.send_toid("001", str_data.split(", "));
 
 
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
-                myWriter.write(profile.getName()+", "+profile.getEmail()+", "+ profile.getAge()+", "+
-                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+",");
-                myWriter.close();
                 System.out.println("Successfully wrote to the file.");
 
                 return true;
