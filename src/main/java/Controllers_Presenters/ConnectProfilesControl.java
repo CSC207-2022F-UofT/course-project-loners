@@ -3,16 +3,20 @@ package Controllers_Presenters;
 import Entities.Preferences;
 import Use_Cases.ConnectProfiles;
 
+import java.util.List;
+
 public class ConnectProfilesControl {
-    private String id;
+    private int id;
 
     public ConnectProfilesControl(String id) {
-        this.id = id;
+        this.id = Integer.parseInt(id);
     }
 
     public void passPreferences() {
+        DataFetchSendControl d = new DataFetchSendControl();
+        Object[] userData = d.fetch_fromid(id);
+
         // change the type of preferred age and gender
-        Object[] userData = DataFetchControl.fetch_byid(id);
         int prefAge = Integer.parseInt((String) userData[12]);
         String prefGender = (String) userData[13];
 
@@ -24,8 +28,11 @@ public class ConnectProfilesControl {
         }
 
         // create and pass a new Preferences object to ConnectProfiles
-        Preferences preferences = new Preferences(prefAge, prefGender, prefLocation, id);
+        Preferences preferences = new Preferences(prefAge, prefGender, prefLocation, String.valueOf(id));
         ConnectProfiles connectProfiles = new ConnectProfiles(preferences);
+        List<String> connections = connectProfiles.compareTraits();
+
+        // pass connected profiles to ProfileFinderUI, direct user to ProfileFinderUI
 
     }
 }
