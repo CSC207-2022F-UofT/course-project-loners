@@ -7,7 +7,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class tmp_DataFetch {
+public class DataFetchControl {
+    public Object[] fetch_fromid(int id){
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
+            String line = myReader.readLine();
+            int line_id = Integer.parseInt(line.split(", ")[0]);
+            while(line_id != id){
+                line = myReader.readLine();
+                line_id = Integer.parseInt(line.split(", ")[0]);
+            }
+            List<String> profile_data = Arrays.asList(line.split(", "));
+
+            Object[] data = profile_data.toArray();
+            return data;
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int fetch_lastID(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
@@ -51,6 +71,8 @@ public class tmp_DataFetch {
         }
     }
 
-    // Not sure if this is needed
-    // public ArrayList<Profile> load_data(){}
+    public static void main(String[] args){
+        Object[] data = new DataFetchControl().fetch_fromid(2);
+        System.out.println(data[9].getClass());
+    }
 }
