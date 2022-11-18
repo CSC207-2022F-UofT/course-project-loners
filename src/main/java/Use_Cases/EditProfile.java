@@ -1,31 +1,14 @@
-package Controllers_Presenters;
+package Use_Cases;
 
-
-import Entities.Preferences;
 import Entities.Profile;
-import Use_Cases.Authenticator;
-import Use_Cases.DataFetchSend;
 
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 
-public class EditProfileControl implements DataFetchSend {
-    public String name;
-    public Set<Object> objects = new HashSet<>();
+public class EditProfile {
     public Authenticator authenticator = new Authenticator();
-    public DataFetchSendControl dataFetch = new DataFetchSendControl();
-
-    static Profile profile = new Profile("Rick", 21, "male",
-            "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null);
-
-    public  EditProfileControl(){
-
-    }
-
-    public boolean edit(HashMap<String, Object> info){
+    public boolean edit(HashMap<String, Object> info, Profile profile){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
         if (info.keySet().size() == 0){
@@ -81,42 +64,4 @@ public class EditProfileControl implements DataFetchSend {
         }
         return true;
     }
-
-    @Override
-    public boolean send(HashMap<String, Object> info) {
-        /*String.format("User1: %s", this.name))*/
-        System.out.println("This part is successfully executed");
-        if(this.edit(info)){
-            System.out.println("This part is successfully executed2");
-            System.out.println(dataFetch.fetch_fromid(0)[3]);
-            try {
-                String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
-                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
-                        profile.getLocation()+", "+profile.getImage()+", "+profile.getHobbies()+", "+
-                        profile.getSocialMedia()+", "+profile.getLikes()+", "+preferences.getPreferredAge()+", "+
-                        preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
-                dataFetch.send_toid(2, str_data.split(", "));
-
-
-                FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                System.out.println("Successfully wrote to the file.");
-
-                return true;
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-                return false;
-            }
-        }else{
-            System.out.println("Couldn't successfully edited");
-            return false;
-        }
-
-    }
-
-    //public static void main(String[] args){
-    //EditProfileControl edit = new EditProfileControl("Rick");
-    //edit.send();
-    //}
-
 }

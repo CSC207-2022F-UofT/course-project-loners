@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Authenticator{
 
-    public boolean is_valid_email(String email){
+    public static boolean is_valid_email(String email){
         if(email.indexOf('@') == -1){
             return false;
         } else if (email.length() > 20) {
@@ -23,7 +23,7 @@ public class Authenticator{
         return true;
     }
 
-    public boolean is_valid_age(int age){
+    public static boolean is_valid_age(int age){
         if(age < 0 || age>150){
             return false;
         }
