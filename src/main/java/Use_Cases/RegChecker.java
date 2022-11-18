@@ -1,7 +1,6 @@
 package Use_Cases;
 
-import Controllers_Presenters.tmp_DataFetch;
-import Use_Cases.Authenticator;
+import Controllers_Presenters.DataFetchControl;
 
 public class RegChecker {
     public boolean pass;
@@ -38,7 +37,7 @@ public class RegChecker {
     }
 
     public void check_duplicate(String email){
-        if (new tmp_DataFetch().fetch_emails().contains(email)){ // TODO: improve after discussion
+        if (new DataFetchControl().fetch_emails().contains(email)){ // TODO: improve after discussion
             this.pass = false;
             this.diagnose += "email is existed, \n";
         }

@@ -1,8 +1,7 @@
 package Use_Cases;
 
-import Controllers_Presenters.tmp_DataSend;
+import Controllers_Presenters.DataSendControl;
 import Entities.Profile;
-import Use_Cases.LocationConverter;
 
 public class RegDataStore {
     public boolean success;
@@ -10,7 +9,7 @@ public class RegDataStore {
         LocationConverter converter =  new LocationConverter();
         double[] location = converter.codeToCoords(postcode);
         Profile profile = new Profile(email, password, name, age, gender, location);
-        new tmp_DataSend(profile); // TODO: improve after discussion
+        new DataSendControl(profile); // TODO: improve after discussion
         this.success = true;
     }
 }
