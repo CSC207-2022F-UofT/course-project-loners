@@ -6,8 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class EditPreferencesUI {
     private static JFrame frame;
@@ -19,16 +18,18 @@ public class EditPreferencesUI {
 //        panel.setOpaque(true);
         frame.setContentPane(panel);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // terminates the program when the window is closed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // terminate the program when the window is closed
         frame.setSize(400, 300);
         frame.setVisible(true);
     }
 
     public static void addComponents() {
         // add labels and text fields that listen for and respond to typing
-        String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ", "Preferred location: "};
-        List<String> preferenceTexts = new ArrayList<>();
+        String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ", "Preferred location (postal code): "};
+        String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location"};
+        HashMap<String, String> preferenceMap = new HashMap<>();
         for (int i = 0; i < labels.length; i++) {
+            String preferenceLabel = preferenceLabels[i];
             JLabel label = new JLabel(labels[i], JLabel.TRAILING);
             panel.add(label);
             JTextField textField = new JTextField(10);
@@ -37,20 +38,21 @@ public class EditPreferencesUI {
 
             textField.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    String text = textField.getText();
-                    preferenceTexts.add(text);
+                    String preferenceText = textField.getText();
+                    preferenceMap.put(preferenceLabel, preferenceText);
                 }
             });
         }
 
-        // pass text from JTextFields to EditPreferencesControl
-        EditPreferencesControl preferences = new EditPreferencesControl(preferenceTexts);
-
         // add a button that listens and responds to a click
-        JButton button = new JButton("Click here");
+        JButton button = new JButton("Change Preferences"); // or "View Profiles"
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //
+                // pass preferences label-text mapping to EditPreferencesControl
+                EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap);
+                editPreferencesControl.passPreferences();
+                // present a success message
+
             }
         });
         panel.add(button);
