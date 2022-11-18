@@ -7,22 +7,25 @@ import Use_Cases.EditPreferences;
 import java.util.HashMap;
 
 public class EditPreferencesControl {
-    private static int prefAge;
-    private static String prefGender;
-    private static double[] prefLocation;
+    private int prefAge;
+    private String prefGender;
+    private double[] prefLocation;
+    private String id;
 
     // arguments for constructor passed in by EditPreferencesUI
-    public EditPreferencesControl(HashMap<String, String> preferenceMap) {
+    public EditPreferencesControl(HashMap<String, String> preferenceMap, String id) {
         this.prefAge = Integer.parseInt(preferenceMap.get("preferred age"));
         this.prefGender = preferenceMap.get("preferred gender");
 
         String postalCode = preferenceMap.get("preferred location");
         this.prefLocation = LocationConverter.codeToCoords(postalCode);
+
+        this.id = id;
     }
 
     public void passPreferences() {
         // create and pass a new Preferences object to EditPreferences
-        Preferences preferences = new Preferences(this.prefAge, this.prefGender, this.prefLocation);
+        Preferences preferences = new Preferences(prefAge, prefGender, prefLocation, id);
         EditPreferences editPreferences = new EditPreferences(preferences);
         editPreferences.writeData();
     }

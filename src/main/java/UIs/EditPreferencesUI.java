@@ -9,8 +9,13 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
+    private static String id;
     private static JFrame frame;
     private static JPanel panel;
+
+    public EditPreferencesUI(String id) {
+        this.id = id;
+    }
 
     public static void buildBasicLayout() {
         frame = new JFrame("Preference Editor");
@@ -49,7 +54,7 @@ public class EditPreferencesUI {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // pass preferences label-text mapping to EditPreferencesControl
-                EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap);
+                EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, id);
                 editPreferencesControl.passPreferences();
                 // present a success message
 
