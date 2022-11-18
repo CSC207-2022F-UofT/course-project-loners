@@ -26,7 +26,7 @@ public class RegChecker {
             this.pass = false;
             this.diagnose += "email is not valid, \n";
         }
-        if (pos.length() != 6){
+        if (pos.length() != 7){
             this.pass = false;
             this.diagnose += "postal code is not valid, \n";
         }
@@ -37,7 +37,7 @@ public class RegChecker {
     }
 
     public void check_duplicate(String email){
-        if (new DataFetchControl().fetch_emails().contains(email)){ // TODO: improve after discussion
+        if (new DataFetchControl().fetch_emails().contains(email)){
             this.pass = false;
             this.diagnose += "email is existed, \n";
         }
