@@ -35,9 +35,10 @@ public class tmp_DataFetch {
             String line = reader.readLine();
             if (line == null){ return emails; } // if the file is empty, id should be 1
             else { // if file is not empty, id = last line's id + 1
+                String tmp = "";
                 while(line != null) {
-                    line = reader.readLine();
-                    List<String> lst_line = Arrays.asList(line.split(", "));
+                    tmp = line;
+                    List<String> lst_line = Arrays.asList(tmp.split(", "));
                     emails.add(lst_line.get(2));
                     line = reader.readLine();
                 }

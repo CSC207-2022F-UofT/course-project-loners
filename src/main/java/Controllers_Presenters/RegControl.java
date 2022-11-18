@@ -1,8 +1,8 @@
 package Controllers_Presenters;
 
-import UI.LogUI;
-import Use_Case.RegChecker;
-import Use_Case.RegDataStore;
+import UIs.LogUI;
+import Use_Cases.RegChecker;
+import Use_Cases.RegDataStore;
 
 import javax.swing.*;
 

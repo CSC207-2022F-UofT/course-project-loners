@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
-import Entity.Preferences;
-import Entity.Profile;
+import Entities.Preferences;
+import Entities.Profile;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
