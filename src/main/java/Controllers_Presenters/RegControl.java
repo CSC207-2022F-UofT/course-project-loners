@@ -7,6 +7,7 @@ import Use_Cases.RegDataStore;
 import javax.swing.*;
 
 public class RegControl {
+    // TODO: add picture feature
     public RegControl(String email, String password, String name, String age, String gender, String postcode, JFrame regf){
         RegChecker checker = new RegChecker(email, password, name, age, gender, postcode);
         if (!checker.pass){ // if checker did not pass, show failure message

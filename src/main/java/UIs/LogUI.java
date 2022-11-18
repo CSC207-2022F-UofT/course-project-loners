@@ -33,6 +33,10 @@ public class LogUI implements ActionListener {
         b.addActionListener(this);
     }
 
+    public void setVisible(boolean b) {
+        f.setVisible(b);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         EditProfileControl control = new EditProfileControl();
