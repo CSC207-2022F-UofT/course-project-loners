@@ -7,6 +7,7 @@ public class EditPreferences {
     private String preferredGender;
     private String preferredLocation;
     private String id;
+
     public EditPreferences(Preferences preferences) {
         this.preferredAge = String.valueOf(preferences.getPreferredAge());
         this.preferredGender = preferences.getPreferredGender();

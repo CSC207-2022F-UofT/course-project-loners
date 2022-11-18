@@ -30,7 +30,8 @@ public class EditPreferencesUI {
 
     public static void addComponents() {
         // add labels and text fields that listen for and respond to typing
-        String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ", "Preferred location (postal code): "};
+        String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
+                "Preferred location (postal code, with a space in the middle): "};
         String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location"};
         HashMap<String, String> preferenceMap = new HashMap<>();
         for (int i = 0; i < labels.length; i++) {

@@ -28,6 +28,9 @@ public class EditPreferencesControl {
         Preferences preferences = new Preferences(prefAge, prefGender, prefLocation, id);
         EditPreferences editPreferences = new EditPreferences(preferences);
         editPreferences.writeData();
+
+        // direct user to MyProfileUI
+
     }
 
 //    public static void main(String[] args) {
