@@ -7,13 +7,15 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class DataFetchControl {
-    public Object[] fetch_byid(String id){
+public class DataFetchSendControl {
+    public Object[] fetch_fromid(int id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
-            while(line.charAt(0) != id.charAt(0) && line.charAt(1) != id.charAt(1) && line.charAt(2) != id.charAt(2) ){
+            int line_id = Integer.parseInt(line.split(", ")[0]);
+            while(line_id != id){
                 line = myReader.readLine();
+                line_id = Integer.parseInt(line.split(", ")[0]);
             }
             List<String> profile_data = Arrays.asList(line.split(", "));
 
@@ -25,17 +27,20 @@ public class DataFetchControl {
             return null;
         }
     }
-    public boolean send_toid (String id, Object[] data){
+    public boolean send_toid (int id, Object[] data){
         try{
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             StringBuffer inputBuffer = new StringBuffer();
             String line = myReader.readLine();
-            while (line.charAt(0) != id.charAt(0) || line.charAt(1) != id.charAt(1) || line.charAt(2) != id.charAt(2) ){
+            System.out.println(line);
+            int line_id = Integer.parseInt(line.split(", ")[0]);
+            while (line_id != id){
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
                 line = myReader.readLine();
+                line_id = Integer.parseInt(line.split(", ")[0]);
             }
-            String modified_data = id +", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
+            String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
                     ", "+ data[6] + ", "+ data[7] + ", "+ data[8] + ", "+ data[9] + ", "+ data[10] + ", "+ data[11] +
                     ", "+ data[12] + ", "+ data[13];
 
@@ -60,6 +65,7 @@ public class DataFetchControl {
     }
 
     public static void main(String[] args){
-
+        Object[] data = new DataFetchSendControl().fetch_fromid(2);
+        System.out.println(data[9].getClass());
     }
 }

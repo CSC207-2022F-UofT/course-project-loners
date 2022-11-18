@@ -3,18 +3,20 @@ package UIs;
 import Controllers_Presenters.EditProfileControl;
 import Entities.Profile;
 import Use_Cases.LoadFile;
+import Use_Cases.ToBuffer;
 import org.w3c.dom.ranges.Range;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
 public class EditProfileUI implements ActionListener {
-    JFrame f;
+    JFrame f= new JFrame();
     SpringLayout layout = new SpringLayout();
     GridLayout experimentLayout = new GridLayout(4,2,10, 20);
     String[] genders = {"male", "female", "other"};
@@ -31,11 +33,10 @@ public class EditProfileUI implements ActionListener {
     JComboBox orientationField = new JComboBox<String>(orientations);
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
-    LoadFile loadFile = new LoadFile(f, file_load, this);
+    LoadFile loadFile = new LoadFile(f, file_load);
 
     public EditProfileUI(){
 
-        f=new JFrame();
         experimentLayout.setColumns(2);
         experimentLayout.setRows(4);
 
@@ -56,6 +57,8 @@ public class EditProfileUI implements ActionListener {
         f.add(orientationField);
         f.add(b);
         loadFile.setLoader();
+        ToBuffer toBuffer = new ToBuffer();
+        //BufferedImage bimage = toBuffer.toBufferedImage(loadFile.image);
         f.setLayout(experimentLayout);
         f.setVisible(true);
         b.addActionListener(this);
@@ -71,6 +74,7 @@ public class EditProfileUI implements ActionListener {
         info.put("bio", bioField.getText());
         info.put("gender", genderField.getSelectedItem());
         info.put("orientation", orientationField.getSelectedItem());
+        info.put("image", loadFile.image);
         control.send(info);
     }
 
