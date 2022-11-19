@@ -85,8 +85,9 @@ public class DataSendControl {
                 line_id = Integer.parseInt(line.split(", ")[0]);
             }
             String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
-                    ", "+ data[6] + ", "+ data[7] + ", "+ data[8] + ", "+ data[9] + ", "+ data[10] + ", "+ data[11] +
-                    ", "+ data[12] + ", "+ data[13] + ", "+ data[14] + ", "+ data[15];
+                    ", "+ data[6] + ", "+ data[7] +  ", "+ data[8] + ", "+ data[9] + ", "+ data[10] +
+                    ", "+ data[11] + ", "+ data[12] + ", "+data[13];
+
 
             inputBuffer.append(modified_data);
             inputBuffer.append('\n');
@@ -111,7 +112,7 @@ public class DataSendControl {
     public String ProfileConvertStr(Profile profile) {
         return profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                 profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                Arrays.toString(profile.getLocation()) + ", " + profile.getImage() + ", " + profile.getHobbies() + ", " +
+                Arrays.toString(profile.getLocation()) + ", " + profile.getHobbies() + ", " +
                 profile.getSocialMedia() + ", " + profile.getLikes();
     }
 
