@@ -4,12 +4,15 @@ public class Preferences {
     private int preferredAge;
     private String preferredGender;
     private double[] preferredLocation;
-    private String id;
+    private double preferredLocationRange;
+    private int id;
 
-    public Preferences(int preferredAge, String preferredGender, double[] preferredLocation, String id) {
+    public Preferences(int preferredAge, String preferredGender, double[] preferredLocation,
+                       double preferredLocationRange, int id) {
         this.preferredAge = preferredAge;
         this.preferredGender = preferredGender;
         this.preferredLocation = preferredLocation;
+        this.preferredLocationRange = preferredLocationRange;
         this.id = id;
     }
 
@@ -24,8 +27,11 @@ public class Preferences {
     public double[] getPreferredLocation() {
         return preferredLocation;
     }
+    public double getPreferredLocationRange() {
+        return preferredLocationRange;
+    }
 
-    public String getID() {
+    public int getID() {
         return id;
     }
 }

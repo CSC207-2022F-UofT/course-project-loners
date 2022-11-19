@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
-    private static String id;
+    private static int id;
     private static JFrame frame;
     private static JPanel panel;
 
-    public EditPreferencesUI(String id) {
+    public EditPreferencesUI(int id) {
         this.id = id;
     }
 
@@ -31,8 +31,8 @@ public class EditPreferencesUI {
     public static void addComponents() {
         // add labels and text fields that listen for and respond to typing
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
-                "Preferred location (postal code, with a space in the middle): "};
-        String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location"};
+                "Preferred location (postal code, with a space in the middle): ", "Preferred location range (in km): "};
+        String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location", "location range"};
         HashMap<String, String> preferenceMap = new HashMap<>();
         for (int i = 0; i < labels.length; i++) {
             String preferenceLabel = preferenceLabels[i];
@@ -67,7 +67,7 @@ public class EditPreferencesUI {
     public static void layOutComponents() {
         // add the components to the content frame of the JFrame
         Spring x = Spring.constant(6);
-        for (int c = 0; c < 2; c++) {
+        for (int c = 0; c < 3; c++) {
             Spring width = Spring.constant(0);
 
         }
