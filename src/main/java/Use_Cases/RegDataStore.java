@@ -9,7 +9,7 @@ public class RegDataStore {
         LocationConverter converter =  new LocationConverter();
         double[] location = converter.codeToCoords(postcode);
         Profile profile = new Profile(email, password, name, age, gender, location);
-        new DataSendControl(profile); // TODO: improve after discussion
+        new DataSendControl(profile);
         this.success = true;
     }
 }

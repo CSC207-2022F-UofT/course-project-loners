@@ -16,7 +16,6 @@ public class DataSendControl {
         } else if (last_id == -1) { // if the file is empty
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
                 myWriter.write("0, "+ ProfileConvertStr(profile));
                 myWriter.close();
                 this.status = true;
@@ -47,7 +46,6 @@ public class DataSendControl {
         } else if (last_id == -1) { // if the file is empty
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
                 myWriter.write("0, "+ ProfileConvertStr(profile)+ ", " + PreferencesConvertStr(preferences));
                 myWriter.close();
                 this.status = true;
