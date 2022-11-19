@@ -1,6 +1,9 @@
 package Controllers_Presenters;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,9 +21,12 @@ public class DataFetchControl {
                 line_id = Integer.parseInt(line.split(", ")[0]);
             }
             List<String> profile_data = Arrays.asList(line.split(", "));
+            BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", Integer.toString(id))));
 
             Object[] data = profile_data.toArray();
-            return data;
+            Object[] data_with_image = {data, image};
+
+            return data_with_image;
         } catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
