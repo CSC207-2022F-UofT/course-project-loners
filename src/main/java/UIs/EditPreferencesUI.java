@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class EditPreferencesUI {
     private static int id;
     private static JFrame frame;
-    private static JPanel panel;
+    private static Container pane;
 
     public EditPreferencesUI(int id) {
         this.id = id;
@@ -19,28 +19,32 @@ public class EditPreferencesUI {
 
     public static void buildBasicLayout() {
         frame = new JFrame("Preference Editor");
-        panel = new JPanel(new SpringLayout());
-//        panel.setOpaque(true);
-        frame.setContentPane(panel);
+        pane = frame.getContentPane();
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
-        frame.setSize(400, 300);
+        frame.setSize(530, 250);
         frame.setVisible(true);
     }
 
     public static void addComponents() {
-        // add labels and text fields that listen for and respond to typing
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
                 "Preferred location (postal code, space in the middle): ", "Preferred location range (in km): "};
         String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location", "location range"};
         HashMap<String, String> preferenceMap = new HashMap<>();
 
+//        JLabel successMessage = new JLabel("Preferences successfully updated");
+//        successMessage.setVisible(false);
+//        pane.add(successMessage);
+
+        // add labels and text fields that listen for and respond to typing
         for (int i = 0; i < labels.length; i++) {
-            JLabel label = new JLabel(labels[i], JLabel.TRAILING);
-            panel.add(label);
+            JLabel label = new JLabel(labels[i]);
+            pane.add(label);
+
             JTextField textField = new JTextField(10);
-            label.setLabelFor(textField);
-            panel.add(textField);
+//            label.setLabelFor(textField);
+            pane.add(textField);
 
             String preferenceLabel = preferenceLabels[i];
             textField.addActionListener(new ActionListener() {
@@ -53,25 +57,18 @@ public class EditPreferencesUI {
 
         // add a button that listens for and responds to a click
         JButton button = new JButton("Change Preferences");
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // pass preferences label-text mapping to EditPreferencesControl
                 EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, id);
                 editPreferencesControl.passPreferences();
                 /// present a success message, direct user back to MyProfileUI
+//                successMessage.setVisible(true);
 
             }
         });
-        panel.add(button);
-    }
-
-    public static void layOutComponents() {
-        /// add the components to the content frame of the JFrame
-//        Spring x = Spring.constant(6);
-//        for (int c = 0; c < 3; c++) {
-//            Spring width = Spring.constant(0);
-//
-//        }
+        pane.add(button);
     }
 
     public static void main(String[] args) {
@@ -79,7 +76,6 @@ public class EditPreferencesUI {
             public void run() {
                 buildBasicLayout();
                 addComponents();
-                layOutComponents();
             }
         });
     }
