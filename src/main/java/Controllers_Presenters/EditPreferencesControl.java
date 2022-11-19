@@ -1,24 +1,32 @@
 package Controllers_Presenters;
 
-import java.util.List;
+import Use_Cases.LocationConverter;
+import Entities.Preferences;
+import Use_Cases.EditPreferences;
+
+import java.util.HashMap;
 
 public class EditPreferencesControl {
-    private static String prefAge;
-    private static String prefGender;
-    private static String prefLocation;
+    private int preferredAge;
+    private String preferredGender;
+    private double[] preferredLocation;
+    private double preferredLocationRange;
+    private int id;
 
-    // arguments for constructor passed in by EditPreferencesUI
-    public EditPreferencesControl(List<String> preferences) {
-        this.prefAge = preferences.get(0);
-        this.prefGender = preferences.get(1);
-        this.prefLocation = preferences.get(2);
+    public EditPreferencesControl(HashMap<String, String> preferenceMap, int id) { // passed in by EditPreferencesUI
+        this.preferredAge = Integer.parseInt(preferenceMap.get("preferred age"));
+        this.preferredGender = preferenceMap.get("preferred gender");
+        String postalCode = preferenceMap.get("preferred location");
+        this.preferredLocation = LocationConverter.codeToCoords(postalCode);
+        this.preferredLocationRange = Double.parseDouble(preferenceMap.get("location range"));
+        this.id = id;
     }
 
-    public static void setPreferences() {
-        // create a new Preferences object with parameters of the appropriate type
-    }
-
-    public static void main(String[] args) {
-        setPreferences();
+    public void passPreferences() {
+        // create and pass a new Preferences object to EditPreferences
+        Preferences preferences = new Preferences(preferredAge, preferredGender, preferredLocation,
+                preferredLocationRange, id);
+        EditPreferences editPreferences = new EditPreferences(preferences);
+        editPreferences.writeData();
     }
 }

@@ -16,7 +16,6 @@ public class DataSendControl {
         } else if (last_id == -1) { // if the file is empty
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
                 myWriter.write("0, "+ ProfileConvertStr(profile));
                 myWriter.close();
                 this.status = true;
@@ -47,7 +46,6 @@ public class DataSendControl {
         } else if (last_id == -1) { // if the file is empty
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
                 myWriter.write("0, "+ ProfileConvertStr(profile)+ ", " + PreferencesConvertStr(preferences));
                 myWriter.close();
                 this.status = true;
@@ -70,6 +68,9 @@ public class DataSendControl {
             }
         }
     }
+
+    public DataSendControl() {}
+
     public boolean send_toid (int id, Object[] data){
         try{
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -85,7 +86,7 @@ public class DataSendControl {
             }
             String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
                     ", "+ data[6] + ", "+ data[7] + ", "+ data[8] + ", "+ data[9] + ", "+ data[10] + ", "+ data[11] +
-                    ", "+ data[12] + ", "+ data[13];
+                    ", "+ data[12] + ", "+ data[13] + ", "+ data[14] + ", "+ data[15];
 
             inputBuffer.append(modified_data);
             inputBuffer.append('\n');
@@ -117,7 +118,8 @@ public class DataSendControl {
     public String PreferencesConvertStr(Preferences preferences) {
         return preferences.getPreferredAge() + ", "
                 + preferences.getPreferredGender() + ", "
-                + Arrays.toString(preferences.getPreferredLocation());
+                + Arrays.toString(preferences.getPreferredLocation()) + ", "
+                + preferences.getPreferredLocationRange();
     }
 }
 

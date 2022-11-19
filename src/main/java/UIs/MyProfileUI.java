@@ -21,7 +21,7 @@ public class MyProfileUI{
 
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null);
+    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
 
     public MyProfileUI(){
         Object[] profile_data = data_manager.fetch_fromid(2);
