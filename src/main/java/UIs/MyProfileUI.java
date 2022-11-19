@@ -18,7 +18,7 @@ import static javax.imageio.ImageIO.read;
 public class MyProfileUI{
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null);
+    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
 
     JFrame f = new JFrame();
     DataFetchControl data_manager = new DataFetchControl();

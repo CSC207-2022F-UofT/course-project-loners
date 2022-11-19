@@ -18,7 +18,7 @@ public class EditProfileControl{
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null);
+    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
     public DataSendControl dataSend = new DataSendControl(profile);
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
@@ -95,8 +95,6 @@ public class EditProfileControl{
             System.out.println("Successfully wrote to the file.");
 
             return true;
-
-
         }else{
             System.out.println("Couldn't successfully edited");
             return false;
