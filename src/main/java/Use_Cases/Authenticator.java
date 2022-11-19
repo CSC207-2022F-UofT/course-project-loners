@@ -1,6 +1,7 @@
 package Use_Cases;
 
 import Controllers_Presenters.DataFetchControl;
+import UIs.LogUI;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class Authenticator{
         return true;
     }
 
-    public boolean email_dne(String input_email){
+    public static boolean email_dne(String input_email){
         DataFetchControl datafetch_object = new DataFetchControl();
         ArrayList<String> email_list = datafetch_object.fetch_emails();
         for (String email : email_list){
@@ -83,7 +84,7 @@ public class Authenticator{
         }return false;
     }
 
-    public boolean email_match_password(String email, String password){
+    public static boolean email_match_password(String email, String password){
         // Case 1: email does not exist in database
         if (!email_dne(email)){
             System.out.println("Email is not registered. Head to the Register page to join us!");
@@ -93,7 +94,7 @@ public class Authenticator{
         // Case 2: email does not match password (wrong password)
         String database_password = DataFetchControl.fetch_password(email);
         if (!Objects.equals(password, database_password)){
-                System.out.println("Wrong password. Please try again.");
+                System.out.println("Incorrect password. Please try again.");
                 return false;
         }
         // Case 3: email matches password
@@ -101,4 +102,12 @@ public class Authenticator{
             return true;
         }
     }
+
+    public static void main(String[] args) {
+        new Authenticator();
+        // Testing method email_match_password
+        boolean test = Authenticator.email_match_password("email", "a");
+        System.out.println(test);
+    }
 }
+
