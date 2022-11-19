@@ -16,15 +16,17 @@ public class RegUI {
     JTextField name = new JTextField();
     JLabel ageL = new JLabel("Age: ");
     JTextField age = new JTextField();
-    JLabel postL = new JLabel("Postal code: ");
+    JLabel postL = new JLabel("Postal code (e.g. M5S 1A4): ");
     JTextField post = new JTextField();
     String[] genders = {"male", "female", "other"};
     JLabel genderL = new JLabel("Gender: ");
     JComboBox gender = new JComboBox<String>(genders);
+    JLabel picL = new JLabel("Upload your icon: ");
+    JButton pic = new JButton("Select");
     public RegUI(){
         frame.setSize(350, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridLayout(7,2));
+        frame.setLayout(new GridLayout(8,2));
 
         frame.add(emailL);
         frame.add(email);
@@ -38,15 +40,24 @@ public class RegUI {
         frame.add(gender);
         frame.add(postL);
         frame.add(post);
-        // TODO: add picture
+//        frame.add(picL);
+//        frame.add(pic);
         frame.add(button);
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(age.getText());
                 new RegControl(email.getText(), pw.getText(), name.getText(), age.getText(), gender.getSelectedItem().toString(), post.getText(), frame);
             }
         });
+
+//        pic.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                // TODO: finish this for saving the picture
+//            }
+//        });
     }
 
     public void setVisible(boolean b) {
