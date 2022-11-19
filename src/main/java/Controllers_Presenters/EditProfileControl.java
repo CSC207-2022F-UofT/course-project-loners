@@ -18,7 +18,7 @@ public class EditProfileControl{
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null);
+    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
     public DataSendControl dataSend = new DataSendControl(profile);
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
@@ -93,7 +93,7 @@ public class EditProfileControl{
                         profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
                         profile.getLocation()+", "+profile.getImage()+", "+profile.getHobbies()+", "+
                         profile.getSocialMedia()+", "+profile.getLikes()+", "+preferences.getPreferredAge()+", "+
-                        preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
+                        preferences.getPreferredGender()+", "+preferences.getPreferredLocation()+", "+preferences.getPreferredLocationRange();
                 dataSend.send_toid(2, str_data.split(", "));
 
 
