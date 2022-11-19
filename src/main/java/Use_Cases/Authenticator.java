@@ -1,6 +1,6 @@
 package Use_Cases;
 
-import Controllers_Presenters.tmp_DataFetch;
+import Controllers_Presenters.DataFetchControl;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class Authenticator{
     }
 
     public boolean email_dne(String input_email){
-        tmp_DataFetch datafetch_object = new tmp_DataFetch();
+        DataFetchControl datafetch_object = new DataFetchControl();
         ArrayList<String> email_list = datafetch_object.fetch_emails();
         for (String email : email_list){
             if (Objects.equals(email, input_email)){
