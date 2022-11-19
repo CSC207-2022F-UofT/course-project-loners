@@ -23,7 +23,7 @@ public class EditPreferencesUI {
 //        panel.setOpaque(true);
         frame.setContentPane(panel);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // terminate the program when the window is closed
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
         frame.setSize(400, 300);
         frame.setVisible(true);
     }
@@ -31,17 +31,18 @@ public class EditPreferencesUI {
     public static void addComponents() {
         // add labels and text fields that listen for and respond to typing
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
-                "Preferred location (postal code, with a space in the middle): ", "Preferred location range (in km): "};
+                "Preferred location (postal code, space in the middle): ", "Preferred location range (in km): "};
         String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location", "location range"};
         HashMap<String, String> preferenceMap = new HashMap<>();
+
         for (int i = 0; i < labels.length; i++) {
-            String preferenceLabel = preferenceLabels[i];
             JLabel label = new JLabel(labels[i], JLabel.TRAILING);
             panel.add(label);
             JTextField textField = new JTextField(10);
             label.setLabelFor(textField);
             panel.add(textField);
 
+            String preferenceLabel = preferenceLabels[i];
             textField.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String preferenceText = textField.getText();
@@ -50,14 +51,14 @@ public class EditPreferencesUI {
             });
         }
 
-        // add a button that listens and responds to a click
-        JButton button = new JButton("Change Preferences"); // or "View Profiles"
+        // add a button that listens for and responds to a click
+        JButton button = new JButton("Change Preferences");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // pass preferences label-text mapping to EditPreferencesControl
                 EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, id);
                 editPreferencesControl.passPreferences();
-                // present a success message
+                /// present a success message, direct user back to MyProfileUI
 
             }
         });
@@ -65,12 +66,12 @@ public class EditPreferencesUI {
     }
 
     public static void layOutComponents() {
-        // add the components to the content frame of the JFrame
-        Spring x = Spring.constant(6);
-        for (int c = 0; c < 3; c++) {
-            Spring width = Spring.constant(0);
-
-        }
+        /// add the components to the content frame of the JFrame
+//        Spring x = Spring.constant(6);
+//        for (int c = 0; c < 3; c++) {
+//            Spring width = Spring.constant(0);
+//
+//        }
     }
 
     public static void main(String[] args) {

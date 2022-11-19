@@ -16,24 +16,24 @@ public class ConnectProfilesControl {
         DataFetchControl dataFetchControl = new DataFetchControl();
         Object[] userData = dataFetchControl.fetch_fromid(id);
 
-        // change the type of preferred age and gender
-        int prefAge = Integer.parseInt((String) userData[12]);
-        String prefGender = (String) userData[13];
+        // change the types of preferred age and gender
+        int preferredAge = Integer.parseInt((String) userData[12]);
+        String preferredGender = (String) userData[13];
 
-        // change the type of preferred location and preferred location range
-        String[] preferredLocation = ((String) userData[14]).split(" ");
-        double[] prefLocation = new double[preferredLocation.length];
-        for (int i = 0; i < preferredLocation.length; i++) {
-            prefLocation[i] = Double.parseDouble(preferredLocation[i]);
+        // change the types of preferred location and preferred location range
+        String[] prefLocation = ((String) userData[14]).split(" ");
+        double[] preferredLocation = new double[prefLocation.length];
+        for (int i = 0; i < prefLocation.length; i++) {
+            preferredLocation[i] = Double.parseDouble(prefLocation[i]);
         }
-        double prefLocationRange = Double.parseDouble((String) userData[15]);
+        double preferredLocationRange = Double.parseDouble((String) userData[15]);
 
         // create and pass a new Preferences object to ConnectProfiles
-        Preferences preferences = new Preferences(prefAge, prefGender, prefLocation, prefLocationRange, id);
+        Preferences preferences = new Preferences(preferredAge, preferredGender, preferredLocation,
+                preferredLocationRange, id);
         ConnectProfiles connectProfiles = new ConnectProfiles(preferences);
         List<String> connections = connectProfiles.compareTraits();
-
-        // pass connected profiles to ProfileFinderUI, direct user to ProfileFinderUI
+        /// pass connected profiles to ProfileFinderUI, direct user to ProfileFinderUI
 
     }
 }

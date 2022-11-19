@@ -5,18 +5,17 @@ import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.DataSendControl;
 
 public class EditPreferences {
-    private String preferredAge;
-    private String preferredGender;
-    private String preferredLocation;
-    private String preferredLocationRange;
+    private String prefAge;
+    private String prefGender;
+    private String prefLocation;
+    private String prefLocationRange;
     private int id;
 
-    public EditPreferences(Preferences preferences) {
-        this.preferredAge = String.valueOf(preferences.getPreferredAge());
-        this.preferredGender = preferences.getPreferredGender();
-        this.preferredLocation = String.valueOf(preferences.getPreferredLocation()[0]) + " " +
-                String.valueOf(preferences.getPreferredLocation()[1]);
-        this.preferredLocationRange = String.valueOf(preferences.getPreferredLocationRange());
+    public EditPreferences(Preferences preferences) { // passed in by EditPreferencesControl
+        this.prefAge = String.valueOf(preferences.getPreferredAge());
+        this.prefGender = preferences.getPreferredGender();
+        this.prefLocation = preferences.getPreferredLocation()[0] + " " + preferences.getPreferredLocation()[1];
+        this.prefLocationRange = String.valueOf(preferences.getPreferredLocationRange());
         this.id = preferences.getID();
     }
 
@@ -24,17 +23,13 @@ public class EditPreferences {
         DataFetchControl dataFetchControl = new DataFetchControl();
         Object[] userData = dataFetchControl.fetch_fromid(id);
 
-        // add new preference data, or overwrite if they already exist
-        userData[12] = preferredAge;
-        userData[13] = preferredGender;
-        userData[14] = preferredLocation;
-        userData[15] = preferredLocationRange;
+        // add new preference data, or overwrite if already existing
+        userData[12] = prefAge;
+        userData[13] = prefGender;
+        userData[14] = prefLocation;
+        userData[15] = prefLocationRange;
 
         DataSendControl dataSendControl = new DataSendControl();
         dataSendControl.send_toid(id, userData);
     }
-
-//    public static void main(String[] args) {
-//        writeData();
-//    }
 }
