@@ -1,7 +1,11 @@
 package Use_Cases;
 
+import Controllers_Presenters.tmp_DataFetch;
+
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 
@@ -70,26 +74,26 @@ public class Authenticator{
         return true;
     }
 
-    public boolean email_dne(String email){
-        // run fetch data function and fetch email
-        // suppose datafetch.email() is the function to fetch the email
-        // let datafetch.email() = database_email
-        // if (database_email == NULL){return true;}
-        // else {return false;}
-        return false;
+    public boolean email_dne(String input_email){
+        tmp_DataFetch datafetch_object = new tmp_DataFetch();
+        ArrayList<String> email_list = datafetch_object.fetch_emails();
+        for (String email : email_list){
+            if (Objects.equals(email, input_email)){
+                return true;}
+        }return false;
     }
 
     public boolean email_match_password(String email, String password){
         // Case 1: email does not exist in database
-        // given email input, how to get the corresponding email from database.txt
-        // datafetch.email() = database_email
-        // run email_dne(); if email_dne() is true, return false
-
+        if (!email_dne(email)){
+            System.out.println("Email is not registered. Head to the Register page to join us!");
+        }
 
         // Case 2: email does not match password (wrong password)
         // if (email == database_email):
             // if (password != database_password){
                 // return false;}
+
         // Case 3: email matches password (login successful)
             // else{ return true;}
 
