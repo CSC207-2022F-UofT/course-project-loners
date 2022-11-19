@@ -1,5 +1,4 @@
 package Controllers_Presenters;
-import Controllers_Presenters.ConnectProfilesControl;
 
 import java.util.List;
 
