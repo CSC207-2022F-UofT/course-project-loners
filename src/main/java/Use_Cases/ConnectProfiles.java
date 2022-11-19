@@ -33,9 +33,9 @@ public class ConnectProfiles {
             }
 
             Object[] userData = dataFetchControl.fetch_fromid(userID);
-            String userAge = (String) userData[3];
-            String userGender = (String) userData[5];
-            String userLocation = (String) userData[7];
+            String userAge = (String) userData[4];
+            String userGender = (String) userData[6];
+            String userLocation = (String) userData[8];
 
             if ((Objects.equals(userAge, prefAge)) && (Objects.equals(userGender, prefGender))) {
                 /// && (Objects.equals(userLocation, prefLocation))
