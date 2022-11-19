@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import Controllers_Presenters.*;
 
@@ -25,8 +26,12 @@ public class ProfileFinderUI implements ActionListener{
     JTextArea age = new JTextArea();
     JTextArea bio = new JTextArea();
 
-    Object[] myProfile;
+    //Object[] myProfile = getProfileWithEmail();
     Object[] otherProfile;
+    // All other profile ids as strings
+    //List<String> allOtherProfiles = new ProfileActionsManager(myProfile[0]).ListOfConnections();
+    int curr = 0;
+
 
     public ProfileFinderUI(){
         frame.setSize(600, 600);
@@ -35,8 +40,6 @@ public class ProfileFinderUI implements ActionListener{
         layout.setColumns(2);
 
         frame.setLayout(layout);
-
-        // ProfileActionsManager otherProfiles = new ProfileActionsManager();
 
         likeButton.addActionListener(this);
         passButton.addActionListener(this);
@@ -66,9 +69,9 @@ public class ProfileFinderUI implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
-
+            curr++;
         } else if (e.getSource() == passButton) {
-
+            curr++;
         }
     }
 
