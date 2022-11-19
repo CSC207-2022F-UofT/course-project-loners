@@ -87,17 +87,18 @@ public class Authenticator{
         // Case 1: email does not exist in database
         if (!email_dne(email)){
             System.out.println("Email is not registered. Head to the Register page to join us!");
+            return false;
         }
 
         // Case 2: email does not match password (wrong password)
-        // if (email == database_email):
-            // if (password != database_password){
-                // return false;}
-
-        // Case 3: email matches password (login successful)
-            // else{ return true;}
-
-        // if this function returns true, in LogUI, show login successful
-        return false;
+        String database_password = DataFetchControl.fetch_password(email);
+        if (!Objects.equals(password, database_password)){
+                System.out.println("Wrong password. Please try again.");
+                return false;
+        }
+        // Case 3: email matches password
+        else{System.out.println("Login successful!");
+            return true;
+        }
     }
 }
