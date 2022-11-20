@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.List;
 
 import Controllers_Presenters.*;
@@ -92,45 +93,49 @@ public class ProfileFinderUI implements ActionListener{
         DataFetchControl d = new DataFetchControl();
         ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(LogUI.myEmail));
         allOtherProfiles = c.passPreferences();
-        otherProfile = getProfileWithId(Integer.parseInt(allOtherProfiles.get(curr)));
+        if (curr > allOtherProfiles.size()){
+            System.out.println("nothing new here...");
+        } else {
+            otherProfile = getProfileWithId(Integer.parseInt(allOtherProfiles.get(curr)));
 
-        name = new JTextArea((String)otherProfile[1]);
-        age = new JTextArea((String)otherProfile[4]);
-        bio = new JTextArea((String)otherProfile[5]);
-        gender = new JTextArea((String)otherProfile[6]);
-        hobbies = new JTextArea((String)otherProfile[9]);
+            name = new JTextArea((String) otherProfile[1]);
+            age = new JTextArea((String) otherProfile[4]);
+            bio = new JTextArea((String) otherProfile[5]);
+            gender = new JTextArea((String) otherProfile[6]);
+            hobbies = new JTextArea((String) otherProfile[9]);
 
 
-        frame.setSize(600, 600);
+            frame.setSize(600, 600);
 
-        layout.setRows(6);
-        layout.setColumns(2);
+            layout.setRows(6);
+            layout.setColumns(2);
 
-        frame.setLayout(layout);
+            frame.setLayout(layout);
 
-        likeButton.addActionListener(this);
-        passButton.addActionListener(this);
+            likeButton.addActionListener(this);
+            passButton.addActionListener(this);
 
-        frame.add(nameLabel);
-        frame.add(name);
-        name.setEditable(false);
-        frame.add(genderLabel);
-        frame.add(gender);
-        gender.setEditable(false);
-        frame.add(ageLabel);
-        frame.add(age);
-        age.setEditable(false);
-        frame.add(hobbiesLabel);
-        frame.add(hobbies);
-        hobbies.setEditable(false);
-        frame.add(bioLabel);
-        frame.add(bio);
-        bio.setEditable(false);
-        frame.add(likeButton);
-        frame.add(passButton);
+            frame.add(nameLabel);
+            frame.add(name);
+            name.setEditable(false);
+            frame.add(genderLabel);
+            frame.add(gender);
+            gender.setEditable(false);
+            frame.add(ageLabel);
+            frame.add(age);
+            age.setEditable(false);
+            frame.add(hobbiesLabel);
+            frame.add(hobbies);
+            hobbies.setEditable(false);
+            frame.add(bioLabel);
+            frame.add(bio);
+            bio.setEditable(false);
+            frame.add(likeButton);
+            frame.add(passButton);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        }
     }
 
     public Object[] getProfileWithEmail(String email){
@@ -147,6 +152,27 @@ public class ProfileFinderUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
             String newLikes = (String) myProfile[11];
+            String[] newLikesArray = newLikes.split(": ");
+            List<String> newLikesList = Arrays.asList(newLikesArray);
+            newLikesList.add((String)otherProfile[2]);
+            newLikes = String.join(": ", newLikesList);
+            myProfile[11] = newLikes;
+            int myId = Integer.parseInt((String)myProfile[0]);
+            DataSendControl c = new DataSendControl();
+            c.send_toid(myId, myProfile);
+
+            if (((String) myProfile[11]).contains((String) otherProfile[2])){
+                JFrame matchFrame = new JFrame();
+                matchFrame.setSize(100, 100);
+                GridLayout matchLayout = new GridLayout(2, 1, 0,0);
+                matchFrame.setLayout(matchLayout);
+                JLabel statement = new JLabel("You got a match with " + (String)otherProfile[1] + "!");
+                JLabel social = new JLabel("Their social media is: " + (String)otherProfile[10]);
+                matchFrame.add(statement);
+                matchFrame.add(social);
+
+                matchFrame.setVisible(true);
+            }
 
             frame.setVisible(false);
             curr++;
