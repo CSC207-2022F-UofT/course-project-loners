@@ -85,11 +85,17 @@ public class EditProfileControl{
             System.out.println("This part is successfully executed2");
             System.out.println(dataFetchControl.fetch_fromid(2)[0]);
             //System.out.println(profile.getHobbies());
+            String likes;
+            if (profile.getLikes() == null){
+                likes = null;
+            } else{
+                likes = String.join(": ", profile.getLikes());
+            }
 
             String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
                     profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
                     profile.getLocation()+", "+String.join(": ",profile.getHobbies())+", "+
-                    profile.getSocialMedia()+", "+String.join(": ",profile.getLikes())+", "+preferences.getPreferredAge()+", "+
+                    profile.getSocialMedia()+", "+likes+", "+preferences.getPreferredAge()+", "+
                     preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
             dataSend.send_toid(2, str_data.split(", "));
 

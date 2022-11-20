@@ -85,8 +85,8 @@ public class DataSendControl {
                 line = myReader.readLine();
                 line_id = Integer.parseInt(line.split(", ")[0]);
             }
-            String hobbies = String.join(": ", (List) data[8]);
-            String likes = String.join(": ", (List) data[10]);
+            String hobbies = (String) data[8];
+            String likes = (String) data[10];
             String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
                     ", "+ data[6] + ", "+ data[7] +  ", "+ hobbies + ", "+ data[9] + ", "+ likes +
                     ", "+ data[11] + ", "+ data[12] + ", "+data[13];
