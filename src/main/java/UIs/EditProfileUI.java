@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -111,7 +112,7 @@ public class EditProfileUI implements ActionListener {
         info.put("bio", bioField.getText());
         info.put("gender", genderField.getSelectedItem());
         info.put("orientation", orientationField.getSelectedItem());
-        info.put("hobbies", hobbiesField.getText());
+        info.put("hobbies", Arrays.asList(hobbiesField.getText().split(" ")));
         info.put("socialMedia", socialMediaField.getText());
 
         control.send(info);

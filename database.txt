@@ -1,2 +1,5 @@
-0, Name, email, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
-1, Kelly, kelly@mail, 123, 18, null, male, null, [43.670437, -79.401003], null, null, null, null, null, null, null
+0, Name, email, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
+1, Name, email@, null, 20, bio, male, straight, null, play soccer; play violin, null, null, 20, male
+2, Rick, email@mail, null, 20, bio, male, straight, null, null, null, null, 20, male
+3, Name, email, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
+

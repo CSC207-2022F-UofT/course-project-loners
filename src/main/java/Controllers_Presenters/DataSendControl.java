@@ -6,6 +6,7 @@ import Entities.Profile;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 
 public class DataSendControl {
     public boolean status;
@@ -84,8 +85,10 @@ public class DataSendControl {
                 line = myReader.readLine();
                 line_id = Integer.parseInt(line.split(", ")[0]);
             }
+            String hobbies = String.join(": ", (List) data[8]);
+            String likes = String.join(": ", (List) data[10]);
             String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
-                    ", "+ data[6] + ", "+ data[7] +  ", "+ data[8] + ", "+ data[9] + ", "+ data[10] +
+                    ", "+ data[6] + ", "+ data[7] +  ", "+ hobbies + ", "+ data[9] + ", "+ likes +
                     ", "+ data[11] + ", "+ data[12] + ", "+data[13];
 
 
@@ -112,8 +115,8 @@ public class DataSendControl {
     public String ProfileConvertStr(Profile profile) {
         return profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                 profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                Arrays.toString(profile.getLocation()) + ", " + profile.getHobbies() + ", " +
-                profile.getSocialMedia() + ", " + profile.getLikes();
+                Arrays.toString(profile.getLocation()) + ", " + String.join(": ", profile.getHobbies()) + ", " +
+                profile.getSocialMedia() + ", " + String.join(": ", profile.getLikes());
     }
 
     public String PreferencesConvertStr(Preferences preferences) {
