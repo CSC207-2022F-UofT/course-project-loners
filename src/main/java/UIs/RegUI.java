@@ -1,9 +1,16 @@
 package UIs;
+import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.RegControl;
+import Use_Cases.PicHolder;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class RegUI {
     JFrame frame = new JFrame("Registration page");
@@ -22,8 +29,12 @@ public class RegUI {
     JLabel genderL = new JLabel("Gender: ");
     JComboBox gender = new JComboBox<String>(genders);
     JLabel picL = new JLabel("Upload your icon: ");
-    JButton pic = new JButton("Select");
+    JButton pic = new JButton("Select image");
+
     public RegUI(){
+
+        PicHolder loadFile = new PicHolder(frame, pic);
+
         frame.setSize(350, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(8,2));
@@ -40,23 +51,25 @@ public class RegUI {
         frame.add(gender);
         frame.add(postL);
         frame.add(post);
-//        frame.add(picL);
-//        frame.add(pic);
+        frame.add(picL);
+        loadFile.setLoader();
         frame.add(button);
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    int id = new DataFetchControl().fetch_lastID() + 1;
+                    File outputfile = new File(String.format("saved_images/%s.jpg", id));
+                    ImageIO.write((BufferedImage)loadFile.image, "jpg", outputfile);
+                } catch(IOException error){
+                    System.out.println(error);
+                }
                 new RegControl(email.getText(), pw.getText(), name.getText(), age.getText(), gender.getSelectedItem().toString(), post.getText(), frame);
             }
         });
 
-//        pic.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // TODO: finish this for saving the picture
-//            }
-//        });
+
     }
 
     public void setVisible(boolean b) {
