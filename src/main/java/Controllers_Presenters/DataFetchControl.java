@@ -104,8 +104,35 @@ public class DataFetchControl {
         }
     }
 
+    public static String fetch_password(String email){
+        // This method assumes the email exists in our database.
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
+            String line = myReader.readLine();
+            String[] whole_line = line.split(", ");
+            String line_email = whole_line[2];
+            String line_password = whole_line[3];
+            while(!Objects.equals(line_email, email)){
+                line = myReader.readLine();
+                whole_line = line.split(", ");
+                line_email = whole_line[2];
+                line_password = whole_line[3];
+            }
+            return line_password;
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     public static void main(String[] args){
         Object[] data = new DataFetchControl().fetch_fromid(2);
         System.out.println(data[9].getClass());
+        // Testing the method fetch_password
+        // String test = DataFetchControl.fetch_password("email");
+        // System.out.println(test);
     }
+
 }
