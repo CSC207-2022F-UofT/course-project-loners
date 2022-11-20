@@ -19,7 +19,7 @@ public class EditProfileControl{
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
     static Preferences preferences = new Preferences(20, "male",null, 5, 2);
-    public DataSendControl dataSend = new DataSendControl(profile);
+    public DataSendControl dataSend = new DataSendControl();
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
 
@@ -84,11 +84,18 @@ public class EditProfileControl{
         if(this.edit(info)){
             System.out.println("This part is successfully executed2");
             System.out.println(dataFetchControl.fetch_fromid(2)[0]);
+            //System.out.println(profile.getHobbies());
+            String likes;
+            if (profile.getLikes() == null){
+                likes = null;
+            } else{
+                likes = String.join(": ", profile.getLikes());
+            }
 
             String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
                     profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
-                    profile.getLocation()+", "+profile.getHobbies()+", "+
-                    profile.getSocialMedia()+", "+profile.getLikes()+", "+preferences.getPreferredAge()+", "+
+                    profile.getLocation()+", "+String.join(": ",profile.getHobbies())+", "+
+                    profile.getSocialMedia()+", "+likes+", "+preferences.getPreferredAge()+", "+
                     preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
             dataSend.send_toid(2, str_data.split(", "));
 
