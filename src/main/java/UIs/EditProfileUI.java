@@ -115,6 +115,7 @@ public class EditProfileUI implements ActionListener {
         info.put("socialMedia", socialMediaField.getText());
 
         control.send(info);
+        new MyProfileUI(2);
     }
 
 
