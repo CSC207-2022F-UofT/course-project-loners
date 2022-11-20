@@ -35,12 +35,15 @@ public class LoadFile implements ActionListener {
             BufferedImage image = ImageIO.read(new File(fd.getDirectory(), filename));
             this.image = image;
             File myObj = new File(String.format("saved_images/%s.jpg", this.id));
-
-            boolean deletion = myObj.delete();
-            if(deletion){
-                System.out.println("Success!");
+            if(myObj.exists()){
+                boolean deletion = myObj.delete();
+                if(deletion){
+                    System.out.println("Success!");
+                } else {
+                    System.out.println("Something went wrong. Try again");
+                }
             } else {
-                System.out.println("Something went wrong. Try again");
+                System.out.println("No default image");
             }
         } catch (IOException error){
             System.out.println("Error!");
