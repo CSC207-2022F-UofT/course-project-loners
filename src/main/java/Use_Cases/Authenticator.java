@@ -75,7 +75,8 @@ public class Authenticator{
         return true;
     }
 
-    public static boolean email_dne(String input_email){
+    public static boolean email_exists(String input_email){
+        // Returns true if email exists; returns false otherwise
         DataFetchControl datafetch_object = new DataFetchControl();
         ArrayList<String> email_list = datafetch_object.fetch_emails();
         for (String email : email_list){
@@ -85,22 +86,21 @@ public class Authenticator{
     }
 
     public static boolean email_match_password(String email, String password){
-        // Case 1: email does not exist in database
-        if (!email_dne(email)){
-            System.out.println("Email is not registered. Head to the Register page to join us!");
-            return false;
-        }
-
-        // Case 2: email does not match password (wrong password)
-        String database_password = DataFetchControl.fetch_password(email);
-        if (!Objects.equals(password, database_password)){
+        // Check email exists in database
+        if (email_exists(email)){
+            // Case 1: email does not match password (wrong password)
+            String database_password = DataFetchControl.fetch_password(email);
+            if (!Objects.equals(password, database_password)){
                 System.out.println("Incorrect password. Please try again.");
                 return false;
+            }
+            // Case 2: email matches password
+            else{System.out.println("Login successful!");
+                return true;
+            }
         }
-        // Case 3: email matches password
-        else{System.out.println("Login successful!");
-            return true;
-        }
+        System.out.println("Email is not registered. Head to the Register page to join us!");
+        return false;
     }
 
     public static void main(String[] args) {
