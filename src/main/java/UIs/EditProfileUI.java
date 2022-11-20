@@ -1,13 +1,9 @@
 package UIs;
 
 import Controllers_Presenters.EditProfileControl;
-import Entities.Profile;
 import Use_Cases.LoadFile;
-import Use_Cases.ToBuffer;
-import org.w3c.dom.ranges.Range;
 
 import javax.imageio.ImageIO;
-import javax.print.event.PrintJobAttributeListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,8 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class EditProfileUI implements ActionListener {
     JFrame f= new JFrame();
