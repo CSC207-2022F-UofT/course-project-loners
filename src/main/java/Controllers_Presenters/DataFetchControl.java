@@ -1,5 +1,7 @@
 package Controllers_Presenters;
 
+import Entities.Profile;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -32,6 +34,30 @@ public class DataFetchControl {
             System.out.println("An error occurred.");
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public int fetch_id_fromEmail(String email){
+        // use email to find id belongs to that email
+        // return -1 if file is empty
+        // return -10 if it has error
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
+            String line = myReader.readLine();
+            if (line == null){ return -1;} // if file is empty
+            else{
+                String line_email = Arrays.asList(line.split(", ")).get(2);
+                while(!Objects.equals(line_email, email)) {
+                    line = myReader.readLine();
+                    line_email = Arrays.asList(line.split(", ")).get(2);
+                }
+            }
+            List<String> line_data = Arrays.asList(line.split(", "));
+            return Integer.parseInt(line.split(", ")[0]);
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+            return -10;
         }
     }
 

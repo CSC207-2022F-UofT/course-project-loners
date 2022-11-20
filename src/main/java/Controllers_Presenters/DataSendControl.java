@@ -29,7 +29,7 @@ public class DataSendControl {
             try {
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
-                myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null");
+                myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
                 myWriter.close();
                 this.status = true;
             } catch (IOException e) {
