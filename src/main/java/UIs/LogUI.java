@@ -19,6 +19,8 @@ public class LogUI implements ActionListener {
     JTextField emailField = new JTextField("Email", 20);
     JTextField passwordField = new JTextField("Password", 20);
 
+    String myEmail;
+
     public LogUI() {
         f = new JFrame();
         layout.setColumns(1);
@@ -42,10 +44,14 @@ public class LogUI implements ActionListener {
         EditProfileControl control = new EditProfileControl();
         HashMap<String, Object> info = new HashMap<>();
         info.put("email", emailField.getText());
+        myEmail = emailField.getText();
         info.put("password", passwordField.getText());
         control.send(info);
     }
 
+    public String getMyEmail() {
+        return myEmail;
+    }
 
     public static void main(String[] args) {
         new LogUI();
