@@ -50,13 +50,29 @@ public class Authenticator{
 
     public boolean is_valid_orientation(String orientation){
         // Maybe we don't need to validate orientation if you can choose from several options
-
-        return true;
+        if (orientation == "Straight"){
+            return true;
+        } else if (orientation == "Gay") {
+            return true;
+        } else if (orientation == "Bi") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean is_valid_location(double[] location){
-        // Depends on how to represent locations
-        return true;
+        // As coordinates of a location consist of angles, the validity depends on the right angle of each.
+        double latitude = location[0];
+        double longitude = location[1];
+        boolean status = false;
+        if ((latitude >= -90 && latitude <= 90)){
+           status = true;
+        }
+        if ((longitude >= -180 && longitude <= 180)){
+            status = true;
+        }
+        return status;
     }
 
     public boolean is_valid_image(BufferedImage image){
