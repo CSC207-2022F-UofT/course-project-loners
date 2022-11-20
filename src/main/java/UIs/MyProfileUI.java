@@ -23,6 +23,7 @@ public class MyProfileUI implements ActionListener {
     static Preferences preferences = new Preferences(20, "male",null, 5, 2);
 
     JFrame f = new JFrame();
+    //BoxLayout layout = new BoxLayout(f,BoxLayout.PAGE_AXIS);
     int id;
 
 
@@ -55,7 +56,7 @@ public class MyProfileUI implements ActionListener {
 
         f.pack();
 
-        f.setLayout(null);
+        f.setLayout(new FlowLayout());
         f.setVisible(true);
 
 
