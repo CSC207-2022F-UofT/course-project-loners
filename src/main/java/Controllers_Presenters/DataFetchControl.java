@@ -92,7 +92,7 @@ public class DataFetchControl {
                 while(line != null) {
                     tmp = line;
                     List<String> lst_line = Arrays.asList(tmp.split(", "));
-                    emails.add(lst_line.get(2));
+                    emails.add((String) ((List<String>)lst_line).get(2).toString());
                     line = reader.readLine();
                 }
                 return emails;

@@ -1,6 +1,7 @@
 package UIs;
 
 import Controllers_Presenters.EditProfileControl;
+import Controllers_Presenters.LogController;
 
 
 import javax.swing.*;
@@ -39,15 +40,12 @@ public class LogUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        EditProfileControl control = new EditProfileControl();
-        HashMap<String, Object> info = new HashMap<>();
-        info.put("email", emailField.getText());
-        info.put("password", passwordField.getText());
-        control.send(info);
+        new LogController(emailField.getText(), passwordField.getText(), f);
     }
 
 
     public static void main(String[] args) {
-        new LogUI();
+        LogUI logui = new LogUI();
+        logui.setVisible(true);
     }
 }
