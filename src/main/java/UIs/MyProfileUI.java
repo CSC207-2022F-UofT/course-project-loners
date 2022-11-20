@@ -67,6 +67,11 @@ public class MyProfileUI implements ActionListener {
     public void actionPerformed(ActionEvent e){
         new EditProfileUI();
     }
+
+    public void setVisible(boolean b) {
+        f.setVisible(true);
+    }
+
     public static void main(String[] args) {
         new MyProfileUI(2);
     }

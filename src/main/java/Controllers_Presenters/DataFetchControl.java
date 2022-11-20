@@ -37,7 +37,7 @@ public class DataFetchControl {
         }
     }
 
-    public int fetch_id_fromEmail(String email){
+    public static int fetch_id_fromEmail(String email){
         // use email to find id belongs to that email
         // return -1 if file is empty
         // return -10 if it has error
