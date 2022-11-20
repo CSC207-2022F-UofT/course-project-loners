@@ -37,11 +37,20 @@ public class Authenticator{
 
     public boolean is_valid_gender(String gender){
         // Maybe we don't need to validate gender if you can choose from several options
-        return true;
+        if (gender == "Female"){
+            return true;
+        } else if (gender == "Male") {
+            return true;
+        } else if (gender == "Other") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean is_valid_orientation(String orientation){
         // Maybe we don't need to validate orientation if you can choose from several options
+
         return true;
     }
 
