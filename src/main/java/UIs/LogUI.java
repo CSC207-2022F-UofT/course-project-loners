@@ -19,7 +19,7 @@ public class LogUI implements ActionListener {
     JTextField emailField = new JTextField("Email", 20);
     JTextField passwordField = new JTextField("Password", 20);
 
-    String myEmail;
+    static String myEmail;
 
     public LogUI() {
         f = new JFrame();
@@ -47,10 +47,6 @@ public class LogUI implements ActionListener {
         myEmail = emailField.getText();
         info.put("password", passwordField.getText());
         control.send(info);
-    }
-
-    public String getMyEmail() {
-        return myEmail;
     }
 
     public static void main(String[] args) {
