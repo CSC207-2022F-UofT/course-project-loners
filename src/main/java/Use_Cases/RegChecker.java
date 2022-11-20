@@ -28,7 +28,7 @@ public class RegChecker {
         }
         if (pos.length() != 7){
             this.pass = false;
-            this.diagnose += "postal code is not valid, \n";
+            this.diagnose += "postal code is not valid, please enter it with a whitespace like the example provided,\n";
         }
         if (!(Authenticator.is_valid_age(age))){
             this.pass = false;

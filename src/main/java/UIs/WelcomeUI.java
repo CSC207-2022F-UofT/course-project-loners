@@ -1,6 +1,6 @@
 package UIs;
 
-import UIs.LogUI;
+import Controllers_Presenters.WelcomeControl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,25 +24,7 @@ public class WelcomeUI {
         frame.setVisible(true);
 
         // Set button reactions
-        button_log.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button_log) {
-                    LogUI logui = new LogUI();
-                    frame.setVisible(false);
-                    logui.setVisible(true);
-                }}
-        });
-
-        button_reg.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button_reg) {
-                    RegUI regui = new RegUI();
-                    frame.setVisible(false);
-                    regui.setVisible(true);
-                }}
-        });
+        new WelcomeControl(button_reg, button_log, frame);
     }
 
     public static void main(String[] args) {
