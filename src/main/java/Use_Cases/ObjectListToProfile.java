@@ -24,7 +24,7 @@ public class ObjectListToProfile {
         String myGender = (String) data[6];
         String myOrientation = (String) data[7];
         //Change this! I don't know the format of location in the database yet!
-        double[] myLocation = {};
+        double[] myLocation = doubleStringToArray((String) data[8]);
         //Change this! I don't know the format of hobbies in the database yet!
         List<String> myHobbies = new ArrayList<>();
         String mySocial = (String) data[10];
@@ -37,4 +37,14 @@ public class ObjectListToProfile {
         return myProfile;
 
     }
+
+    private static double[] doubleStringToArray(String og){
+        String ogNew = og.substring(1, og.length()-1);
+        String[] ogNewArray = ogNew.split(", ");
+        double first = Double.parseDouble(ogNewArray[0]);
+        double second = Double.parseDouble(ogNewArray[1]);
+
+        return new double[]{first, second};
+    }
+
 }
