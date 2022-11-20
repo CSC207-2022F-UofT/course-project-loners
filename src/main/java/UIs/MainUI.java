@@ -26,6 +26,7 @@ public class MainUI {
         frame.add(edit_preference);
         frame.add(profile_finder);
 
+
         profile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
