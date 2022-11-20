@@ -21,10 +21,11 @@ public class ProfileFinderUI implements ActionListener{
     JButton likeButton = new JButton("Like");
     JButton passButton = new JButton("Pass");
 
-    JTextArea name = new JTextArea();
-    JTextArea gender = new JTextArea();
-    JTextArea age = new JTextArea();
-    JTextArea bio = new JTextArea();
+    JTextArea name = new JTextArea("n");
+    JTextArea gender = new JTextArea("g");
+    JTextArea age = new JTextArea("a");
+    JTextArea hobbies = new JTextArea("h");
+    JTextArea bio = new JTextArea("b");
 
     //Object[] myProfile = getProfileWithEmail();
     Object[] otherProfile;
@@ -45,10 +46,20 @@ public class ProfileFinderUI implements ActionListener{
         passButton.addActionListener(this);
 
         frame.add(nameLabel);
+        frame.add(name);
+        name.setEditable(false);
         frame.add(genderLabel);
+        frame.add(gender);
+        gender.setEditable(false);
         frame.add(ageLabel);
+        frame.add(age);
+        age.setEditable(false);
         frame.add(hobbiesLabel);
+        frame.add(hobbies);
+        hobbies.setEditable(false);
         frame.add(bioLabel);
+        frame.add(bio);
+        bio.setEditable(false);
         frame.add(likeButton);
         frame.add(passButton);
 
