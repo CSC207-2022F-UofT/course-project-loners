@@ -68,8 +68,6 @@ public class RegUI {
                 new RegControl(email.getText(), pw.getText(), name.getText(), age.getText(), gender.getSelectedItem().toString(), post.getText(), frame);
             }
         });
-
-
     }
 
     public void setVisible(boolean b) {
