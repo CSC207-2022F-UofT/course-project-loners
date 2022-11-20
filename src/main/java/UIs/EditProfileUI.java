@@ -1,13 +1,10 @@
 package UIs;
 
+import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.EditProfileControl;
-import Entities.Profile;
 import Use_Cases.LoadFile;
-import Use_Cases.ToBuffer;
-import org.w3c.dom.ranges.Range;
 
 import javax.imageio.ImageIO;
-import javax.print.event.PrintJobAttributeListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,25 +12,26 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.List;
 
 public class EditProfileUI implements ActionListener {
     JFrame f= new JFrame();
     GridLayout experimentLayout = new GridLayout(4,2,10, 20);
     String[] genders = {"male", "female", "other"};
     String[] orientations = {"straight", "gay", "bisexual", "other"};
-
+    DataFetchControl dataFetchControl = new DataFetchControl();
+    Object[] data = ((Object[])dataFetchControl.fetch_fromid(2)[0]);
 
     public static String name;
     JButton b=new JButton("Update!");
     JButton file_load = new JButton("Upload Profile Image");
-    JTextField nameField = new JTextField("Name", 20);
+    JTextField nameField = new JTextField(String.format("%s", data[1]), 20);
     JLabel name_label = new JLabel("name: ");
-    JTextField emailField = new JTextField("email", 20);
+    JTextField emailField = new JTextField(String.format("%s", data[2]), 20);
     JLabel email_label = new JLabel("email: ");
-    JTextField bioField = new JTextField("bio", 100);
+    JTextField bioField = new JTextField(String.format("%s", data[5]), 100);
     JLabel bio_label = new JLabel("bio: ");
     JComboBox genderField = new JComboBox<String>(genders);
     JLabel gender_label = new JLabel("gender: ");
@@ -41,24 +39,26 @@ public class EditProfileUI implements ActionListener {
     JLabel orientation_label = new JLabel("orientation: ");
     JTextField locationField = new JTextField("location", 100);
     JLabel location_label = new JLabel("location: ");
-    JTextField hobbiesField = new JTextField("hobbies", 100);
+    JTextField hobbiesField = new JTextField(String.format("%s", ((String)data[9]).replaceAll(":", "")), 100);
     JLabel hobbies_label = new JLabel("hobbies: ");
     JTextField socialMediaField = new JTextField("socialMedia", 100);
     JLabel socialMedia_label = new JLabel("socialMedia: ");
     SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
     JSpinner ageField = new JSpinner(model);
     JLabel age_label = new JLabel("age: ");
-    JTextField pf_ageField = new JTextField("Preferred Age", 20);
+    JTextField pf_ageField = new JTextField(String.format("%s", data[12].toString()), 20);
     JLabel pf_age_label = new JLabel("Preferred Age: ");
-    JTextField pf_genderField = new JTextField("Preferred Gender", 20);
+    JComboBox pf_genderField = new JComboBox<String>(genders);
     JLabel pf_gender_label = new JLabel("Preferred Gender: ");
-    JTextField pf_locationField = new JTextField("Preferred Location", 100);
+    JTextField pf_locationField = new JTextField(String.format("%s", data[13].toString()), 100);
     JLabel pf_location_label = new JLabel("Preferred Location: ");
 
 
     LoadFile loadFile = new LoadFile(f, file_load, 2);
 
     public EditProfileUI(){
+        System.out.println(data);
+
 
         experimentLayout.setColumns(2);
         experimentLayout.setRows(7);
@@ -111,10 +111,11 @@ public class EditProfileUI implements ActionListener {
         info.put("bio", bioField.getText());
         info.put("gender", genderField.getSelectedItem());
         info.put("orientation", orientationField.getSelectedItem());
-        info.put("hobbies", hobbiesField.getText());
+        info.put("hobbies", Arrays.asList(hobbiesField.getText().split(" ")));
         info.put("socialMedia", socialMediaField.getText());
 
         control.send(info);
+        new MyProfileUI(2);
     }
 
 
