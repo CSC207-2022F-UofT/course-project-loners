@@ -36,6 +36,23 @@ public class Profile implements Swipe{
         this.socialMedia = socialMedia;
     }
 
+    public Profile(String name, int age, String gender, String orientation, double[] location, BufferedImage image,
+                   String bio, List<String> hobbies, String socialMedia, List<String> likes, String email,
+                   String password) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.orientation = orientation;
+        this.location = location;
+        this.image = image;
+        this.bio = bio;
+        this.hobbies = hobbies;
+        this.socialMedia = socialMedia;
+        this.likes = likes;
+        this.email = email;
+        this.password = password;
+    }
+
     public Profile(String email, String password, String name, int age, String gender, double[] location) {
         this.email = email;
         this.password = password;
