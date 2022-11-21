@@ -2,6 +2,7 @@ package UIs;
 
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.EditProfileControl;
+import Controllers_Presenters.UIController;
 import Use_Cases.LoadFile;
 
 import javax.imageio.ImageIO;
@@ -52,12 +53,18 @@ public class EditProfileUI implements ActionListener {
     JLabel pf_gender_label = new JLabel("Preferred Gender: ");
     JTextField pf_locationField = new JTextField(String.format("%s", data[13].toString()), 100);
     JLabel pf_location_label = new JLabel("Preferred Location: ");
+    JButton backToMain = new JButton("Back to Main Page");
+    public UIController uiController;
+    public String email;
+    public int id;
 
 
     LoadFile loadFile = new LoadFile(f, file_load, 2);
 
-    public EditProfileUI(){
-        System.out.println(data);
+    public EditProfileUI(String email){
+        this.email = email;
+        this.id = dataFetchControl.fetch_id_fromEmail(email);
+
 
 
         experimentLayout.setColumns(2);
@@ -89,9 +96,20 @@ public class EditProfileUI implements ActionListener {
         loadFile.setLoader();
 
         f.add(b);
+        f.add(backToMain);
         f.setLayout(experimentLayout);
         f.setVisible(true);
         b.addActionListener(this);
+
+        this.uiController = new UIController(email);
+        backToMain.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                uiController.backToMainUI();
+                f.setVisible(false);
+            }
+
+        });
     }
 
     @Override
@@ -115,11 +133,5 @@ public class EditProfileUI implements ActionListener {
         info.put("socialMedia", socialMediaField.getText());
 
         control.send(info);
-        new MyProfileUI(2);
-    }
-
-
-    public static void main(String[] args) {
-        new EditProfileUI();
     }
 }
