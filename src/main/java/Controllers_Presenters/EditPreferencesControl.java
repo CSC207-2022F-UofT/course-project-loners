@@ -1,3 +1,7 @@
+/*
+A controller class that reformats the preferences inputted by the user for use by the EditPreferences class.
+ */
+
 package Controllers_Presenters;
 
 import Use_Cases.LocationConverter;
@@ -13,6 +17,14 @@ public class EditPreferencesControl {
     private double preferredLocationRange;
     private int id;
 
+    /**
+     * Construct an EditPreferencesControl, initializing preferredAge, preferredGender, preferredLocation, and
+     * preferredLocationRange to the corresponding information of the appropriate type in the preferenceMap HashMap,
+     * and id to the ID of the user.
+     *
+     * @param preferenceMap
+     * @param id
+     */
     public EditPreferencesControl(HashMap<String, String> preferenceMap, int id) { // passed in by EditPreferencesUI
         this.preferredAge = Integer.parseInt(preferenceMap.get("preferred age"));
         this.preferredGender = preferenceMap.get("preferred gender");
@@ -22,6 +34,10 @@ public class EditPreferencesControl {
         this.id = id;
     }
 
+    /**
+     * Create a new Preferences object containing the reformatted preference information, and pass the object to
+     * EditPreferences.
+     */
     public void passPreferences() {
         // create and pass a new Preferences object to EditPreferences
         Preferences preferences = new Preferences(preferredAge, preferredGender, preferredLocation,

@@ -32,10 +32,10 @@ public class EditPreferences {
         Object[] userDataNoID = tempUserData.toArray();
 
         // add new preference data, or overwrite if already existing
-        userDataNoID[12] = prefAge;
-        userDataNoID[13] = prefGender;
-        userDataNoID[14] = prefLocation;
-        userDataNoID[15] = prefLocationRange;
+        userDataNoID[12] = prefAge; /// change to 11
+        userDataNoID[13] = prefGender; /// change to 12
+        userDataNoID[14] = prefLocation; /// change to 13
+        userDataNoID[15] = prefLocationRange; /// change to 14
 
         DataSendControl dataSendControl = new DataSendControl();
         dataSendControl.send_toid(id, userDataNoID);

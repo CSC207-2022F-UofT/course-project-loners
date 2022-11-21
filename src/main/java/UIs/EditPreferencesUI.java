@@ -1,3 +1,8 @@
+/*
+A user interface class for interacting with the display that allows for editing the preferred age, gender, location, and
+location range of other users.
+ */
+
 package UIs;
 
 import Controllers_Presenters.EditPreferencesControl;
@@ -8,16 +13,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-
 public class EditPreferencesUI { /// change instance attributes to be non-static after testing
     private int id;
     private JFrame frame;
     private GridBagConstraints constraints;
 
+    /**
+     * Construct an EditPreferencesUI, initializing id to the ID of the user who is interacting with the UI.
+     *
+     * @param id ID of the user who is interacting with this EditPreferencesUI
+     */
     public EditPreferencesUI(int id) {
         this.id = id;
     }
 
+    /**
+     * Build the basic layout of the UI, including setting up the JFrame and adding initial constraints for the
+     * components that will be added to the frame.
+     */
     public void buildBasicLayout() { /// change to be non-static after testing
         frame = new JFrame("Preference Editor");
         frame.setLayout(new GridBagLayout());
@@ -34,6 +47,12 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
         constraints.anchor = GridBagConstraints.WEST; // left align components
     }
 
+    /**
+     * Add components to the UI, including a JLabel for instructions, four JLabels and JTextFields corresponding to
+     * the four preference inputs, a JButton for performing actions on the input collected, and a JLabel for presenting
+     * a success message. Add event listeners to the text fields and button to respond to the input when typed and
+     * button when clicked. Pass the preference inputs EditPreferencesControl.
+     */
     public void addComponents() { /// change to be non-static after testing
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
                 "Preferred location (postal code, space in the middle): ", "Preferred location range (in km): "};
