@@ -36,11 +36,13 @@ public class ProfileFinderUI implements ActionListener{
     List<String> allOtherProfiles;
     int curr;
 
+    String email;
+
     public ProfileFinderUI(int curr){
         this.curr = curr;
-        myProfile = getProfileWithEmail(LogUI.myEmail);
+        myProfile = getProfileWithEmail(email);
         DataFetchControl d = new DataFetchControl();
-        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(LogUI.myEmail));
+        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(email));
         allOtherProfiles = c.passPreferences();
         if (curr > allOtherProfiles.size()){
             System.out.println("no more profiles!");
@@ -87,11 +89,12 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
 
-    public ProfileFinderUI(){
+    public ProfileFinderUI(String email){
+        this.email = email;
         curr = 0;
-        myProfile = getProfileWithEmail(LogUI.myEmail);
+        myProfile = getProfileWithEmail(email);
         DataFetchControl d = new DataFetchControl();
-        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(LogUI.myEmail));
+        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(email));
         allOtherProfiles = c.passPreferences();
         if (curr > allOtherProfiles.size()){
             System.out.println("nothing new here...");
@@ -182,10 +185,6 @@ public class ProfileFinderUI implements ActionListener{
             curr++;
             new ProfileFinderUI(curr);
         }
-    }
-
-    public static void main(String[] args){
-        new ProfileFinderUI();
     }
 
 }
