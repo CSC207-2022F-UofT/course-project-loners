@@ -1,5 +1,5 @@
 /*
-A user interface class for interacting with the display that allows for editing the preferred age, gender, location, and
+A user interface class for interacting with the display that allows for editing the preferred age, gender, and
 location range of other users.
  */
 
@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class EditPreferencesUI { /// change instance attributes to be non-static after testing
+public class EditPreferencesUI {
     private int id;
     private JFrame frame;
     private GridBagConstraints constraints;
@@ -31,7 +31,7 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
      * Build the basic layout of the UI, including setting up the JFrame and adding initial constraints for the
      * components that will be added to the frame.
      */
-    public void buildBasicLayout() { /// change to be non-static after testing
+    public void buildBasicLayout() {
         frame = new JFrame("Preference Editor");
         frame.setLayout(new GridBagLayout());
 
@@ -48,15 +48,15 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
     }
 
     /**
-     * Add components to the UI, including a JLabel for instructions, four JLabels and JTextFields corresponding to
-     * the four preference inputs, a JButton for performing actions on the input collected, and a JLabel for presenting
+     * Add components to the UI, including a JLabel for instructions, three JLabels and three JTextFields corresponding
+     * to the three preference inputs, a JButton for performing actions on the input collected, and a JLabel for presenting
      * a success message. Add event listeners to the text fields and button to respond to the input when typed and
      * button when clicked. Pass the preference inputs EditPreferencesControl.
      */
-    public void addComponents() { /// change to be non-static after testing
+    public void addComponents() {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
-                "Preferred location (postal code, space in the middle): ", "Preferred location range (in km): "};
-        String[] preferenceLabels = {"preferred age", "preferred gender", "preferred location", "location range"};
+                "Preferred location range (in km): "};
+        String[] preferenceLabels = {"preferred age", "preferred gender", "location range"};
         HashMap<String, String> preferenceMap = new HashMap<>();
 
         // add a label containing instructions
@@ -91,7 +91,7 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
         // add a label containing a success message that appears when a button is clicked
         JLabel successMessage = new JLabel("Preferences successfully updated");
         constraints.gridx = 1;
-        constraints.gridy = 5;
+        constraints.gridy = 4;
         frame.add(successMessage, constraints);
         successMessage.setVisible(false);
 
@@ -112,7 +112,6 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
             }
         });
         constraints.gridx = 0;
-        constraints.gridy = 5;
         frame.add(button, constraints);
     }
 
