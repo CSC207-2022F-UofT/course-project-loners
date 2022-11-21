@@ -1,7 +1,6 @@
 package UIs;
 
 import Controllers_Presenters.EditPreferencesControl;
-import Controllers_Presenters.UIController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +13,6 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
     private int id;
     private JFrame frame;
     private GridBagConstraints constraints;
-    public UIController uiController;
 
     public EditPreferencesUI(int id) {
         this.id = id;

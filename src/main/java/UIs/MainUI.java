@@ -1,26 +1,22 @@
 package UIs;
 
 import Controllers_Presenters.DataFetchControl;
-import Controllers_Presenters.UIController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class MainUI {
     JFrame frame = new JFrame("Main page");
     JButton profile = new JButton("Check my user information");
     JButton edit_preference = new JButton("Edit my preference");
     JButton profile_finder = new JButton("Click to meet new people!");
-    public UIController uiController;
-    private DataFetchControl dataFetchControl = new DataFetchControl();
     public MainUI(String email){
         frame.setVisible(true);
-        uiController = new UIController(email);
+
         JLabel welcome_message = new JLabel("Welcome," + email);
-        int id = dataFetchControl.fetch_id_fromEmail(email);
+        int id = DataFetchControl.fetch_id_fromEmail(email);
 
         frame.setSize(350, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +31,7 @@ public class MainUI {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == profile) {
                     frame.setVisible(false);
-                    uiController.launchMyProfileUI();
+                    new MyProfileUI(id);
                 }}
         });
 
@@ -44,7 +40,8 @@ public class MainUI {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == edit_preference) {
                     frame.setVisible(false);
-                    uiController.launchEditPreferenceUI();
+                    EditPreferencesUI editpref_ui = new EditPreferencesUI(id);
+                    editpref_ui.setVisible(true);
 
                 }}
         });
