@@ -1,27 +1,27 @@
 # Project Planning and Development with Github 
 
-In this course project, you are expected to use Github to manage your code. This document describes the workflow for using Github when you are developing the course project. Please read it carefully and follow the instructions. **Try to work through the steps with the help of your team first, but please ask for help if your team gets stuck on any of the steps or needs something clarified.**
+In this course Entity, you are expected to use Github to manage your code. This document describes the workflow for using Github when you are developing the course Entity. Please read it carefully and follow the instructions. **Try to work through the steps with the help of your team first, but please ask for help if your team gets stuck on any of the steps or needs something clarified.**
 
 ## Create a New Github Project
-[Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) (*Yes, the name of this product is called "Github Projects", do not confuse it with the course project*) is a lightweight project management tool that is integrated to Github. You can use it to track issues, pull requests, visualize tasks status, and track responsibilities. **TAs will mark you project implementation plan and track your progression using the Github project.**
+[Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) (*Yes, the name of this product is called "Github Projects", do not confuse it with the course Entity*) is a lightweight Entity management tool that is integrated to Github. You can use it to track issues, pull requests, visualize tasks status, and track responsibilities. **TAs will mark you Entity implementation plan and track your progression using the Github Entity.**
 
 1. Navigate to **Projects** Page on [CSC207 organization page](https://github.com/orgs/CSC207-2022F-UofT/projects)
 
-2. Click **New project**, and click **Create** on the new page.
+2. Click **New Entity**, and click **Create** on the new page.
 ![](images/create_project.png)
 
-3. Click the title bar to rename the project to your team/project's name, and press **Enter** to save the change.
+3. Click the title bar to rename the Entity to your team/Entity's name, and press **Enter** to save the change.
 
 ![](images/rename.png)
 
-4. Link the project to your repository. Navigate to your repository and select **Projects** tab, then click **Add Project** and select the project you just created.
+4. Link the Entity to your repository. Navigate to your repository and select **Projects** tab, then click **Add Project** and select the Entity you just created.
 
 ![](images/link_project.png)
 
-5. The project will show up in the the list below.
+5. The Entity will show up in the the list below.
 
 ## Define Your Features for the Implementation Plan
-As a part of the project planning, you are required to record all features formulated from your user stories, as **issues** in your Github repository.
+As a part of the Entity planning, you are required to record all features formulated from your user stories, as **issues** in your Github repository.
 
 1. Navigate to your repository and select **Issues** tab, then click **New issue**.
 
@@ -34,7 +34,7 @@ As a part of the project planning, you are required to record all features formu
 
 ![](images/set_tags.png)
 
-3. On the project page, you can see an item is automatically created.  :warning: :warning: **Make sure you verify that each feature issue is successfully created in the project.**  :warning: :warning:
+3. On the Entity page, you can see an item is automatically created.  :warning: :warning: **Make sure you verify that each feature issue is successfully created in the Entity.**  :warning: :warning:
 
 
 ## Feature Development
@@ -76,7 +76,7 @@ When you finish working on a feature, you are required to merge the feature bran
 4. After the reviewers approve the pull request, you can merge the pull request. :warning: :warning: **Pull requests
 must be reviewed and approved by other team members before merging.** :warning: :warning: **Reviewing and approving pull requests will be a part of the evaluation.**
 
-5. After the pull request is merged, the linked issue will be automatically closed. You can verify that the issue is closed by navigating to the issues page and project page.
+5. After the pull request is merged, the linked issue will be automatically closed. You can verify that the issue is closed by navigating to the issues page and Entity page.
 
 ![](images/closed_issue.png)
 
@@ -93,7 +93,7 @@ must be reviewed and approved by other team members before merging.** :warning: 
 
 - Use milestones to group issues into a set of deliverables. To create milestones, navigate to the **Milestones** tab and click **New milestone**.
 
-- Use Projects to tracks issues and collaborate with your team. See the [sample project (Password Manager example)](https://github.com/orgs/CSC207-2022F-UofT/projects/2) for reference.
+- Use Projects to tracks issues and collaborate with your team. See the [sample Entity (Password Manager example)](https://github.com/orgs/CSC207-2022F-UofT/projects/2) for reference.
 
 - Github document for projects: https://docs.github.com/en/issues/planning-and-tracking-with-projects
 

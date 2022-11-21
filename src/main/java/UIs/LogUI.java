@@ -1,0 +1,51 @@
+package UIs;
+
+import Controllers_Presenters.EditProfileControl;
+import Controllers_Presenters.LogController;
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+public class LogUI implements ActionListener {
+    JFrame f;
+    GridLayout layout = new GridLayout(3, 1, 10, 20);
+
+    JButton b = new JButton("Login");
+    JTextField emailField = new JTextField("Email", 20);
+    JTextField passwordField = new JTextField("Password", 20);
+
+
+    public LogUI() {
+        f = new JFrame();
+        layout.setColumns(1);
+        layout.setRows(3);
+
+        f.setSize(600, 300);
+        f.add(emailField);
+        f.add(passwordField);
+        f.setLayout(layout);
+        f.setVisible(true);
+        f.add(b);
+        b.addActionListener(this);
+    }
+
+    public void setVisible(boolean b) {
+        f.setVisible(b);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new LogController(emailField.getText(), passwordField.getText(), f);
+    }
+
+    public static void main(String[] args) {
+        LogUI logui = new LogUI();
+        logui.setVisible(true);
+    }
+}
