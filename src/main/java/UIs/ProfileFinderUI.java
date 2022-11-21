@@ -38,8 +38,9 @@ public class ProfileFinderUI implements ActionListener{
 
     String email;
 
-    public ProfileFinderUI(int curr){
+    public ProfileFinderUI(int curr, String email){
         this.curr = curr;
+        this.email = email;
         myProfile = getProfileWithEmail(email);
         DataFetchControl d = new DataFetchControl();
         ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(email));
@@ -179,11 +180,11 @@ public class ProfileFinderUI implements ActionListener{
 
             frame.setVisible(false);
             curr++;
-            new ProfileFinderUI(curr);
+            new ProfileFinderUI(curr, email);
         } else if (e.getSource() == passButton) {
             frame.setVisible(false);
             curr++;
-            new ProfileFinderUI(curr);
+            new ProfileFinderUI(curr, email);
         }
     }
 
