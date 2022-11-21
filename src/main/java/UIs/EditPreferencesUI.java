@@ -116,6 +116,13 @@ public class EditPreferencesUI { /// change instance attributes to be non-static
         frame.add(button, constraints);
     }
 
+    public void setVisible(boolean b) {
+        if (b){
+            this.buildBasicLayout();
+            this.addComponents();
+        }
+    }
+
     public static void main(String[] args) { /// remove after testing, call methods from MyProfileUI
         SwingUtilities.invokeLater(new Runnable() { // invoke the methods from the event-dispatching thread
             public void run() {

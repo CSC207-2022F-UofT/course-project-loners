@@ -1,4 +1,4 @@
-0, Name, email, password, age, bio, gender, orientation, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
-1, Name, email@, null, 20, bio, male, straight, null, null, null, null, null, 20, male
-2, Rick, email@mail, null, 20, bio, male, straight, null, BufferedImage@3af939ad: type = 5 ColorModel: #pixelBits = 24 numComponents = 3 color space = java.awt.color.ICC_ColorSpace@2f42b7b1 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 720 height = 480 #numDataElements 3 dataOff[0] = 2, null, null, null, 20, male
-3, Name, email, password, age, bio, gender, orientation, location, image, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
+0, Name, email, password, age, bio, gender, orientation, location_1: location_2, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
+1, Name, email@, null, 20, bio, male, straight, 20.0: 10.0, play soccer: play violin, null, null, 20, male
+2, Taka, taka@mail, 123, 20, bio, male, straight, null, soccer: music, socialMedia, null, 20, male, null
+3, Name, email2, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1

@@ -19,7 +19,7 @@ public class EditProfileControl{
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
     static Preferences preferences = new Preferences(20, "male",null, 5, 2);
-    public DataSendControl dataSend = new DataSendControl(profile);
+    public DataSendControl dataSend = new DataSendControl();
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
 
@@ -57,8 +57,6 @@ public class EditProfileControl{
                 profile.setGender((String) values[k]);
             } else if (keys[k] == "location") {
                 profile.setLocation((double[]) values[k]);
-            } else if (keys[k] == "image") {
-                profile.setImage((BufferedImage) values[k]);
             } else if (keys[k] == "bio") {
                 if(authenticator.is_valid_bio((String) values[k])) {
                     profile.setBio((String) values[k]);
@@ -73,8 +71,6 @@ public class EditProfileControl{
                 }
             } else if (keys[k] == "socialMedia") {
                 profile.setSocialMedia((String) values[k]);
-            } else if (keys[k] == "likes") {
-                profile.setLikes((List<String>) values[k]);
             } else if (keys[k] == "orientation") {
                 profile.setOrientation((String) values[k]);
             }
@@ -87,25 +83,25 @@ public class EditProfileControl{
         System.out.println("This part is successfully executed");
         if(this.edit(info)){
             System.out.println("This part is successfully executed2");
-            System.out.println(dataFetchControl.fetch_fromid(0)[3]);
-            try {
-                String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
-                        profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
-                        profile.getLocation()+", "+profile.getImage()+", "+profile.getHobbies()+", "+
-                        profile.getSocialMedia()+", "+profile.getLikes()+", "+preferences.getPreferredAge()+", "+
-                        preferences.getPreferredGender()+", "+preferences.getPreferredLocation()+", "+preferences.getPreferredLocationRange();
-                dataSend.send_toid(2, str_data.split(", "));
-
-
-                FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                System.out.println("Successfully wrote to the file.");
-
-                return true;
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-                return false;
+            System.out.println(dataFetchControl.fetch_fromid(2)[0]);
+            //System.out.println(profile.getHobbies());
+            String likes;
+            if (profile.getLikes() == null){
+                likes = null;
+            } else{
+                likes = String.join(": ", profile.getLikes());
             }
+
+            String str_data = profile.getName()+", "+profile.getEmail()+", "+ profile.getPassword()+", "+profile.getAge()+", "+
+                    profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
+                    profile.getLocation()+", "+String.join(": ",profile.getHobbies())+", "+
+                    profile.getSocialMedia()+", "+likes+", "+preferences.getPreferredAge()+", "+
+                    preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
+            dataSend.send_toid(2, str_data.split(", "));
+
+            System.out.println("Successfully wrote to the file.");
+
+            return true;
         }else{
             System.out.println("Couldn't successfully edited");
             return false;
