@@ -13,6 +13,15 @@ public class Preferences {
         this.id = id;
     }
 
+    public Preferences(int preferredAge, String preferredGender,
+                       double preferredLocationRange) {
+        this.preferredAge = preferredAge;
+        this.preferredGender = preferredGender;
+        this.preferredLocation = new double[]{0.0, 0.0};
+        this.preferredLocationRange = preferredLocationRange;
+        this.id = 0;
+    }
+
     public int getPreferredAge() {
         return preferredAge;
     }
