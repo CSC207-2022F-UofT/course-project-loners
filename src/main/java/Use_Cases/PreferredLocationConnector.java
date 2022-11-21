@@ -20,9 +20,8 @@ public class PreferredLocationConnector extends LocationConverter {
         // when the preferred_Location doesn't exist
         if ((preferred_Location == null) & last_id > 0) {
             for (int i = 0; i < last_id + 1; i++) {
-                Object[] data = new DataFetchControl().fetch_fromid(i);
-                double[] profiles_address = (double[]) data[4];
-                double dis_kilo = extractLocationInfo(user_lat_rad, user_long_rad, profiles_address);
+                double[] data = new DataFetchControl().fetch_address_from_id(i);
+                double dis_kilo = extractLocationInfo(user_lat_rad, user_long_rad, data);
                 if (dis_kilo <= range) { // here 10 would be changed to user's range of preferredLocation
                     ids.add(i);
                 }
@@ -32,11 +31,10 @@ public class PreferredLocationConnector extends LocationConverter {
         // when the preferred_Location exist
         else if ((preferred_Location != null) & last_id > 0) {
             for (int i = 0; i < last_id + 1 ; i++) {
-                Object[] data = new DataFetchControl().fetch_fromid(i);
                 double preferred_location_lat_rad = (toRadians(preferred_Location[0]));
                 double preferred_location_long_rad = (toRadians(preferred_Location[1]));
-                double[] profiles_address = (double[]) data[4];
-                double dis_kilo = extractLocationInfo(preferred_location_lat_rad, preferred_location_long_rad, profiles_address);
+                double[] data = new DataFetchControl().fetch_address_from_id(i);
+                double dis_kilo = extractLocationInfo(preferred_location_lat_rad, preferred_location_long_rad, data);
                 if (dis_kilo <= range) { // here 10 would be changed to user's range of preferredLocation
                     ids.add(i);
                 }
@@ -58,11 +56,13 @@ public class PreferredLocationConnector extends LocationConverter {
     }
 
     public static void main(String[] args){
+        double [] location  = {43.667225, -79.402443};
         Profile profile = new Profile("Rick", 21, "male",
-                "straight", null, null, "This is Rick", null, null);
+                "straight", location, null, "This is Rick", null, null);
         Preferences preferences = new Preferences(20, "male",null, 5, 2);
-        PreferredLocationConnector abc = new PreferredLocationConnector();
-        System.out.println(abc.within_preferred_location(profile, preferences));
+
+        ArrayList<Integer> abc = new PreferredLocationConnector().within_preferred_location(profile, preferences);
+        System.out.println(abc);
 
     }
 }

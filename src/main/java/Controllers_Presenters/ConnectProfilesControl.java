@@ -12,7 +12,7 @@ public class ConnectProfilesControl {
         this.id = id;
     }
 
-    public void passPreferences() {
+    public List<String> passPreferences() {
         DataFetchControl dataFetchControl = new DataFetchControl();
         Object[] userData = dataFetchControl.fetch_fromid(id);
 
@@ -33,6 +33,7 @@ public class ConnectProfilesControl {
                 preferredLocationRange, id);
         ConnectProfiles connectProfiles = new ConnectProfiles(preferences);
         List<String> connections = connectProfiles.compareTraits();
+        return connections;
         /// pass connected profiles to ProfileFinderUI, direct user to ProfileFinderUI
 
     }
