@@ -160,13 +160,9 @@ public class DataSendControl {
                     Arrays.toString(profile.getLocation()) + ", ";
 
         if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
-        else {str += "null, ";}
+        else {str += profile.getHobbies() + ", ";}
 
-        if (profile.getSocialMedia() != null){str += profile.getSocialMedia() + ", ";}
-        else {str += "null, ";}
-
-        if (profile.getLikes() != null){str += profile.getLikes();}
-        else {str += "null";}
+        str += profile.getSocialMedia() + ", " + profile.getLikes();
 
         return str;
     }
