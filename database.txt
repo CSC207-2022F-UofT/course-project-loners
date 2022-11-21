@@ -1,4 +1,4 @@
 0, Name, email, password, age, bio, gender, orientation, 43.667225: -79.402443, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
 1, Name, email@, null, 20, bio, male, straight, 43.667225: -79.402443, play soccer: play violin, null, null, 20, male
-2, Taka, taka@mail, 123, 20, bio, male, straight, 43.667225: -79.402443, soccer: music, socialMedia, null, 20, male, null
+2, Taka, taka@mail, 123, 20, bio, male, straight, 43.667225: -80.402443, soccer: music, socialMedia, null, 20, male, null
 3, Name, email2, password, age, bio, gender, orientation, 43.667225: -79.402443, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
