@@ -20,6 +20,7 @@ public class LogUI implements ActionListener {
     JTextField emailField = new JTextField("Email", 20);
     JTextField passwordField = new JTextField("Password", 20);
 
+
     public LogUI() {
         f = new JFrame();
         layout.setColumns(1);
@@ -42,7 +43,6 @@ public class LogUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new LogController(emailField.getText(), passwordField.getText(), f);
     }
-
 
     public static void main(String[] args) {
         LogUI logui = new LogUI();
