@@ -1,8 +1,8 @@
 package Controllers_Presenters;
 
+import UIs.MainUI;
 import UIs.RegUI;
 import Use_Cases.Authenticator;
-// import UIs.MainUI;
 import UIs.LogUI;
 
 import javax.swing.*;
@@ -23,8 +23,8 @@ public class LogController{
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 logframe.setVisible(false);
                 // Uncomment the follwowing 2 lines after MainUI is implemented
-                // MainUI mainui = new MainUI();
-                // mainui.setVisible(true);
+                 MainUI mainui = new MainUI(email);
+                 mainui.setVisible(true);
             } else{
                 JOptionPane.showMessageDialog(null, "Incorrect password. Please try again.");
             }

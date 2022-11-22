@@ -18,7 +18,7 @@ public class EditProfileControl{
 
     static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
+    static Preferences preferences = new Preferences(20, "male", 5, 2);
     public DataSendControl dataSend = new DataSendControl();
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
@@ -96,7 +96,7 @@ public class EditProfileControl{
                     profile.getBio()+ ", "+profile.getGender()+", "+profile.getOrientation()+", "+
                     profile.getLocation()+", "+String.join(": ",profile.getHobbies())+", "+
                     profile.getSocialMedia()+", "+likes+", "+preferences.getPreferredAge()+", "+
-                    preferences.getPreferredGender()+", "+preferences.getPreferredLocation();
+                    preferences.getPreferredGender()+", "+preferences.getPreferredLocationRange();
             dataSend.send_toid(2, str_data.split(", "));
 
             System.out.println("Successfully wrote to the file.");

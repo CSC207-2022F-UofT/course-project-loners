@@ -1,39 +1,27 @@
-# Project Template
+# Guide to use our Dating app
+## 1, download all the files in this repository 
+Click the green "Code" button on the top of this page.  
+Then, click "Download Zip." All the files and directories will be downloaded as a zip file.  
+Open the zip file in your desired local directory and open the file in IntelliJ Editor. 
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle Entity.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
+## 2, You can run WelcomeUI.main()
+In your IntelliJ Editor, run WelcomeUI.main(). A Java GUI will pop up and you can see the instruction that lets you choose between registration or login.   
+By clicking either of these button, you will be redirected to RegistrationUI and LoginUI respectively.  
+Then, you can see how user can register their info or login to their existing account.  
+At this moment(Nov 21 8pm), the transition from one UI to another UI with the user information preserved is not implemented yet.  
+Thus, you do not expect to see your input in either of your RegUI or LogUI affect your profile that will be displayed in MyProfileUI.  
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your Entity repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+## 3, You can run MainUI.main()
+Now, you can run MainUI.main().  
+This UI helps users to transit to MyProfileUI, PreferenceEditingUI, and ProfileFinderUI.    
+You will see three buttons that redirect users to each of these UIs.  
+In PreferenceEditingUI, you can edit your preferences.  The data in database.txt will be updated.  
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
-
-## Workflow Documents
-
-* Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
-
-* [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a Entity plan for your class Entity. **This document helps you to complete the Implementation Plan Milestone.**
-
-## Gradle Project
-Import this Entity into your Intellij editor. It should automatically recognise this as a gradle repository.
-The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this Entity. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
-
-You have been provided with two starter files for demonstration: HelloWorld and HelloWorldTest.
-
-You will find HelloWorld in `src/main/java/tutorial` directory. Right click on the HelloWorld file and click on `Run HelloWorld.main()`.
-This should run the program and print on your console.
-
-You will find HelloWorldTest in `src/test/java/tutorial` directory. Right click on the HelloWorldTest file and click on `Run HelloWorldTest`.
-All tests should pass. Your team can remove this sample of how testing works once you start adding your Entity code to the repo.
-
-Moving forward, we expect you to maintain this Entity structure. You *should* use Gradle as the build environment, but it is fine if your team prefers to use something else -- just remove the gradle files and push your preferred Entity setup. Assuming you stick with Gradle, your source code should go into `src/main/java` (you can keep creating more subdirectories as per your Entity requirement). Every source class can auto-generate a test file for you. For example, open HelloWorld.java file and click on the `HelloWorld` variable as shown in the image below. You should see an option `Generate` and on clicking this your should see an option `Test`. Clicking on this will generate a JUnit test file for `HelloWorld` class. This was used to generate the `HelloWorldTest`.
-
-![image](https://user-images.githubusercontent.com/5333020/196066655-d3c97bf4-fdbd-46b0-b6ae-aeb8dbcf351d.png)
-
-You can create another simple class and try generating a test for this class.
+## 4, MyProfileUI and EditProfileUI
+After you are redirected to MyProfileUI, you will see your personal information displayed including your profile image.  
+There is a button that will redirect you to EditProfileUI.  
+In EditProfileUI, you will be able to edit your profile. At this moment(Nov 21 8pm), the UI includes preferences but this section will be deleted later on.  
+Here, you have to upload one "jpg" image to be saved to successfully update your profile. 
+ 
+FOR GRADING:
+Download project and run the main method of the WelcomeUI class.
