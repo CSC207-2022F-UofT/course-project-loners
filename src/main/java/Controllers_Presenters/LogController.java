@@ -22,9 +22,7 @@ public class LogController{
             if (Authenticator.email_match_password(email, password)){
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 logframe.setVisible(false);
-                // Uncomment the follwowing 2 lines after MainUI is implemented
-                 MainUI mainui = new MainUI(email);
-                 mainui.setVisible(true);
+                new UIController(email).launchMainUI();
             } else{
                 JOptionPane.showMessageDialog(null, "Incorrect password. Please try again.");
             }

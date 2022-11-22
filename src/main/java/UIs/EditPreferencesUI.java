@@ -37,7 +37,8 @@ public class EditPreferencesUI {
         frame.setLayout(new GridBagLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
-        frame.setSize(670, 280);
+//        frame.setSize(670, 280);
+        UIController.makeFrameFullSize(frame);
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
         frame.setVisible(true);
 
