@@ -1,13 +1,12 @@
 package Use_Cases;
 
 import Controllers_Presenters.DataFetchControl;
-import UIs.LogUI;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.regex.Matcher;
 
 
 public class Authenticator{
@@ -59,6 +58,14 @@ public class Authenticator{
         } else {
             return false;
         }
+    }
+    public static boolean is_valid_address(String postalCode){
+        // Canadian address consist of 6 letters with a format CNC NCN, where C is a letter and N is a digit.
+        // There is a space separates the third and fourth characters
+        // it does not include the letters D, F, I, O, Q or U.
+        // Also, the first position does not make use of the letters W or Z.
+        // referenced https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
+        return postalCode.matches("^[A-Z]\\d[A-Z]\\d\\s?[A-Z]\\d$");
     }
 
     public boolean is_valid_location(double[] location){
@@ -132,7 +139,9 @@ public class Authenticator{
         new Authenticator();
         // Testing method email_match_password
         boolean test = Authenticator.email_match_password("email", "a");
+        boolean test1 = Authenticator.is_valid_address("email");
         System.out.println(test);
+        System.out.println(test1);
     }
 }
 
