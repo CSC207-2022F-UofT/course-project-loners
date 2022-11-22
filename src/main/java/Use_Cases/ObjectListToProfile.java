@@ -23,13 +23,10 @@ public class ObjectListToProfile {
         String myBio = (String) data[5];
         String myGender = (String) data[6];
         String myOrientation = (String) data[7];
-        //Change this! I don't know the format of location in the database yet!
         double[] myLocation = doubleStringToArray((String) data[8]);
-        //Change this! I don't know the format of hobbies in the database yet!
-        List<String> myHobbies = new ArrayList<>();
+        List<String> myHobbies = parseColonSeperatedString((String)data[9]);
         String mySocial = (String) data[10];
-        //Change this! I don't know the format of likes in the database yet!
-        List<String> myLikes = new ArrayList<>();
+        List<String> myLikes = parseColonSeperatedString((String)data[11]);
 
         Profile myProfile = new Profile(myName, myAge, myGender, myOrientation, myLocation,
                 myImage, myBio, myHobbies, mySocial, myLikes, myEmail, myPass);
@@ -39,12 +36,27 @@ public class ObjectListToProfile {
     }
 
     private static double[] doubleStringToArray(String og){
+        if (og.contains("null")){
+            return null;
+        }
         String ogNew = og.substring(1, og.length()-1);
         String[] ogNewArray = ogNew.split(", ");
         double first = Double.parseDouble(ogNewArray[0]);
         double second = Double.parseDouble(ogNewArray[1]);
 
         return new double[]{first, second};
+    }
+
+    public static List<String> parseColonSeperatedString(String og){
+        if (og.contains("null")){
+            return null;
+        }
+        List<String> myFinalList = new ArrayList<String>();
+        String[] myOg = og.split(": ");
+        for (String s : myOg){
+            myFinalList.add(s);
+        }
+        return myFinalList;
     }
 
 }
