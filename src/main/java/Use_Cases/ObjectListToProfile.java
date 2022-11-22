@@ -40,8 +40,8 @@ public class ObjectListToProfile {
         if (og.contains("null")){
             return null;
         }
-        String ogNew = og.substring(1, og.length()-1);
-        String[] ogNewArray = ogNew.split(": ");
+
+        String[] ogNewArray = og.split(": ");
         double first = Double.parseDouble(ogNewArray[0]);
         double second = Double.parseDouble(ogNewArray[1]);
 
@@ -60,9 +60,7 @@ public class ObjectListToProfile {
         return myFinalList;
     }
 
-    public static void main(String[] args) {
-        Object[] lst = new DataFetchControl().fetch_fromid(4);
-        Profile p = returnObjListAsProfile(lst);
-        System.out.println(p.getLocation());
+    public static void main(String[] args){
+        doubleStringToArray("43.1245123: 12.12342623");
     }
 }

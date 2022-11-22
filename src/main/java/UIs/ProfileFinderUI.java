@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import Controllers_Presenters.*;
-import Entities.Profile;
-import Use_Cases.ObjectListToProfile;
 
 public class ProfileFinderUI implements ActionListener{
     // This class will show a profile on the screen based on the matching algorithm
@@ -186,6 +184,9 @@ public class ProfileFinderUI implements ActionListener{
             curr++;
             new ProfileFinderUI(curr, email);
         }
+    }
+    public static void main (String[] args){
+        new ProfileFinderUI("taka@mail");
     }
 
 }
