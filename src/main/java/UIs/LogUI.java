@@ -18,7 +18,7 @@ public class LogUI implements ActionListener {
     JTextField emailField = new JTextField(20);
     JLabel label2 = new JLabel("Password: ");
     JTextField passwordField = new JTextField(20);
-    JButton back = new JButton("Back to welcome page");
+    JButton back = new JButton("Back to Welcome page");
 
 
     public LogUI() {

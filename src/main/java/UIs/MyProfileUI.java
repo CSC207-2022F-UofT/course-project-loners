@@ -58,9 +58,8 @@ public class MyProfileUI implements ActionListener {
         f.setLayout(new FlowLayout());
         f.setVisible(true);
 
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // this line will end the execution when you closed the window
-        UIController.makeFrameFullSize(f);
-
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(f); // set size to full screen
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

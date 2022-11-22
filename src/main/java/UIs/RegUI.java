@@ -31,7 +31,7 @@ public class RegUI {
     JComboBox gender = new JComboBox<String>(genders);
     JLabel picL = new JLabel("Upload your icon: ");
     JButton pic = new JButton("Select image");
-    JButton back = new JButton("Back to welcome page");
+    JButton back = new JButton("Back to Welcome page");
 
     public RegUI(){
         PicHolder loadFile = new PicHolder(frame, pic);
