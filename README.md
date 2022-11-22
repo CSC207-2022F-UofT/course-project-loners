@@ -2,10 +2,13 @@
 ## 1, download all the files in this repository 
 Click the green "Code" button on the top of this page.  
 Then, click "Download Zip." All the files and directories will be downloaded as a zip file.  
+<img src="images/MarkdownImage1.png" alt="drawing" width="300"/>  
 Open the zip file in your desired local directory and open the file in IntelliJ Editor. 
 
 ## 2, You can run WelcomeUI.main()
-In your IntelliJ Editor, run WelcomeUI.main(). A Java GUI will pop up and you can see the instruction that lets you choose between registration or login.   
+In your IntelliJ Editor, run WelcomeUI.main() (src/main/java/UIs/WelcomeUI).  
+<img src="images/MarkdownImage2.png" alt="drawing" width="300"/>  
+A Java GUI will pop up and you can see the instruction that lets you choose between registration or login.   
 By clicking either of these button, you will be redirected to RegistrationUI and LoginUI respectively.  
 Then, you can see how user can register their info or login to their existing account.  
 At this moment(Nov 21 8pm), the transition from one UI to another UI with the user information preserved is not implemented yet.  
