@@ -15,6 +15,7 @@ public class ConnectProfilesControl {
     public List<String> passPreferences() { /// called with an instance by ProfileFinderUI
         DataFetchControl dataFetchControl = new DataFetchControl();
         Object[] userData = dataFetchControl.fetch_fromid(id);
+        userData = (Object[]) userData[0];
 
         // change the types of each preference
         int preferredAge = Integer.parseInt((String) userData[12]);
