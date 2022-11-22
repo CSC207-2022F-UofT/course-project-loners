@@ -170,7 +170,6 @@ public class DataSendControl {
     public String PreferencesConvertStr(Preferences preferences) {
         return preferences.getPreferredAge() + ", "
                 + preferences.getPreferredGender() + ", "
-                + Arrays.toString(preferences.getPreferredLocation()) + ", "
                 + preferences.getPreferredLocationRange();
     }
 

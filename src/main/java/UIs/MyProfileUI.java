@@ -20,7 +20,7 @@ import static javax.imageio.ImageIO.read;
 public class MyProfileUI implements ActionListener {
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
+    static Preferences preferences = new Preferences(20, "male", 5, 2);
 
     JFrame f = new JFrame();
     //BoxLayout layout = new BoxLayout(f,BoxLayout.PAGE_AXIS);
