@@ -64,5 +64,6 @@ public class ObjectListToProfile {
         Object[] lst = new DataFetchControl().fetch_fromid(4);
         Profile p = returnObjListAsProfile(lst);
         System.out.println(p.getLocation());
+
     }
 }
