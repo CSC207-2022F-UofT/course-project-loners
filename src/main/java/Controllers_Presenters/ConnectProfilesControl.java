@@ -29,4 +29,12 @@ public class ConnectProfilesControl {
 
         return connections; // for ProfileFinderUI
     }
+
+//    public static void main(String[] args) {
+//        ConnectProfilesControl test = new ConnectProfilesControl(3);
+//        List<String> testConnections = test.passPreferences();
+//        for (String testConnection : testConnections) {
+//            System.out.println(testConnection);
+//        }
+//    }
 }
