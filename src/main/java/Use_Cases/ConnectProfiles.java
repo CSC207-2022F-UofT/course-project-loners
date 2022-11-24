@@ -30,8 +30,7 @@ public class ConnectProfiles {
                 continue;
             }
 
-            DataFetchControl dataFetchControl = new DataFetchControl();
-            Object[] userData = dataFetchControl.fetch_fromid(userID);
+            Object[] userData = DataFetchControl.fetch_fromid(userID);
             userData = (Object[]) userData[0];
             String userAge = (String) userData[4];
             String userGender = (String) userData[6];

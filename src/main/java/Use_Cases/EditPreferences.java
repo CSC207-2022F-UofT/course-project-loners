@@ -21,8 +21,7 @@ public class EditPreferences {
     }
 
     public void writeData() {
-        DataFetchControl dataFetchControl = new DataFetchControl();
-        Object[] userData = dataFetchControl.fetch_fromid(id);
+        Object[] userData = DataFetchControl.fetch_fromid(id);
         userData = (Object[]) userData[0];
 
         // remove id from the array (to be added back by DataSendControl.send_toid)
