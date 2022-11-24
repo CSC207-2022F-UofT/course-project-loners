@@ -7,7 +7,6 @@ import Use_Cases.RegDataStore;
 import javax.swing.*;
 
 public class RegControl {
-    // TODO: add picture feature
     public RegControl(String email, String password, String name, String age, String gender, String postcode, JFrame regf){
         RegChecker checker = new RegChecker(email, password, name, age, gender, postcode);
         if (!checker.pass){ // if checker did not pass, show failure message
@@ -18,8 +17,7 @@ public class RegControl {
             if (store_data.success){ // if data stored successfully, show success message and go to login page
                 JOptionPane.showMessageDialog(null,"Registration done. Click OK to the login page.");
                 regf.setVisible(false);
-                LogUI logui = new LogUI();
-                logui.setVisible(true);
+                new UIController().launchLogUI();
             } else{ // if data had not been not stored, show wrong message
                 JOptionPane.showMessageDialog(null, "Something went wrong with the registration.");
             }
