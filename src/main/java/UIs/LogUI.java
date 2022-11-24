@@ -1,42 +1,51 @@
 package UIs;
 
-import Controllers_Presenters.EditProfileControl;
 import Controllers_Presenters.LogController;
+import Controllers_Presenters.UIController;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class LogUI implements ActionListener {
     JFrame f;
     GridLayout layout = new GridLayout(3, 1, 10, 20);
 
     JButton b = new JButton("Login");
-    JTextField emailField = new JTextField("Email", 20);
-    JTextField passwordField = new JTextField("Password", 20);
+    JLabel label1 = new JLabel("Email: ");
+    JTextField emailField = new JTextField(20);
+    JLabel label2 = new JLabel("Password: ");
+    JTextField passwordField = new JTextField(20);
+    JButton back = new JButton("Back to Welcome page");
 
 
     public LogUI() {
         f = new JFrame();
-        layout.setColumns(1);
-        layout.setRows(3);
-
-        f.setSize(600, 300);
-        f.add(emailField);
-        f.add(passwordField);
         f.setLayout(layout);
-        f.setVisible(true);
-        f.add(b);
-        b.addActionListener(this);
-    }
 
-    public void setVisible(boolean b) {
-        f.setVisible(b);
+//        f.setSize(600, 300);
+        f.add(label1);
+        f.add(emailField);
+        f.add(label2);
+        f.add(passwordField);
+        f.add(back);
+        f.add(b);
+
+        f.setVisible(true); //should put this After added all the components into the frame
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(f); // set size to full screen
+
+
+        b.addActionListener(this);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new UIController().launchWelcomeUI();
+            }
+        });
     }
 
     @Override
@@ -45,7 +54,6 @@ public class LogUI implements ActionListener {
     }
 
     public static void main(String[] args) {
-        LogUI logui = new LogUI();
-        logui.setVisible(true);
+        new LogUI();
     }
 }

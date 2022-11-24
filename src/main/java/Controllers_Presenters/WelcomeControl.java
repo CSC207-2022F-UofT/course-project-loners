@@ -1,8 +1,5 @@
 package Controllers_Presenters;
 
-import UIs.LogUI;
-import UIs.RegUI;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +10,8 @@ public class WelcomeControl {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button_log) {
-                    LogUI logui = new LogUI();
                     frame.setVisible(false);
-                    logui.setVisible(true);
+                    new UIController().launchLogUI();
                 }}
         });
 
@@ -23,9 +19,8 @@ public class WelcomeControl {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button_reg) {
-                    RegUI regui = new RegUI();
                     frame.setVisible(false);
-                    regui.setVisible(true);
+                    new UIController().launchRegUI();
                 }}
         });
     }
