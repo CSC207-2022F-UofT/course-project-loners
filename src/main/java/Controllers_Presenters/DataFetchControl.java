@@ -48,9 +48,14 @@ public class DataFetchControl {
     }
 
     public static int fetch_id_fromEmail(String email){
-        // use email to find id belongs to that email
-        // return -1 if file is empty
-        // return -10 if it has error
+        /**
+         * This method uses email to find id associated to that email
+         * return -1 if file is empty
+         * return -10 if it has error
+         @param email
+         @return id
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
