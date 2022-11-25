@@ -1,6 +1,7 @@
 package UIs;
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.RegControl;
+import Controllers_Presenters.UIController;
 import Use_Cases.PicHolder;
 
 import javax.imageio.ImageIO;
@@ -23,20 +24,18 @@ public class RegUI {
     JTextField name = new JTextField();
     JLabel ageL = new JLabel("Age: ");
     JTextField age = new JTextField();
-    JLabel postL = new JLabel("Postal code (e.g. M5S 1A4): ");
+    JLabel postL = new JLabel("Postal code (with a whitespace e.g. M5S 1A4): ");
     JTextField post = new JTextField();
     String[] genders = {"male", "female", "other"};
     JLabel genderL = new JLabel("Gender: ");
     JComboBox gender = new JComboBox<String>(genders);
     JLabel picL = new JLabel("Upload your icon: ");
     JButton pic = new JButton("Select image");
+    JButton back = new JButton("Back to Welcome page");
 
     public RegUI(){
-
         PicHolder loadFile = new PicHolder(frame, pic);
 
-        frame.setSize(350, 350);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(8,2));
 
         frame.add(emailL);
@@ -53,11 +52,22 @@ public class RegUI {
         frame.add(post);
         frame.add(picL);
         loadFile.setLoader();
+        frame.add(back);
         frame.add(button);
+
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(frame); // set size to full screen
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Give notification if there is missing input(s)
+                if (email.getText().isEmpty() | pw.getText().isEmpty() | name.getText().isEmpty() |
+                        age.getText().isEmpty()| gender.getSelectedItem().toString().isEmpty() | post.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Warning: \nmissing input(s), please try again");
+                }
+
                 try{
                     int id = new DataFetchControl().fetch_lastID() + 1;
                     File outputfile = new File(String.format("saved_images/%s.jpg", id));
@@ -68,14 +78,17 @@ public class RegUI {
                 new RegControl(email.getText(), pw.getText(), name.getText(), age.getText(), gender.getSelectedItem().toString(), post.getText(), frame);
             }
         });
-    }
 
-    public void setVisible(boolean b) {
-        frame.setVisible(b);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new WelcomeUI();
+            }
+        });
     }
 
     public static void main(String[] args) {
-        RegUI ui = new RegUI();
-        ui.setVisible(true);
+        new RegUI();
     }
 }

@@ -6,6 +6,7 @@ location range of other users.
 package UIs;
 
 import Controllers_Presenters.EditPreferencesControl;
+import Controllers_Presenters.UIController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,8 @@ public class EditPreferencesUI {
         frame.setLayout(new GridBagLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
-        frame.setSize(670, 280);
+//        frame.setSize(670, 280);
+        UIController.makeFrameFullSize(frame); // set size to full screen
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
         frame.setVisible(true);
 
@@ -111,8 +113,21 @@ public class EditPreferencesUI {
 
             }
         });
-        constraints.gridx = 0;
+        constraints.gridx = 1;
         frame.add(button, constraints);
+
+        // add back button
+        JButton back = new JButton("Back to Main page");
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                new UIController(id).launchMainUI();
+            }
+        });
+        constraints.gridx = 0;
+        frame.add(back, constraints);
     }
 
     public void setVisible(boolean b) {
