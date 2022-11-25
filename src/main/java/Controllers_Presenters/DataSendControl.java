@@ -142,7 +142,7 @@ public class DataSendControl {
 
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                     profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                    Arrays.toString(profile.getLocation()) + ", ";
+                    profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
 
         if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
         else {str += profile.getHobbies() + ", ";}
