@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class DataFetchControl {
     /*
-    *
+    * DataFetchControl class which fetch data from the database
      */
     public Object[] fetch_fromid(int id){
         try {

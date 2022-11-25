@@ -73,6 +73,11 @@ public class DataSendControl {
     public DataSendControl() {}
 
     public boolean send_toid (int id, Object[] data){
+        /**
+         @param
+         @return
+         @throws
+         */
         try{
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             StringBuffer inputBuffer = new StringBuffer();
