@@ -15,18 +15,8 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
-//    private int id;
     private static JFrame frame;
     private static GridBagConstraints constraints;
-
-    /**
-     * Construct an EditPreferencesUI, initializing id to the ID of the user who is interacting with the UI.
-     *
-     * @param id ID of the user who is interacting with this EditPreferencesUI
-     */
-//    public EditPreferencesUI(int id) { // instance created by UIController
-//        this.id = id;
-//    }
 
     /**
      * Build the basic layout of the UI, including setting up the JFrame and adding initial constraints for the
@@ -53,8 +43,10 @@ public class EditPreferencesUI {
      * Add components to the UI, including a JLabel for instructions, three JLabels and three JTextFields corresponding
      * to the three preference inputs, a JButton for performing actions on the input collected, a JLabel for presenting
      * a success message, and a JButton for returning to the main page. Add event listeners to the text fields and
-     * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs
-     * EditPreferencesControl.
+     * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs to
+     * EditPreferencesControl with id.
+     *
+     * @param id ID of the user who is interacting with this EditPreferencesUI
      */
     public static void addComponents(int id) {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
@@ -127,7 +119,12 @@ public class EditPreferencesUI {
         frame.add(back, constraints);
     }
 
-    public static void buildUI(int id) {
+    /**
+     * Build the user interface for the user with ID id, by calling the buildBasicLayout and addComponents methods.
+     *
+     * @param id ID of the user who is interacting with this EditPreferencesUI
+     */
+    public static void buildUI(int id) { // called by UIController
         SwingUtilities.invokeLater(new Runnable() { // invoke the methods from the event-dispatching thread
             public void run() {
                 buildBasicLayout();
@@ -136,7 +133,7 @@ public class EditPreferencesUI {
         });
     }
 
-    public static void main(String[] args) { /// for testing
-        buildUI(3);
-    }
+//    public static void main(String[] args) { /// for testing
+//        buildUI(3);
+//    }
 }
