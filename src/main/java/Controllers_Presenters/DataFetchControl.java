@@ -14,7 +14,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class DataFetchControl {
+    /*
+    * DataFetchControl class
+    * The user can fetch data from the database in a way they want to.
+     */
     public static Object[] fetch_fromid(int id){
+        /**
+         * This method fetch the profile data associated to id.
+         @param id
+         @return Array Object that contains profile data
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -38,9 +48,14 @@ public class DataFetchControl {
     }
 
     public static int fetch_id_fromEmail(String email){
-        // use email to find id belongs to that email
-        // return -1 if file is empty
-        // return -10 if it has error
+        /**
+         * This method uses email to find id associated to that email
+         * return -1 if file is empty
+         * return -10 if it has error
+         @param email
+         @return id
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -62,6 +77,12 @@ public class DataFetchControl {
     }
 
     public int fetch_lastID(){
+        /**
+         * This method fetches the last id in the database.
+         @param nothing
+         @return last id in the database
+         @throws IOException
+         */
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
             String line = reader.readLine();
@@ -82,6 +103,12 @@ public class DataFetchControl {
     }
 
     public ArrayList<String> fetch_emails(){
+        /**
+         *
+         @param nothing
+         @return ArrayList that contains all the emails
+         @throws IOException
+         */
         ArrayList<String> emails = new ArrayList<String>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
@@ -92,7 +119,7 @@ public class DataFetchControl {
                 while(line != null) {
                     tmp = line;
                     List<String> lst_line = Arrays.asList(tmp.split(", "));
-                    emails.add((String) ((List<String>)lst_line).get(2).toString());
+                    emails.add(lst_line.get(2));
                     line = reader.readLine();
                 }
                 return emails;
