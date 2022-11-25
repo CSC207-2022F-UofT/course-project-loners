@@ -77,6 +77,12 @@ public class DataFetchControl {
     }
 
     public int fetch_lastID(){
+        /**
+         * This method fetches the last id in the database.
+         @param nothing
+         @return last id in the database
+         @throws IOException
+         */
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
             String line = reader.readLine();
@@ -97,6 +103,12 @@ public class DataFetchControl {
     }
 
     public ArrayList<String> fetch_emails(){
+        /**
+         *
+         @param nothing
+         @return ArrayList that contains all the emails
+         @throws IOException
+         */
         ArrayList<String> emails = new ArrayList<String>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
