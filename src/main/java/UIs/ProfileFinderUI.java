@@ -186,7 +186,7 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
     public static void main (String[] args){
-        new ProfileFinderUI("taka@mail");
+        new ProfileFinderUI("amelia@mail");
     }
 
 }
