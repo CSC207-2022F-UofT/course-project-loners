@@ -15,24 +15,24 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
-    private int id;
-    private JFrame frame;
-    private GridBagConstraints constraints;
+//    private int id;
+    private static JFrame frame;
+    private static GridBagConstraints constraints;
 
     /**
      * Construct an EditPreferencesUI, initializing id to the ID of the user who is interacting with the UI.
      *
      * @param id ID of the user who is interacting with this EditPreferencesUI
      */
-    public EditPreferencesUI(int id) {
-        this.id = id;
-    }
+//    public EditPreferencesUI(int id) { // instance created by UIController
+//        this.id = id;
+//    }
 
     /**
      * Build the basic layout of the UI, including setting up the JFrame and adding initial constraints for the
      * components that will be added to the frame.
      */
-    public void buildBasicLayout() {
+    public static void buildBasicLayout() {
         frame = new JFrame("Preference Editor");
         frame.setLayout(new GridBagLayout());
 
@@ -56,7 +56,7 @@ public class EditPreferencesUI {
      * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs
      * EditPreferencesControl.
      */
-    public void addComponents() {
+    public static void addComponents(int id) {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
                 "Preferred location range (in km): "};
         String[] preferenceLabels = {"preferred age", "preferred gender", "location range"};
@@ -127,20 +127,16 @@ public class EditPreferencesUI {
         frame.add(back, constraints);
     }
 
-    public void setVisible(boolean b) {
-        if (b){
-            this.buildBasicLayout();
-            this.addComponents();
-        }
-    }
-
-    public static void main(String[] args) { /// remove after testing, call methods from MyProfileUI
+    public static void buildUI(int id) {
         SwingUtilities.invokeLater(new Runnable() { // invoke the methods from the event-dispatching thread
             public void run() {
-                EditPreferencesUI test = new EditPreferencesUI(3);
-                test.buildBasicLayout();
-                test.addComponents();
+                buildBasicLayout();
+                addComponents(id);
             }
         });
+    }
+
+    public static void main(String[] args) { /// for testing
+        buildUI(3);
     }
 }
