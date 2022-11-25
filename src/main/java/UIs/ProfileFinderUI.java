@@ -14,12 +14,13 @@ import Controllers_Presenters.*;
 public class ProfileFinderUI implements ActionListener{
     // This class will show a profile on the screen based on the matching algorithm
     JFrame frame = new JFrame();
-    GridLayout layout = new GridLayout(6, 2, 10, 20);
+    GridLayout layout = new GridLayout(7, 2, 10, 5);
     JLabel nameLabel = new JLabel("Name: ");
     JLabel genderLabel = new JLabel("Gender: ");
     JLabel ageLabel = new JLabel("Age: ");
     JLabel bioLabel = new JLabel("Bio: ");
     JLabel hobbiesLabel = new JLabel("Hobbies: ");
+    JLabel imageLabel = new JLabel("Image: ");
 
     JButton likeButton = new JButton("Like");
     JButton passButton = new JButton("Pass");
@@ -29,6 +30,7 @@ public class ProfileFinderUI implements ActionListener{
     JTextArea age;
     JTextArea hobbies;
     JTextArea bio;
+    JLabel image;
 
     Object[] myProfile;
     Object[] otherProfile;
@@ -58,11 +60,12 @@ public class ProfileFinderUI implements ActionListener{
             bio = new JTextArea((String) otherProfile[5]);
             gender = new JTextArea((String) otherProfile[6]);
             hobbies = new JTextArea((String) otherProfile[9]);
+            image = new JLabel(new ImageIcon(theImage));
 
 
-            frame.setSize(600, 600);
+            frame.setSize(400, 800);
 
-            layout.setRows(6);
+            layout.setRows(7);
             layout.setColumns(2);
 
             frame.setLayout(layout);
@@ -73,6 +76,8 @@ public class ProfileFinderUI implements ActionListener{
             frame.add(nameLabel);
             frame.add(name);
             name.setEditable(false);
+            frame.add(imageLabel);
+            frame.add(image);
             frame.add(genderLabel);
             frame.add(gender);
             gender.setEditable(false);
@@ -113,11 +118,12 @@ public class ProfileFinderUI implements ActionListener{
             bio = new JTextArea((String) otherProfile[5]);
             gender = new JTextArea((String) otherProfile[6]);
             hobbies = new JTextArea((String) otherProfile[9]);
+            image = new JLabel(new ImageIcon(theImage));
 
 
-            frame.setSize(600, 600);
+            frame.setSize(400, 800);
 
-            layout.setRows(6);
+            layout.setRows(7);
             layout.setColumns(2);
 
             frame.setLayout(layout);
@@ -128,6 +134,8 @@ public class ProfileFinderUI implements ActionListener{
             frame.add(nameLabel);
             frame.add(name);
             name.setEditable(false);
+            frame.add(imageLabel);
+            frame.add(image);
             frame.add(genderLabel);
             frame.add(gender);
             gender.setEditable(false);
