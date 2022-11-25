@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,12 +42,16 @@ public class ProfileFinderUI implements ActionListener{
         this.curr = curr;
         this.email = email;
         myProfile = getProfileWithEmail(email);
+        myProfile = (Object[]) myProfile[0];
         DataFetchControl d = new DataFetchControl();
         allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
-        if (curr > allOtherProfiles.size()){
+        if (curr >= allOtherProfiles.size()){
             System.out.println("no more profiles!");
         } else {
             otherProfile = getProfileWithId(allOtherProfiles.get(this.curr));
+
+            BufferedImage theImage = (BufferedImage) otherProfile[1];
+            otherProfile = (Object[]) otherProfile[0];
 
             name = new JTextArea((String) otherProfile[1]);
             age = new JTextArea((String) otherProfile[4]);
@@ -91,12 +97,16 @@ public class ProfileFinderUI implements ActionListener{
         this.email = email;
         curr = 0;
         myProfile = getProfileWithEmail(email);
+        myProfile = (Object[]) myProfile[0];
         DataFetchControl d = new DataFetchControl();
         allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
-        if (curr > allOtherProfiles.size()){
+        if (curr >= allOtherProfiles.size()){
             System.out.println("nothing new here...");
         } else {
             otherProfile = getProfileWithId(allOtherProfiles.get(curr));
+
+            BufferedImage theImage = (BufferedImage) otherProfile[1];
+            otherProfile = (Object[]) otherProfile[0];
 
             name = new JTextArea((String) otherProfile[1]);
             age = new JTextArea((String) otherProfile[4]);
@@ -152,24 +162,26 @@ public class ProfileFinderUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
             String newLikes = (String) myProfile[11];
-            String[] newLikesArray = newLikes.split(": ");
-            List<String> newLikesList = Arrays.asList(newLikesArray);
-            newLikesList.add((String)otherProfile[2]);
-            newLikes = String.join(": ", newLikesList);
+            if (newLikes.contains("likes") || newLikes.contains("null")){
+                newLikes = "";
+            }
+            newLikes = newLikes + otherProfile[2] +": ";
             myProfile[11] = newLikes;
             int myId = Integer.parseInt((String)myProfile[0]);
             DataSendControl c = new DataSendControl();
-            c.send_toid(myId, myProfile);
+            Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
+            c.send_toid(myId, myProfileClone);
 
-            if (((String) myProfile[11]).contains((String) otherProfile[2])){
+            if (((String) myProfile[11]).contains((String) otherProfile[2]) && ((String)otherProfile[11]).contains((String)myProfile[2])){
                 JFrame matchFrame = new JFrame();
-                matchFrame.setSize(100, 100);
+                matchFrame.setSize(500, 300);
                 GridLayout matchLayout = new GridLayout(2, 1, 0,0);
                 matchFrame.setLayout(matchLayout);
                 JLabel statement = new JLabel("You got a match with " + (String)otherProfile[1] + "!");
                 JLabel social = new JLabel("Their social media is: " + (String)otherProfile[10]);
                 matchFrame.add(statement);
                 matchFrame.add(social);
+                matchFrame.setLocationRelativeTo(null);
 
                 matchFrame.setVisible(true);
             }
@@ -184,7 +196,7 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
     public static void main (String[] args){
-        new ProfileFinderUI("amelia@mail");
+        new ProfileFinderUI("email3");
     }
 
 }
