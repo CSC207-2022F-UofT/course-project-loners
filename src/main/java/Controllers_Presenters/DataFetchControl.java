@@ -15,9 +15,16 @@ import java.util.Objects;
 
 public class DataFetchControl {
     /*
-    * Add description
+    * DataFetchControl class
+    * The user can fetch data from the database in a way they want to.
      */
     public static Object[] fetch_fromid(int id){
+        /**
+         * This method fetch the profile data associated to id.
+         @param id
+         @return Array Object that contains profile data
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
