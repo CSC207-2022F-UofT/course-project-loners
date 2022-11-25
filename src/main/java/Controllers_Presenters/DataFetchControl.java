@@ -14,10 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class DataFetchControl {
-    /*
-    * DataFetchControl class which fetch data from the database
-     */
-    public Object[] fetch_fromid(int id){
+    public static Object[] fetch_fromid(int id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
