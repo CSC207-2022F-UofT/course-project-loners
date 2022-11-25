@@ -1,4 +1,7 @@
-0, Name, email, password, age, bio, gender, orientation, location_1: location_2, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation
-1, Name, email@, null, 20, bio, male, straight, 20.0: 10.0, play soccer: play violin, null, null, 20, male
-2, Taka, taka@mail, null, 20, bio, male, straight, null, soccer: music, socialMedia, null, 20, male, null
-3, Name, emails, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
+0, Name, email@, null, 20, bio, male, straight, 20.0: 10.0, play soccer: play violin, null, null, 20, male, 2.0
+1, Name, email2, password, 2, bio, gender, orientation, 20.0: 31.0, hobbies, socialMedia, likes, 19, male, 5.0
+2, Name, email2, password, 19, bio, gender, orientation, 20.0: 30.0, hobbies, socialMedia, likes, 19, male, 5.0
+3, Name, email2, password, 19, bio, gender, orientation, 20.0: 30.0, hobbies, socialMedia, likes, 19, male, 5.0
+4, Name, email2, password, 19, bio, male, orientation, 20.0: 30.0001, hobbies, socialMedia, likes, 19, male, 5.0
+5, Name, email2, password, 19, bio, female, orientation, 19.0: 30.0, hobbies, socialMedia, likes, 19, male, 5.0
+6, Name, email2, password, 19, bio, male, orientation, 10.0: 40.0, hobbies, socialMedia, likes, 19, male, 5.0
