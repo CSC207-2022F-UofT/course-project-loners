@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import Controllers_Presenters.*;
-import Entities.Profile;
-import Use_Cases.ObjectListToProfile;
 
 public class ProfileFinderUI implements ActionListener{
     // This class will show a profile on the screen based on the matching algorithm
@@ -33,7 +31,7 @@ public class ProfileFinderUI implements ActionListener{
     Object[] myProfile;
     Object[] otherProfile;
     // All other profile ids as strings
-    List<String> allOtherProfiles;
+    List<Integer> allOtherProfiles;
     int curr;
 
     String email;
@@ -43,12 +41,11 @@ public class ProfileFinderUI implements ActionListener{
         this.email = email;
         myProfile = getProfileWithEmail(email);
         DataFetchControl d = new DataFetchControl();
-        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(email));
-        allOtherProfiles = c.passPreferences();
+        allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
         if (curr > allOtherProfiles.size()){
             System.out.println("no more profiles!");
         } else {
-            otherProfile = getProfileWithId(Integer.parseInt(allOtherProfiles.get(this.curr)));
+            otherProfile = getProfileWithId(allOtherProfiles.get(this.curr));
 
             name = new JTextArea((String) otherProfile[1]);
             age = new JTextArea((String) otherProfile[4]);
@@ -95,12 +92,11 @@ public class ProfileFinderUI implements ActionListener{
         curr = 0;
         myProfile = getProfileWithEmail(email);
         DataFetchControl d = new DataFetchControl();
-        ConnectProfilesControl c = new ConnectProfilesControl(d.fetch_id_fromEmail(email));
-        allOtherProfiles = c.passPreferences();
+        allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
         if (curr > allOtherProfiles.size()){
             System.out.println("nothing new here...");
         } else {
-            otherProfile = getProfileWithId(Integer.parseInt(allOtherProfiles.get(curr)));
+            otherProfile = getProfileWithId(allOtherProfiles.get(curr));
 
             name = new JTextArea((String) otherProfile[1]);
             age = new JTextArea((String) otherProfile[4]);
@@ -186,6 +182,9 @@ public class ProfileFinderUI implements ActionListener{
             curr++;
             new ProfileFinderUI(curr, email);
         }
+    }
+    public static void main (String[] args){
+        new ProfileFinderUI("taka@mail");
     }
 
 }

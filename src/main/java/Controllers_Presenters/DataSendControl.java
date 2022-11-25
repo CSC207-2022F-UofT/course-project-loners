@@ -160,17 +160,28 @@ public class DataSendControl {
     */
 
     public String ProfileConvertStr(Profile profile) {
-        return profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
-                profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                Arrays.toString(profile.getLocation()) + ", " + String.join(": ", profile.getHobbies()) + ", " +
-                profile.getSocialMedia() + ", " + String.join(": ", profile.getLikes());
+        String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
+                    profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
+                    profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
+
+        if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
+        else {str += profile.getHobbies() + ", ";}
+
+        str += profile.getSocialMedia() + ", " + profile.getLikes();
+
+        return str;
     }
 
     public String PreferencesConvertStr(Preferences preferences) {
         return preferences.getPreferredAge() + ", "
                 + preferences.getPreferredGender() + ", "
-                + Arrays.toString(preferences.getPreferredLocation()) + ", "
                 + preferences.getPreferredLocationRange();
+    }
+
+    public static void main(String[] args) {
+        double[] loc = {43.661516, -79.380558};
+        Profile profile = new Profile("kelly@mail", "123", "Kelly", 12, "female", loc);
+        System.out.println(profile.getLikes());
     }
 }
 

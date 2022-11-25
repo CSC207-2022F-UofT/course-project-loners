@@ -1,6 +1,7 @@
 package UIs;
 
 import Controllers_Presenters.DataFetchControl;
+import Controllers_Presenters.UIController;
 import Entities.Preferences;
 import Entities.Profile;
 
@@ -20,15 +21,12 @@ import static javax.imageio.ImageIO.read;
 public class MyProfileUI implements ActionListener {
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
+    static Preferences preferences = new Preferences(20, "male", 5, 2);
 
     JFrame f = new JFrame();
     //BoxLayout layout = new BoxLayout(f,BoxLayout.PAGE_AXIS);
     int id;
-
-
-
-
+    JButton back = new JButton("Back to Menu");
 
 
     public MyProfileUI(int id){
@@ -53,15 +51,22 @@ public class MyProfileUI implements ActionListener {
         f.add(age);
         f.add(bio);
         f.add(toEditProfile);
+        f.add(back);
 
         f.pack();
 
         f.setLayout(new FlowLayout());
         f.setVisible(true);
 
-
-
-
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(f); // set size to full screen
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new UIController(id).launchMainUI();
+            }
+        });
     }
     @Override
     public void actionPerformed(ActionEvent e){
@@ -72,7 +77,5 @@ public class MyProfileUI implements ActionListener {
         f.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new MyProfileUI(2);
-    }
+    public static void main(String[] args) {new MyProfileUI(2);}
 }
