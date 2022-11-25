@@ -12,9 +12,8 @@ public class ProfileActionsManager {
         this.myId = myId;
     }
 
-    public List<String> ListOfConnections(){
-        ConnectProfilesControl c = new ConnectProfilesControl(myId);
-        return c.passPreferences();
+    public List<Integer> ListOfConnections(){
+        return ConnectProfilesControl.gatherConnections(myId);
     }
 
     public void addLikeToProfile(String email){

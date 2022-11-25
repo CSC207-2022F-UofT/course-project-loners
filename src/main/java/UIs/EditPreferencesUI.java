@@ -6,6 +6,7 @@ location range of other users.
 package UIs;
 
 import Controllers_Presenters.EditPreferencesControl;
+import Controllers_Presenters.UIController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,8 @@ public class EditPreferencesUI {
         frame.setLayout(new GridBagLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
-        frame.setSize(670, 280);
+//        frame.setSize(670, 280);
+        UIController.makeFrameFullSize(frame); // set size to full screen
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
         frame.setVisible(true);
 
@@ -49,9 +51,10 @@ public class EditPreferencesUI {
 
     /**
      * Add components to the UI, including a JLabel for instructions, three JLabels and three JTextFields corresponding
-     * to the three preference inputs, a JButton for performing actions on the input collected, and a JLabel for presenting
-     * a success message. Add event listeners to the text fields and button to respond to the input when typed and
-     * button when clicked. Pass the preference inputs EditPreferencesControl.
+     * to the three preference inputs, a JButton for performing actions on the input collected, a JLabel for presenting
+     * a success message, and a JButton for returning to the main page. Add event listeners to the text fields and
+     * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs
+     * EditPreferencesControl.
      */
     public void addComponents() {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
@@ -88,14 +91,14 @@ public class EditPreferencesUI {
             });
         }
 
-        // add a label containing a success message that appears when a button is clicked
+        // add a label containing a success message that appears when a "Change Preferences" button is clicked
         JLabel successMessage = new JLabel("Preferences successfully updated");
         constraints.gridx = 1;
         constraints.gridy = 4;
         frame.add(successMessage, constraints);
         successMessage.setVisible(false);
 
-        // add the button that listens for and responds to a click
+        // add the "Change Preferences" button that listens for and responds to a click
         JButton button = new JButton("Change Preferences");
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.addActionListener(new ActionListener() {
@@ -106,13 +109,22 @@ public class EditPreferencesUI {
 
                 // present a success message
                 successMessage.setVisible(true);
-
-                /// direct user back to MyProfileUI
-
             }
         });
         constraints.gridx = 0;
         frame.add(button, constraints);
+
+        // add a back button that listens for and responds to a click
+        JButton back = new JButton("Back to Main Page");
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { // button click
+                frame.setVisible(false); // "close" the screen
+                new UIController(id).launchMainUI(); // direct user back to MainUI
+            }
+        });
+        constraints.gridy = 5;
+        frame.add(back, constraints);
     }
 
     public void setVisible(boolean b) {
