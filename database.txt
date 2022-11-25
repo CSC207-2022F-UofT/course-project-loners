@@ -3,3 +3,4 @@
 2, Taka, taka@mail, 123, 20, bio, male, straight, null, soccer: music, socialMedia, null, 20, male, null
 3, Name, email2, password, age, bio, gender, orientation, location, hobbies, socialMedia, likes, preferredAge, preferredGender, preferredLocation, -1
 4, Kelly, kelly@mail, 123, 12, null, male, null, 43.670437: -79.401003, null, null, null, null, null, null, null
+5, Amelia, amelia@mail, 456, 20, hi, male, straight, 43.670437: -79.401003, blah: blah, social, null, 20, male, 12.0
