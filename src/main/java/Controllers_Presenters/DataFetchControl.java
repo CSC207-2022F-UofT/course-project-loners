@@ -14,7 +14,20 @@ import java.util.List;
 import java.util.Objects;
 
 public class DataFetchControl {
+    /*
+    * DataFetchControl class fetch data from our database, "database.txt" according to how the user wants
+    *
+    */
     public Object[] fetch_fromid(int id){
+        /**
+        * This method fetch data based on the given id.
+        * The data will be returned in a form of an Array containing 1, profile_data in Array form and
+        * 2, image associated to the profile
+        * If there was an error, nothing will be returned
+         @param id : int some id of a user
+         @return Array object that contains information of the profile and image associated to this id.
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -38,9 +51,14 @@ public class DataFetchControl {
     }
 
     public static int fetch_id_fromEmail(String email){
-        // use email to find id belongs to that email
-        // return -1 if file is empty
-        // return -10 if it has error
+        /**
+        * use email to find id associated with that email
+        * return -1 if file is empty
+        * return -10 if it has error
+         @param email
+         @return the id associated to email.
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -62,6 +80,13 @@ public class DataFetchControl {
     }
 
     public int fetch_lastID(){
+        /**
+        * This method fetches the last id stored in the database.
+        * If there was an error, -10 will be returned.
+         @param
+         @return the last id in the database
+         @throws IOException
+         */
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
             String line = reader.readLine();
@@ -82,6 +107,13 @@ public class DataFetchControl {
     }
 
     public ArrayList<String> fetch_emails(){
+        /**
+        * This method fetches all the emails stored in the database.
+        * If there was an error, an empty ArrayList will be returned.
+         @param
+         @return ArrayList that contains all the emails in the database.
+         @throws IOException
+         */
         ArrayList<String> emails = new ArrayList<String>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
@@ -105,7 +137,13 @@ public class DataFetchControl {
     }
 
     public static String fetch_password(String email){
-        // This method assumes the email exists in our database.
+        /**
+        * This method fetches the password from the database that is associated with email
+        * If there was an error, nothing will be returned.
+         @param email
+         @return String representation of the password associated to email
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -126,9 +164,14 @@ public class DataFetchControl {
         }
     }
     public static double[] fetch_address_from_id(int input_id){
-        // use id to find location
-        // return -1.9 if file is empty
-        // return -10 if it has error
+        /**
+        * This method uses id to find location
+        * return -1.9 if file is empty
+        * return -10 if it was error
+         @param input_id
+         @return Array of doubles representing the address associated to input_id
+         @throws IOException
+         */
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();

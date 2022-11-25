@@ -18,6 +18,9 @@ import java.util.Base64;
 import static javax.imageio.ImageIO.read;
 
 public class MyProfileUI implements ActionListener {
+    /*
+     * This is a class that implements MyProfileUI
+     */
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
     static Preferences preferences = new Preferences(20, "male", 5, 2);
@@ -43,7 +46,10 @@ public class MyProfileUI implements ActionListener {
         f.add(greeting);
         try {
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", Integer.toString(id))));
-            JLabel label = new JLabel("", new ImageIcon(image), 0);
+            ImageIcon imageIcon = new ImageIcon(image); // load the image to a imageIcon
+            Image image_1 = imageIcon.getImage(); // transform it
+            Image new_img = image_1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+            JLabel label = new JLabel("", new ImageIcon(new_img), 0);
             f.add(label);
         } catch (IOException e){
             System.out.println(e);

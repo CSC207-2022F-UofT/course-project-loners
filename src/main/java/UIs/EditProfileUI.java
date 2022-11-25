@@ -17,6 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EditProfileUI implements ActionListener {
+    /*
+     * This is a class that implements the EditProfileUI.
+     */
     JFrame f= new JFrame();
     GridLayout experimentLayout = new GridLayout(4,2,10, 20);
     String[] genders = {"male", "female", "other"};
@@ -96,6 +99,14 @@ public class EditProfileUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        /**
+         * Override the method in ActionListener interface
+         * This method sends the data to database
+         * This actionPerformed will be triggered when the "Update!" button is pressed.
+         @param ActionEvent
+         @return nothing
+         @throws IOException
+         */
         EditProfileControl control = new EditProfileControl();
         HashMap<String, Object> info = new HashMap<>();
         try{
