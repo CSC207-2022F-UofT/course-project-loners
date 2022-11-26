@@ -1,8 +1,6 @@
 package Controllers_Presenters;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Respond to the button press and directs the user to the corresponding pages(RegUI/LogUI)
@@ -16,22 +14,16 @@ public class WelcomeControl {
      * @param WelFrame the frame of WelcomeUI
      */
     public WelcomeControl(JButton button_reg, JButton button_log, JFrame WelFrame){
-        button_log.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button_log) {
-                    WelFrame.setVisible(false);
-                    new UIController().launchLogUI();
-                }}
-        });
+        button_log.addActionListener(e -> {
+            if (e.getSource() == button_log) {
+                WelFrame.setVisible(false);
+                new UIController().launchLogUI();
+            }});
 
-        button_reg.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == button_reg) {
-                    WelFrame.setVisible(false);
-                    new UIController().launchRegUI();
-                }}
-        });
+        button_reg.addActionListener(e -> {
+            if (e.getSource() == button_reg) {
+                WelFrame.setVisible(false);
+                new UIController().launchRegUI();
+            }});
     }
 }
