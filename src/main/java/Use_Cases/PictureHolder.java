@@ -5,17 +5,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PicHolder implements ActionListener {
+
+/**
+ * Create a space for temporarily saving the picture that user uploaded.
+ */
+public class PictureHolder implements ActionListener {
     private JFrame f;
     private JButton b;
     public Image image;
-    public boolean saved;
+    public boolean saved; // true if the picture saved into the folder
 
-    public PicHolder(JFrame f, JButton b){
+    /**
+     * The constructor of PictureHolder
+     * @param f a frame
+     * @param b a button
+     */
+    public PictureHolder(JFrame f, JButton b){
         this.f = f;
         this.b = b;
         this.image = null;

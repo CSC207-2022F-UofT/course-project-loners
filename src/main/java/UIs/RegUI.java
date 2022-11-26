@@ -1,22 +1,17 @@
 package UIs;
-import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.RegControl;
 import Controllers_Presenters.UIController;
-import Use_Cases.PicHolder;
+import Use_Cases.PictureHolder;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public class RegUI {
     JFrame frame = new JFrame("Registration page");
-    JButton register = new JButton("Create account");
+    JButton reg_button = new JButton("Create account");
     JLabel emailLabel = new JLabel("Email: ");
     JTextField email = new JTextField();
     JLabel pwLabel = new JLabel("Password: ");
@@ -32,13 +27,19 @@ public class RegUI {
     JComboBox<String> gender = new JComboBox<String>(genderOption);
     JLabel picLabel = new JLabel("Upload an image as your icon: ");
     JButton pic = new JButton("Select image");
-    JButton back = new JButton("Back to previous page");
+    JButton back_button = new JButton("Back to previous page");
     JLabel socialLabel = new JLabel("Social media (Please select a social media platform then enter your user name or url in the following box): ");
     String[] platformOption = {"Instagram", "Snapchat", "Facebook", "Twitter"};
     JComboBox<String> platform = new JComboBox<String>(platformOption);
-    JTextField social = new JTextField();
+    JTextField platform_info = new JTextField();
 
+    /**
+     * The constructor of RegUI, which function as a "registration page" for this application,
+     * which allows user to enter their student email, password, age, gender, postal code and social media
+     * and upload a picture as the icon.
+     */
     public RegUI(){
+        // add components to the frame
         frame.add(emailLabel);
         frame.add(email);
         frame.add(pwLabel);
@@ -52,51 +53,34 @@ public class RegUI {
         frame.add(codeLabel);
         frame.add(code);
         frame.add(socialLabel);
-
         JPanel social_media = new JPanel();
         social_media.setLayout(new GridLayout(2,1));
         social_media.add(platform);
-        social_media.add(social);
+        social_media.add(platform_info);
         frame.add(social_media);
-
         frame.add(picLabel);
-        PicHolder loadFile = new PicHolder(frame, pic);
-        loadFile.setLoader();
+        PictureHolder loadFile = new PictureHolder(frame, pic);
+        loadFile.setLoader(); // add the load picture button into the frame
+        frame.add(back_button);
+        frame.add(reg_button);
 
-        frame.add(back);
-        frame.add(register);
-
+        // Set up the frame
         frame.setLayout(new GridLayout(9,2, 0,15));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
         UIController.makeFrameFullSize(frame); // set size to full screen
 
-        register.addActionListener(new ActionListener() {
+        // Set reaction to the buttons
+        reg_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Give notification if there is missing input(s)
-                if (email.getText().isEmpty() | pw.getText().isEmpty() | name.getText().isEmpty() |
-                        age.getText().isEmpty()| Objects.requireNonNull(gender.getSelectedItem()).toString().isEmpty() |
-                        code.getText().isEmpty() | social.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Warning: \nmissing input(s), please try again");
-                } else if(!loadFile.saved){
-                    JOptionPane.showMessageDialog(null, "Warning: \nyou did not select any image to upload, please try again");
-                }
-
-                try{
-                    int id = new DataFetchControl().fetch_lastID() + 1;
-                    File outputfile = new File(String.format("saved_images/%s.jpg", id));
-                    ImageIO.write((BufferedImage)loadFile.image, "jpg", outputfile);
-                } catch(IOException error){
-                    JOptionPane.showMessageDialog(null, "Something went wrong when uploading the image.");
-                }
-
-                String social_media = Objects.requireNonNull(platform.getSelectedItem()).toString() + ": " + social.getText();
-                new RegControl(social_media, email.getText(), pw.getText(), name.getText(), age.getText(), gender.getSelectedItem().toString(), code.getText(), frame);
+                String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
+                        email.getText(), pw.getText(), name.getText(), age.getText(),
+                        Objects.requireNonNull(gender.getSelectedItem()).toString(), code.getText()};
+                new RegControl(frame, reg_button, back_button, lst_inputs, loadFile);
             }
         });
-
-        back.addActionListener(new ActionListener() {
+        back_button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
