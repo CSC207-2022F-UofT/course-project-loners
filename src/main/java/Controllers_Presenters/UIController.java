@@ -33,9 +33,9 @@ public class UIController {
     public void launchMyProfileUI(){
         myProfileUI = new MyProfileUI(this.id);
     }
-    public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.show();}
+    public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.build_n_show();}
     public void launchLogUI() { logUI = new LogUI(); }
-    public void launchRegUI() { regUI = new RegUI(); regUI.show();}
+    public void launchRegUI() { regUI = new RegUI(); regUI.build_n_show();}
     public void launchMainUI() { mainUI = new MainUI(id, email); }
     public void launchEditPreferencesUI() {
         edpfUI = new EditPreferencesUI(id);
