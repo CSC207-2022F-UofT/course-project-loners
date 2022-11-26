@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class WelcomeUI {
     JFrame frame = new JFrame("Welcome page");
-    JButton button_reg = new JButton("Don't have an account? Sign up now!");
-    JButton button_log = new JButton("Login");
+    JButton button_reg = new JButton("Don't have an account? Create account");
+    JButton button_log = new JButton("Sign in");
     JLabel welcome_msg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
 
     /**

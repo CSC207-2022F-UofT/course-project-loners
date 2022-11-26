@@ -13,11 +13,13 @@ public class PicHolder implements ActionListener {
     private JFrame f;
     private JButton b;
     public Image image;
+    public boolean saved;
 
     public PicHolder(JFrame f, JButton b){
         this.f = f;
         this.b = b;
         this.image = null;
+        this.saved = false;
     }
 
     public void setLoader(){
@@ -32,11 +34,10 @@ public class PicHolder implements ActionListener {
         System.out.println(fd.getDirectory());
         String filename = fd.getFile();
         try{
-            BufferedImage image = ImageIO.read(new File(fd.getDirectory(), filename));
-            this.image = image;
+            this.image = ImageIO.read(new File(fd.getDirectory(), filename));
+            this.saved = true;
         } catch (IOException error){
-            System.out.println("Error!");
-            System.out.println(error);
+            System.out.println("error!");
         }
 
     }
