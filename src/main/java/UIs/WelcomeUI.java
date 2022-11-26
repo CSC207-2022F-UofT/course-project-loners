@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * function as the "welcome page" for this application
+ * A "welcome page" for this application.
  */
 public class WelcomeUI {
     JFrame frame = new JFrame("Welcome page");
@@ -16,7 +16,8 @@ public class WelcomeUI {
     JLabel welcome_msg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
 
     /**
-     * The constructor of WelcomeUI. It has buttons to let users choose whether they want to log in or sign up.
+     * The constructor of WelcomeUI. When this is called, a welcome page will show to the user.
+     * It has buttons to let users choose whether they want to log in or sign up.
      */
     public WelcomeUI(){
         // Add components to the frame

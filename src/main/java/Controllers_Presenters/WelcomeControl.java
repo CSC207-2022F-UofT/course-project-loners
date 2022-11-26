@@ -3,11 +3,12 @@ package Controllers_Presenters;
 import javax.swing.*;
 
 /**
- * Respond to the button press and directs the user to the corresponding pages(RegUI/LogUI)
+ * Respond to the button press.
  */
 public class WelcomeControl {
     /**
-     * The constructor of WelcomeControl
+     * The constructor of WelcomeControl.
+     * Respond to the button press and directs the user to the corresponding pages(RegUI/LogUI).
      *
      * @param button_reg a button from WelcomeUI, direct user to RegUI if clicked
      * @param button_log a button from WelcomeUI, direct user to LogUI if clicked
