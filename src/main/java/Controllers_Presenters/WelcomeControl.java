@@ -7,7 +7,7 @@ import javax.swing.*;
  */
 public class WelcomeControl {
     /**
-     * Respond to the button press and directs the user to the corresponding pages(RegUI/LogUI).
+     * Directs the user to the corresponding pages(RegUI/LogUI) based on button press.
      *
      * @param button_reg a button from WelcomeUI, direct user to RegUI if clicked
      * @param button_log a button from WelcomeUI, direct user to LogUI if clicked
