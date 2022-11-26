@@ -5,41 +5,51 @@ import Use_Cases.PictureHolder;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * A "registration page" for this application, which allows user to enter their student email, password,
+ * age, gender, postal code and social media, and also upload a picture as the icon.
+ */
 public class RegUI {
-    JFrame frame = new JFrame("Registration page");
-    JButton reg_button = new JButton("Create account");
-    JLabel emailLabel = new JLabel("Email: ");
-    JTextField email = new JTextField();
-    JLabel pwLabel = new JLabel("Password: ");
-    JTextField pw = new JTextField();
-    JLabel nameLabel = new JLabel("Name: ");
-    JTextField name = new JTextField();
-    JLabel ageLabel = new JLabel("Age: ");
-    JTextField age = new JTextField();
-    JLabel codeLabel = new JLabel("Postal code (with a white space e.g. M5S 1A4): ");
-    JTextField code = new JTextField();
-    String[] genderOption = {"male", "female", "other"};
-    JLabel genderLabel = new JLabel("Gender: ");
-    JComboBox<String> gender = new JComboBox<String>(genderOption);
-    JLabel picLabel = new JLabel("Upload an image as your icon: ");
-    JButton pic = new JButton("Select image");
-    JButton back_button = new JButton("Back to previous page");
-    JLabel socialLabel = new JLabel("Social media (Please select a social media platform then enter your user name or url in the following box): ");
-    String[] platformOption = {"Instagram", "Snapchat", "Facebook", "Twitter"};
-    JComboBox<String> platform = new JComboBox<String>(platformOption);
-    JTextField platform_info = new JTextField();
+    private final JFrame frame = new JFrame("Registration page");
+    private final JButton back_button = new JButton("Back to previous page");
+    private final JButton reg_button = new JButton("Create account");
+    private final JButton pic_button = new JButton("Select image");
+    private final PictureHolder holder = new PictureHolder(frame, pic_button);
+    private final JTextField email = new JTextField();
+    private final JTextField pw = new JTextField();
+    private final JTextField name = new JTextField();
+    private final JTextField age = new JTextField();
+    private final JTextField code = new JTextField();
+    private final String[] genderOption = {"male", "female", "other"};
+    private final JComboBox<String> gender = new JComboBox<>(genderOption);
+    private final String[] platformOption = {"Instagram", "Snapchat", "Facebook", "Twitter"};
+    private final JComboBox<String> platform = new JComboBox<>(platformOption);
+    private final JTextField platform_info = new JTextField();
+
+    public RegUI(){}
 
     /**
-     * The constructor of RegUI, which function as a "registration page" for this application,
-     * which allows user to enter their student email, password, age, gender, postal code and social media
-     * and upload a picture as the icon.
+     * Construct a registration page and show it to the user.
      */
-    public RegUI(){
-        // add components to the frame
+    public void build_n_show(){
+        // set up the frame
+        frame.setLayout(new GridLayout(9,2, 0,15));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(frame); // set size to full screen
+
+        // Claim the rest of components (labels)
+        JLabel emailLabel = new JLabel("Email: ");
+        JLabel pwLabel = new JLabel("Password: ");
+        JLabel nameLabel = new JLabel("Name: ");
+        JLabel ageLabel = new JLabel("Age: ");
+        JLabel codeLabel = new JLabel("Postal code (with a white space e.g. M5S 1A4): ");
+        JLabel genderLabel = new JLabel("Gender: ");
+        JLabel socialLabel = new JLabel("Social media (Please select a social media platform then enter your user name or url in the following box): ");
+        JLabel picLabel = new JLabel("Upload an image as your icon: ");
+
+        // add all components to frame
         frame.add(emailLabel);
         frame.add(email);
         frame.add(pwLabel);
@@ -53,43 +63,36 @@ public class RegUI {
         frame.add(codeLabel);
         frame.add(code);
         frame.add(socialLabel);
-        JPanel social_media = new JPanel();
+        JPanel social_media = new JPanel(); // Claim a panel for asking social media
         social_media.setLayout(new GridLayout(2,1));
         social_media.add(platform);
         social_media.add(platform_info);
-        frame.add(social_media);
+        frame.add(social_media); // Add the panel to frame
         frame.add(picLabel);
-        PictureHolder loadFile = new PictureHolder(frame, pic);
-        loadFile.setLoader(); // add the load picture button into the frame
+        holder.setLoader(); // add the upload picture button into the frame
         frame.add(back_button);
         frame.add(reg_button);
 
-        // Set up the frame
-        frame.setLayout(new GridLayout(9,2, 0,15));
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
-        UIController.makeFrameFullSize(frame); // set size to full screen
+        setButtonReact();
 
-        // Set reaction to the buttons
-        reg_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
-                        email.getText(), pw.getText(), name.getText(), age.getText(),
-                        Objects.requireNonNull(gender.getSelectedItem()).toString(), code.getText()};
-                new RegControl(frame, reg_button, back_button, lst_inputs, loadFile);
-            }
-        });
-        back_button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                new WelcomeUI();
-            }
-        });
+        frame.setVisible(true); // make frame visible for user
     }
 
-    public static void main(String[] args) {
-        new RegUI();
+    /**
+     * Set responds to different button press.
+     * If register button is clicked, grab all the user's inputs and pass them to RegControl.
+     * If back button is clicked, direct user back to the previous page(WelcomeUI).
+     */
+    private void setButtonReact(){
+        reg_button.addActionListener(e -> {
+            String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
+                    email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
+                            gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
+            new RegControl(frame, lst_inputs, holder); // pass the inputs to the controller
+        });
+        back_button.addActionListener(e -> {
+            frame.setVisible(false);
+            new UIController().launchWelcomeUI();
+        });
     }
 }
