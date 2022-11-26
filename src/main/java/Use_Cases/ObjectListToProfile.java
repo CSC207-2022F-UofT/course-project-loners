@@ -1,5 +1,6 @@
 package Use_Cases;
 
+import Controllers_Presenters.DataFetchControl;
 import Entities.Profile;
 
 import java.awt.image.BufferedImage;
@@ -39,6 +40,7 @@ public class ObjectListToProfile {
         if (og.contains("null")){
             return null;
         }
+
         String[] ogNewArray = og.split(": ");
         double first = Double.parseDouble(ogNewArray[0]);
         double second = Double.parseDouble(ogNewArray[1]);
@@ -61,5 +63,4 @@ public class ObjectListToProfile {
     public static void main(String[] args){
         doubleStringToArray("43.1245123: 12.12342623");
     }
-
 }
