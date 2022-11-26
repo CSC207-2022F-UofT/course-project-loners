@@ -60,7 +60,7 @@ public class MainUI {
     }
 
     public static void main(String[] args) {
-        new MainUI(2, "taka@mail");
+        new MainUI(2, "email2");
     }
 }
 
