@@ -38,15 +38,15 @@ public class ProfileFinderUI implements ActionListener{
     List<Integer> allOtherProfiles;
     int curr;
 
-    String email;
+    String id;
 
-    public ProfileFinderUI(int curr, String email){
+    public ProfileFinderUI(int curr, String id){
         this.curr = curr;
-        this.email = email;
-        myProfile = getProfileWithEmail(email);
+        this.id = id;
+        myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
         DataFetchControl d = new DataFetchControl();
-        allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
+        allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
             System.out.println("no more profiles!");
         } else {
@@ -98,13 +98,13 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
 
-    public ProfileFinderUI(String email){
-        this.email = email;
+    public ProfileFinderUI(String id){
+        this.id = id;
         curr = 0;
-        myProfile = getProfileWithEmail(email);
+        myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
         DataFetchControl d = new DataFetchControl();
-        allOtherProfiles = ConnectProfilesControl.gatherConnections(d.fetch_id_fromEmail(email));
+        allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
             System.out.println("nothing new here...");
         } else {
@@ -156,12 +156,6 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
 
-    public Object[] getProfileWithEmail(String email){
-        DataFetchControl d = new DataFetchControl();
-        int myid = d.fetch_id_fromEmail(email);
-        return d.fetch_fromid(myid);
-    }
-
     public Object[] getProfileWithId(int id){
         DataFetchControl d = new DataFetchControl();
         return d.fetch_fromid(id);
@@ -173,14 +167,14 @@ public class ProfileFinderUI implements ActionListener{
             if (newLikes.contains("likes") || newLikes.contains("null")){
                 newLikes = "";
             }
-            newLikes = newLikes + otherProfile[2] +": ";
+            newLikes = newLikes + otherProfile[0] +": ";
             myProfile[11] = newLikes;
             int myId = Integer.parseInt((String)myProfile[0]);
             DataSendControl c = new DataSendControl();
             Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
             c.send_toid(myId, myProfileClone);
 
-            if (((String) myProfile[11]).contains((String) otherProfile[2]) && ((String)otherProfile[11]).contains((String)myProfile[2])){
+            if (((String) myProfile[11]).contains((String) otherProfile[0]) && ((String)otherProfile[11]).contains((String)myProfile[0])){
                 JFrame matchFrame = new JFrame();
                 matchFrame.setSize(500, 300);
                 GridLayout matchLayout = new GridLayout(2, 1, 0,0);
@@ -196,15 +190,15 @@ public class ProfileFinderUI implements ActionListener{
 
             frame.setVisible(false);
             curr++;
-            new ProfileFinderUI(curr, email);
+            new ProfileFinderUI(curr, id);
         } else if (e.getSource() == passButton) {
             frame.setVisible(false);
             curr++;
-            new ProfileFinderUI(curr, email);
+            new ProfileFinderUI(curr, id);
         }
     }
     public static void main (String[] args){
-        new ProfileFinderUI("email3");
+        new ProfileFinderUI("2");
     }
 
 }
