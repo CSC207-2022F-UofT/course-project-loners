@@ -36,8 +36,6 @@ public class WelcomeUI {
 
         new WelcomeControl(button_reg, button_log, frame); // Call a controller to set button reactions
 
-        frame.setVisible(true); //make frame visible for user
+        frame.setVisible(true); // make frame visible for user
     }
-
-    public static void main(String[] args) { WelcomeUI ui = new WelcomeUI(); ui.build_n_show();}
 }
