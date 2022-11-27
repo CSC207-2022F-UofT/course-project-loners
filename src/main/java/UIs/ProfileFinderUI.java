@@ -5,12 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import Controllers_Presenters.*;
 
+/**
+ * The ProfileFinderUI adds a window where the user can like or pass on other users.
+ */
 public class ProfileFinderUI implements ActionListener{
     // This class will show a profile on the screen based on the matching algorithm
     JFrame frame = new JFrame();
@@ -40,15 +42,22 @@ public class ProfileFinderUI implements ActionListener{
 
     String id;
 
+    /**
+     * Opens a new window displaying the profile to like or pass on
+     * @param curr is the current id in terms of the otherprofiles list
+     * @param id is my id
+     */
     public ProfileFinderUI(int curr, String id){
         this.curr = curr;
         this.id = id;
         myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
-        DataFetchControl d = new DataFetchControl();
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
             System.out.println("no more profiles!");
+        } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
+            this.curr++;
+            new ProfileFinderUI(this.curr, id);
         } else {
             otherProfile = getProfileWithId(allOtherProfiles.get(this.curr));
 
@@ -61,6 +70,7 @@ public class ProfileFinderUI implements ActionListener{
             gender = new JTextArea((String) otherProfile[6]);
             hobbies = new JTextArea((String) otherProfile[9]);
             image = new JLabel(new ImageIcon(theImage));
+            // Now we create the window
 
 
             frame.setSize(400, 800);
@@ -98,15 +108,21 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
 
+    /**
+     * Opens a new window for users to like or pass on
+     * @param id my profile's id
+     */
     public ProfileFinderUI(String id){
         this.id = id;
         curr = 0;
         myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
-        DataFetchControl d = new DataFetchControl();
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
             System.out.println("nothing new here...");
+        } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
+            this.curr++;
+            new ProfileFinderUI(this.curr, id);
         } else {
             otherProfile = getProfileWithId(allOtherProfiles.get(curr));
 
@@ -119,7 +135,7 @@ public class ProfileFinderUI implements ActionListener{
             gender = new JTextArea((String) otherProfile[6]);
             hobbies = new JTextArea((String) otherProfile[9]);
             image = new JLabel(new ImageIcon(theImage));
-
+            // Now we create the window
 
             frame.setSize(400, 800);
 
@@ -156,10 +172,19 @@ public class ProfileFinderUI implements ActionListener{
         }
     }
 
+    /**
+     * Cleaner way to find a profile with an id
+     * @param id the id that I want to find the other profile of
+     * @return the corresponding profile to the param id
+     */
     public Object[] getProfileWithId(int id){
-        DataFetchControl d = new DataFetchControl();
-        return d.fetch_fromid(id);
+        return DataFetchControl.fetch_fromid(id);
     }
+
+    /**
+     * Responds to button clicks
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
@@ -179,8 +204,8 @@ public class ProfileFinderUI implements ActionListener{
                 matchFrame.setSize(500, 300);
                 GridLayout matchLayout = new GridLayout(2, 1, 0,0);
                 matchFrame.setLayout(matchLayout);
-                JLabel statement = new JLabel("You got a match with " + (String)otherProfile[1] + "!");
-                JLabel social = new JLabel("Their social media is: " + (String)otherProfile[10]);
+                JLabel statement = new JLabel("You got a match with " + otherProfile[1] + "!");
+                JLabel social = new JLabel("Their social media is: " + otherProfile[10]);
                 matchFrame.add(statement);
                 matchFrame.add(social);
                 matchFrame.setLocationRelativeTo(null);
@@ -197,6 +222,11 @@ public class ProfileFinderUI implements ActionListener{
             new ProfileFinderUI(curr, id);
         }
     }
+
+    /**
+     * Main method to test this UI without registering the profile
+     * @param args arguments
+     */
     public static void main (String[] args){
         new ProfileFinderUI("2");
     }
