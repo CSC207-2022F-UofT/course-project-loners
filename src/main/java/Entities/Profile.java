@@ -2,12 +2,11 @@ package Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
-import Use_Cases.Swipe;
 
 /**
  * An entity to store the attributes of the user's profile, or information about the user
  */
-public class Profile implements Swipe{
+public class Profile{
     private String email;
     private String name;
     private String password;
@@ -104,15 +103,6 @@ public class Profile implements Swipe{
         this.age = age;
         this.gender = gender;
         this.location = location;
-    }
-
-    /**
-     * add an email to our list of likes
-     * @param email the email of the other user that is liked
-     */
-    @Override
-    public void addLike(String email){
-        likes.add(email);
     }
 
     /**
