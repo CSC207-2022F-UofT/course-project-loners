@@ -27,9 +27,9 @@ public class LoadFile implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // When the button is clicked, the image will be loaded from saved_images folder.
         FileDialog fd = new FileDialog(this.f, "Open", FileDialog.LOAD);
         fd.setVisible(true);
-        System.out.println(fd.getDirectory());
         String filename = fd.getFile();
         try{
             BufferedImage image = ImageIO.read(new File(fd.getDirectory(), filename));

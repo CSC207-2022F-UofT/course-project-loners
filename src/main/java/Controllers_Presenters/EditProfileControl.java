@@ -37,10 +37,12 @@ public class EditProfileControl{
          */
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
+        // If there is no data in info, we will do nothing and return false
         if (info.keySet().size() == 0){
             System.out.println("No change is made");
             return false;
         }
+        // If the data is modified to some extent, we use authenticator to check is the user modified the data properly
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
                 if(authenticator.is_valid_name((String) values[k])){
@@ -112,6 +114,7 @@ public class EditProfileControl{
             dataSend.send_toid(2, str_data.split(", "));
             return true;
         }else{
+            // If the there was a problem regarding editing the profile, the data will not be sent to database.txt
             return false;
         }
 

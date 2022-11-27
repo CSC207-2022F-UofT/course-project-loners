@@ -24,24 +24,26 @@ public class DataSendControl {
             this.status = false;
         } else if (last_id == -1) { // if the file is empty
             try {
+                // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("0, "+ ProfileConvertStr(profile));
                 myWriter.close();
                 this.status = true;
             } catch (IOException e) {
-                System.out.println("An error occurred.");
+                // If the FileWriter fails to write to database.txt, IOException will be raised.
                 e.printStackTrace();
                 this.status = false;
             }
-        } else {
+        } else { // if the file is not empty
             try {
+                // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
                 myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
                 myWriter.close();
                 this.status = true;
             } catch (IOException e) {
-                System.out.println("An error occurred.");
+                // If the FileWriter fails to write to database.txt, IOException will be raised.
                 e.printStackTrace();
                 this.status = false;
             }
@@ -88,11 +90,13 @@ public class DataSendControl {
          @throws IOException
          */
         try{
+            // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
+            // StringBuffer stores the updated data and will be inserted the database.txt
             StringBuffer inputBuffer = new StringBuffer();
             String line = myReader.readLine();
-            System.out.println(line);
             int line_id = Integer.parseInt(line.split(", ")[0]);
+            // iterate through lines until the line of database.txt refers to the data we want to modify
             while (line_id != id){
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
@@ -120,6 +124,7 @@ public class DataSendControl {
             fileOut.close();
             return true;
         } catch (IOException e){
+            // If it fails to read or write to database.txt, this Exception will be raised.
             System.out.println("An error occurred.");
             e.printStackTrace();
             return false;
