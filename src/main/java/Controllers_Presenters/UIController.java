@@ -38,8 +38,7 @@ public class UIController {
     public void launchRegUI() { regUI = new RegUI(); }
     public void launchMainUI() { mainUI = new MainUI(id, email); }
     public void launchEditPreferencesUI() {
-        edpfUI = new EditPreferencesUI(id);
-        edpfUI.setVisible(true);
+        EditPreferencesUI.buildUI(id);
     }
 
     public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(email); }
