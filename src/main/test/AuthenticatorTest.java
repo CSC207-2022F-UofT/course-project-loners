@@ -1,0 +1,2 @@
+public class AuthenticatorTest {
+}
