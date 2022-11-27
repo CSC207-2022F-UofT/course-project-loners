@@ -6,6 +6,7 @@ import Use_Cases.ObjectListToProfile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class UIController {
     public MyProfileUI myProfileUI;
@@ -15,13 +16,14 @@ public class UIController {
     public MainUI mainUI;
     public EditPreferencesUI edpfUI;
     public ProfileFinderUI pffdUI;
-    int id;
+    static int id;
+    Object[] data;
     String email;
 
     public UIController(int id){
         this.id = id;
-        Object[] lst = DataFetchControl.fetch_fromid(id);
-        Profile p = ObjectListToProfile.returnObjListAsProfile(lst);
+        this.data = DataFetchControl.fetch_fromid(id);
+        Profile p = ObjectListToProfile.returnObjListAsProfile(this.data);
         this.email = p.getEmail();
     }
     public UIController() {}
@@ -43,6 +45,11 @@ public class UIController {
     }
 
     public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(email); }
+
+    public boolean checkifPreference(){
+        Object[] dat = (Object[]) this.data[0];
+        return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
+    }
 
 
     public static void makeFrameFullSize(JFrame frame){

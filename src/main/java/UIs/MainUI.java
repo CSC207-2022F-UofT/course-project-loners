@@ -60,8 +60,13 @@ public class MainUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == profile_finder) {
-                    frame.setVisible(false);
-                    new UIController(id).launchProfileFinderUI();
+                    UIController controller = new UIController(id);
+                    if (controller.checkifPreference()){
+                        JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
+                    } else{
+                        frame.setVisible(false);
+                        controller.launchProfileFinderUI();
+                    }
                 }}
         });
     }
