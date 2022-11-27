@@ -9,8 +9,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DataSendControl {
+    /*
+    * This class sends the given data to database accordingly to how the user wants to.
+     */
     public boolean status;
     public DataSendControl(Profile profile) {
+        /**
+         * A constructor for DataSendControl class.
+         @param profile
+         @throws IOException when it fails to load or write to the database
+         */
         int last_id = new DataFetchControl().fetch_lastID();
         if (last_id == -10) { // if last_id has error
             this.status = false;
@@ -74,9 +82,10 @@ public class DataSendControl {
 
     public boolean send_toid (int id, Object[] data){
         /**
-         @param
-         @return
-         @throws
+         @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
+         of the profile
+         @return boolean representing whether it has successfully modified the data in the database or not.
+         @throws IOException
          */
         try{
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -116,50 +125,13 @@ public class DataSendControl {
             return false;
         }
     }
-    /*
-    public boolean modifyLikesOfId(int id,  List likes){
-        try{
-            Object[] data = new DataFetchControl().fetch_fromid(id);
-            BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
-            StringBuffer inputBuffer = new StringBuffer();
-            String line = myReader.readLine();
-            System.out.println(line);
-            int line_id = Integer.parseInt(line.split(", ")[0]);
-            while (line_id != id){
-                inputBuffer.append(line);
-                inputBuffer.append('\n');
-                line = myReader.readLine();
-                line_id = Integer.parseInt(line.split(", ")[0]);
-            }
-            String hobbies = (String) data[8];
-            String likes = (String) data[10];
-            String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
-                    ", "+ data[6] + ", "+ data[7] +  ", "+ hobbies + ", "+ data[9] + ", "+ likes +
-                    ", "+ data[11] + ", "+ data[12] + ", "+data[13];
-
-
-            inputBuffer.append(modified_data);
-            inputBuffer.append('\n');
-            line = myReader.readLine();
-            while (!(line==null)){
-                inputBuffer.append(line);
-                inputBuffer.append('\n');
-                line = myReader.readLine();
-            }
-            myReader.close();
-            FileOutputStream fileOut = new FileOutputStream("database.txt");
-            fileOut.write(inputBuffer.toString().getBytes());
-            fileOut.close();
-            return true;
-        } catch (IOException e){
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-            return false;
-        }
-    }
-    */
 
     public String ProfileConvertStr(Profile profile) {
+        /**
+         * A helper method used in DataSendControl class.
+         @param profile A Profile object
+         @return String representation of the profile data.
+         */
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                     profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
                     profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";

@@ -11,6 +11,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class EditProfileControl{
+    /*
+    * EditProfileControl class
+    * This class manages editing the profile.
+     */
     public String name;
     public Set<Object> objects = new HashSet<>();
     public Authenticator authenticator = new Authenticator();
@@ -22,10 +26,15 @@ public class EditProfileControl{
     public DataSendControl dataSend = new DataSendControl();
     public DataFetchControl dataFetchControl = new DataFetchControl();
     public  EditProfileControl(){
-
     }
 
     public boolean edit(HashMap<String, Object> info){
+        /**
+         * This method edits changes the data of the profile based on the data; info
+         @param info represent the updated data of the user.
+         @return boolean value representing whether the user has successfully edited the profile or not.
+         @throws nothing
+         */
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
         if (info.keySet().size() == 0){
@@ -79,12 +88,15 @@ public class EditProfileControl{
     }
 
     public boolean send(HashMap<String, Object> info) {
-        /*String.format("User1: %s", this.name))*/
-        System.out.println("This part is successfully executed");
+        /**
+         * This method sends the given updated profile data to the database
+         @param info representing the updated data.
+         @return boolean value representing whether it has successfully sent the data to the database
+         @throws nothing
+         */
+
         if(this.edit(info)){
-            System.out.println("This part is successfully executed2");
-            System.out.println(dataFetchControl.fetch_fromid(2)[0]);
-            //System.out.println(profile.getHobbies());
+
             String likes;
             if (profile.getLikes() == null){
                 likes = null;
@@ -98,12 +110,8 @@ public class EditProfileControl{
                     profile.getSocialMedia()+", "+likes+", "+preferences.getPreferredAge()+", "+
                     preferences.getPreferredGender()+", "+preferences.getPreferredLocationRange();
             dataSend.send_toid(2, str_data.split(", "));
-
-            System.out.println("Successfully wrote to the file.");
-
             return true;
         }else{
-            System.out.println("Couldn't successfully edited");
             return false;
         }
 
