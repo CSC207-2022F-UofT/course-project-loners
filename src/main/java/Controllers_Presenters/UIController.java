@@ -16,6 +16,7 @@ public class UIController {
     public MainUI mainUI;
     public EditPreferencesUI edpfUI;
     public ProfileFinderUI pffdUI;
+    private EditProfileUI editProfileUI;
     static int id;
     Object[] data;
     String email;
@@ -33,15 +34,17 @@ public class UIController {
     }
 
     public void launchMyProfileUI(){
-        myProfileUI = new MyProfileUI(this.id);
+        myProfileUI = new MyProfileUI(id);
     }
     public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.build_n_show();}
     public void launchLogUI() { logUI = new LogUI(); }
     public void launchRegUI() { regUI = new RegUI(); regUI.build_n_show();}
     public void launchMainUI() { mainUI = new MainUI(id, email); }
     public void launchEditPreferencesUI() {
-        edpfUI = new EditPreferencesUI(id);
-        edpfUI.setVisible(true);
+        EditPreferencesUI.buildUI(id);
+    }
+    public void launchEditProfileUI(){
+        editProfileUI = new EditProfileUI(this.id);
     }
 
     public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(email); }
