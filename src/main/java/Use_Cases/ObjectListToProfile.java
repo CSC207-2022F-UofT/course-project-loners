@@ -1,15 +1,23 @@
 package Use_Cases;
 
-import Controllers_Presenters.DataFetchControl;
 import Entities.Profile;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+/**
+ * This method is to convert a profile of type Object[] to profile of type Profile
+ */
 public class ObjectListToProfile {
     //converts Object[] to Profile
 
+    /**
+     * Returns profile as a Profile entity
+     * @param objList The profile as an Object[]
+     * @return the profile as type Profile
+     */
     public static Profile returnObjListAsProfile(Object[] objList){
         //Precondition: we are assuming that our objList is of length 2 with the first item being the list we want to
         // turn into a profile. The second item is the image for the profile.
@@ -29,13 +37,16 @@ public class ObjectListToProfile {
         String mySocial = (String) data[10];
         List<String> myLikes = parseColonSeperatedString((String)data[11]);
 
-        Profile myProfile = new Profile(myName, myAge, myGender, myOrientation, myLocation,
+        return new Profile(myName, myAge, myGender, myOrientation, myLocation,
                 myImage, myBio, myHobbies, mySocial, myLikes, myEmail, myPass);
-
-        return myProfile;
 
     }
 
+    /**
+     * Converts a string of doubles to an array of doubles
+     * @param og a string of a double: double
+     * @return the double[] of these two numbers
+     */
     private static double[] doubleStringToArray(String og){
         if (og.contains("null")){
             return null;
@@ -48,19 +59,18 @@ public class ObjectListToProfile {
         return new double[]{first, second};
     }
 
+    /**
+     * Converts a string to a list of separate strings delimited by a colon
+     * @param og our string of doubles seperated by a colon
+     * @return a list of these two strings of doubles
+     */
     public static List<String> parseColonSeperatedString(String og){
         if (og.contains("null")){
             return null;
         }
-        List<String> myFinalList = new ArrayList<String>();
+        List<String> myFinalList = new ArrayList<>();
         String[] myOg = og.split(": ");
-        for (String s : myOg){
-            myFinalList.add(s);
-        }
+        Collections.addAll(myFinalList, myOg);
         return myFinalList;
-    }
-
-    public static void main(String[] args){
-        doubleStringToArray("43.1245123: 12.12342623");
     }
 }

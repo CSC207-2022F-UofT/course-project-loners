@@ -15,24 +15,14 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
-    private int id;
-    private JFrame frame;
-    private GridBagConstraints constraints;
-
-    /**
-     * Construct an EditPreferencesUI, initializing id to the ID of the user who is interacting with the UI.
-     *
-     * @param id ID of the user who is interacting with this EditPreferencesUI
-     */
-    public EditPreferencesUI(int id) {
-        this.id = id;
-    }
+    private static JFrame frame;
+    private static GridBagConstraints constraints;
 
     /**
      * Build the basic layout of the UI, including setting up the JFrame and adding initial constraints for the
      * components that will be added to the frame.
      */
-    public void buildBasicLayout() {
+    public static void buildBasicLayout() {
         frame = new JFrame("Preference Editor");
         frame.setLayout(new GridBagLayout());
 
@@ -53,10 +43,12 @@ public class EditPreferencesUI {
      * Add components to the UI, including a JLabel for instructions, three JLabels and three JTextFields corresponding
      * to the three preference inputs, a JButton for performing actions on the input collected, a JLabel for presenting
      * a success message, and a JButton for returning to the main page. Add event listeners to the text fields and
-     * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs
-     * EditPreferencesControl.
+     * buttons to respond to the input when typed and buttons when clicked. Pass the preference inputs to
+     * EditPreferencesControl with id.
+     *
+     * @param id ID of the user who is interacting with this EditPreferencesUI
      */
-    public void addComponents() {
+    public static void addComponents(int id) {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
                 "Preferred location range (in km): "};
         String[] preferenceLabels = {"preferred age", "preferred gender", "location range"};
@@ -127,20 +119,21 @@ public class EditPreferencesUI {
         frame.add(back, constraints);
     }
 
-    public void setVisible(boolean b) {
-        if (b){
-            this.buildBasicLayout();
-            this.addComponents();
-        }
-    }
-
-    public static void main(String[] args) { /// remove after testing, call methods from MyProfileUI
+    /**
+     * Build the user interface for the user with ID id, by calling the buildBasicLayout and addComponents methods.
+     *
+     * @param id ID of the user who is interacting with this EditPreferencesUI
+     */
+    public static void buildUI(int id) { // called by UIController
         SwingUtilities.invokeLater(new Runnable() { // invoke the methods from the event-dispatching thread
             public void run() {
-                EditPreferencesUI test = new EditPreferencesUI(3);
-                test.buildBasicLayout();
-                test.addComponents();
+                buildBasicLayout();
+                addComponents(id);
             }
         });
     }
+
+//    public static void main(String[] args) { /// for testing
+//        buildUI(3);
+//    }
 }
