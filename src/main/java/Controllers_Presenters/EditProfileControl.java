@@ -38,21 +38,21 @@ public class EditProfileControl{
         // If the data is modified to some extent, we use authenticator to check is the user modified the data properly
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
-                if(authenticator.is_valid_name((String) values[k])){
+                if(authenticator.isValidName((String) values[k])){
                     profile.setName((String) values[k]);
                 }else {
                     System.out.println("Invalid Name");
                     return false;
                 }
             } else if (keys[k] == "email") {
-                if(Authenticator.is_valid_email((String) values[k])){
+                if(authenticator.isValidEmail((String) values[k])){
                     profile.setEmail( (String) values[k]);
                 } else {
                     System.out.println("Invalid Email");
                     return false;
                 }
             } else if (keys[k] == "age") {
-                if(Authenticator.is_valid_age((int) values[k])){
+                if(authenticator.isValidAge((int) values[k])){
                     profile.setAge((int) values[k]);
                 } else {
                     return false;
@@ -62,13 +62,13 @@ public class EditProfileControl{
             } else if (keys[k] == "location") {
                 profile.setLocation((double[]) values[k]);
             } else if (keys[k] == "bio") {
-                if(authenticator.is_valid_bio((String) values[k])) {
+                if(authenticator.isValidBio((String) values[k])) {
                     profile.setBio((String) values[k]);
                 } else {
                     return false;
                 }
             } else if (keys[k] == "hobbies") {
-                if(authenticator.is_valid_hobbies((List<String>) values[k])){
+                if(authenticator.isValidHobbies((List<String>) values[k])){
                     profile.setHobbies((List<String>) values[k]);
                 } else {
                     return false;
