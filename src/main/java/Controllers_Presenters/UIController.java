@@ -47,7 +47,7 @@ public class UIController {
         editProfileUI = new EditProfileUI(this.id);
     }
 
-    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(email); }
+    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(0, Integer.toString(id)); }
 
     public boolean checkifPreference(){
         Object[] dat = (Object[]) this.data[0];

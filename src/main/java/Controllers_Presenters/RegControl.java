@@ -14,7 +14,7 @@ import java.io.IOException;
  * Dealing with inputs that collect from RegUI and giving appropriate feedback to user.
  */
 public class RegControl {
-    /** First verify inputs, save inputs to the databse and direct user to the login page(LogUI) if verification passed.
+    /** First verify inputs, save inputs to the database and direct user to the login page(LogUI) if verification passed.
      * Also pops any messages to user if needed.
      * @param regFrame the frame of RegUI
      * @param lst_inputs a list of inputs that user typed from the registration page. The list is ordered by:
