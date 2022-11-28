@@ -89,6 +89,7 @@ public class Profile{
 
     /**
      * Constructor for the profile class
+     * @param social the user's social media
      * @param email the user's email
      * @param password the user's password
      * @param name the user's name
@@ -96,13 +97,14 @@ public class Profile{
      * @param gender the user's gender, male, female, or other
      * @param location the user's location in coordinates
      */
-    public Profile(String email, String password, String name, int age, String gender, double[] location) {
+    public Profile(String social, String email, String password, String name, int age, String gender, double[] location) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.location = location;
+        this.socialMedia = social;
     }
 
     /**

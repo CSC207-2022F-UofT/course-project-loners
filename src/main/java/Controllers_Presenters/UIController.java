@@ -6,6 +6,7 @@ import Use_Cases.ObjectListToProfile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class UIController {
     public MyProfileUI myProfileUI;
@@ -16,13 +17,14 @@ public class UIController {
     public EditPreferencesUI edpfUI;
     public ProfileFinderUI pffdUI;
     private EditProfileUI editProfileUI;
-    int id;
+    static int id;
+    Object[] data;
     String email;
 
     public UIController(int id){
         this.id = id;
-        Object[] lst = DataFetchControl.fetch_fromid(id);
-        Profile p = ObjectListToProfile.returnObjListAsProfile(lst);
+        this.data = DataFetchControl.fetch_fromid(id);
+        Profile p = ObjectListToProfile.returnObjListAsProfile(this.data);
         this.email = p.getEmail();
     }
     public UIController() {}
@@ -34,9 +36,9 @@ public class UIController {
     public void launchMyProfileUI(){
         myProfileUI = new MyProfileUI(id);
     }
-    public void launchWelcomeUI() { welUI = new WelcomeUI(); }
+    public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.build_n_show();}
     public void launchLogUI() { logUI = new LogUI(); }
-    public void launchRegUI() { regUI = new RegUI(); }
+    public void launchRegUI() { regUI = new RegUI(); regUI.build_n_show();}
     public void launchMainUI() { mainUI = new MainUI(id, email); }
     public void launchEditPreferencesUI() {
         EditPreferencesUI.buildUI(id);
@@ -45,7 +47,12 @@ public class UIController {
         editProfileUI = new EditProfileUI(this.id);
     }
 
-    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(email); }
+    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(0, Integer.toString(id)); }
+
+    public boolean checkifPreference(){
+        Object[] dat = (Object[]) this.data[0];
+        return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
+    }
 
 
     public static void makeFrameFullSize(JFrame frame){
