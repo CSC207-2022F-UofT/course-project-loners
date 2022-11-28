@@ -2,8 +2,6 @@ package UIs;
 
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.UIController;
-import Entities.Profile;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +15,7 @@ public class MyProfileUI{
     /*
     * MyProfileUI class the user's own profile page.
      */
-    public static Profile profile = new Profile("Rick", 21, "male",
-            "straight", null, null, "This is Rick", null, null);
+
     JFrame f = new JFrame();
     int id;
     JButton back = new JButton("Back to Menu");
