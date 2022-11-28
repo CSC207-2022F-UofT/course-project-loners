@@ -156,9 +156,6 @@ public class DataSendControl {
     }
 
     public static void main(String[] args) {
-        double[] loc = {43.661516, -79.380558};
-        Profile profile = new Profile("kelly@mail", "123", "Kelly", 12, "female", loc);
-        System.out.println(profile.getLikes());
     }
 }
 
