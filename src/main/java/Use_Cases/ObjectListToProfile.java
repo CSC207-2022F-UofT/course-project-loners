@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This method is to convert a profile of type Object[] to profile of type Profile
+ * This class is to convert a profile of type Object[] to profile of type Profile
  */
 public class ObjectListToProfile {
     //converts Object[] to Profile
