@@ -22,7 +22,7 @@ public class RegChecker {
     }
 
     public void check_validate(String email, int age, String pos){
-        if (!(Authenticator.is_valid_email(email))){
+        if (!(Authenticator.isValidEmail(email))){
             this.pass = false;
             this.diagnose += "email is not valid, \n";
         }
@@ -30,7 +30,7 @@ public class RegChecker {
             this.pass = false;
             this.diagnose += "postal code is not valid, please enter it with a whitespace like the example provided,\n";
         }
-        if (!(Authenticator.is_valid_age(age))){
+        if (!(Authenticator.isValidAge(age))){
             this.pass = false;
             this.diagnose += "age is not valid, \n";
         }
