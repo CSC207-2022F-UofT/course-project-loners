@@ -17,7 +17,7 @@ public class MainUI {
     JButton profile_finder = new JButton("Click here to match new people!");
     public MainUI(int id, String email){
         // get user's name to show in the main page
-        Object[] user_data = DataFetchControl.fetch_fromid(id);
+        Object[] user_data = DataFetchControl.fetchFromId(id);
         Profile p = new ObjectListToProfile().returnObjListAsProfile(user_data) ;
         JLabel welcome_message = new JLabel("Welcome back, " + p.getName());
 

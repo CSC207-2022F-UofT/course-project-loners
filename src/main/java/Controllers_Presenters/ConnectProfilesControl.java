@@ -8,7 +8,7 @@ import java.util.List;
 public class ConnectProfilesControl {
 
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
-        Object[] userData = DataFetchControl.fetch_fromid(id);
+        Object[] userData = DataFetchControl.fetchFromId(id);
         userData = (Object[]) userData[0];
 
         // change the types of each preference

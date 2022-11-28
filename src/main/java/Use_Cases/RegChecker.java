@@ -37,7 +37,7 @@ public class RegChecker {
     }
 
     public void check_duplicate(String email){
-        if (new DataFetchControl().fetch_emails().contains(email)){
+        if (new DataFetchControl().fetchEmails().contains(email)){
             this.pass = false;
             this.diagnose += "email is existed, \n";
         }

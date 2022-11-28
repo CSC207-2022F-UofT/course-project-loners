@@ -18,7 +18,7 @@ public class DataFetchControl {
     * DataFetchControl class
     * The user can fetch data from the database in a way they want to.
      */
-    public static Object[] fetch_fromid(int id){
+    public static Object[] fetchFromId(int id){
         /**
          * This method fetch the profile data associated to id.
          @param id
@@ -28,18 +28,18 @@ public class DataFetchControl {
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
-            int line_id = Integer.parseInt(line.split(", ")[0]);
-            while(line_id != id){
+            int lineId = Integer.parseInt(line.split(", ")[0]);
+            while(lineId != id){
                 line = myReader.readLine();
-                line_id = Integer.parseInt(line.split(", ")[0]);
+                lineId = Integer.parseInt(line.split(", ")[0]);
             }
             List<String> profile_data = Arrays.asList(line.split(", "));
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", Integer.toString(id))));
 
             Object[] data = profile_data.toArray();
-            Object[] data_with_image = {data, image};
+            Object[] dataWithImage = {data, image};
 
-            return data_with_image;
+            return dataWithImage;
         } catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class DataFetchControl {
         }
     }
 
-    public static int fetch_id_fromEmail(String email){
+    public static int fetchIdFromEmail(String email){
         /**
          * This method uses email to find id associated to that email
          * return -1 if file is empty
@@ -61,13 +61,13 @@ public class DataFetchControl {
             String line = myReader.readLine();
             if (line == null){ return -1;} // if file is empty
             else{
-                String line_email = Arrays.asList(line.split(", ")).get(2);
-                while(!Objects.equals(line_email, email)) {
+                String lineEmail = Arrays.asList(line.split(", ")).get(2);
+                while(!Objects.equals(lineEmail, email)) {
                     line = myReader.readLine();
-                    line_email = Arrays.asList(line.split(", ")).get(2);
+                    lineEmail = Arrays.asList(line.split(", ")).get(2);
                 }
             }
-            List<String> line_data = Arrays.asList(line.split(", "));
+            List<String> lineData = Arrays.asList(line.split(", "));
             return Integer.parseInt(line.split(", ")[0]);
         } catch (IOException e){
             System.out.println("An error occurred.");
@@ -76,7 +76,7 @@ public class DataFetchControl {
         }
     }
 
-    public int fetch_lastID(){
+    public int fetchLastId(){
         /**
          * This method fetches the last id in the database.
          @param nothing
@@ -92,8 +92,8 @@ public class DataFetchControl {
                 while(line != null){
                     last = line;
                     line = reader.readLine();}
-                List<String> last_lst = Arrays.asList(last.split(", "));
-                return Integer.parseInt(last_lst.get(0));
+                List<String> lastLst = Arrays.asList(last.split(", "));
+                return Integer.parseInt(lastLst.get(0));
             }
         } catch (IOException e){
             System.out.println("An error occurred.");
@@ -102,7 +102,7 @@ public class DataFetchControl {
         }
     }
 
-    public ArrayList<String> fetch_emails(){
+    public ArrayList<String> fetchEmails(){
         /**
          *
          @param nothing
@@ -118,8 +118,8 @@ public class DataFetchControl {
                 String tmp = "";
                 while(line != null) {
                     tmp = line;
-                    List<String> lst_line = Arrays.asList(tmp.split(", "));
-                    emails.add(lst_line.get(2));
+                    List<String> lstLine = Arrays.asList(tmp.split(", "));
+                    emails.add(lstLine.get(2));
                     line = reader.readLine();
                 }
                 return emails;
@@ -131,48 +131,48 @@ public class DataFetchControl {
         }
     }
 
-    public static String fetch_password(String email){
+    public static String fetchPassword(String email){
         // This method assumes the email exists in our database.
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
-            String[] whole_line = line.split(", ");
-            String line_email = whole_line[2];
-            String line_password = whole_line[3];
-            while(!Objects.equals(line_email, email)){
+            String[] wholeLine = line.split(", ");
+            String lineEmail = wholeLine[2];
+            String linePassword = wholeLine[3];
+            while(!Objects.equals(lineEmail, email)){
                 line = myReader.readLine();
-                whole_line = line.split(", ");
-                line_email = whole_line[2];
-                line_password = whole_line[3];
+                wholeLine = line.split(", ");
+                lineEmail = wholeLine[2];
+                linePassword = wholeLine[3];
             }
-            return line_password;
+            return linePassword;
         } catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
             return null;
         }
     }
-    public static double[] fetch_address_from_id(int input_id){
+    public static double[] fetchAddressFromId(int inputId){
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
-            String[] whole_line = line.split(", ");
-            String id = whole_line[0];
-            String address = whole_line[8];
-            String input_id_str = "" + input_id;
-            while (!Objects.equals(id, input_id_str) ) {
+            String[] wholeLine = line.split(", ");
+            String id = wholeLine[0];
+            String address = wholeLine[8];
+            String inputIdStr = "" + inputId;
+            while (!Objects.equals(id, inputIdStr) ) {
                 line = myReader.readLine();
-                whole_line = line.split(", ");
-                id = whole_line[0];
-                address = whole_line[8];
+                wholeLine = line.split(", ");
+                id = wholeLine[0];
+                address = wholeLine[8];
             }
             if(address.matches(".*\\d.*") && address.contains(":")){
-                String location_str[] = address.split(":");
-                double latitude = Double.parseDouble(location_str[0]);
-                double longitude = Double.parseDouble(location_str[1]);
+                String locationStr[] = address.split(":");
+                double latitude = Double.parseDouble(locationStr[0]);
+                double longitude = Double.parseDouble(locationStr[1]);
                 double[] location = {latitude, longitude};
                 return location;
             }
@@ -187,9 +187,8 @@ public class DataFetchControl {
         }
     }
 
-
     public static void main(String[] args){
-        double[] data1 = new DataFetchControl(). fetch_address_from_id(1);
+        double[] data1 = new DataFetchControl().fetchAddressFromId(1);
         // Testing the method fetch_password
         // String test = DataFetchControl.fetch_password("email");
         // System.out.println(test);

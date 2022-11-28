@@ -19,7 +19,7 @@ public class DataSendControl {
          @param profile
          @throws IOException when it fails to load or write to the database
          */
-        int last_id = new DataFetchControl().fetch_lastID();
+        int last_id = new DataFetchControl().fetchLastId();
         if (last_id == -10) { // if last_id has error
             this.status = false;
         } else if (last_id == -1) { // if the file is empty
@@ -51,7 +51,7 @@ public class DataSendControl {
     }
 
     public DataSendControl(Profile profile, Preferences preferences) {
-        int last_id = new DataFetchControl().fetch_lastID();
+        int last_id = new DataFetchControl().fetchLastId();
         if (last_id == -10) { // if last_id has error
             this.status = false;
         } else if (last_id == -1) { // if the file is empty

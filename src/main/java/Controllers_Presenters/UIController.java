@@ -21,14 +21,14 @@ public class UIController {
 
     public UIController(int id){
         this.id = id;
-        Object[] lst = DataFetchControl.fetch_fromid(id);
+        Object[] lst = DataFetchControl.fetchFromId(id);
         Profile p = ObjectListToProfile.returnObjListAsProfile(lst);
         this.email = p.getEmail();
     }
     public UIController() {}
     public UIController(String email) {
         this.email = email;
-        this.id = DataFetchControl.fetch_id_fromEmail(email);
+        this.id = DataFetchControl.fetchIdFromEmail(email);
     }
 
     public void launchMyProfileUI(){

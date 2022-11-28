@@ -69,7 +69,7 @@ public class RegUI {
                 }
 
                 try{
-                    int id = new DataFetchControl().fetch_lastID() + 1;
+                    int id = new DataFetchControl().fetchLastId() + 1;
                     File outputfile = new File(String.format("saved_images/%s.jpg", id));
                     ImageIO.write((BufferedImage)loadFile.image, "jpg", outputfile);
                 } catch(IOException error){

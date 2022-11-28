@@ -46,7 +46,7 @@ public class EditProfileUI implements ActionListener {
         * GridLayout is used for this UI.
          */
         this.id = id;
-        Object[] data = ((Object[])dataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
+        Object[] data = ((Object[])dataFetchControl.fetchFromId(id)[0]); // Data of the user fetched from the database
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
         JButton file_load = new JButton("Upload Profile Image");
