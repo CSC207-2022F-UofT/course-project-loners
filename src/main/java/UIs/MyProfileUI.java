@@ -34,6 +34,11 @@ public class MyProfileUI{
         JLabel bio = new JLabel(String.format("Your bio: \n %s", ((Object[]) profile_data[0])[5]));
         JButton toEditProfile = new JButton("Edit this Profile");
         JLabel socialMedia = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[10]));
+        JLabel preference = new JLabel("Your preferences are; (age, gender, location)");
+        JLabel preferredAge = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[11]));
+        JLabel preferredGender = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[12]));
+        JLabel preferredLocation = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[13]));
+
 
         f.setLayout(new GridLayout(5,1));
         f.add(greeting);
@@ -46,12 +51,16 @@ public class MyProfileUI{
             JLabel label = new JLabel("", new ImageIcon(new_img), SwingConstants.CENTER);
             f.add(label);
         } catch (IOException e){
-
+            return;
         }
         f.setSize(400,600);
         f.add(age);
         f.add(bio);
         f.add(socialMedia);
+        f.add(preference);
+        f.add(preferredAge);
+        f.add(preferredGender);
+        f.add(preferredLocation);
         f.add(toEditProfile);
         f.add(back);
 
@@ -61,6 +70,7 @@ public class MyProfileUI{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
         //The user will be redirected to EditProfileUI when toEditProfile button is clicked
         toEditProfile.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);

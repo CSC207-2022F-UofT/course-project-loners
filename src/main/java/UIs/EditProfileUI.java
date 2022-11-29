@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class EditProfileUI implements ActionListener {
     /*
@@ -25,7 +24,6 @@ public class EditProfileUI implements ActionListener {
     JFrame f= new JFrame();
     String[] genders = {"male", "female", "other"}; // Options for gender field
     String[] orientations = {"straight", "gay", "bisexual", "other"}; // Options for orientation field
-    DataFetchControl dataFetchControl = new DataFetchControl(); // DataFetchControl instance that fetches the user info
     // The following fields are used to take user input
     JTextField nameField;
     JTextField emailField;
@@ -37,6 +35,7 @@ public class EditProfileUI implements ActionListener {
     JTextField hobbiesField;
     JTextField socialMediaField;
     LoadFile loadFile;
+    Object[] data;
     int id;
 
     public EditProfileUI(int id){
@@ -46,7 +45,7 @@ public class EditProfileUI implements ActionListener {
         * GridLayout is used for this UI.
          */
         this.id = id;
-        Object[] data = ((Object[])dataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
+        this.data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
         JButton file_load = new JButton("Upload Profile Image");
@@ -56,9 +55,9 @@ public class EditProfileUI implements ActionListener {
         JLabel email_label = new JLabel("email: ");
         this.bioField = new JTextField(String.format("%s", data[5]), 100);
         JLabel bio_label = new JLabel("bio: ");
-        this.genderField = new JComboBox<String>(genders);
+        this.genderField = new JComboBox<>(genders);
         JLabel gender_label = new JLabel("gender: ");
-        this.orientationField = new JComboBox<String>(orientations);
+        this.orientationField = new JComboBox<>(orientations);
         JLabel orientation_label = new JLabel("orientation: ");
         this.locationField = new JTextField("location", 100);
         JLabel location_label = new JLabel("location: ");
@@ -97,14 +96,14 @@ public class EditProfileUI implements ActionListener {
         f.add(image_label);
         // Fetch image associated to the user from saved_images folder. The size will be set to 120 by 120
         try {
-            BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", Integer.toString(2))));
+            BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", this.id)));
             ImageIcon imageIcon = new ImageIcon(image); // load the image to a imageIcon
             Image image_1 = imageIcon.getImage(); // transform it
             Image new_img = image_1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
-            JLabel label = new JLabel("", new ImageIcon(new_img), 0);
+            JLabel label = new JLabel("", new ImageIcon(new_img), SwingConstants.CENTER);
             f.add(label);
         } catch (IOException e){
-            System.out.println(e);
+            return;
         }
 
         loadFile.setLoader();
@@ -113,7 +112,7 @@ public class EditProfileUI implements ActionListener {
         b.addActionListener(this);
     }
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         /*
         * When the "Update!" button is clicked, this action will be performed.
         * The instance of EditProfileController will receive the revised data, and the user will be redirected to
@@ -126,7 +125,7 @@ public class EditProfileUI implements ActionListener {
                 File outputfile = new File(String.format("saved_images/%s.jpg", 2));
                 ImageIO.write((BufferedImage)loadFile.image, "jpg", outputfile);
             } catch(IOException error){
-                System.out.println(error);
+                return;
             }
         }
         info.put("name", nameField.getText());
@@ -138,6 +137,10 @@ public class EditProfileUI implements ActionListener {
         info.put("location", LocationConverter.codeToCoords(locationField.getText()));
         info.put("hobbies", Arrays.asList(hobbiesField.getText().split(" ")));
         info.put("socialMedia", socialMediaField.getText());
+        info.put("likes",this.data[10]);
+        info.put("preferredAge", this.data[11]);
+        info.put("preferredGender", this.data[12]);
+        info.put("preferredLocation", this.data[13]);
 
         control.send(info);
         new UIController(this.id).launchMyProfileUI();
