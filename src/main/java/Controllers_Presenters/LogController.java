@@ -15,11 +15,11 @@ public class LogController{
     public Authenticator authenticator = new Authenticator();
 
     public LogController(String email, String password, JFrame logframe) {
-        if (!Authenticator.email_exists(email)){
+        if (!Authenticator.emailExists(email)){
             JOptionPane.showMessageDialog(null,
                     "Email is not registered. Head to the Register page to join us!");
         } else{
-            if (Authenticator.email_match_password(email, password)){
+            if (Authenticator.emailMatchPassword(email, password)){
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 logframe.setVisible(false);
                 new UIController(email).launchMainUI();
@@ -29,8 +29,8 @@ public class LogController{
         }
     }
 
-    public String get_email(String email, String password){
-        if (Authenticator.email_match_password(email, password)){
+    public String getEmail(String email, String password){
+        if (Authenticator.emailMatchPassword(email, password)){
             return email;
         } return null;
     }
