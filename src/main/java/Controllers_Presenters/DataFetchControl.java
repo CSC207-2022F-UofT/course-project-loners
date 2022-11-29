@@ -1,7 +1,5 @@
 package Controllers_Presenters;
 
-import Entities.Profile;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
