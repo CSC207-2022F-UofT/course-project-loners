@@ -1,6 +1,7 @@
 package UIs;
 
 import Controllers_Presenters.DataFetchControl;
+import Controllers_Presenters.UIController;
 import Entities.Preferences;
 import Entities.Profile;
 
@@ -17,62 +18,76 @@ import java.util.Base64;
 
 import static javax.imageio.ImageIO.read;
 
-public class MyProfileUI implements ActionListener {
+public class MyProfileUI{
+    /*
+    * MyProfileUI class the user's own profile page.
+     */
     public static Profile profile = new Profile("Rick", 21, "male",
             "straight", null, null, "This is Rick", null, null);
-    static Preferences preferences = new Preferences(20, "male",null, 5, 2);
-
+    static Preferences preferences = new Preferences(20, "male", 5, 2);
     JFrame f = new JFrame();
-    //BoxLayout layout = new BoxLayout(f,BoxLayout.PAGE_AXIS);
     int id;
-
-
-
-
+    JButton back = new JButton("Back to Menu");
 
 
     public MyProfileUI(int id){
+        /*
+        * Constructor for MyProfileUI.
+        * The UI of the user associated to the given id will be presented.
+         */
         this.id = id;
+        // Define components that will be presented in this profile page
         DataFetchControl data_manager = new DataFetchControl();
         Object[] profile_data = data_manager.fetch_fromid(id);
         JLabel greeting = new JLabel(String.format("Hi, %s! Welcome to your profile page!", ((Object[]) profile_data[0])[1]));
         JLabel age = new JLabel(String.format("Your age: %s", ((Object[]) profile_data[0])[4]));
         JLabel bio = new JLabel(String.format("Your bio: \n %s", ((Object[]) profile_data[0])[5]));
         JButton toEditProfile = new JButton("Edit this Profile");
-        f.setLayout(new FlowLayout());
+        JLabel socialMedia = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[10]));
+
+        f.setLayout(new GridLayout(5,1));
         f.add(greeting);
+        // Load the profile image of the user.
         try {
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", Integer.toString(id))));
-            JLabel label = new JLabel("", new ImageIcon(image), 0);
+            ImageIcon imageIcon = new ImageIcon(image); // load the image to a imageIcon
+            Image image_1 = imageIcon.getImage(); // transform it
+            Image new_img = image_1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+            JLabel label = new JLabel("", new ImageIcon(new_img), 0);
             f.add(label);
         } catch (IOException e){
             System.out.println(e);
         }
-
-        toEditProfile.addActionListener(this);
+        f.setSize(400,600);
         f.add(age);
         f.add(bio);
+        f.add(socialMedia);
         f.add(toEditProfile);
+        f.add(back);
 
         f.pack();
-
-        f.setLayout(new FlowLayout());
         f.setVisible(true);
 
-
-
-
-    }
-    @Override
-    public void actionPerformed(ActionEvent e){
-        new EditProfileUI();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        //The user will be redirected to EditProfileUI when toEditProfile button is clicked
+        toEditProfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new UIController(id).launchEditProfileUI();
+            }
+        });
+        //The user will be redirected to MainUI when the back button is clicked
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                new UIController(id).launchMainUI();
+            }
+        });
     }
 
     public void setVisible(boolean b) {
         f.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new MyProfileUI(2);
     }
 }
