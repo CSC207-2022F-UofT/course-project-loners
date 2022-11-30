@@ -2,7 +2,6 @@ package Use_Cases;
 
 import Controllers_Presenters.DataFetchControl;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,65 +9,68 @@ import java.util.Objects;
 
 public class Authenticator{
 
+    /**
+     * This method checks the user input to the email field. The input has to have the '@' symbol
+     * and have a length shorter than 20 letters. If the above two conditions are satisfied, the
+     * method returns true. Otherwise, it returns false.
+     * @param email user input to the email field.
+     * @return true if input is a valid email, false otherwise.
+     */
     public static boolean isValidEmail(String email){
         if(email.indexOf('@') == -1){
             return false;
         } else return email.length() <= 20;
     }
 
+    /**
+     * This method checks the user input to the username field. The input is considered valid if the
+     * length below 20 characters.
+     * @param name user input to the username field
+     * @return true if input is a valid username, false otherwise.
+     */
     public boolean isValidName(String name){
         return name.length() <= 20;
     }
 
+    /**
+     * This method checks the user input to the age field. The input is considered valid if
+     * the entered age is between 1 and 149 (inclusive).
+     * @param age integer value inputted by user
+     * @return true if input is a valid age, false otherwise.
+     */
     public static boolean isValidAge(int age){
         return age >= 0 && age <= 150;
     }
 
-    public boolean isValidGender(String gender){
-        // Maybe we don't need to validate gender if you can choose from several options
-        if (Objects.equals(gender, "Female")){
-            return true;
-        } else if (Objects.equals(gender, "Male")) {
-            return true;
-        } else return Objects.equals(gender, "Other");
-    }
-
-    public boolean isValidOrientation(String orientation){
-        // Maybe we don't need to validate orientation if you can choose from several options
-        if (Objects.equals(orientation, "Straight")){
-            return true;
-        } else if (Objects.equals(orientation, "Gay")) {
-            return true;
-        } else return Objects.equals(orientation, "Bi");
-    }
+    /**
+     * This method checks whether the inputted postal code is valid. A valid postal code has to contain 6 letters in the
+     * format CNC NCN, where C is a letter and N is a digit. There also has to be a space that separates the third and
+     * fourth characters. The first position does not make use of the letters W or Z. None of the letters can involve
+     * D, F, I, O, Q or U. The above criteria is sourced from
+     * <a href="https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page">...</a>
+     * @param postalCode user input to postal code field
+     * @return true if postal code is valid, false otherwise.
+     */
     public static boolean isValidAddress(String postalCode){
-        // Canadian address consist of 6 letters with a format CNC NCN, where C is a letter and N is a digit.
-        // There is a space separates the third and fourth characters
-        // it does not include the letters D, F, I, O, Q or U.
-        // Also, the first position does not make use of the letters W or Z.
-        // referenced https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
         return postalCode.matches("^[A-Z]\\d[A-Z]\\d\\s?[A-Z]\\d$");
     }
 
-    public boolean isValidLocation(double[] location){
-        // As coordinates of a location consist of angles, the validity depends on the right angle of each.
-        double latitude = location[0];
-        double longitude = location[1];
-        boolean status = latitude >= -90 && latitude <= 90;
-        if ((longitude >= -180 && longitude <= 180)){
-            status = true;
-        }
-        return status;
-    }
-
-    public boolean isValidImage(BufferedImage image){
-        return true;
-    }
-
+    /**
+     * This method checks whether the user's bio is valid. It is valid if the bio contains less than or equal to 400
+     * letters.
+     * @param bio user's bio in their profile
+     * @return true if bio is valid, false otherwise.
+     */
     public boolean isValidBio(String bio){
         return bio.length() <= 400;
     }
 
+    /**
+     * This method checks whether the user's hobbies are valid. The length of the list of hobbies is less than 100
+     * letters.
+     * @param hobbies a list of hobbies entered by user in their profile
+     * @return true if the list of hobbies is valid, false otherwise.
+     */
     public boolean isValidHobbies(List<String> hobbies){
         for (String hobby : hobbies) {
             if (hobby.length() > 100) {
@@ -78,11 +80,12 @@ public class Authenticator{
         return true;
     }
 
-    public boolean isValidSocialMedia(String socialMedia){
-        // Maybe we don't need to validate socialMedia if you can choose from several options
-        return true;
-    }
-
+    /**
+     * This method checks whether the email exists in our database. In other words, it checks whether the email has been
+     * registered in our system.
+     * @param inputEmail email we are examining.
+     * @return true if email exists in our database, false otherwise.
+     */
     public static boolean emailExists(String inputEmail){
         // Returns true if email exists; returns false otherwise
         DataFetchControl fetchObject = new DataFetchControl();
@@ -93,6 +96,16 @@ public class Authenticator{
         }return false;
     }
 
+    /**
+     * This method checks if the given email and password matches our records. If the email is not registered,
+     * i.e. does not exist in our database, the method returns false and prints a warning message.
+     * If the email has been registered, the method checks if the password matches the email.
+     * If it does, we return true. If it does not, we return false.
+     *
+     * @param email String representing email we want to verify
+     * @param password String representing password we want to check
+     * @return true if email matches password, false otherwise.
+     */
     public static boolean emailMatchPassword(String email, String password){
         // Check email exists in database
         if (emailExists(email)){
@@ -111,6 +124,10 @@ public class Authenticator{
         return false;
     }
 
+    /**
+     * Our main method. Currently used to test two methods: (1) emailMatchPassword() and (2) isValidEmail()
+     * @param args a list of Strings
+     */
     public static void main(String[] args) {
         new Authenticator();
         // Testing method email_match_password
