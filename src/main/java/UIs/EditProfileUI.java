@@ -3,7 +3,6 @@ package UIs;
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.EditProfileControl;
 import Controllers_Presenters.UIController;
-import Use_Cases.LoadFile;
 import Use_Cases.LocationConverter;
 
 import javax.imageio.ImageIO;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class EditProfileUI implements ActionListener {
+public class EditProfileUI{
     /*
      *EditProfileUI that enables users to edit their profile
      */
@@ -34,8 +33,8 @@ public class EditProfileUI implements ActionListener {
     JTextField locationField;
     JTextField hobbiesField;
     JTextField socialMediaField;
-    LoadFile loadFile;
     Object[] data;
+    EditProfileControl control = new EditProfileControl();
     int id;
 
     public EditProfileUI(int id){
@@ -69,7 +68,7 @@ public class EditProfileUI implements ActionListener {
         this.ageField = new JSpinner(model);
         JLabel age_label = new JLabel("age: ");
         JLabel image_label = new JLabel("Profile Image:");
-        LoadFile loadFile = new LoadFile(f, file_load, 2);
+        JButton backToMyProfile = new JButton("Back to MyProfile");
 
         // Add components to the JFrame
         f.setLayout(new GridLayout(6,4));
@@ -105,44 +104,56 @@ public class EditProfileUI implements ActionListener {
         } catch (IOException e){
             return;
         }
-
-        loadFile.setLoader();
+        f.add(file_load);
         f.add(b);
+        f.add(backToMyProfile);
         f.setVisible(true);
-        b.addActionListener(this);
-    }
-    @Override
-    public void actionPerformed(ActionEvent e){
-        /*
-        * When the "Update!" button is clicked, this action will be performed.
-        * The instance of EditProfileController will receive the revised data, and the user will be redirected to
-        * their profile page.
-         */
-        EditProfileControl control = new EditProfileControl();
-        HashMap<String, Object> info = new HashMap<>();
-        if (this.loadFile != null){
-            try{
-                File outputfile = new File(String.format("saved_images/%s.jpg", 2));
-                ImageIO.write((BufferedImage)loadFile.image, "jpg", outputfile);
-            } catch(IOException error){
-                return;
+        file_load.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                control.withHoldImage(f);
             }
-        }
-        info.put("name", nameField.getText());
-        info.put("email",emailField.getText());
-        info.put("age", ageField.getValue());
-        info.put("bio", bioField.getText());
-        info.put("gender", genderField.getSelectedItem());
-        info.put("orientation", orientationField.getSelectedItem());
-        info.put("location", LocationConverter.codeToCoords(locationField.getText()));
-        info.put("hobbies", Arrays.asList(hobbiesField.getText().split(" ")));
-        info.put("socialMedia", socialMediaField.getText());
-        info.put("likes",this.data[10]);
-        info.put("preferredAge", this.data[11]);
-        info.put("preferredGender", this.data[12]);
-        info.put("preferredLocation", this.data[13]);
+        });
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                /*
+                 * When the "Update!" button is clicked, this action will be performed.
+                 * The instance of EditProfileController will receive the revised data, and the user will be redirected to
+                 * their profile page.
+                 */
+                Object[] data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]);
+                HashMap<String, Object> info = new HashMap<>();
+                info.put("name", nameField.getText());
+                info.put("email",emailField.getText());
+                info.put("age", ageField.getValue());
+                info.put("bio", bioField.getText());
+                info.put("gender", genderField.getSelectedItem());
+                info.put("orientation", orientationField.getSelectedItem());
+                info.put("location", LocationConverter.codeToCoords(locationField.getText()));
+                info.put("hobbies", hobbiesField.getText());
+                info.put("socialMedia", socialMediaField.getText());
+                info.put("likes",data[10]);
+                info.put("preferredAge", data[11]);
+                info.put("preferredGender", data[12]);
+                info.put("preferredLocation", data[13]);
 
-        control.send(info);
-        new UIController(this.id).launchMyProfileUI();
+
+                if (control.send(info, id)){
+                    control.sendImage(id);
+                    new UIController(id).launchMyProfileUI();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Something went wrong.");
+                }
+            }
+        });
+        backToMyProfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Successfully edited your profile!",
+                        "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
+                new UIController(id).launchMyProfileUI();
+            }
+        });
     }
 }
