@@ -27,7 +27,7 @@ public class EditPreferencesControl {
     public EditPreferencesControl(HashMap<String, String> preferenceMap, int id) { // passed in by EditPreferencesUI
         this.preferredAge = Integer.parseInt(preferenceMap.get("preferred age"));
         this.preferredGender = preferenceMap.get("preferred gender");
-        this.preferredLocationRange = Double.parseDouble(preferenceMap.get("location range"));
+        this.preferredLocationRange = Double.parseDouble(preferenceMap.get("preferred location range"));
         this.id = id;
     }
 
