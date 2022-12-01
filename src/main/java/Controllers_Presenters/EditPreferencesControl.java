@@ -1,28 +1,26 @@
-/*
-A controller class that reformats the preferences inputted by the user for use by the EditPreferences class.
- */
-
 package Controllers_Presenters;
 
-import Use_Cases.LocationConverter;
 import Entities.Preferences;
 import Use_Cases.EditPreferences;
 
 import java.util.HashMap;
 
+/**
+ * A Controller class that reformats the preferences inputted by the user for use by the EditPreferences class.
+ */
 public class EditPreferencesControl {
-    private int preferredAge;
-    private String preferredGender;
-    private double preferredLocationRange;
-    private int id;
+    private final int preferredAge;
+    private final String preferredGender;
+    private final double preferredLocationRange;
+    private final int id;
 
     /**
-     * Construct an EditPreferencesControl, initializing preferredAge, preferredGender, and preferredLocationRange
-     * to the corresponding information of the appropriate type in the preferenceMap HashMap,
-     * and id to the ID of the user.
+     * Construct an EditPreferencesControl object, initializing to the appropriate type preferredAge, preferredGender,
+     * and preferredLocationRange, corresponding to the information in the HashMap preferenceMap, and initializing id
+     * to the ID of the user.
      *
-     * @param preferenceMap
-     * @param id
+     * @param preferenceMap a mapping of preference labels to their corresponding text input
+     * @param id ID of the user with this preferredAge, preferredGender, and preferredLocationRange
      */
     public EditPreferencesControl(HashMap<String, String> preferenceMap, int id) { // passed in by EditPreferencesUI
         this.preferredAge = Integer.parseInt(preferenceMap.get("preferred age"));
@@ -36,7 +34,6 @@ public class EditPreferencesControl {
      * EditPreferences.
      */
     public void passPreferences() {
-        // create and pass a new Preferences object to EditPreferences
         Preferences preferences = new Preferences(preferredAge, preferredGender, preferredLocationRange, id);
         EditPreferences editPreferences = new EditPreferences(preferences);
         editPreferences.writeData();

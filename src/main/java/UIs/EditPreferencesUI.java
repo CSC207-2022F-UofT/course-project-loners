@@ -1,8 +1,3 @@
-/*
-A user interface class for interacting with the display that allows for editing the preferred age, gender, and
-location range of other users.
- */
-
 package UIs;
 
 import Controllers_Presenters.UIController;
@@ -12,6 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 
+/**
+ * A User Interface class for interacting with the display that allows for editing the preferred age, gender, and
+ * location range of other users.
+ */
 public class EditPreferencesUI {
     private static JFrame frame;
     private static GridBagConstraints constraints;
@@ -41,7 +40,7 @@ public class EditPreferencesUI {
      * a JButton for returning to the main page. Add event listeners to the buttons to respond to button clicks. Pass
      * the preference inputs to EditPreferencesControl along with id.
      *
-     * @param id ID of the user who is interacting with this EditPreferencesUI
+     * @param id ID of the user who is interacting with the EditPreferencesUI
      */
     public static void addComponents(int id) {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",

@@ -1,7 +1,8 @@
 package Entities;
 
 /**
- * Class for the Preferences entity: what the user prefers to date
+ * An Entity class that stores the preferences of a user, which describe the type of people the user would like to date.
+ * Also the Input Data for EditPreferences and
  */
 public class Preferences {
     private final int preferredAge;
@@ -10,10 +11,11 @@ public class Preferences {
     private final int id;
 
     /**
-     * Constructor for the Preferences class
-     * @param preferredAge user's preferred age
-     * @param preferredGender user's preferred gender
-     * @param preferredLocationRange user's preferred location range
+     * Construct a Preferences object.
+     *
+     * @param preferredAge the user's preferred age
+     * @param preferredGender the user's preferred gender
+     * @param preferredLocationRange the user's preferred location range
      * @param id the user's id
      */
     public Preferences(int preferredAge, String preferredGender, double preferredLocationRange, int id) {
@@ -24,28 +26,36 @@ public class Preferences {
     }
 
     /**
-     * @return user's preferred age
+     * Get the user's preferred age.
+     *
+     * @return the user's preferred age
      */
     public int getPreferredAge() {
         return preferredAge;
     }
 
     /**
-     * @return user's preferred gender
+     * Get the user's preferred gender.
+     *
+     * @return the user's preferred gender
      */
     public String getPreferredGender() {
         return preferredGender;
     }
 
     /**
-     * @return user's preferred location range
+     * Get the user's preferred location range.
+     *
+     * @return the user's preferred location range
      */
     public double getPreferredLocationRange() {
         return preferredLocationRange;
     }
 
     /**
-     * @return the user's id
+     * Get the user's ID.
+     *
+     * @return the user's ID
      */
     public int getID() {
         return id;
