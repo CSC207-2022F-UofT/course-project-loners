@@ -10,8 +10,6 @@ import Controllers_Presenters.EditPreferencesControl;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class EditPreferencesUI {
@@ -79,21 +77,18 @@ public class EditPreferencesUI {
         // add the "Change Preferences" button that listens for and responds to a click
         JButton changePreferencesButton = new JButton("Change Preferences");
         changePreferencesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        changePreferencesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { // button click
-                for (String label : preferenceFieldMap.keySet()) {
-                    String preferenceText = preferenceFieldMap.get(label).getText(); // retrieve the inputted text
-                    preferenceTextMap.put(label, preferenceText);
-                }
-
-                // pass preferences label-text mapping to EditPreferencesControl
-                EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceTextMap, id);
-                editPreferencesControl.passPreferences();
-
-                // present a success message
-                successMessage.setVisible(true);
+        changePreferencesButton.addActionListener(e -> { // for a button click
+            for (String label : preferenceFieldMap.keySet()) {
+                String preferenceText = preferenceFieldMap.get(label).getText(); // retrieve the inputted text
+                preferenceTextMap.put(label, preferenceText);
             }
+
+            // pass preferences label-text mapping to EditPreferencesControl
+            EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceTextMap, id);
+            editPreferencesControl.passPreferences();
+
+            // present a success message
+            successMessage.setVisible(true);
         });
         constraints.gridx = 0; // and constraints.gridy = 3
         frame.add(changePreferencesButton, constraints);
@@ -101,12 +96,9 @@ public class EditPreferencesUI {
         // add a back button that listens for and responds to a click
         JButton backButton = new JButton("Back to Main Page");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { // button click
-                frame.setVisible(false); // "close" the screen
-                new UIController(id).launchMainUI(); // direct user back to MainUI
-            }
+        backButton.addActionListener(e -> { // button click
+            frame.setVisible(false); // "close" the screen
+            new UIController(id).launchMainUI(); // direct user back to MainUI
         });
         constraints.gridy = 4; // and constraints.gridx = 0;
         frame.add(backButton, constraints);
@@ -118,11 +110,9 @@ public class EditPreferencesUI {
      * @param id ID of the user who is interacting with the EditPreferencesUI
      */
     public static void buildUI(int id) { // called by UIController
-        SwingUtilities.invokeLater(new Runnable() { // invoke the methods from the event-dispatching thread
-            public void run() {
-                buildBasicLayout();
-                addComponents(id);
-            }
+        SwingUtilities.invokeLater(() -> { // invoke the methods from the event-dispatching thread
+            buildBasicLayout();
+            addComponents(id);
         });
     }
 
