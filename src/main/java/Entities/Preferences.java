@@ -2,7 +2,7 @@ package Entities;
 
 /**
  * An Entity class that stores the preferences of a user, which describe the type of people the user would like to date.
- * Also the Input Data for EditPreferences and
+ * Also the Input Data for EditPreferences and ConnectProfiles.
  */
 public class Preferences {
     private final int preferredAge;

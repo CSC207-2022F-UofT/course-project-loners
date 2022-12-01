@@ -7,12 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A Use Case class that reformats the preferences passed in from a Preferences object, and compares these against the
+ * age, gender, and location of other users to gather a list of users with whom the user might match with.
+ */
 public class ConnectProfiles {
-    private String prefAge;
-    private String prefGender;
-    private double preferredLocationRange;
-    private int id;
+    private final String prefAge;
+    private final String prefGender;
+    private final double preferredLocationRange;
+    private final int id;
 
+    /**
+     * Construct an ConnectProfiles object, initializing prefAge and prefGender as Strings, preferredLocationRange as
+     * a double, and id as an int, corresponding to the information in the Preferences object preferences.
+     *
+     * @param preferences the Input Data containing the preferred age, preferred gender, preferred location range, and
+     *                    ID of the user
+     */
     public ConnectProfiles(Preferences preferences) {
         this.prefAge = String.valueOf(preferences.getPreferredAge());
         this.prefGender = preferences.getPreferredGender();
@@ -20,26 +31,42 @@ public class ConnectProfiles {
         this.id = preferences.getID();
     }
 
+    /**
+     * Gather an initial list of IDs within the user's preferred location range using PreferredLocationConnector's
+     * within_preferred_location method. Store in another list only the IDs from this initial list that correspond to
+     * users whose age and gender match the preferred age and gender of the user.
+     *
+     * @return a list of IDs corresponding to users whose age, gender, and location match the preferences of the user
+     */
     public List<Integer> compareTraits() {
         List<Integer> connectedIDs = new ArrayList<>();
-        ArrayList<Integer> idsWithinLocation = PreferredLocationConnector.within_preferred_location(id,
+        List<Integer> idsInLocationRange = PreferredLocationConnector.within_preferred_location(id,
                 preferredLocationRange);
 
-        for (int userID : idsWithinLocation) {
-            if (userID == id) {
-                continue;
+        try {
+            for (int userID : Objects.requireNonNull(idsInLocationRange)) {
+                if (userID == id) { // don't include the user's own ID in the connected profiles list
+                    continue;
+                }
+
+                // fetch the possible connected user's profile and preference data from the database
+                Object[] userData = DataFetchControl.fetch_fromid(userID);
+                userData = (Object[]) Objects.requireNonNull(userData)[0];
+                String userAge = (String) userData[4]; // other user's age
+                String userGender = (String) userData[6]; // other user's gender
+
+                // add the possible connected user's ID to the list of connected profiles if their age and gender match
+                // the user's preferred age and gender
+                if ((Objects.equals(userAge, prefAge)) && (Objects.equals(userGender, prefGender))) {
+                    connectedIDs.add(userID);
+                }
             }
 
-            Object[] userData = DataFetchControl.fetch_fromid(userID);
-            userData = (Object[]) userData[0];
-            String userAge = (String) userData[4];
-            String userGender = (String) userData[6];
+            return connectedIDs;
 
-            if ((Objects.equals(userAge, prefAge)) && (Objects.equals(userGender, prefGender))) {
-                connectedIDs.add(userID);
-            }
+        } catch (NullPointerException e) {
+            System.out.println("An error occurred.");
+            return null;
         }
-
-        return connectedIDs;
     }
 }

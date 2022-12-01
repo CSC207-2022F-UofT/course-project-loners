@@ -1,15 +1,16 @@
 package Use_Cases;
 import static java.lang.Math.*;
 import Controllers_Presenters.DataFetchControl;
+import java.util.List;
 import java.util.ArrayList;
 
 // how I derive this method - https://docs.google.com/document/d/18K6XwpYKONmStDr31H1RCc-zm5dfxP9T8k1lpqS7pco/edit?usp=sharing
 
 // Returns an arraylist of IDs that are within the range of the user's preferred loaction
 public class PreferredLocationConnector{
-    public static ArrayList within_preferred_location(int id, double locationRange) {
+    public static List<Integer> within_preferred_location(int id, double locationRange) {
         int last_id = new DataFetchControl().fetch_lastID(); // get the number of users stored in database
-        ArrayList<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
+        List<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
         double[] user_address = new DataFetchControl().fetch_address_from_id(id);
         double user_lat_rad = (toRadians(user_address[0]));
         double user_long_rad = (toRadians(user_address[1]));
@@ -41,7 +42,7 @@ public class PreferredLocationConnector{
     }
 
     public static void main(String[] args){
-        ArrayList<Integer> abc = new PreferredLocationConnector().within_preferred_location(2, 5.0);
+        List<Integer> abc = new PreferredLocationConnector().within_preferred_location(2, 5.0);
         System.out.println(abc);
     }
 }
