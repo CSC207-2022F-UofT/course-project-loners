@@ -25,8 +25,8 @@ public class ConnectProfilesControl {
     }
 
 //    public static void main(String[] args) { /// for testing
-//        List<String> testConnections = ConnectProfilesControl.gatherConnections(3);
-//        for (String testConnection : testConnections) {
+//        List<Integer> testConnections = ConnectProfilesControl.gatherConnections(3);
+//        for (int testConnection : testConnections) {
 //            System.out.println(testConnection);
 //        }
 //    }
