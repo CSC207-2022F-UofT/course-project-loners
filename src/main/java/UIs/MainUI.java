@@ -2,9 +2,6 @@ package UIs;
 
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.UIController;
-import Entities.Profile;
-import Use_Cases.ObjectListToProfile;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,9 +20,8 @@ public class MainUI {
      */
     public MainUI(int id, String email){
         // get user's name to show in the main page
-        Object[] user_data = DataFetchControl.fetch_fromid(id); // get user info based on id
-        Profile p = ObjectListToProfile.returnObjListAsProfile(user_data);
-        JLabel welcome_message = new JLabel("Welcome back, " + p.getName());
+        Object[] user_data = (Object[]) DataFetchControl.fetch_fromid(id)[0]; // get user info based on id
+        JLabel welcome_message = new JLabel("Welcome back, " + user_data[0]);
 
         // add components to the frame
         frame.setLayout(new GridLayout(4,1));
