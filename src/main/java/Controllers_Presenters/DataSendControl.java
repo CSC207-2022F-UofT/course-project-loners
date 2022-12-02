@@ -48,10 +48,12 @@ public class DataSendControl implements DataSendAccess {
     }
 
     public DataSendControl() {}
+
     /**
      @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      of the profile
      */
+    @Override
     public void send_toid(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
@@ -98,6 +100,7 @@ public class DataSendControl implements DataSendAccess {
      @param profile A Profile object
      @return String representation of the profile data.
      */
+    @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                     profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
