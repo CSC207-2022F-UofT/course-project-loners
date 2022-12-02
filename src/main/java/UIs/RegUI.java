@@ -20,7 +20,8 @@ public class RegUI {
     private final JTextField email = new JTextField();
     private final JTextField pw = new JTextField();
     private final JTextField name = new JTextField();
-    private final JTextField age = new JTextField();
+    private final SpinnerModel age_range = new SpinnerNumberModel(18,1,100, 1);
+    private final JSpinner age = new JSpinner(age_range);
     private final JTextField code = new JTextField();
     private final String[] genderOption = {"male", "female", "other"};
     private final JComboBox<String> gender = new JComboBox<>(genderOption);
@@ -86,7 +87,7 @@ public class RegUI {
     private void setButtonReact(){
         reg_button.addActionListener(e -> {
             String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
-                    email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
+                    email.getText(), pw.getText(), name.getText(), age.getValue().toString(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
             new RegControl(frame, lst_inputs, holder); // pass the inputs to the controller
         });
