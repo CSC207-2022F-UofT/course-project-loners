@@ -109,70 +109,6 @@ public class ProfileFinderUI implements ActionListener{
     }
 
     /**
-     * Opens a new window for users to like or pass on
-     * @param id my profile's id
-     */
-    public ProfileFinderUI(String id){
-        this.id = id;
-        curr = 0;
-        myProfile = getProfileWithId(Integer.parseInt(id));
-        myProfile = (Object[]) myProfile[0];
-        allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
-        if (curr >= allOtherProfiles.size()){
-            System.out.println("nothing new here...");
-        } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
-            this.curr++;
-            new ProfileFinderUI(this.curr, id);
-        } else {
-            otherProfile = getProfileWithId(allOtherProfiles.get(curr));
-
-            BufferedImage theImage = (BufferedImage) otherProfile[1];
-            otherProfile = (Object[]) otherProfile[0];
-
-            name = new JTextArea((String) otherProfile[1]);
-            age = new JTextArea((String) otherProfile[4]);
-            bio = new JTextArea((String) otherProfile[5]);
-            gender = new JTextArea((String) otherProfile[6]);
-            hobbies = new JTextArea((String) otherProfile[9]);
-            image = new JLabel(new ImageIcon(theImage));
-            // Now we create the window
-
-            frame.setSize(400, 800);
-
-            layout.setRows(7);
-            layout.setColumns(2);
-
-            frame.setLayout(layout);
-
-            likeButton.addActionListener(this);
-            passButton.addActionListener(this);
-
-            frame.add(nameLabel);
-            frame.add(name);
-            name.setEditable(false);
-            frame.add(imageLabel);
-            frame.add(image);
-            frame.add(genderLabel);
-            frame.add(gender);
-            gender.setEditable(false);
-            frame.add(ageLabel);
-            frame.add(age);
-            age.setEditable(false);
-            frame.add(hobbiesLabel);
-            frame.add(hobbies);
-            hobbies.setEditable(false);
-            frame.add(bioLabel);
-            frame.add(bio);
-            bio.setEditable(false);
-            frame.add(likeButton);
-            frame.add(passButton);
-
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-        }
-    }
-
-    /**
      * Cleaner way to find a profile with an id
      * @param id the id that I want to find the other profile of
      * @return the corresponding profile to the param id
@@ -188,18 +124,11 @@ public class ProfileFinderUI implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
-            String newLikes = (String) myProfile[11];
-            if (newLikes.contains("likes") || newLikes.contains("null")){
-                newLikes = "";
-            }
-            newLikes = newLikes + otherProfile[0] +": ";
-            myProfile[11] = newLikes;
-            int myId = Integer.parseInt((String)myProfile[0]);
-            DataSendControl c = new DataSendControl();
-            Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
-            c.send_toid(myId, myProfileClone);
+            // Use the LikesController to modufy the likes on a profile
+            LikesController.modifyLikes((String) myProfile[11], Integer.parseInt((String) otherProfile[0]), myProfile);
 
-            if (((String) myProfile[11]).contains((String) otherProfile[0]) && ((String)otherProfile[11]).contains((String)myProfile[0])){
+            if (((String) myProfile[11]).contains((String) otherProfile[0]) &&
+                    ((String)otherProfile[11]).contains((String)myProfile[0])){
                 JFrame matchFrame = new JFrame();
                 matchFrame.setSize(500, 300);
                 GridLayout matchLayout = new GridLayout(2, 1, 0,0);
@@ -222,13 +151,4 @@ public class ProfileFinderUI implements ActionListener{
             new ProfileFinderUI(curr, id);
         }
     }
-
-    /**
-     * Main method to test this UI without registering the profile
-     * @param args arguments
-     */
-    public static void main (String[] args){
-        new ProfileFinderUI("2");
-    }
-
 }
