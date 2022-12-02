@@ -12,16 +12,23 @@ import java.util.List;
  * in the database.
  */
 public class EditPreferences {
+    /** The user's preferred age of other users, modified for database storage */
     private final String prefAge;
+
+    /** The user's preferred gender (male, female, or other) of other users */
     private final String prefGender;
+
+    /** The user's preferred location range, modified for database storage */
     private final String prefLocationRange;
+
+    /** The user's ID */
     private final int id;
 
     /**
      * Construct an EditPreferences object, initializing prefAge, prefGender, and prefLocationRange as Strings and id
      * as an int, corresponding to the information in the Preferences object preferences.
      *
-     * @param preferences the Input Data containing the preferred age, preferred gender, preferred location range, and
+     * @param preferences The Input Data containing the preferred age, preferred gender, preferred location range, and
      *                    ID of the user
      */
     public EditPreferences(Preferences preferences) { // passed in by EditPreferencesControl

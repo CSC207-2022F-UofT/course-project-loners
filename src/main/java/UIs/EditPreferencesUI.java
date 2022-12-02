@@ -12,7 +12,10 @@ import java.util.HashMap;
  * location range of other users.
  */
 public class EditPreferencesUI {
+    /** The window that contains the various components */
     private static JFrame frame;
+
+    /** The object that allows for specifying the placement of each component, as part of the GridBagLayout */
     private static GridBagConstraints constraints;
 
     /**

@@ -12,16 +12,23 @@ import java.util.Objects;
  * age, gender, and location of other users to gather a list of users with whom the user might match with.
  */
 public class ConnectProfiles {
+    /** The user's preferred age of other users, modified for comparison with database entries */
     private final String prefAge;
+
+    /** The user's preferred gender (male, female, or other) of other users */
     private final String prefGender;
+
+    /** The user's preferred location range */
     private final double preferredLocationRange;
+
+    /** The user's ID */
     private final int id;
 
     /**
      * Construct an ConnectProfiles object, initializing prefAge and prefGender as Strings, preferredLocationRange as
      * a double, and id as an int, corresponding to the information in the Preferences object preferences.
      *
-     * @param preferences the Input Data containing the preferred age, preferred gender, preferred location range, and
+     * @param preferences The Input Data containing the preferred age, preferred gender, preferred location range, and
      *                    ID of the user
      */
     public ConnectProfiles(Preferences preferences) {
@@ -36,7 +43,7 @@ public class ConnectProfiles {
      * within_preferred_location method. Store in another list only the IDs from this initial list that correspond to
      * users whose age and gender match the preferred age and gender of the user.
      *
-     * @return a list of IDs corresponding to users whose age, gender, and location match the preferences of the user,
+     * @return A list of IDs corresponding to users whose age, gender, and location match the preferences of the user,
      * which corresponds with the parameter type of ConnectProfilesOutputBoundary.passConnections
      */
     public List<Integer> compareTraits() {

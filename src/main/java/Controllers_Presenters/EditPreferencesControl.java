@@ -9,9 +9,16 @@ import java.util.HashMap;
  * A Controller class that reformats the preferences inputted by the user for use by the EditPreferences class.
  */
 public class EditPreferencesControl {
+    /** The user's preferred age of other users */
     private final int preferredAge;
+
+    /** The user's preferred gender (male, female, or other) of other users */
     private final String preferredGender;
+
+    /** The user's preferred location range */
     private final double preferredLocationRange;
+
+    /** The user's ID */
     private final int id;
 
     /**
@@ -19,7 +26,7 @@ public class EditPreferencesControl {
      * and preferredLocationRange, corresponding to the information in the HashMap preferenceMap, and initializing id
      * to the ID of the user.
      *
-     * @param preferenceMap a mapping of preference labels to their corresponding text input
+     * @param preferenceMap A mapping of preference labels to their corresponding text input
      * @param id ID of the user with this preferredAge, preferredGender, and preferredLocationRange
      */
     public EditPreferencesControl(HashMap<String, String> preferenceMap, int id) { // passed in by EditPreferencesUI

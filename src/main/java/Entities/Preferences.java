@@ -5,18 +5,25 @@ package Entities;
  * Also the Input Data for EditPreferences and ConnectProfiles.
  */
 public class Preferences {
+    /** The user's preferred age of other users */
     private final int preferredAge;
+
+    /** The user's preferred gender (male, female, or other) of other users */
     private final String preferredGender;
+
+    /** The user's preferred location range */
     private final double preferredLocationRange;
+
+    /** The user's ID */
     private final int id;
 
     /**
      * Construct a Preferences object.
      *
-     * @param preferredAge the user's preferred age
-     * @param preferredGender the user's preferred gender
-     * @param preferredLocationRange the user's preferred location range
-     * @param id the user's id
+     * @param preferredAge The user's preferred age
+     * @param preferredGender The user's preferred gender
+     * @param preferredLocationRange The user's preferred location range
+     * @param id The user's id
      */
     public Preferences(int preferredAge, String preferredGender, double preferredLocationRange, int id) {
         this.preferredAge = preferredAge;
@@ -28,7 +35,7 @@ public class Preferences {
     /**
      * Get the user's preferred age.
      *
-     * @return the user's preferred age
+     * @return The user's preferred age
      */
     public int getPreferredAge() {
         return preferredAge;
@@ -37,7 +44,7 @@ public class Preferences {
     /**
      * Get the user's preferred gender.
      *
-     * @return the user's preferred gender
+     * @return The user's preferred gender
      */
     public String getPreferredGender() {
         return preferredGender;
@@ -46,7 +53,7 @@ public class Preferences {
     /**
      * Get the user's preferred location range.
      *
-     * @return the user's preferred location range
+     * @return The user's preferred location range
      */
     public double getPreferredLocationRange() {
         return preferredLocationRange;
@@ -55,7 +62,7 @@ public class Preferences {
     /**
      * Get the user's ID.
      *
-     * @return the user's ID
+     * @return The user's ID
      */
     public int getID() {
         return id;

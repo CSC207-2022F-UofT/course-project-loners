@@ -13,8 +13,8 @@ public class ConnectProfilesPresenter implements ConnectProfilesOutputBoundary {
     /**
      * Pass the gathered connected profiles to be presented to the user for viewing.
      *
-     * @param connections the list of connected profiles gathered by ConnectProfiles
-     * @return the list of connected profiles
+     * @param connections The list of connected profiles gathered by ConnectProfiles
+     * @return The list of connected profiles
      */
     @Override
     public List<Integer> passConnections(List<Integer> connections) {

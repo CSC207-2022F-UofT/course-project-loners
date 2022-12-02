@@ -15,7 +15,7 @@ public class ConnectProfilesControl {
      * ConnectProfiles.
      *
      * @param id ID of the user
-     * @return a list of IDs corresponding to users whose age, gender, and location match the preferences of the user
+     * @return A list of IDs corresponding to users whose age, gender, and location match the preferences of the user
      */
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
         // fetch the user's profile and preference data from the database
