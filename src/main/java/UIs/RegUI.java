@@ -13,21 +13,21 @@ import java.util.Objects;
  */
 public class RegUI {
     private final JFrame frame = new JFrame("Registration page");
-    private final JButton back_button = new JButton("Back to previous page");
-    private final JButton reg_button = new JButton("Create account");
-    private final JButton pic_button = new JButton("Select image");
-    private final PictureHolder holder = new PictureHolder(frame, pic_button);
+    private final JButton backButton = new JButton("Back to previous page");
+    private final JButton regButton = new JButton("Create account");
+    private final JButton picButton = new JButton("Select image");
+    private final PictureHolder holder = new PictureHolder(frame, picButton);
     private final JTextField email = new JTextField();
     private final JTextField pw = new JTextField();
     private final JTextField name = new JTextField();
-    private final SpinnerModel age_range = new SpinnerNumberModel(18,1,100, 1);
-    private final JSpinner age = new JSpinner(age_range);
+    private final SpinnerModel ageRange = new SpinnerNumberModel(18,1,100, 1);
+    private final JSpinner age = new JSpinner(ageRange);
     private final JTextField code = new JTextField();
     private final String[] genderOption = {"male", "female", "other"};
     private final JComboBox<String> gender = new JComboBox<>(genderOption);
     private final String[] platformOption = {"Instagram", "Snapchat", "Facebook", "Twitter"};
     private final JComboBox<String> platform = new JComboBox<>(platformOption);
-    private final JTextField platform_info = new JTextField();
+    private final JTextField platformInfo = new JTextField();
 
     /**
      * Build a frame as the registration page, which have
@@ -66,15 +66,15 @@ public class RegUI {
         frame.add(codeLabel);
         frame.add(code);
         frame.add(socialLabel);
-        JPanel social_media = new JPanel(); // Claim a panel for asking social media
-        social_media.setLayout(new GridLayout(2,1));
-        social_media.add(platform);
-        social_media.add(platform_info);
-        frame.add(social_media); // Add the panel to frame
+        JPanel socialMedia = new JPanel(); // Claim a panel for asking social media
+        socialMedia.setLayout(new GridLayout(2,1));
+        socialMedia.add(platform);
+        socialMedia.add(platformInfo);
+        frame.add(socialMedia); // Add the panel to frame
         frame.add(picLabel);
         holder.setLoader(); // add the upload picture button into the frame
-        frame.add(back_button);
-        frame.add(reg_button);
+        frame.add(backButton);
+        frame.add(regButton);
     }
 
     /**
@@ -91,13 +91,13 @@ public class RegUI {
      * If back button is clicked, direct user back to the previous page(WelcomeUI).
      */
     private void setButtonReact(){
-        reg_button.addActionListener(e -> {
-            String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
+        regButton.addActionListener(e -> {
+            String[] lstInputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platformInfo.getText(),
                     email.getText(), pw.getText(), name.getText(), age.getValue().toString(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
-            new RegControl(frame, lst_inputs, holder); // pass the inputs to the controller
+            new RegControl(frame, lstInputs, holder); // pass the inputs to the controller
         });
-        back_button.addActionListener(e -> {
+        backButton.addActionListener(e -> {
             frame.setVisible(false);
             new UIController().launchWelcomeUI();
         });
