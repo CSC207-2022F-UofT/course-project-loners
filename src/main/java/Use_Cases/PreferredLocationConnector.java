@@ -36,11 +36,10 @@ public class PreferredLocationConnector{
                 }
             }
             System.out.println(ids);
-            return ids;
         } else {
             System.out.println("There is no other profile");
-            return null;
         }
+        return ids;
     }
 
     public static void main(String[] args){

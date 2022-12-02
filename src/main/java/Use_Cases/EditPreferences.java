@@ -6,7 +6,6 @@ import Controllers_Presenters.DataSendControl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A Use Case class that reformats the preferences passed in from a Preferences object, and stores this information
@@ -38,25 +37,20 @@ public class EditPreferences {
     public void writeData() {
         // fetch the user's current profile and preference data from the database
         Object[] userData = DataFetchControl.fetch_fromid(id);
-        try {
-            userData = (Object[]) Objects.requireNonNull(userData)[0];
+        userData = (Object[]) userData[0];
 
-            // remove id from the array (to be added back by DataSendControl.send_toid)
-            List<Object> tempUserData = new ArrayList<>(List.of(userData));
-            tempUserData.remove(0);
-            Object[] userDataNoID = tempUserData.toArray();
+        // remove id from the array (to be added back by DataSendControl.send_toid)
+        List<Object> tempUserData = new ArrayList<>(List.of(userData));
+        tempUserData.remove(0);
+        Object[] userDataNoID = tempUserData.toArray();
 
-            // add new preference data, or overwrite if they already exist
-            userDataNoID[11] = prefAge;
-            userDataNoID[12] = prefGender;
-            userDataNoID[13] = prefLocationRange;
+        // add new preference data, or overwrite if they already exist
+        userDataNoID[11] = prefAge;
+        userDataNoID[12] = prefGender;
+        userDataNoID[13] = prefLocationRange;
 
-            // send the user's profile and new preference data to the database
-            DataSendControl dataSendControl = new DataSendControl();
-            dataSendControl.send_toid(id, userDataNoID);
-
-        } catch (NullPointerException e) {
-            System.out.println("An error occurred.");
-        }
+        // send the user's profile and new preference data to the database
+        DataSendControl dataSendControl = new DataSendControl();
+        dataSendControl.send_toid(id, userDataNoID);
     }
 }

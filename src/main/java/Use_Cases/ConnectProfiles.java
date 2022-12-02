@@ -44,30 +44,24 @@ public class ConnectProfiles {
         List<Integer> idsInLocationRange = PreferredLocationConnector.withinPreferredLocation(id,
                 preferredLocationRange);
 
-        try {
-            for (int userID : Objects.requireNonNull(idsInLocationRange)) {
-                if (userID == id) { // don't include the user's own ID in the connected profiles list
-                    continue;
-                }
-
-                // fetch the possible connected user's profile and preference data from the database
-                Object[] userData = DataFetchControl.fetch_fromid(userID);
-                userData = (Object[]) Objects.requireNonNull(userData)[0];
-                String userAge = (String) userData[4]; // other user's age
-                String userGender = (String) userData[6]; // other user's gender
-
-                // add the possible connected user's ID to the list of connected profiles if their age and gender match
-                // the user's preferred age and gender
-                if ((Objects.equals(userAge, prefAge)) && (Objects.equals(userGender, prefGender))) {
-                    connectedIDs.add(userID);
-                }
+        for (int userID : idsInLocationRange) {
+            if (userID == id) { // don't include the user's own ID in the connected profiles list
+                continue;
             }
 
-            return connectedIDs;
+            // fetch the possible connected user's profile and preference data from the database
+            Object[] userData = DataFetchControl.fetch_fromid(userID);
+            userData = (Object[]) userData[0];
+            String userAge = (String) userData[4]; // other user's age
+            String userGender = (String) userData[6]; // other user's gender
 
-        } catch (NullPointerException e) {
-            System.out.println("An error occurred.");
-            return null;
+            // add the possible connected user's ID to the list of connected profiles if their age and gender match
+            // the user's preferred age and gender
+            if ((Objects.equals(userAge, prefAge)) && (Objects.equals(userGender, prefGender))) {
+                connectedIDs.add(userID);
+            }
         }
+
+        return connectedIDs;
     }
 }
