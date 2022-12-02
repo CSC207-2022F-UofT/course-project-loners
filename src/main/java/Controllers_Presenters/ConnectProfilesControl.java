@@ -32,8 +32,11 @@ public class ConnectProfilesControl {
             // create and pass a new Preferences object to ConnectProfiles
             Preferences preferences = new Preferences(preferredAge, preferredGender, preferredLocationRange, id);
             ConnectProfiles connectProfiles = new ConnectProfiles(preferences);
+            List<Integer> connections = connectProfiles.compareTraits();
 
-            return connectProfiles.compareTraits(); // for ProfileFinderUI
+            // call the method implemented in ConnectProfilesPresenter
+            ConnectProfilesPresenter connectProfilesPresenter = new ConnectProfilesPresenter();
+            return connectProfilesPresenter.passConnections(connections); // for ProfileFinderUI
 
         } catch (NullPointerException e) {
             System.out.println("An error occurred.");
