@@ -29,12 +29,14 @@ public class RegUI {
     private final JComboBox<String> platform = new JComboBox<>(platformOption);
     private final JTextField platform_info = new JTextField();
 
-    public RegUI(){}
-
     /**
-     * Construct a registration page and show it to the user.
+     * Build a frame as the registration page, which have
+     * two buttons for back to previous page and submit their information, and
+     * text boxes for user to enter their email, password, name, postal code, social media, and
+     * option lists for user to choose their age, gender, social media platform.
+     * User also have to upload an image as their icon.
      */
-    public void build_n_show(){
+    public RegUI(){
         // set up the frame
         frame.setLayout(new GridLayout(9,2, 0,15));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
@@ -73,9 +75,13 @@ public class RegUI {
         holder.setLoader(); // add the upload picture button into the frame
         frame.add(back_button);
         frame.add(reg_button);
+    }
 
+    /**
+     * Show the registration page to the user.
+     */
+    public void show(){
         setButtonReact();
-
         frame.setVisible(true); // make frame visible for user
     }
 
