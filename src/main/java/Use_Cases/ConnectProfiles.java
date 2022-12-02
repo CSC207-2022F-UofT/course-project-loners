@@ -36,7 +36,8 @@ public class ConnectProfiles {
      * within_preferred_location method. Store in another list only the IDs from this initial list that correspond to
      * users whose age and gender match the preferred age and gender of the user.
      *
-     * @return a list of IDs corresponding to users whose age, gender, and location match the preferences of the user
+     * @return a list of IDs corresponding to users whose age, gender, and location match the preferences of the user,
+     * which corresponds with the parameter type of ConnectProfilesOutputBoundary.passConnections
      */
     public List<Integer> compareTraits() {
         List<Integer> connectedIDs = new ArrayList<>();
