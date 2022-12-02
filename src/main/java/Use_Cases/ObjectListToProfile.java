@@ -64,7 +64,7 @@ public class ObjectListToProfile {
      * @param og our string of doubles seperated by a colon
      * @return a list of these two strings of doubles
      */
-    public static List<String> parseColonSeperatedString(String og){
+    private static List<String> parseColonSeperatedString(String og){
         if (og.contains("null")){
             return null;
         }

@@ -14,7 +14,7 @@ public class LikesController {
      * @param myProfile the list that represents a profile in the database
      */
     public static void modifyLikes(String myLikes, int otherId, Object[] myProfile){
-        String newLikes = "";
+        String newLikes;
         newLikes = myLikes;
         if (myLikes.contains("likes") || myLikes.contains("null")){
             newLikes = "";

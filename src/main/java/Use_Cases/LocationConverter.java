@@ -32,6 +32,7 @@ public class LocationConverter {
      */
     // NOTE: THIS METHOD IS SENSITIVE TO SPACES AND CAPITALIZATION IN THE POSTAL CODES, IT WILL RETURN
     // AN EXCEPTION IF THE CODE IS NOT PROPERLY FORMATTED
+    // PRECONDITION: Postal code is valid and it exists
     public static double[] codeToCoords(String code){
         // Converts a postal code to an array of doubles that represent that location's corresponding
         // coordinates.
