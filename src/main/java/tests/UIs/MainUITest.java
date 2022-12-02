@@ -1,4 +1,4 @@
-package UIs;
+package tests.UIs;
 
 public class MainUITest {
 }

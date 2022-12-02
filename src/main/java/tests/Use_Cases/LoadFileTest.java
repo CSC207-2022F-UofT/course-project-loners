@@ -1,4 +1,4 @@
-package Use_Cases;
+package tests.Use_Cases;
 
 import Use_Cases.LoadFile;
 import org.junit.Test;
