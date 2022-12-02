@@ -22,7 +22,7 @@ public class ConnectProfiles {
 
     public List<Integer> compareTraits() {
         List<Integer> connectedIDs = new ArrayList<>();
-        ArrayList<Integer> idsWithinLocation = PreferredLocationConnector.within_preferred_location(id,
+        ArrayList<Integer> idsWithinLocation = PreferredLocationConnector.withinPreferredLocation(id,
                 preferredLocationRange);
 
         for (int userID : idsWithinLocation) {
