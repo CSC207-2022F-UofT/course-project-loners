@@ -41,7 +41,7 @@ public class ConnectProfiles {
      */
     public List<Integer> compareTraits() {
         List<Integer> connectedIDs = new ArrayList<>();
-        List<Integer> idsInLocationRange = PreferredLocationConnector.within_preferred_location(id,
+        List<Integer> idsInLocationRange = PreferredLocationConnector.withinPreferredLocation(id,
                 preferredLocationRange);
 
         try {
