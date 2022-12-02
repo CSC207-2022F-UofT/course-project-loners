@@ -5,8 +5,6 @@ import Controllers_Presenters.UIController;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,9 +33,9 @@ public class MyProfileUI{
         JButton toEditProfile = new JButton("Edit this Profile");
         JLabel socialMedia = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[10]));
         JLabel preference = new JLabel("Your preferences are; (age, gender, location)");
-        JLabel preferredAge = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[11]));
-        JLabel preferredGender = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[12]));
-        JLabel preferredLocation = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[13]));
+        JLabel preferredAge = new JLabel(String.format("Your preferred age is %s", ((Object[]) profile_data[0])[11]));
+        JLabel preferredGender = new JLabel(String.format("Your preferred gender is %s", ((Object[]) profile_data[0])[12]));
+        JLabel preferredLocation = new JLabel(String.format("Your preferred location is %s", ((Object[]) profile_data[0])[13]));
 
 
         f.setLayout(new GridLayout(5,1));
@@ -69,21 +67,15 @@ public class MyProfileUI{
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
         //The user will be redirected to EditProfileUI when toEditProfile button is clicked
-        toEditProfile.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                f.setVisible(false);
-                new UIController(id).launchEditProfileUI();
-            }
-        });
+        toEditProfile.addActionListener((e) -> {
+                    f.setVisible(false);
+                    new UIController(id).launchEditProfileUI();
+                });
         //The user will be redirected to MainUI when the back button is clicked
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        back.addActionListener((e) -> {
                 f.setVisible(false);
                 new UIController(id).launchMainUI();
-            }
+
         });
     }
 

@@ -1,6 +1,7 @@
 package Controllers_Presenters;
 
 import Use_Cases.EditProfile;
+import Use_Cases.LocationConverter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -27,31 +28,29 @@ public class EditProfileControl{
         fd.setVisible(true);
         String filename = fd.getFile();
         try{
-            BufferedImage image = ImageIO.read(new File(fd.getDirectory(), filename));
-            this.image = image;
+            this.image = ImageIO.read(new File(fd.getDirectory(), filename));
             return true;
         } catch (IOException error){
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");
             return false;
         }
     }
-    public boolean sendImage(int id){
+    public void sendImage(int id){
         File myObj = new File(String.format("saved_images/%s.jpg", id));
-        if(myObj.exists()){
-            boolean deletion = myObj.delete();
-            if(!deletion){
-                return false;
-            }
-        } else {
-            return false;
+        if(myObj.exists()) {
+            boolean result= myObj.delete();
+            if(result){
+                try{
+                    File outputfile = new File(String.format("saved_images/%s.jpg", id));
+                    ImageIO.write(this.image, "jpg", outputfile);
+                } catch(IOException error){
+                    JOptionPane.showMessageDialog(null, "Something went wrong with uploading your image!");
+                }
+                }
         }
-        try{
-            File outputfile = new File(String.format("saved_images/%s.jpg", id));
-            ImageIO.write(this.image, "jpg", outputfile);
-            return true;
-        } catch(IOException error){
-            return false;
-        }
+    }
+    public double[] convertLocation(String code){
+        return LocationConverter.codeToCoords(code);
     }
     /**
      * This method sends the given updated profile data to the database
@@ -67,10 +66,11 @@ public class EditProfileControl{
             } else {
                 likes = String.join(": ", (String) info.get("likes"));
             }
+            String location = (info.get("location")).toString();
 
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +
-                    info.get("location") + ", " + info.get("hobbies") + ", " +
+                    location + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
             dataSend.send_toid(id, str_data.split(", "));

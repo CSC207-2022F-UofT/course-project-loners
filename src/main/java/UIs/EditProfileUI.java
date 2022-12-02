@@ -3,17 +3,13 @@ package UIs;
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.EditProfileControl;
 import Controllers_Presenters.UIController;
-import Use_Cases.LocationConverter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class EditProfileUI{
@@ -26,16 +22,18 @@ public class EditProfileUI{
     // The following fields are used to take user input
     JTextField nameField;
     JTextField emailField;
+    JTextField passwordField;
     JSpinner ageField;
+    JComboBox<String> genderField;
+    JComboBox<String> orientationField;
     JTextField bioField;
-    JComboBox genderField;
-    JComboBox orientationField;
     JTextField locationField;
     JTextField hobbiesField;
     JTextField socialMediaField;
     Object[] data;
     EditProfileControl control = new EditProfileControl();
     int id;
+    boolean isImageUploaded;
 
     public EditProfileUI(int id){
         /*
@@ -45,12 +43,15 @@ public class EditProfileUI{
          */
         this.id = id;
         this.data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
+
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
         JButton file_load = new JButton("Upload Profile Image");
         this.nameField = new JTextField(String.format("%s", data[1]), 20);
         JLabel name_label = new JLabel("name: ");
         this.emailField = new JTextField(String.format("%s", data[2]), 20);
+        JLabel passwordLabel = new JLabel("password: ");
+        this.passwordField = new JTextField(String.format("%s", data[3]), 20);
         JLabel email_label = new JLabel("email: ");
         this.bioField = new JTextField(String.format("%s", data[5]), 100);
         JLabel bio_label = new JLabel("bio: ");
@@ -71,13 +72,15 @@ public class EditProfileUI{
         JButton backToMyProfile = new JButton("Back to MyProfile");
 
         // Add components to the JFrame
-        f.setLayout(new GridLayout(6,4));
+        f.setLayout(new GridLayout(7,4));
         b.setBounds(130,420,100, 40);
         f.setSize(800,600);
         f.add(name_label);
         f.add(nameField);
         f.add(email_label);
         f.add(emailField);
+        f.add(passwordLabel);
+        f.add(passwordField);
         f.add(age_label);
         f.add(ageField);
         f.add(bio_label);
@@ -108,52 +111,44 @@ public class EditProfileUI{
         f.add(b);
         f.add(backToMyProfile);
         f.setVisible(true);
-        file_load.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                control.withHoldImage(f);
-            }
-        });
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                /*
-                 * When the "Update!" button is clicked, this action will be performed.
-                 * The instance of EditProfileController will receive the revised data, and the user will be redirected to
-                 * their profile page.
-                 */
-                Object[] data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]);
-                HashMap<String, Object> info = new HashMap<>();
-                info.put("name", nameField.getText());
-                info.put("email",emailField.getText());
-                info.put("age", ageField.getValue());
-                info.put("bio", bioField.getText());
-                info.put("gender", genderField.getSelectedItem());
-                info.put("orientation", orientationField.getSelectedItem());
-                info.put("location", LocationConverter.codeToCoords(locationField.getText()));
-                info.put("hobbies", hobbiesField.getText());
-                info.put("socialMedia", socialMediaField.getText());
-                info.put("likes",data[10]);
-                info.put("preferredAge", data[11]);
-                info.put("preferredGender", data[12]);
-                info.put("preferredLocation", data[13]);
+        file_load.addActionListener((e) ->this.isImageUploaded = control.withHoldImage(f));
 
 
-                if (control.send(info, id)){
-                    control.sendImage(id);
-                    new UIController(id).launchMyProfileUI();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Something went wrong.");
-                }
-            }
-        });
-        backToMyProfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        b.addActionListener((e) -> {
+            Object[] data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]);
+            HashMap<String, Object> info = new HashMap<>();
+            info.put("name", nameField.getText());
+            info.put("email", emailField.getText());
+            info.put("password", passwordField.getText());
+            info.put("age", ageField.getValue());
+            info.put("bio", bioField.getText());
+            info.put("gender", genderField.getSelectedItem());
+            info.put("orientation", orientationField.getSelectedItem());
+            info.put("location", control.convertLocation(locationField.getText()));
+            info.put("hobbies", hobbiesField.getText());
+            info.put("socialMedia", socialMediaField.getText());
+            info.put("likes", data[10]);
+            info.put("preferredAge", data[11]);
+            info.put("preferredGender", data[12]);
+            info.put("preferredLocation", data[13]);
+
+
+            if (control.send(info, id)) {
                 JOptionPane.showMessageDialog(null,"Successfully edited your profile!",
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
+                if(isImageUploaded){
+                    control.sendImage(id);
+                }
                 new UIController(id).launchMyProfileUI();
+            } else {
+                JOptionPane.showMessageDialog(null, "Something went wrong.");
             }
+        });
+
+        backToMyProfile.addActionListener((e) -> {
+            JOptionPane.showMessageDialog(null,"Back to your profile!",
+                    "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
+            new UIController(id).launchMyProfileUI();
         });
     }
 }

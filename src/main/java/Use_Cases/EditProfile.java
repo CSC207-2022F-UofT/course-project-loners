@@ -22,18 +22,14 @@ public class EditProfile {
                     return false;
                 }
             } else if (keys[k] == "email") {
-                if(authenticator.isValidEmail((String) values[k])){
+                if(Authenticator.isValidEmail((String) values[k])){
                     return true;
                 } else {
                     System.out.println("Invalid Email");
                     return false;
                 }
             } else if (keys[k] == "age") {
-                if(authenticator.isValidAge((int) values[k])){
-                    return true;
-                } else {
-                    return false;
-                }
+                return Authenticator.isValidAge((int) values[k]);
             } else if (keys[k] == "gender") {
                 return true;
             } else if (keys[k] == "location") {
@@ -41,17 +37,9 @@ public class EditProfile {
             } else if (keys[k] == "image") {
                 return true;
             } else if (keys[k] == "bio") {
-                if(authenticator.isValidBio((String) values[k])) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return authenticator.isValidBio((String) values[k]);
             } else if (keys[k] == "hobbies") {
-                if(authenticator.isValidHobbies((List<String>) values[k])){
-                    return true;
-                } else {
-                    return false;
-                }
+                return authenticator.isValidHobbies((List<String>) values[k]);
             } else if (keys[k] == "socialMedia") {
                 return true;
             } else if (keys[k] == "likes") {
