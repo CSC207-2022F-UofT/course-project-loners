@@ -2,13 +2,14 @@ package Controllers_Presenters;
 
 import Entities.Preferences;
 import Entities.Profile;
+import Use_Cases.DataSendAccess;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
-public class DataSendControl {
+public class DataSendControl implements DataSendAccess {
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
