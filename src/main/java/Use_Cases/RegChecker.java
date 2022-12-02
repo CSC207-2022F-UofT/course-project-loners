@@ -4,8 +4,8 @@ import Controllers_Presenters.DataFetchControl;
 
 /**
  * check if
- * - user's information which is required for register is missing
- * - user’s email, age and postal code are valid
+ * - information of user which is required for register is missing
+ * - email, age and postal code of user are valid
  * - email already exists
  */
 public class RegChecker {
@@ -13,16 +13,16 @@ public class RegChecker {
     public String diagnose = "";
 
     /**
-     * First, check any user's inputs is missing or an image has been uploaded into picUploader.
-     * If this passed, continue to check if user's input for email, age, postal code are valid.
-     * @param platform_info user's input, for social media information
-     * @param email a user's input, for email
-     * @param password a user's input, for password
-     * @param name a user's input, for name
-     * @param age a user's input, for age
-     * @param gender a user's input, for gender
-     * @param postcode a user's input, for postal code
-     * @param picUploader user's image upload platform
+     * First, check any user inputs is missing or an image has been uploaded into picUploader.
+     * If this passed, continue to check if user input for email, age, postal code are valid.
+     * @param platform_info an input of user, for social media information
+     * @param email an input of user, for email
+     * @param password an input of user, for password
+     * @param name an input of user, for name
+     * @param age an input of user, for age
+     * @param gender an input of user, for gender
+     * @param postcode an input of user, for postal code
+     * @param picUploader image upload platform for user
      */
     public RegChecker(String platform_info, String email, String password, String name, String age, String gender, String postcode, PicUploader picUploader){
         checkIfMissing(platform_info, email, password, name, age, gender, postcode, picUploader);
@@ -34,16 +34,16 @@ public class RegChecker {
 
     /**
      * pass will be false and diagnose will be updated if
-     * - any of user's inputs is empty, or
+     * - any of user inputs is empty, or
      * - picUploader did not receive an image in picUploader
-     * @param soc_med a user's input, for social media information
-     * @param email a user's input, for email
-     * @param pw a user's input, for password
-     * @param name a user's input, for name
-     * @param age a user's input, for age
-     * @param gender a user's input, for gender
-     * @param postcode a user's input, for postal code
-     * @param picUploader user's image upload platform
+     * @param soc_med an input of user, for social media information
+     * @param email an input of user, for email
+     * @param pw an input of user, for password
+     * @param name an input of user, for name
+     * @param age an input of user, for age
+     * @param gender an input of user, for gender
+     * @param postcode an input of user, for postal code
+     * @param picUploader image upload platform for user
      */
     private void checkIfMissing(String soc_med, String email, String pw, String name, String age, String gender, String postcode, PicUploader picUploader){
         if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()|
@@ -62,9 +62,9 @@ public class RegChecker {
      * - email is valid when it has an @ inside.
      * - age is valid when it is a number with range [0,150].
      * - postcode is valid when it is a Canadian postal code with a whitespace.
-     * @param email a user's input, for email
-     * @param age a user's input, for age
-     * @param postcode a user's input, for postal code
+     * @param email an input of user, for email
+     * @param age an input of user, for age
+     * @param postcode an input of user, for postal code
      */
     private void checkValidate(String email, String age, String postcode){
         // check if email is valid
@@ -115,7 +115,6 @@ public class RegChecker {
     }
 
     private void checkDuplicate(String email){
-        // TODO: check if this violate CleanAr
         if (new DataFetchControl().fetch_emails().contains(email)){
             this.pass = false;
             this.diagnose += "email is existed; \n";
