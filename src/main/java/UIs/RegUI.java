@@ -1,7 +1,7 @@
 package UIs;
 import Controllers_Presenters.RegControl;
 import Controllers_Presenters.UIController;
-import Use_Cases.PictureHolder;
+import Use_Cases.PicUploader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +16,11 @@ public class RegUI {
     private final JButton backButton = new JButton("Back to previous page");
     private final JButton regButton = new JButton("Create account");
     private final JButton picButton = new JButton("Select image");
-    private final PictureHolder holder = new PictureHolder(frame, picButton);
+    private final PicUploader uploader = new PicUploader(frame, picButton);
     private final JTextField email = new JTextField();
     private final JTextField pw = new JTextField();
     private final JTextField name = new JTextField();
-    private final SpinnerModel ageRange = new SpinnerNumberModel(18,1,100, 1);
-    private final JSpinner age = new JSpinner(ageRange);
+    private final JTextField age = new JTextField();
     private final JTextField code = new JTextField();
     private final String[] genderOption = {"male", "female", "other"};
     private final JComboBox<String> gender = new JComboBox<>(genderOption);
@@ -72,7 +71,7 @@ public class RegUI {
         socialMedia.add(platformInfo);
         frame.add(socialMedia); // Add the panel to frame
         frame.add(picLabel);
-        holder.setLoader(); // add the upload picture button into the frame
+        uploader.setLoader(); // add the upload picture button into the frame
         frame.add(backButton);
         frame.add(regButton);
     }
@@ -93,9 +92,9 @@ public class RegUI {
     private void setButtonReact(){
         regButton.addActionListener(e -> {
             String[] lstInputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platformInfo.getText(),
-                    email.getText(), pw.getText(), name.getText(), age.getValue().toString(), Objects.requireNonNull(
+                    email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
-            new RegControl(frame, lstInputs, holder); // pass the inputs to the controller
+            new RegControl(frame, lstInputs, uploader); // pass the inputs to the controller
         });
         backButton.addActionListener(e -> {
             frame.setVisible(false);

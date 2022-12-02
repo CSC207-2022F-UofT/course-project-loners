@@ -1,6 +1,6 @@
 package Controllers_Presenters;
 
-import Use_Cases.PictureHolder;
+import Use_Cases.PicUploader;
 import Use_Cases.RegChecker;
 import Use_Cases.RegDataStore;
 
@@ -20,9 +20,9 @@ public class RegControl {
      * @param lstInputs a list of inputs that user typed from the registration page. The list is ordered by:
      *                   {social media platform, username/url of that platform,
      *                   email, password, name, age, gender, postal code}
-     * @param picHolder the PictureHolder from RugUI
+     * @param picUploader the PicUploader from RugUI
      */
-    public RegControl(JFrame regFrame, String[] lstInputs, PictureHolder picHolder){
+    public RegControl(JFrame regFrame, String[] lstInputs, PicUploader picUploader){
         // Extract individual inputs from the list
         String platform = lstInputs[0];
         String pfInfo = lstInputs[1];
@@ -34,7 +34,7 @@ public class RegControl {
         String code = lstInputs[7];
 
         // Run the checker to verify the inputs
-        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, gender, code, picHolder);
+        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, gender, code, picUploader);
         if (!checker.pass) {
             // If checker did not pass, pops failure message
             String message = checker.diagnose + "please try again!";
@@ -50,7 +50,7 @@ public class RegControl {
                 try{
                     int id = new DataFetchControl().fetch_lastID();
                     File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
-                    ImageIO.write((BufferedImage)picHolder.image, "jpg", fileSavePic);
+                    ImageIO.write((BufferedImage)picUploader.image, "jpg", fileSavePic);
                 } catch(IOException error){
                     JOptionPane.showMessageDialog(null, "Something went wrong when uploading the image.");
                 }
