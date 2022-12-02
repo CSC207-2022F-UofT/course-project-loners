@@ -1,24 +1,20 @@
 package Controllers_Presenters;
 
-import Entities.Preferences;
 import Entities.Profile;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
 
 public class DataSendControl {
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
     public boolean status;
+    /**
+     * A constructor for DataSendControl class.
+     @param profile Profile instance whose information will be sent to the database
+     */
     public DataSendControl(Profile profile) {
-        /**
-         * A constructor for DataSendControl class.
-         @param profile
-         @throws IOException when it fails to load or write to the database
-         */
         int last_id = new DataFetchControl().fetch_lastID();
         if (last_id == -10) { // if last_id has error
             this.status = false;
@@ -50,50 +46,17 @@ public class DataSendControl {
         }
     }
 
-    public DataSendControl(Profile profile, Preferences preferences) {
-        int last_id = new DataFetchControl().fetch_lastID();
-        if (last_id == -10) { // if last_id has error
-            this.status = false;
-        } else if (last_id == -1) { // if the file is empty
-            try {
-                FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("0, "+ ProfileConvertStr(profile)+ ", " + PreferencesConvertStr(preferences));
-                myWriter.close();
-                this.status = true;
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-                this.status = false;
-            }
-        } else {
-            try {
-                FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
-                myWriter.write("\n");
-                myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + PreferencesConvertStr(preferences));
-                myWriter.close();
-                this.status = true;
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-                this.status = false;
-            }
-        }
-    }
-
     public DataSendControl() {}
-
-    public boolean send_toid (int id, Object[] data){
-        /**
-         @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
-         of the profile
-         @return boolean representing whether it has successfully modified the data in the database or not.
-         @throws IOException
-         */
+    /**
+     @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
+     of the profile
+     */
+    public void send_toid(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             // StringBuffer stores the updated data and will be inserted the database.txt
-            StringBuffer inputBuffer = new StringBuffer();
+            StringBuilder inputBuffer = new StringBuilder();
             String line = myReader.readLine();
             int line_id = Integer.parseInt(line.split(", ")[0]);
             // iterate through lines until the line of database.txt refers to the data we want to modify
@@ -105,7 +68,7 @@ public class DataSendControl {
             }
             String hobbies = (String) data[8];
             String likes = (String) data[10];
-            String modified_data = String.valueOf(id)+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
+            String modified_data = id+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
                     ", "+ data[6] + ", "+ data[7] +  ", "+ hobbies + ", "+ data[9] + ", "+ likes +
                     ", "+ data[11] + ", "+ data[12] + ", "+data[13];
 
@@ -122,21 +85,19 @@ public class DataSendControl {
             FileOutputStream fileOut = new FileOutputStream("database.txt");
             fileOut.write(inputBuffer.toString().getBytes());
             fileOut.close();
-            return true;
         } catch (IOException e){
             // If it fails to read or write to database.txt, this Exception will be raised.
             System.out.println("An error occurred.");
             e.printStackTrace();
-            return false;
         }
     }
 
+    /**
+     * A helper method used in DataSendControl class.
+     @param profile A Profile object
+     @return String representation of the profile data.
+     */
     public String ProfileConvertStr(Profile profile) {
-        /**
-         * A helper method used in DataSendControl class.
-         @param profile A Profile object
-         @return String representation of the profile data.
-         */
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                     profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
                     profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
@@ -147,12 +108,6 @@ public class DataSendControl {
         str += profile.getSocialMedia() + ", " + profile.getLikes();
 
         return str;
-    }
-
-    public String PreferencesConvertStr(Preferences preferences) {
-        return preferences.getPreferredAge() + ", "
-                + preferences.getPreferredGender() + ", "
-                + preferences.getPreferredLocationRange();
     }
 
     public static void main(String[] args) {
