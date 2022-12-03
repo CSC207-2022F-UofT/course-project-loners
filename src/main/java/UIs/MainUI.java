@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 public class MainUI {
     JFrame frame = new JFrame("Main page");
     JButton profile = new JButton("User Info");
-    JButton edit_preference = new JButton("Filter settings");
-    JButton profile_finder = new JButton("Click here to match new people!");
+    JButton editPreference = new JButton("Filter settings");
+    JButton profileFinder = new JButton("Click here to match new people!");
 
     /**
      * The constructor of MainUI, which function as a "main page" for users.
@@ -20,15 +20,15 @@ public class MainUI {
      */
     public MainUI(int id, String email){
         // get user's name to show in the main page
-        Object[] user_data = (Object[]) DataFetchControl.fetch_fromid(id)[0]; // get user info based on id
+        Object[] user_data = (Object[]) DataFetchControl.fetchFromId(id)[0]; // get user info based on id
         JLabel welcome_message = new JLabel("Welcome back, " + user_data[0]);
 
         // add components to the frame
         frame.setLayout(new GridLayout(4,1));
         frame.add(welcome_message);
         frame.add(profile);
-        frame.add(edit_preference);
-        frame.add(profile_finder);
+        frame.add(editPreference);
+        frame.add(profileFinder);
 
         // setting the frame
         frame.setVisible(true);
@@ -44,18 +44,18 @@ public class MainUI {
                     new UIController(id).launchMyProfileUI();
                 }}
         });
-        edit_preference.addActionListener(new ActionListener() {
+        editPreference.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == edit_preference) {
+                if (e.getSource() == editPreference) {
                     frame.setVisible(false);
                     new UIController(email).launchEditPreferencesUI();
                 }}
         });
-        profile_finder.addActionListener(new ActionListener() {
+        profileFinder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == profile_finder) {
+                if (e.getSource() == profileFinder) {
                     UIController controller = new UIController(id);
                     if (controller.checkifPreference()){
                         JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);

@@ -16,7 +16,7 @@ public class DataSendControl{
      @param profile Profile instance whose information will be sent to the database
      */
     public DataSendControl(Profile profile) {
-        int last_id = new DataFetchControl().fetch_lastID();
+        int last_id = new DataFetchControl().fetchLastID();
         if (last_id == -10) { // if last_id has error
             this.status = false;
         } else if (last_id == -1) { // if the file is empty

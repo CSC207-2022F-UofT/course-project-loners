@@ -8,10 +8,10 @@ import java.util.ArrayList;
 // Returns an arraylist of IDs that are within the range of the user's preferred location
 public class PreferredLocationConnector{
     public static ArrayList<Integer> withinPreferredLocation(int id, double locationRange) {
-        int last_id = new DataFetchControl().fetch_lastID(); // get the number of users stored in database
+        int last_id = new DataFetchControl().fetchLastID(); // get the number of users stored in database
         ArrayList<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
         new DataFetchControl();
-        double[] userAddress = DataFetchControl.fetch_address_from_id(id);
+        double[] userAddress = DataFetchControl.fetchAddressFromId(id);
         double userLatRad = (toRadians(userAddress[0]));
         double userLongRad = (toRadians(userAddress[1]));
         // when the preferred_Location doesn't exist
@@ -22,7 +22,7 @@ public class PreferredLocationConnector{
                 }
                 else{
                     new DataFetchControl();
-                    double[] data = DataFetchControl.fetch_address_from_id(i);
+                    double[] data = DataFetchControl.fetchAddressFromId(i);
                     double otherLatRad = (toRadians(data[0]));
                     double otherLongRad = (toRadians(data[1]));
                     double dis = (3440.1 * acos((sin(userLatRad) * sin(otherLatRad)) + cos(userLatRad) *

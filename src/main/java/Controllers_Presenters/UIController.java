@@ -22,14 +22,14 @@ public class UIController {
 
     public UIController(int id){
         this.id = id;
-        this.data = DataFetchControl.fetch_fromid(id);
+        this.data = DataFetchControl.fetchFromId(id);
         Profile p = ObjectListToProfile.returnObjListAsProfile(this.data);
         this.email = p.getEmail();
     }
     public UIController() {}
     public UIController(String email) {
         this.email = email;
-        this.id = DataFetchControl.fetch_id_fromEmail(email);
+        this.id = DataFetchControl.fetchIdFromEmail(email);
     }
 
     public void launchMyProfileUI(){
