@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This method is to convert a profile of type Object[] to profile of type Profile
+ * This class is to convert a profile of type Object[] to profile of type Profile
  */
 public class ObjectListToProfile {
     //converts Object[] to Profile
@@ -64,7 +64,7 @@ public class ObjectListToProfile {
      * @param og our string of doubles seperated by a colon
      * @return a list of these two strings of doubles
      */
-    public static List<String> parseColonSeperatedString(String og){
+    private static List<String> parseColonSeperatedString(String og){
         if (og.contains("null")){
             return null;
         }
