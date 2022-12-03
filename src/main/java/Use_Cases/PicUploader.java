@@ -12,23 +12,23 @@ import java.io.IOException;
 /**
  * Create a space for temporarily saving the picture that user uploaded.
  */
-public class PictureHolder implements ActionListener {
+public class PicUploader implements ActionListener {
     private final JFrame frame;
     private final JButton button;
     public Image image;
-    public boolean saved; // true if the picture has saved into the folder "saved_images"
+    public boolean received; // true if the picture has received from user
 
     /**
-     * The constructor of PictureHolder,
+     * The constructor of PicUploader,
      * initializing frame and button from RegUI (frame and pic_button), image to be null, and saved to be false.
      * @param frame a frame
      * @param button a button
      */
-    public PictureHolder(JFrame frame, JButton button){
+    public PicUploader(JFrame frame, JButton button){
         this.frame = frame;
         this.button = button;
         this.image = null;
-        this.saved = false;
+        this.received = false;
     }
 
     /**
@@ -50,9 +50,9 @@ public class PictureHolder implements ActionListener {
         try{
             // save the image to the folder "saved_images"
             this.image = ImageIO.read(new File(fileDirectory, fileName));
-            this.saved = true;
+            this.received = true;
         } catch (IOException error){
-            System.out.println("error when running PictureHolder");
+            System.out.println("error when running PicUploader");
         }
     }
 }
