@@ -1,7 +1,7 @@
 package tests.Use_Cases;
 
-import entities.Profile;
-import usecases.ObjectListToProfile;
+import Entities.Profile;
+import Use_Cases.ObjectListToProfile;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 # SOLID
 ## Single Responsibility Principle
-Most of our classes only have constructors and one method. All the usecases classes follow the rule. Now, we inspect other classes.
+Most of our classes only have constructors and one method. All the Use_Cases classes follow the rule. Now, we inspect other classes.
 * For entity classes; Preferences and Profile, we have get and set methods to prevent
   their attributes from unwanted modification.
 * For controller classes, only DataFetchControl and DataSendControl classes have more than one method.
@@ -25,5 +25,5 @@ We do not have any concern about this principle because we do not have inheritan
 ## Dependency Inversion Principle
 We modified our code after Milestone4 in terms of Dependency Inversion Principle.  
 Before the modification, some of our UI classes had Profile(Entity) instances in them.  
-This was a violation of dependency inversion principle because if we modify the Profile, we have to also modify our uis.  
+This was a violation of dependency inversion principle because if we modify the Profile, we have to also modify our UIs.  
 Now, instead of using Profile instances to get the data of the user, we now use methods in DataFetchControl to get the data of the user. 

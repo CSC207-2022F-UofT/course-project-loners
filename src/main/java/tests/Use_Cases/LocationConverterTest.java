@@ -1,6 +1,6 @@
 package tests.Use_Cases;
 
-import usecases.LocationConverter;
+import Use_Cases.LocationConverter;
 import org.junit.Assert;
 import org.junit.Test;
 

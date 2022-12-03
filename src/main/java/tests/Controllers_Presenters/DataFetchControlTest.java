@@ -1,6 +1,6 @@
 package tests.Controllers_Presenters;
 
-import controllers.DataFetchControl;
+import Controllers_Presenters.DataFetchControl;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
