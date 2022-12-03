@@ -4,66 +4,94 @@ import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.UIController;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * A "main page" for this application, which allows user go to myProfileUI, editPreferenceUI, profileFinderUI,
+ * or log-out by clicking different buttons.
+ */
 public class MainUI {
-    JFrame frame = new JFrame("Main page");
-    JButton profile = new JButton("User Info");
-    JButton edit_preference = new JButton("Filter settings");
-    JButton profile_finder = new JButton("Click here to match new people!");
+    /**
+     * A frame for main page.
+     */
+    public final JFrame frame = new JFrame("Main page");
+    /**
+     * A button that will lead user to myProfileUI if clicked.
+     */
+    JButton profileButton = new JButton("User Info");
+    /**
+     * A button that will lead user to editPreferenceUI if clicked.
+     */
+    JButton editPreferenceButton = new JButton("Filter settings");
+    /**
+     * A button that will lead user to profileFinderUI if clicked.
+     */
+    JButton profileFinderButton = new JButton("Click here to match new people!");
+    /**
+     * A button that will log out the user, which will lead user to welcomeUI, if clicked.
+     */
+    JButton logoutButton = new JButton("Log out");
+    /**
+     * The id of user who opened this page.
+     */
+    int id;
 
     /**
-     * The constructor of MainUI, which function as a "main page" for users.
-     * @param id user id, assuming it is valid
-     * @param email user's email, assuming it is valid
+     * Construct a main page, which have a welcome message and four buttons that head user to different UIs.
+     *
+     * @param id a user id, assuming it is valid
      */
-    public MainUI(int id, String email){
+    public MainUI(int id){
+        // setting the frame
+        frame.setLayout(new GridLayout(4,1));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
+        UIController.makeFrameFullSize(frame); // set size to full screen
+
         // get user's name to show in the main page
+        this.id = id;
         Object[] user_data = (Object[]) DataFetchControl.fetch_fromid(id)[0]; // get user info based on id
         JLabel welcome_message = new JLabel("Welcome back, " + user_data[0]);
 
         // add components to the frame
-        frame.setLayout(new GridLayout(4,1));
         frame.add(welcome_message);
-        frame.add(profile);
-        frame.add(edit_preference);
-        frame.add(profile_finder);
+        frame.add(profileButton);
+        frame.add(editPreferenceButton);
+        frame.add(profileFinderButton);
+        frame.add(logoutButton);
+    }
 
-        // setting the frame
+    /**
+     * Show the main page to user.
+     */
+    public void show(){
+        setButtonReact();
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
-        UIController.makeFrameFullSize(frame); // set size to full screen
+    }
 
-        // add responses to the buttons
-        profile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == profile) {
-                    frame.setVisible(false);
-                    new UIController(id).launchMyProfileUI();
-                }}
+    /**
+     * Set responds to different button press.
+     */
+    public void setButtonReact(){
+        profileButton.addActionListener(e -> {
+            frame.setVisible(false);
+            new UIController(id).launchMyProfileUI();
         });
-        edit_preference.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == edit_preference) {
-                    frame.setVisible(false);
-                    new UIController(email).launchEditPreferencesUI();
-                }}
+        editPreferenceButton.addActionListener(e -> {
+            frame.setVisible(false);
+            new UIController(id).launchEditPreferencesUI();
         });
-        profile_finder.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == profile_finder) {
-                    UIController controller = new UIController(id);
-                    if (controller.checkifPreference()){
-                        JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
-                    } else{
-                        frame.setVisible(false);
-                        controller.launchProfileFinderUI();
-                    }
-                }}
+        profileFinderButton.addActionListener(e -> {
+            UIController controller = new UIController(id);
+            if (controller.checkifPreference()){ // if user doesn't have preference, show a warning and not prevent them open the profileFinderUI
+                JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
+            } else{
+                frame.setVisible(false);
+                controller.launchProfileFinderUI();
+            }
+        });
+        logoutButton.addActionListener(e -> {
+            frame.setVisible(false);
+            new UIController();
+            UIController.launchWelcomeUI();
         });
     }
 }
