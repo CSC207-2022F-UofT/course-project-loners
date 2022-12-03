@@ -5,11 +5,12 @@ import Entities.Profile;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class DataSendControl {
+public class DataSendControl{
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
     public boolean status;
+    private static final DataSendControl d = new DataSendControl();
     /**
      * A constructor for DataSendControl class.
      @param profile Profile instance whose information will be sent to the database
@@ -46,7 +47,11 @@ public class DataSendControl {
         }
     }
 
+
     public DataSendControl() {}
+    public static DataSendControl getInstance(){
+        return d;
+    }
     /**
      @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      of the profile

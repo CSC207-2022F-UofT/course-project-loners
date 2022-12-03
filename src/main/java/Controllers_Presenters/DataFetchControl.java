@@ -13,6 +13,11 @@ import java.util.Objects;
 
 public class DataFetchControl {
 
+    private static final DataFetchControl d =  new DataFetchControl();
+    public static DataFetchControl getInstance(){
+        return d;
+    }
+
     /**
      * This method fetch the profile data associated to id.
      @param id of the user

@@ -1,5 +1,6 @@
-package tests.Controllers_Presenters;
+package Controllers_Presenters;
 
+import Controllers_Presenters.EditProfileControl;
 import org.junit.Test;
 
 import javax.swing.*;

@@ -14,9 +14,8 @@ public class UIController {
     public LogUI logUI;
     public RegUI regUI;
     public MainUI mainUI;
-    public EditPreferencesUI edpfUI;
     public ProfileFinderUI pffdUI;
-    private EditProfileUI editProfileUI;
+    public EditProfileUI editProfileUI;
     static int id;
     Object[] data;
     String email;
