@@ -34,7 +34,7 @@ public class RegControl {
         String code = lstInputs[7];
 
         // Run the checker to verify the inputs
-        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, gender, code, picUploader);
+        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picUploader);
         if (!checker.pass) {
             // If checker did not pass, pops failure message
             String message = checker.diagnose + "please try again!";

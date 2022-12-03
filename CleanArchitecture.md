@@ -10,6 +10,7 @@ We checked imported classes in our Entities, Use Cases, Controllers, and UIs.
 There was no violation in Entities and Use Cases classes.  
 However, we found EditProfileUI importing use cases; LoadFile and LocationConverter. 
 Plus, RegUI was also importing a use case; PictureHolder.
+RegChecker, Authenticator importing controller DataFetchControl.
 
 In controller classes, we found ConnectProfilesControl class importing Preferences,
 DataSendControl class importing Profile, EditPreferences class importing Preferences, EditProfile class importing 
