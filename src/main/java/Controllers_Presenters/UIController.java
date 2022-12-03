@@ -9,17 +9,11 @@ import java.awt.*;
 import java.util.Objects;
 
 public class UIController {
-    public MyProfileUI myProfileUI;
-    public WelcomeUI welUI;
-    public LogUI logUI;
-    public RegUI regUI;
-    public MainUI mainUI;
-    public EditPreferencesUI edpfUI;
-    public ProfileFinderUI pffdUI;
-    private EditProfileUI editProfileUI;
-    static int id;
-    Object[] data;
+    private int id;
+    private Object[] data;
     String email;
+
+    public UIController() {}
 
     public UIController(int id){
         this.id = id;
@@ -27,37 +21,40 @@ public class UIController {
         Profile p = ObjectListToProfile.returnObjListAsProfile(this.data);
         this.email = p.getEmail();
     }
-    public UIController() {}
-    public UIController(String email) {
-        this.email = email;
-        this.id = DataFetchControl.fetch_id_fromEmail(email);
-    }
 
-    public void launchMyProfileUI(){
-        myProfileUI = new MyProfileUI(id);
-    }
-    public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.build_n_show();}
-    public void launchLogUI() { logUI = new LogUI(); }
-    public void launchRegUI() { regUI = new RegUI(); regUI.show();}
-    public void launchMainUI() { mainUI = new MainUI(id, email); }
-    public void launchEditPreferencesUI() {
-        EditPreferencesUI.buildUI(id);
-    }
+    public UIController(String email){ this.id = DataFetchControl.fetch_id_fromEmail(email); }
+
+    public void launchMyProfileUI(){ new MyProfileUI(id); }
+    public static void launchWelcomeUI() { WelcomeUI welUI = new WelcomeUI(); welUI.show(); }
+    public void launchLogUI() { new LogUI(); }
+    public void launchRegUI() { RegUI regUI = new RegUI(); regUI.show(); }
+    public void launchMainUI() { MainUI mainUI = new MainUI(id); mainUI.show(); }
+    public void launchEditPreferencesUI() {EditPreferencesUI.buildUI(id); }
     public void launchEditProfileUI(){
-        editProfileUI = new EditProfileUI(this.id);
+        new EditProfileUI(this.id);
     }
+    public void launchProfileFinderUI(){ new ProfileFinderUI(0, Integer.toString(id)); }
 
-    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(0, Integer.toString(id)); }
-
-    public boolean checkifPreference(){
+    public boolean checkHasPreference(){
         Object[] dat = (Object[]) this.data[0];
         return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
     }
 
-
     public static void makeFrameFullSize(JFrame frame){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(screenSize.width, screenSize.height);
+    }
+
+    public static void addBackButton(JFrame frame, String targetUI){
+        // If back button is clicked, direct user back to the previous page(WelcomeUI).
+        JButton backButton = new JButton("Back to previous page");
+        frame.add(backButton);
+        backButton.addActionListener(e -> {
+            frame.setVisible(false);
+            if (Objects.equals(targetUI, "WelcomeUI")){
+                launchWelcomeUI();
+            }
+        });
     }
 
 

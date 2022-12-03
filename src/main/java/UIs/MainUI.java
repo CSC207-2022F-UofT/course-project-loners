@@ -42,7 +42,7 @@ public class MainUI {
      */
     public MainUI(int id){
         // setting the frame
-        frame.setLayout(new GridLayout(4,1));
+        frame.setLayout(new GridLayout(5,1));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
         UIController.makeFrameFullSize(frame); // set size to full screen
 
@@ -81,7 +81,7 @@ public class MainUI {
         });
         profileFinderButton.addActionListener(e -> {
             UIController controller = new UIController(id);
-            if (controller.checkifPreference()){ // if user doesn't have preference, show a warning and not prevent them open the profileFinderUI
+            if (controller.checkHasPreference()){ // if user doesn't have preference, show a warning and not prevent them open the profileFinderUI
                 JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
             } else{
                 frame.setVisible(false);
