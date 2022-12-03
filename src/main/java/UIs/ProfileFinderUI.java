@@ -188,7 +188,4 @@ public class ProfileFinderUI implements ActionListener{
             new MainUI(Integer.parseInt((String)myProfile[0]), (String) myProfile[2]);
         }
     }
-    public static void main(String[] args){
-        new ProfileFinderUI(0, "2");
-    }
 }

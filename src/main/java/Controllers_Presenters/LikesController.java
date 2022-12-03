@@ -22,8 +22,7 @@ public class LikesController {
         newLikes = newLikes + otherId +": ";
         myProfile[11] = newLikes;
         int myId = Integer.parseInt((String)myProfile[0]);
-        DataSendControl c = new DataSendControl();
         Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
-        c.send_toid(myId, myProfileClone);
+        DataSendControl.getInstance().send_toid(myId, myProfileClone);
     }
 }

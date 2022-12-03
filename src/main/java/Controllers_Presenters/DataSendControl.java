@@ -51,6 +51,11 @@ public class DataSendControl implements DataSendAccess {
 
 
     public DataSendControl() {}
+
+    /**
+     * Implements singleton design pattern for datasend control
+     * @return instance of DataSendControl
+     */
     public static DataSendControl getInstance(){
         return d;
     }
