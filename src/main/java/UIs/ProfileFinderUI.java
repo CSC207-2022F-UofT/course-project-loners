@@ -124,6 +124,7 @@ public class ProfileFinderUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
             // Use the LikesController to modufy the likes on a profile
+            //Facade
             LikesController.modifyLikes((String) myProfile[11], Integer.parseInt((String) otherProfile[0]), myProfile);
 
             if (((String) myProfile[11]).contains((String) otherProfile[0]) &&
