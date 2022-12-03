@@ -12,7 +12,6 @@ public interface DataSendAccess {
      *
      * @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      *                   of the profile
-     * @return boolean representing whether it has successfully modified the data in the database or not.
      */
     void send_toid(int id, Object[] data);
 
