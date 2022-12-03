@@ -1,7 +1,6 @@
 package Controllers_Presenters;
 
-import Entities.Profile;
-import Use_Cases.LocationConverter;
+import Use_Cases.ProfileFactory;
 import Use_Cases.RegChecker;
 
 import javax.imageio.ImageIO;
@@ -82,13 +81,8 @@ public class RegControl {
      * @return true if data has been saved to the database
      */
     private boolean regDataStore(String platform, String pfInfo,String email, String pw, String name, String age, String gender, String postcode) {
-        // TODO: discuss to see if this need to be public to write a test
-        int ageInt = Integer.parseInt(age);
-        String socMed = platform + ": " + pfInfo;
-        double[] location = LocationConverter.codeToCoords(postcode);
-        Profile profile = new Profile(socMed, email, pw, name, ageInt, gender, location);
         try{ // DataSendControl did not have exception i.e. data can be stored to the database
-            new DataSendControl(profile);
+            new DataSendControl(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
         } catch (Exception e) { // If DataSendControl have exception i.e. data not did store to the database
             return false;
         }

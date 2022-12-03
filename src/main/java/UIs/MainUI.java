@@ -44,7 +44,7 @@ public class MainUI {
         // setting the frame
         frame.setLayout(new GridLayout(5,1));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
-        UIController.makeFrameFullSize(frame); // set size to full screen
+        UIController.setFrameSize(frame); // set size to full screen
 
         // get user's name to show in the main page
         this.id = id;

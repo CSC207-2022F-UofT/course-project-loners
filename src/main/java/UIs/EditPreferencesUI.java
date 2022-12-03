@@ -28,7 +28,7 @@ public class EditPreferencesUI {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
 //        frame.setSize(670, 280);
-        UIController.makeFrameFullSize(frame); // set size to full screen
+        UIController.setFrameSize(frame); // set size to full screen
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
         frame.setVisible(true);
 

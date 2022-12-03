@@ -82,7 +82,7 @@ public class RegUI {
         // set up the frame
         frame.setLayout(new GridLayout(9,2, 0,15));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
-        UIController.makeFrameFullSize(frame); // set size to full screen
+        UIController.setFrameSize(frame); // set size to full screen
 
         // Claim the rest of components (labels)
         JLabel emailLabel = new JLabel("Email: ");

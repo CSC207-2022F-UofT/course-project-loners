@@ -3,7 +3,6 @@ package Controllers_Presenters;
 import UIs.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Objects;
 
 public class UIController {
@@ -35,9 +34,9 @@ public class UIController {
         return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
     }
 
-    public static void makeFrameFullSize(JFrame frame){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(screenSize.width, screenSize.height);
+    public static void setFrameSize(JFrame frame){
+        frame.setSize(800, 800);
+        frame.setLocationRelativeTo(null); // open the window at the center of the screen
     }
 
     public static void addBackButton(JFrame frame, String targetUI){
@@ -51,6 +50,4 @@ public class UIController {
             }
         });
     }
-
-
 }

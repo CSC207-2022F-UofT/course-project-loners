@@ -35,7 +35,7 @@ public class LogUI implements ActionListener {
 
         f.setVisible(true); //should put this After added all the components into the frame
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
-        UIController.makeFrameFullSize(f); // set size to full screen
+        UIController.setFrameSize(f); // set size to full screen
 
 
         b.addActionListener(this);
@@ -43,7 +43,8 @@ public class LogUI implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                new UIController().launchWelcomeUI();
+                new UIController();
+                UIController.launchWelcomeUI();
             }
         });
     }

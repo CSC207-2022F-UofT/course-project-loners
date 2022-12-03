@@ -31,7 +31,7 @@ public class WelcomeUI {
         // Set up a frame
         frame.setLayout(new GridLayout(3,1));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // this line will terminate the program when you closed the window
-        UIController.makeFrameFullSize(frame);
+        UIController.setFrameSize(frame);
 
         // Claim the last component(the message)
         JLabel welcomeMsg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
