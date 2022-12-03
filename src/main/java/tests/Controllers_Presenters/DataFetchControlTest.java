@@ -6,10 +6,8 @@ import org.junit.Test;
 
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 
-public class DataFetchControlTest {
+public class DataFetchControlTest extends TestCase {
     @Test
     public void testFetch_fromid() {
         Object[] expected = (Object[]) DataFetchControl.fetch_fromid(0)[0];
@@ -45,11 +43,11 @@ public class DataFetchControlTest {
     @Test
     public void testFetch_password() {
         String expected = DataFetchControl.fetch_password("email@");
-        assert Objects.equals(expected, "null");
+        assert expected.equals("null");
     }
     @Test
     public void testFetch_address_from_id() {
         double[] expected = DataFetchControl.fetch_address_from_id(0);
-        assert Arrays.equals(expected, new double[]{20.0, 10.0});
+        assert expected.equals(new double[] {20.0, 10.0});
     }
 }

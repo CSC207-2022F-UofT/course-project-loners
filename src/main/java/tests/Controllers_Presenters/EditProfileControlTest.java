@@ -32,26 +32,25 @@ public class EditProfileControlTest {
 
     @Test
     public void withHoldImage() {
-//        JFrame f = new JFrame();
-//        EditProfileControl editProfileControl = new EditProfileControl();
-//        f.setVisible(true);
-//        assert editProfileControl.withHoldImage(f);
+        JFrame f = new JFrame();
+        EditProfileControl editProfileControl = new EditProfileControl();
+        f.setVisible(true);
+        assert editProfileControl.withHoldImage(f);
     }
 
     @Test
     public void sendImage() {
-//        JFrame f = new JFrame();
-//        EditProfileControl editProfileControl = new EditProfileControl();
-//        f.setVisible(true);
-//        editProfileControl.withHoldImage(f);
-//        editProfileControl.sendImage(0);
+        JFrame f = new JFrame();
+        EditProfileControl editProfileControl = new EditProfileControl();
+        f.setVisible(true);
+        editProfileControl.withHoldImage(f);
+        editProfileControl.sendImage(0);
     }
 
     @Test
     public void convertLocation() {
         EditProfileControl editProfileControl = new EditProfileControl();
-//        assert editProfileControl.convertLocation("M5E 2S2").equals("");
-        // this test also failed
+        assert editProfileControl.convertLocation("M5E 2S2").equals("");
     }
 
     @Test
