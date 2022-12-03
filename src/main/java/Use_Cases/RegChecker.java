@@ -20,7 +20,7 @@ public class RegChecker {
     public String diagnose = "";
 
     /**
-     * First, check any user inputs is missing or an image has been uploaded into picUploader.
+     * First, check any user inputs or image is missing.
      * If this passed, continue to check if user input for email, age, postal code are valid.
      *
      * @param platform_info an input of user, for social media information
@@ -29,10 +29,10 @@ public class RegChecker {
      * @param name an input of user, for name
      * @param age an input of user, for age
      * @param postcode an input of user, for postal code
-     * @param picUploader image upload platform for user
+     * @param picLoaded true if user has selected an image to upload
      */
-    public RegChecker(String platform_info, String email, String password, String name, String age, String postcode, PicUploader picUploader){
-        checkIfMissing(platform_info, email, password, name, age, postcode, picUploader);
+    public RegChecker(String platform_info, String email, String password, String name, String age, String postcode, boolean picLoaded){
+        checkIfMissing(platform_info, email, password, name, age, postcode, picLoaded);
         if (this.pass){
             checkValidate(email, age, postcode);
             checkDuplicate(email);
@@ -50,13 +50,13 @@ public class RegChecker {
      * @param name an input of user, for name
      * @param age an input of user, for age
      * @param postcode an input of user, for postal code
-     * @param picUploader image upload platform for user
+     * @param picLoaded true if user has selected an image to upload
      */
-    public void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, PicUploader picUploader){
+    public void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, boolean picLoaded){
         if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | soc_med.isEmpty()){
             this.pass = false;
             this.diagnose = "missing input(s), \n";
-        } else if(!picUploader.received){ // if inputs are not empty, continues check if an image received in picUploader.
+        } else if(!picLoaded){ // if inputs are not empty, continues check if an image received in picUploader.
             this.pass = false;
             this.diagnose = "you did not select any image to upload, \n";
         }

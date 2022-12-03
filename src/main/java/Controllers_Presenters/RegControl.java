@@ -2,11 +2,11 @@ package Controllers_Presenters;
 
 import Entities.Profile;
 import Use_Cases.LocationConverter;
-import Use_Cases.PicUploader;
 import Use_Cases.RegChecker;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,9 +23,8 @@ public class RegControl {
      * @param lstInputs a list of inputs that user typed from the registration page. The list is ordered by:
      *                   {social media platform, username/url of that platform,
      *                   email, password, name, age, gender, postal code}
-     * @param picUploader the PicUploader from RugUI
      */
-    public RegControl(JFrame regFrame, String[] lstInputs, PicUploader picUploader){
+    public RegControl(JFrame regFrame, String[] lstInputs, Image image){
         // Extract individual inputs from the list
         String platform = lstInputs[0];
         String pfInfo = lstInputs[1];
@@ -35,31 +34,34 @@ public class RegControl {
         String age = lstInputs[5];
         String gender = lstInputs[6];
         String code = lstInputs[7];
+        // check if image has been
+
 
         // Run checker to verify inputs
-        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picUploader);
-        if (!checker.pass) {
-            // If checker did not pass, pop up a failure message window
+        boolean picLoaded = image != null;
+        RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picLoaded);
+        if (!checker.pass) { // If checker did not pass, pop up a failure message window
             String message = checker.diagnose + "please try again!";
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
+            try{ // Save user's image
+                int id = new DataFetchControl().fetch_lastID();
+                File fileSavePic = new File(String.format("saved_images/%s.jpg", id + 1));
+                assert image != null;
+                ImageIO.write((BufferedImage)image, "jpg", fileSavePic);
+            } catch(IOException error){ // pop up a warning window and stop the saving actions if image can not upload
+                JOptionPane.showMessageDialog(null, "Something went wrong when uploading the image.", "WARNING", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             boolean dataSaveSuccess = regDataStore(platform, pfInfo, email, pw, name, age, gender, code); // save inputs to database
-            if (dataSaveSuccess){ // if inputs have been successfully saved
-                try{
-                    // Save user's image as well
-                    int id = new DataFetchControl().fetch_lastID();
-                    File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
-                    ImageIO.write((BufferedImage)picUploader.image, "jpg", fileSavePic);
-                } catch(IOException error){
-                    JOptionPane.showMessageDialog(null, "Something went wrong when uploading the image.");
-                }
-                // Pop up a success message window and go to login page
+            if (dataSaveSuccess){
+                // if inputs have been successfully saved, pop up a success message window and go to login page
                 JOptionPane.showMessageDialog(null,"Account created! Click OK to the login page.",
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
                 regFrame.setVisible(false);
                 new UIController().launchLogUI();
-            } else { // if inputs did not save
-                // Show error message
+            } else {
+                // if inputs did not save, show an error message
                 JOptionPane.showMessageDialog(null, "Something went wrong when saving you submission, please try again!");
             }
         }
