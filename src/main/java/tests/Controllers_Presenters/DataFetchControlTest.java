@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package tests.Controllers_Presenters;
 
 import junit.framework.TestCase;
 import org.junit.Test;

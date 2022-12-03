@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * A "welcome page" for this application, which has “Sign Up” and “Log in” buttons to let users choose
+ * A "welcome page" for this application, which has Sign-up and Log-in buttons to let users choose
  * whether they want to log in or register.
  */
 public class WelcomeUI {

@@ -1,7 +1,7 @@
 package UIs;
 import Controllers_Presenters.RegControl;
 import Controllers_Presenters.UIController;
-import Use_Cases.PictureHolder;
+import Use_Cases.PicUploader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +13,10 @@ import java.util.Objects;
  */
 public class RegUI {
     private final JFrame frame = new JFrame("Registration page");
-    private final JButton back_button = new JButton("Back to previous page");
-    private final JButton reg_button = new JButton("Create account");
-    private final JButton pic_button = new JButton("Select image");
-    private final PictureHolder holder = new PictureHolder(frame, pic_button);
+    private final JButton backButton = new JButton("Back to previous page");
+    private final JButton regButton = new JButton("Create account");
+    private final JButton picButton = new JButton("Select image");
+    private final PicUploader uploader = new PicUploader(frame, picButton);
     private final JTextField email = new JTextField();
     private final JTextField pw = new JTextField();
     private final JTextField name = new JTextField();
@@ -26,14 +26,16 @@ public class RegUI {
     private final JComboBox<String> gender = new JComboBox<>(genderOption);
     private final String[] platformOption = {"Instagram", "Snapchat", "Facebook", "Twitter"};
     private final JComboBox<String> platform = new JComboBox<>(platformOption);
-    private final JTextField platform_info = new JTextField();
-
-    public RegUI(){}
+    private final JTextField platformInfo = new JTextField();
 
     /**
-     * Construct a registration page and show it to the user.
+     * Build a frame as the registration page, which have
+     * two buttons for back to previous page and submit their information, and
+     * text boxes for user to enter their email, password, name, postal code, social media, and
+     * option lists for user to choose their age, gender, social media platform.
+     * User also have to upload an image as their icon.
      */
-    public void build_n_show(){
+    public RegUI(){
         // set up the frame
         frame.setLayout(new GridLayout(9,2, 0,15));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when you closed the window
@@ -63,18 +65,22 @@ public class RegUI {
         frame.add(codeLabel);
         frame.add(code);
         frame.add(socialLabel);
-        JPanel social_media = new JPanel(); // Claim a panel for asking social media
-        social_media.setLayout(new GridLayout(2,1));
-        social_media.add(platform);
-        social_media.add(platform_info);
-        frame.add(social_media); // Add the panel to frame
+        JPanel socialMedia = new JPanel(); // Claim a panel for asking social media
+        socialMedia.setLayout(new GridLayout(2,1));
+        socialMedia.add(platform);
+        socialMedia.add(platformInfo);
+        frame.add(socialMedia); // Add the panel to frame
         frame.add(picLabel);
-        holder.setLoader(); // add the upload picture button into the frame
-        frame.add(back_button);
-        frame.add(reg_button);
+        uploader.setLoader(); // add the upload picture button into the frame
+        frame.add(backButton);
+        frame.add(regButton);
+    }
 
+    /**
+     * Show the registration page to the user.
+     */
+    public void show(){
         setButtonReact();
-
         frame.setVisible(true); // make frame visible for user
     }
 
@@ -84,13 +90,13 @@ public class RegUI {
      * If back button is clicked, direct user back to the previous page(WelcomeUI).
      */
     private void setButtonReact(){
-        reg_button.addActionListener(e -> {
-            String[] lst_inputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platform_info.getText(),
+        regButton.addActionListener(e -> {
+            String[] lstInputs = {Objects.requireNonNull(platform.getSelectedItem()).toString(), platformInfo.getText(),
                     email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
-            new RegControl(frame, lst_inputs, holder); // pass the inputs to the controller
+            new RegControl(frame, lstInputs, uploader); // pass the inputs to the controller
         });
-        back_button.addActionListener(e -> {
+        backButton.addActionListener(e -> {
             frame.setVisible(false);
             new UIController().launchWelcomeUI();
         });
