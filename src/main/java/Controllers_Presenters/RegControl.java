@@ -15,8 +15,9 @@ import java.io.IOException;
  * Dealing with inputs that collect from RegUI and giving appropriate feedback to user.
  */
 public class RegControl {
-    /** First verify inputs, save inputs to the database and direct user to the login page(LogUI) if verification passed.
-     * Also pops any messages to user if needed.
+    /**
+     * First verify inputs, then save inputs to the database and direct user to the login page(LogUI) if verification passed.
+     * Also pops any (failure/success) messages to user if needed.
      *
      * @param regFrame the frame of RegUI
      * @param lstInputs a list of inputs that user typed from the registration page. The list is ordered by:
@@ -42,16 +43,10 @@ public class RegControl {
             String message = checker.diagnose + "please try again!";
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
-            // If checker passed, store the inputs to database
-            // Create a profile the inputs
-            int ageInt = Integer.parseInt(age);
-            String socMed = platform + ": " + pfInfo;
-            double[] location = LocationConverter.codeToCoords(code);
-            Profile profile = new Profile(socMed, email, pw, name, ageInt, gender, location);
-            try{ // If DataSendControl did not have exception i.e. data can be stored to the database
-                new DataSendControl(profile);
-                // Save user's image to the file
+            boolean dataSaveSuccess = regDataStore(platform, pfInfo, email, pw, name, age, gender, code); // save inputs to database
+            if (dataSaveSuccess){ // if inputs have been successfully saved
                 try{
+                    // Save user's image as well
                     int id = new DataFetchControl().fetch_lastID();
                     File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
                     ImageIO.write((BufferedImage)picUploader.image, "jpg", fileSavePic);
@@ -63,10 +58,38 @@ public class RegControl {
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
                 regFrame.setVisible(false);
                 new UIController().launchLogUI();
-            } catch (Exception e){ // If DataSendControl have exception i.e. data not did store to the database
+            } else { // if inputs did not save
                 // Show error message
-                JOptionPane.showMessageDialog(null, "We cannot save you submission!");
+                JOptionPane.showMessageDialog(null, "Something went wrong when saving you submission, please try again!");
             }
         }
+    }
+
+    /**
+     * Save all the user inputs to the database.
+     * Precondition: all user inputs are valid and not null
+     *
+     * @param platform a valid user input, for social media platform
+     * @param pfInfo a valid user input, for social media platform information
+     * @param email a valid user input, for email
+     * @param pw a valid user input, for password
+     * @param name a valid user input, for name
+     * @param age a valid user input, for age
+     * @param gender a valid user input, for gender
+     * @param postcode a valid user input, for postcode
+     * @return true if data has been saved to the database
+     */
+    private boolean regDataStore(String platform, String pfInfo,String email, String pw, String name, String age, String gender, String postcode) {
+        // TODO: discuss to see if this need to be public to write a test
+        int ageInt = Integer.parseInt(age);
+        String socMed = platform + ": " + pfInfo;
+        double[] location = LocationConverter.codeToCoords(postcode);
+        Profile profile = new Profile(socMed, email, pw, name, ageInt, gender, location);
+        try{ // DataSendControl did not have exception i.e. data can be stored to the database
+            new DataSendControl(profile);
+        } catch (Exception e) { // If DataSendControl have exception i.e. data not did store to the database
+            return false;
+        }
+        return true;
     }
 }
