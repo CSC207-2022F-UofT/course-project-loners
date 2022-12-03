@@ -1,11 +1,11 @@
-package Controllers_Presenters;
+package tests.Controllers_Presenters;
 
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.DataSendControl;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DataSendControlTest extends TestCase {
+public class DataSendControlTest {
     @Test
     public void testSend_toid() {
         DataSendControl dataSendControl = new DataSendControl();

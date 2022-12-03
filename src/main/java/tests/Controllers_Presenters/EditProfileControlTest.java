@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package tests.Controllers_Presenters;
 
 import Controllers_Presenters.EditProfileControl;
 import org.junit.Test;
