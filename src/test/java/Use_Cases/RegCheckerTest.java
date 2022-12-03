@@ -1,8 +1,6 @@
 package Use_Cases;
-
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Testing RegCheckerTest
@@ -12,6 +10,7 @@ public class RegCheckerTest {
     /**
      * Implicitly test checkIfMissing, checkValidate and checkDuplicate as they are private classes.
      */
+    @Test
     public void testRegChecker(){
         // Test with all correct user inputs
         String platformInfo = "social media";
