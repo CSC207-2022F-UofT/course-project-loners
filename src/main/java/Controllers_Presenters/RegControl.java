@@ -1,8 +1,9 @@
 package Controllers_Presenters;
 
+import Entities.Profile;
+import Use_Cases.LocationConverter;
 import Use_Cases.PicUploader;
 import Use_Cases.RegChecker;
-import Use_Cases.RegDataStore;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,6 +17,7 @@ import java.io.IOException;
 public class RegControl {
     /** First verify inputs, save inputs to the database and direct user to the login page(LogUI) if verification passed.
      * Also pops any messages to user if needed.
+     *
      * @param regFrame the frame of RegUI
      * @param lstInputs a list of inputs that user typed from the registration page. The list is ordered by:
      *                   {social media platform, username/url of that platform,
@@ -33,20 +35,22 @@ public class RegControl {
         String gender = lstInputs[6];
         String code = lstInputs[7];
 
-        // Run the checker to verify the inputs
+        // Run checker to verify inputs
         RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picUploader);
         if (!checker.pass) {
-            // If checker did not pass, pops failure message
+            // If checker did not pass, pop up a failure message window
             String message = checker.diagnose + "please try again!";
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
-            // If checker passed, store the data
+            // If checker passed, store the inputs to database
+            // Create a profile the inputs
             int ageInt = Integer.parseInt(age);
             String socMed = platform + ": " + pfInfo;
-            RegDataStore storeData = new RegDataStore(socMed, email, pw, name, ageInt, gender, code);
-            if (storeData.success){
-                // If data stored...
-                // First, save user's image to the file
+            double[] location = LocationConverter.codeToCoords(code);
+            Profile profile = new Profile(socMed, email, pw, name, ageInt, gender, location);
+            try{ // If DataSendControl did not have exception i.e. data can be stored to the database
+                new DataSendControl(profile);
+                // Save user's image to the file
                 try{
                     int id = new DataFetchControl().fetch_lastID();
                     File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
@@ -54,14 +58,14 @@ public class RegControl {
                 } catch(IOException error){
                     JOptionPane.showMessageDialog(null, "Something went wrong when uploading the image.");
                 }
-                // Then, pops success message and go to login page
+                // Pop up a success message window and go to login page
                 JOptionPane.showMessageDialog(null,"Account created! Click OK to the login page.",
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
                 regFrame.setVisible(false);
                 new UIController().launchLogUI();
-            } else{
-                // If data did not store, show error message
-                JOptionPane.showMessageDialog(null, "Something went wrong when register!");
+            } catch (Exception e){ // If DataSendControl have exception i.e. data not did store to the database
+                // Show error message
+                JOptionPane.showMessageDialog(null, "We cannot save you submission!");
             }
         }
     }
