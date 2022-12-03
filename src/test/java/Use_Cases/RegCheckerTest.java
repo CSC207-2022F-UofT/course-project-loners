@@ -12,7 +12,6 @@ public class RegCheckerTest {
     /**
      * Implicitly test checkIfMissing, checkValidate and checkDuplicate as they are private classes.
      */
-    @Test(timeout = 50)
     public void testRegChecker(){
         // Test with all correct user inputs
         String platformInfo = "social media";
