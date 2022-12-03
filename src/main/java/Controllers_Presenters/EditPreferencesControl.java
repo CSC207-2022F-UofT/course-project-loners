@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
 import Entities.Preferences;
-import Use_Cases.EditPreferences;
+import usecases.EditPreferences;
 
 import java.util.HashMap;
 

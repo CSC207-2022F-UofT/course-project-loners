@@ -1,6 +1,6 @@
 # SOLID
 ## Single Responsibility Principle
-Most of our classes only have constructors and one method. All the Use_Cases classes follow the rule. Now, we inspect other classes.
+Most of our classes only have constructors and one method. All the usecases classes follow the rule. Now, we inspect other classes.
 * For entity classes; Preferences and Profile, we have get and set methods to prevent
   their attributes from unwanted modification.
 * For controller classes, only DataFetchControl and DataSendControl classes have more than one method.

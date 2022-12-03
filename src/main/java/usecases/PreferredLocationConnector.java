@@ -1,4 +1,4 @@
-package Use_Cases;
+package usecases;
 import static java.lang.Math.*;
 import Controllers_Presenters.DataFetchControl;
 import java.util.ArrayList;

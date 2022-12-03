@@ -1,6 +1,6 @@
 package Controllers_Presenters;
 
-import Use_Cases.ConnectProfilesOutputBoundary;
+import usecases.ConnectProfilesOutputBoundary;
 
 import java.util.List;
 

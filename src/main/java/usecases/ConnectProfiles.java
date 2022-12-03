@@ -1,4 +1,4 @@
-package Use_Cases;
+package usecases;
 
 import Entities.Preferences;
 import Controllers_Presenters.DataFetchControl;
