@@ -15,7 +15,7 @@ import Controllers_Presenters.*;
 public class ProfileFinderUI implements ActionListener{
     // This class will show a profile on the screen based on the matching algorithm
     JFrame frame = new JFrame();
-    GridLayout layout = new GridLayout(7, 2, 10, 5);
+    GridLayout layout = new GridLayout(8, 2, 10, 5);
     JLabel nameLabel = new JLabel("Name: ");
     JLabel genderLabel = new JLabel("Gender: ");
     JLabel ageLabel = new JLabel("Age: ");
@@ -25,6 +25,7 @@ public class ProfileFinderUI implements ActionListener{
 
     JButton likeButton = new JButton("Like");
     JButton passButton = new JButton("Pass");
+    JButton backButton = new JButton("Back");
 
     JTextArea name;
     JTextArea gender;
@@ -54,6 +55,15 @@ public class ProfileFinderUI implements ActionListener{
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
             System.out.println("no more profiles!");
+            JFrame matchFrame = new JFrame();
+            matchFrame.setSize(300, 300);
+            GridLayout matchLayout = new GridLayout(1, 1, 0,0);
+            matchFrame.setLayout(matchLayout);
+            JLabel statement = new JLabel("There are no more matches for you");
+            matchFrame.add(statement);
+            matchFrame.setLocationRelativeTo(null);
+            new MainUI(Integer.parseInt((String)myProfile[0]), (String) myProfile[2]);
+            matchFrame.setVisible(true);
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
             this.curr++;
             new ProfileFinderUI(this.curr, id);
@@ -74,13 +84,14 @@ public class ProfileFinderUI implements ActionListener{
 
             frame.setSize(400, 800);
 
-            layout.setRows(7);
+            layout.setRows(8);
             layout.setColumns(2);
 
             frame.setLayout(layout);
 
             likeButton.addActionListener(this);
             passButton.addActionListener(this);
+            backButton.addActionListener(this);
 
             frame.add(nameLabel);
             frame.add(name);
@@ -101,6 +112,7 @@ public class ProfileFinderUI implements ActionListener{
             bio.setEditable(false);
             frame.add(likeButton);
             frame.add(passButton);
+            frame.add(backButton);
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
@@ -149,6 +161,12 @@ public class ProfileFinderUI implements ActionListener{
             frame.setVisible(false);
             curr++;
             new ProfileFinderUI(curr, id);
+        }else if(e.getSource() == backButton){
+            frame.setVisible(false);
+            new MainUI(Integer.parseInt((String)myProfile[0]), (String) myProfile[2]);
         }
+    }
+    public static void main(String[] args){
+        new ProfileFinderUI(0, "2");
     }
 }
