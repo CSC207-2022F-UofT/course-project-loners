@@ -70,7 +70,7 @@ public class MainUI {
     /**
      * Set responds to different button press.
      */
-    public void setButtonReact(){
+    private void setButtonReact(){
         profileButton.addActionListener(e -> {
             frame.setVisible(false);
             new UIController(id).launchMyProfileUI();

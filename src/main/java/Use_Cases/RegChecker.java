@@ -52,7 +52,7 @@ public class RegChecker {
      * @param postcode an input of user, for postal code
      * @param picLoaded true if user has selected an image to upload
      */
-    public void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, boolean picLoaded){
+    private void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, boolean picLoaded){
         if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | soc_med.isEmpty()){
             this.pass = false;
             this.diagnose = "missing input(s), \n";
@@ -73,7 +73,7 @@ public class RegChecker {
      * @param age an input of user, for age
      * @param postcode an input of user, for postal code
      */
-    public void checkValidate(String email, String age, String postcode){
+    private void checkValidate(String email, String age, String postcode){
         // check if email is valid
         if (!email.contains("@")){
             this.pass = false;
@@ -126,7 +126,7 @@ public class RegChecker {
      *
      * @param email an input of user, for email
      */
-    public void checkDuplicate(String email){
+    private void checkDuplicate(String email){
         // TODO: fix violation??
         if (new DataFetchControl().fetch_emails().contains(email)){
             this.pass = false;
