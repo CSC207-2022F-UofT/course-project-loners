@@ -67,6 +67,7 @@ public class EditProfileControl{
                 likes = String.join(": ", (String) info.get("likes"));
             }
             String location = (info.get("location")).toString();
+            System.out.println(info.get("location"));
 
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +

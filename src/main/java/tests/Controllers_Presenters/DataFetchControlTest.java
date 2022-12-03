@@ -2,8 +2,6 @@ package tests.Controllers_Presenters;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 public class DataFetchControlTest extends TestCase {
