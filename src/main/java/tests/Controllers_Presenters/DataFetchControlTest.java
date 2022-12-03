@@ -1,5 +1,6 @@
 package tests.Controllers_Presenters;
 
+import Controllers_Presenters.DataFetchControl;
 import junit.framework.TestCase;
 import org.junit.Test;
 
