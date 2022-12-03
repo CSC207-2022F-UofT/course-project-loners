@@ -5,7 +5,7 @@ import Controllers_Presenters.DataSendControl;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class DataSendControlTest {
+public class DataSendControlTest extends TestCase {
     @Test
     public void testSend_toid() {
         DataSendControl dataSendControl = new DataSendControl();
@@ -14,7 +14,7 @@ public class DataSendControlTest {
         for(int i=0; i< info.length; i++){
             System.out.println(info[i]);
             System.out.println(((Object[]) DataFetchControl.fetch_fromid(0)[0])[i]);
-//            assert info[i].equals(((Object[]) DataFetchControl.fetch_fromid(0)[0])[i]);
+            assert info[i].equals(((Object[]) DataFetchControl.fetch_fromid(0)[0])[i]);
         }
     }
     @Test
