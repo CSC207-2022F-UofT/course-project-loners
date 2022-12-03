@@ -12,27 +12,41 @@ import java.awt.*;
  */
 public class WelcomeUI {
     /**
-     * Construct a welcome page and show it to the user.
+     * A frame for welcome page.
      */
-    public void buildAndShow(){
+    private final JFrame frame = new JFrame("Welcome page");
+    /**
+     * A button that will head user to the registration page if clicked.
+     */
+    private final JButton buttonReg = new JButton("Don't have an account? Create account");
+    /**
+     * A button that will head user to the log-in page if clicked.
+     */
+    private final JButton buttonLog = new JButton("Sign in");
+
+    /**
+     * Construct a welcome page, which has a welcome massage, sign-up and log-in buttons.
+     */
+    public WelcomeUI(){
         // Set up a frame
-        JFrame frame = new JFrame("Welcome page");
         frame.setLayout(new GridLayout(3,1));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // this line will terminate the program when you closed the window
         UIController.makeFrameFullSize(frame);
 
-        // Claim components
+        // Claim the last component(the message)
         JLabel welcomeMsg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
-        JButton buttonReg = new JButton("Don't have an account? Create account");
-        JButton buttonLog = new JButton("Sign in");
 
         // Add components to the frame
         frame.add(welcomeMsg);
         frame.add(buttonLog);
         frame.add(buttonReg);
+    }
 
+    /**
+     * Show the welcome page to the user.
+     */
+    public void show(){
         new WelcomeControl(buttonReg, buttonLog, frame); // Call a controller to set button reactions
-
         frame.setVisible(true); // make frame visible for user
     }
 }

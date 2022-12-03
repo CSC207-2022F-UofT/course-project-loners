@@ -72,7 +72,7 @@ public class RegUI {
     private Image image;
 
     /**
-     * Build a frame as the registration page, which have
+     * Construct the registration page, which have
      * two buttons for back to previous page and submit their information, and
      * text boxes for user to enter their email, password, name, postal code, social media, and
      * option lists for user to choose their age, gender, social media platform.
