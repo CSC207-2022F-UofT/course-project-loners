@@ -1,6 +1,7 @@
 package Use_Cases;
 
 import Controllers_Presenters.DataSendControl;
+import Entities.Preferences;
 import Entities.Profile;
 
 public class RegDataStore {
