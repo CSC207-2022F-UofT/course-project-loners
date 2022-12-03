@@ -13,33 +13,55 @@ import Controllers_Presenters.*;
  * The ProfileFinderUI adds a window where the user can like or pass on other users.
  */
 public class ProfileFinderUI implements ActionListener{
+    /** the window to display*/
     // This class will show a profile on the screen based on the matching algorithm
     JFrame frame = new JFrame();
+    /**The layout of the window to display*/
     GridLayout layout = new GridLayout(8, 2, 10, 5);
+    /**Label the user's name*/
     JLabel nameLabel = new JLabel("Name: ");
+    /**Label the user's gender*/
     JLabel genderLabel = new JLabel("Gender: ");
+    /**Label the user's age*/
     JLabel ageLabel = new JLabel("Age: ");
+    /**Label the user's bio*/
     JLabel bioLabel = new JLabel("Bio: ");
+    /**Label the user's hobbies*/
     JLabel hobbiesLabel = new JLabel("Hobbies: ");
+    /**Label the user's image*/
     JLabel imageLabel = new JLabel("Image: ");
 
+
+    /**button to like*/
     JButton likeButton = new JButton("Like");
+    /**button to pass*/
     JButton passButton = new JButton("Pass");
+    /**button to go back*/
     JButton backButton = new JButton("Back");
 
+    /**User's age*/
     JTextArea name;
+    /**User's gender*/
     JTextArea gender;
+    /**User's age*/
     JTextArea age;
+    /**User's hobbies*/
     JTextArea hobbies;
+    /**User's bio*/
     JTextArea bio;
+    /**User's image*/
     JLabel image;
 
+    /**Object list for the user's profile*/
     Object[] myProfile;
+    /**Object list for the other user's profile*/
     Object[] otherProfile;
     // All other profile ids as strings
+    /**Other ids as strings*/
     List<Integer> allOtherProfiles;
+    /**current other profile*/
     int curr;
-
+    /**the id of the profile*/
     String id;
 
     /**
