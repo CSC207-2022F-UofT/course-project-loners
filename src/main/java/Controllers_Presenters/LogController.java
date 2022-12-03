@@ -1,19 +1,27 @@
 package Controllers_Presenters;
 
-import UIs.MainUI;
-import UIs.RegUI;
+
 import Use_Cases.Authenticator;
 import UIs.LogUI;
 
 import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
 
 public class LogController{
-    public Authenticator authenticator = new Authenticator();
 
+    /**
+     * This method instantiates a LogController, which displays one of three different messages through a pop-up to
+     * the user interface according to the user input.
+     * -
+     * Scenario 1: email is not registered (not associated to any accounts on our platform). The LogController will
+     * prompt the user to head to the register page.
+     * Scenario 2: email matches password. The LogController will make the user's view move from the
+     * log-in page to the main page.
+     * Scenario 3: wrong password. The LogController will prompt the user to try again and stays on the log-in page.
+     * -
+     * @param email String, user input to the email field on the log-in page
+     * @param password String, user input to the password field on the log-in page
+     * @param logframe the frame the user sees at the moment
+     */
     public LogController(String email, String password, JFrame logframe) {
         if (!Authenticator.emailExists(email)){
             JOptionPane.showMessageDialog(null,
@@ -29,12 +37,10 @@ public class LogController{
         }
     }
 
-    public String getEmail(String email, String password){
-        if (Authenticator.emailMatchPassword(email, password)){
-            return email;
-        } return null;
-    }
-
+    /**
+     * Our main method for the LogController class. Currently, it has no implementation.
+     * @param args a list of Strings
+     */
     public static void main(String[] args) {
         new LogUI();
     }
