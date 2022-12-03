@@ -32,10 +32,9 @@ public class MyProfileUI{
         JLabel bio = new JLabel(String.format("Your bio: \n %s", ((Object[]) profile_data[0])[5]));
         JButton toEditProfile = new JButton("Edit this Profile");
         JLabel socialMedia = new JLabel(String.format("Your social media choice is %s", ((Object[]) profile_data[0])[10]));
-        JLabel preference = new JLabel("Your preferences are; (age, gender, location)");
-        JLabel preferredAge = new JLabel(String.format("Your preferred age is %s", ((Object[]) profile_data[0])[11]));
-        JLabel preferredGender = new JLabel(String.format("Your preferred gender is %s", ((Object[]) profile_data[0])[12]));
-        JLabel preferredLocation = new JLabel(String.format("Your preferred location is %s", ((Object[]) profile_data[0])[13]));
+        JLabel preferredAge = new JLabel(String.format("Your preferred age is %s", ((Object[]) profile_data[0])[12]));
+        JLabel preferredGender = new JLabel(String.format("Your preferred gender is %s", ((Object[]) profile_data[0])[13]));
+        JLabel preferredLocation = new JLabel(String.format("Your preferred location is %s", ((Object[]) profile_data[0])[14]));
 
 
         f.setLayout(new GridLayout(5,1));
@@ -55,7 +54,6 @@ public class MyProfileUI{
         f.add(age);
         f.add(bio);
         f.add(socialMedia);
-        f.add(preference);
         f.add(preferredAge);
         f.add(preferredGender);
         f.add(preferredLocation);

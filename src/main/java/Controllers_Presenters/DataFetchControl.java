@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class DataFetchControl {
-
     /**
      * This method fetch the profile data associated to id.
      @param id of the user
