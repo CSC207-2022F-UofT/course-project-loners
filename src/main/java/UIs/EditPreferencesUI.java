@@ -28,7 +28,7 @@ public class EditPreferencesUI {
         frame.setLayout(new GridBagLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate the program when the window is closed
-        UIController.makeFrameFullSize(frame); // set size to full screen
+        UIController.setFrameSize(frame); // set size to full screen
         frame.setVisible(true);
 
         // set constraints for placing the components
