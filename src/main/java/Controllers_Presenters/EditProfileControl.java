@@ -17,7 +17,6 @@ public class EditProfileControl{
     * This class manages editing the profile.
      */
     public String name;
-    public DataSendControl dataSend = new DataSendControl();
     private BufferedImage image;
     public  EditProfileControl(){
         this.image = null;
@@ -67,13 +66,14 @@ public class EditProfileControl{
                 likes = String.join(": ", (String) info.get("likes"));
             }
             String location = (info.get("location")).toString();
+            System.out.println(info.get("location"));
 
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +
                     location + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            dataSend.send_toid(id, str_data.split(", "));
+            DataSendControl.getInstance().send_toid(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

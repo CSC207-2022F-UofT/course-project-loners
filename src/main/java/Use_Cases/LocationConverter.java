@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class LocationConverter {
 
+
     /**
      * A private method to load in the file we want to use to do location conversions
      * @return A scanner of the file we want to do the conversion with
