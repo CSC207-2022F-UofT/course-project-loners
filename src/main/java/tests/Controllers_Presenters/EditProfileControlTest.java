@@ -1,10 +1,9 @@
 package tests.Controllers_Presenters;
 
-import Controllers_Presenters.EditProfileControl;
+import controllers.EditProfileControl;
 import org.junit.Test;
 
 import javax.swing.*;
-import java.io.File;
 import java.util.HashMap;
 
 public class EditProfileControlTest {

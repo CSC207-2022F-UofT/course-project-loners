@@ -1,6 +1,6 @@
 package usecases;
 
-import Entities.Profile;
+import entities.Profile;
 
 public class ProfileFactory {
     public static Profile generateProfile(String platform, String pfInfo,String email, String pw,

@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package controllers;
 
 import usecases.ConnectProfilesOutputBoundary;
 

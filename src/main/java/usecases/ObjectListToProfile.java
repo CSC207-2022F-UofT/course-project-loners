@@ -1,6 +1,6 @@
 package usecases;
 
-import Entities.Profile;
+import entities.Profile;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;

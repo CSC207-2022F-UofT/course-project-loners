@@ -1,8 +1,8 @@
-package UIs;
+package uis;
 
-import Controllers_Presenters.DataFetchControl;
-import Controllers_Presenters.EditProfileControl;
-import Controllers_Presenters.UIController;
+import controllers.DataFetchControl;
+import controllers.EditProfileControl;
+import controllers.UIController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

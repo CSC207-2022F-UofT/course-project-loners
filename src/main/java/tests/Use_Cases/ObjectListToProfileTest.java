@@ -1,6 +1,6 @@
 package tests.Use_Cases;
 
-import Entities.Profile;
+import entities.Profile;
 import usecases.ObjectListToProfile;
 import org.junit.Assert;
 import org.junit.Test;

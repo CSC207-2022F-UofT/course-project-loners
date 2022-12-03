@@ -1,6 +1,6 @@
 package usecases;
 
-import Controllers_Presenters.DataFetchControl;
+import controllers.DataFetchControl;
 
 import java.util.ArrayList;
 import java.util.List;

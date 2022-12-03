@@ -1,13 +1,13 @@
 # Clean Architecture
 ## Policies
-We clearly defined Profile and Preferences as our Entities. 
+We clearly defined Profile and Preferences as our entities. 
 We also have use cases accordingly to what we need.
 
 ## Layers
 
 ### Dependency Rule
-We checked imported classes in our Entities, Use Cases, Controllers, and UIs.  
-There was no violation in Entities and Use Cases classes.  
+We checked imported classes in our entities, Use Cases, Controllers, and uis.  
+There was no violation in entities and Use Cases classes.  
 However, we found EditProfileUI importing use cases; LoadFile and LocationConverter. 
 RegChecker, Authenticator importing controller DataFetchControl. 
 

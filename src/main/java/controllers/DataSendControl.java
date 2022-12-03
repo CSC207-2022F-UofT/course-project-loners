@@ -1,6 +1,6 @@
-package Controllers_Presenters;
+package controllers;
 
-import Entities.Profile;
+import entities.Profile;
 import usecases.DataSendAccess;
 
 import java.io.*;

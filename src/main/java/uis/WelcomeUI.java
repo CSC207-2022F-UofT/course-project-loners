@@ -1,7 +1,7 @@
-package UIs;
+package uis;
 
-import Controllers_Presenters.UIController;
-import Controllers_Presenters.WelcomeControl;
+import controllers.UIController;
+import controllers.WelcomeControl;
 
 import javax.swing.*;
 import java.awt.*;
