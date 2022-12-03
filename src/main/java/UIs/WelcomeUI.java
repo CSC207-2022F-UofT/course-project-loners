@@ -11,13 +11,10 @@ import java.awt.*;
  * whether they want to log in or register.
  */
 public class WelcomeUI {
-
-    public WelcomeUI(){}
-
     /**
      * Construct a welcome page and show it to the user.
      */
-    public void build_n_show(){
+    public void buildAndShow(){
         // Set up a frame
         JFrame frame = new JFrame("Welcome page");
         frame.setLayout(new GridLayout(3,1));
