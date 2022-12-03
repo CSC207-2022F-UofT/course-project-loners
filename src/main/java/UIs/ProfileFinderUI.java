@@ -84,7 +84,7 @@ public class ProfileFinderUI implements ActionListener{
             JLabel statement = new JLabel("There are no more matches for you");
             matchFrame.add(statement);
             matchFrame.setLocationRelativeTo(null);
-            new MainUI(Integer.parseInt((String)myProfile[0]), (String) myProfile[2]);
+            new MainUI(Integer.parseInt((String)myProfile[0]));
             matchFrame.setVisible(true);
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
             this.curr++;
@@ -185,7 +185,7 @@ public class ProfileFinderUI implements ActionListener{
             new ProfileFinderUI(curr, id);
         }else if(e.getSource() == backButton){
             frame.setVisible(false);
-            new MainUI(Integer.parseInt((String)myProfile[0]), (String) myProfile[2]);
+            new MainUI(Integer.parseInt((String)myProfile[0]));
         }
     }
 }
