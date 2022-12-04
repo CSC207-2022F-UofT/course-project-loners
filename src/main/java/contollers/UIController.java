@@ -1,6 +1,6 @@
 package contollers;
 
-import UIs.*;
+import uis.*;
 
 import javax.swing.*;
 import java.util.Objects;

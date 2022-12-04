@@ -1,4 +1,4 @@
-package UIs;
+package uis;
 import contollers.RegControl;
 import contollers.UIController;
 

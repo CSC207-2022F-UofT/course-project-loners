@@ -6,7 +6,7 @@ We also have use cases accordingly to what we need.
 ## Layers
 
 ### Dependency Rule
-We checked imported classes in our entities, Use Cases, Controllers, and UIs.  
+We checked imported classes in our entities, Use Cases, Controllers, and uis.  
 There was no violation in entities and Use Cases classes.  
 However, we found EditProfileUI importing use cases; LoadFile and LocationConverter. 
 RegChecker, Authenticator importing controller DataFetchControl. 
