@@ -13,4 +13,9 @@ Plus, RegUI was also importing a use case; PictureHolder.
 
 In controller classes, we found ConnectProfilesControl class importing Preferences,
 DataSendControl class importing Profile, EditPreferences class importing Preferences, EditProfile class importing 
-Profile and Preferences, and UIController class importing Profile.
+Profile and Preferences class importing Profile.
+
+### Direction of Arrows
+Some of our classes have dependency arrow pointing to the opposite direction.  
+For instance, Authenticator, ConnectProfiles, EditPreferences, PreferredLocationConnector, RegChecker, RegDataStore 
+depend on DataFetchControl or DataSendControl
