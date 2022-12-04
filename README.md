@@ -12,7 +12,7 @@ Then, click "Download Zip." All the files and directories will be downloaded as 
 Open the zip file in your desired local directory and open the file in IntelliJ Editor. 
 
 ## 2, You can run WelcomeUI.main()
-In your IntelliJ Editor, run WelcomeUI.main() (src/main/java/UIs/WelcomeUI).  
+In your IntelliJ Editor, run WelcomeUI.main() (src/main/java/uis/WelcomeUI).  
 <img src="images/MarkdownImage2.png" alt="drawing" width="200"/>  
 A Java GUI will pop up and you can see the instruction that lets you choose between registration or login.  
 <img src="images/MarkdownImage3.png" alt="drawing" width="200"/>  
@@ -24,10 +24,10 @@ At this moment(Nov 21 8pm), the transition from one UI to another UI with the us
 Thus, you do not expect to see your input in either of your RegUI or LogUI affect your profile that will be displayed in MyProfileUI.  
 
 ## 3, You can run MainUI.main()
-Now, you can run MainUI.main() (src/main/java/UIs/MainUI).  
+Now, you can run MainUI.main() (src/main/java/uis/MainUI).  
 <img src="images/MarkdownImage6.png" alt="drawing" width="200"/>  
 This UI helps users to transit to MyProfileUI, PreferenceEditingUI, and ProfileFinderUI.    
-You will see three buttons that redirect users to each of these UIs.  
+You will see three buttons that redirect users to each of these uis.  
 In PreferenceEditingUI, you can edit your preferences.  The data in database.txt will be updated.  
 <img src="images/MarkdownImage9.png" alt="drawing" width="200"/>
 
