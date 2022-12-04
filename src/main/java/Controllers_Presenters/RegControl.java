@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
-import Use_Cases.ProfileFactory;
-import Use_Cases.RegChecker;
+import usecases.ProfileFactory;
+import usecases.RegChecker;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
-import Use_Cases.EditProfile;
-import Use_Cases.LocationConverter;
+import usecases.EditProfile;
+import usecases.LocationConverter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

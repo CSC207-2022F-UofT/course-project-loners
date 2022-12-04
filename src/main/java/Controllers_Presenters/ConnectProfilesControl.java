@@ -1,7 +1,7 @@
 package Controllers_Presenters;
 
 import Entities.Preferences;
-import Use_Cases.ConnectProfiles;
+import usecases.ConnectProfiles;
 
 import java.util.List;
 
