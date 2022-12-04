@@ -19,7 +19,7 @@ public class ConnectProfilesControl {
      */
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
         // fetch the user's profile and preference data from the database
-        Object[] userData = DataFetchControl.fetch_fromid(id);
+        Object[] userData = DataFetchControl.fetchFromId(id);
         userData = (Object[]) userData[0];
 
         // reformat each of the preferences
@@ -36,12 +36,4 @@ public class ConnectProfilesControl {
         ConnectProfilesPresenter connectProfilesPresenter = new ConnectProfilesPresenter();
         return connectProfilesPresenter.passConnections(connections); // for ProfileFinderUI
     }
-
-//    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file and
-//    saved_images folder
-//        List<Integer> testConnections = ConnectProfilesControl.gatherConnections(3);
-//        for (int testConnection : testConnections) {
-//            System.out.println(testConnection);
-//        }
-//    }
 }

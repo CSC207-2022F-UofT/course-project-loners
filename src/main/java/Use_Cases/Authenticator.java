@@ -90,7 +90,7 @@ public class Authenticator{
     public static boolean emailExists(String inputEmail){
         // Returns true if email exists; returns false otherwise
         DataFetchControl fetchObject = new DataFetchControl();
-        ArrayList<String> emailList = fetchObject.fetch_emails();
+        ArrayList<String> emailList = fetchObject.fetchEmails();
         for (String email : emailList){
             if (Objects.equals(email, inputEmail)){
                 return true;}
@@ -111,8 +111,8 @@ public class Authenticator{
         // Check email exists in database
         if (emailExists(email)){
             // Case 1: email does not match password (wrong password)
-            String database_password = DataFetchControl.fetch_password(email);
-            if (!Objects.equals(password, database_password)){
+            String databasePassword = DataFetchControl.fetchPassword(email);
+            if (!Objects.equals(password, databasePassword)){
                 System.out.println("Incorrect password. Please try again.");
                 return false;
             }

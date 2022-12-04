@@ -90,8 +90,8 @@ public class RegChecker {
 
         // check if age is valid
         try{
-            int age_int = Integer.parseInt(age);
-            if (!(age_int >= 0 && age_int <= 150)){
+            int ageInt = Integer.parseInt(age);
+            if (!(ageInt >= 0 && ageInt <= 150)){
                 this.pass = false;
                 this.diagnose += "age is not in a valid range; \n";
             }
@@ -115,7 +115,7 @@ public class RegChecker {
     }
 
     private void checkDuplicate(String email){
-        if (new DataFetchControl().fetch_emails().contains(email)){
+        if (new DataFetchControl().fetchEmails().contains(email)){
             this.pass = false;
             this.diagnose += "email is existed; \n";
         }

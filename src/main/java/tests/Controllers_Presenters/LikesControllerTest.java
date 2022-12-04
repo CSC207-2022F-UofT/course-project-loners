@@ -1,4 +1,4 @@
-package tests.Controllers_Presenters;
+package Controllers_Presenters;
 
 import Controllers_Presenters.DataFetchControl;
 import Controllers_Presenters.DataSendControl;
@@ -22,11 +22,10 @@ public class LikesControllerTest {
         int otherId = 3;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
         Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2: 3: " , "19", "male", "5.0"};
-        Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetch_fromid(7))[0];
+        Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2", "19", "male", "5.0" };
-        DataSendControl d = new DataSendControl();
-        d.send_toid(7, profDemo);
+        DataSendControl.getInstance().sendToId(7, profDemo);
     }
 
     /**
@@ -39,10 +38,9 @@ public class LikesControllerTest {
         int otherId = 3;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
         Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "3: " , "19", "male", "5.0"};
-        Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetch_fromid(7))[0];
+        Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null", "19", "male", "5.0" };
-        DataSendControl d = new DataSendControl();
-        d.send_toid(7, profDemo);
+        DataSendControl.getInstance().sendToId(7, profDemo);
     }
 }
