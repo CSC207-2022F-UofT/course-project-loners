@@ -22,5 +22,10 @@ ObjectListToProfile is a bit large.
 RegChecker is a bit large
 ### Data Clumps
 Similar group of variables in many places.
-This might be applied to we using properties of Profile and Preferences.
-### 
+In our code, we don't have a group of vairables that is shared in many classes.  
+The major groups of variables used throughout the project are profile and preferences which we defined as Entity,
+
+### Primitive Obsession
+Using many primitives for simple tasks.  
+In EditProfileControl, the profile data is store in a String variable. 
+There is also a String variable in DataSendControl that represents the profile info.
