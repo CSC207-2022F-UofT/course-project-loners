@@ -6,21 +6,19 @@ import Use_Cases.DataSendAccess;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-/*
-* DataSendControl is a class that sends the data to the database in a way the user wants to.
- */
+
 public class DataSendControl implements DataSendAccess {
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
-    private boolean status;
+    public boolean status;
     private static final DataSendControl d = new DataSendControl();
     /**
      * A constructor for DataSendControl class.
      @param profile Profile instance whose information will be sent to the database
      */
     public DataSendControl(Profile profile) {
-        int last_id = new DataFetchControl().fetchLastID();
+        int last_id = new DataFetchControl().fetch_lastID();
         if (last_id == -10) { // if last_id has error
             this.status = false;
         } else if (last_id == -1) { // if the file is empty
@@ -50,9 +48,6 @@ public class DataSendControl implements DataSendAccess {
             }
         }
     }
-    public boolean getStatus(){
-        return this.status;
-    }
 
 
     public DataSendControl() {}
@@ -69,7 +64,7 @@ public class DataSendControl implements DataSendAccess {
      of the profile
      */
     @Override
-    public void sendToId(int id, Object[] data){
+    public void send_toid(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -110,7 +105,6 @@ public class DataSendControl implements DataSendAccess {
         }
     }
 
-
     /**
      * A helper method used in DataSendControl class.
      @param profile A Profile object
@@ -119,19 +113,17 @@ public class DataSendControl implements DataSendAccess {
     @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
-                profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
+                    profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
+                    profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
 
-        if (profile.getHobbies() != null) {
-            str += String.join(": ", profile.getHobbies()) + ", ";
-        } else {
-            str += profile.getHobbies() + ", ";
-        }
+        if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
+        else {str += profile.getHobbies() + ", ";}
 
         str += profile.getSocialMedia() + ", " + profile.getLikes();
 
         return str;
     }
+
     public static void main(String[] args) {
     }
 }

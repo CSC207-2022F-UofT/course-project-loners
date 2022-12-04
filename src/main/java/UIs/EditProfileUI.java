@@ -42,7 +42,7 @@ public class EditProfileUI{
         * GridLayout is used for this UI.
          */
         this.id = id;
-        this.data = ((Object[]) DataFetchControl.fetchFromId(id)[0]); // Data of the user fetched from the database
+        this.data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
 
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
@@ -100,9 +100,9 @@ public class EditProfileUI{
         try {
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", this.id)));
             ImageIcon imageIcon = new ImageIcon(image); // load the image to a imageIcon
-            Image image1 = imageIcon.getImage(); // transform it
-            Image newImg = image1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
-            JLabel label = new JLabel("", new ImageIcon(newImg), SwingConstants.CENTER);
+            Image image_1 = imageIcon.getImage(); // transform it
+            Image new_img = image_1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+            JLabel label = new JLabel("", new ImageIcon(new_img), SwingConstants.CENTER);
             f.add(label);
         } catch (IOException e){
             return;
@@ -115,7 +115,7 @@ public class EditProfileUI{
 
 
         b.addActionListener((e) -> {
-            Object[] data = ((Object[]) DataFetchControl.fetchFromId(id)[0]);
+            Object[] data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]);
             HashMap<String, Object> info = new HashMap<>();
             info.put("name", nameField.getText());
             info.put("email", emailField.getText());

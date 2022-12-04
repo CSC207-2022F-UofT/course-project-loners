@@ -25,16 +25,16 @@ public class WelcomeUI {
         UIController.makeFrameFullSize(frame);
 
         // Claim components
-        JLabel welcomeMsg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
-        JButton buttonReg = new JButton("Don't have an account? Create account");
-        JButton buttonLog = new JButton("Sign in");
+        JLabel welcome_msg = new JLabel("Welcome to Loners!", SwingConstants.CENTER);
+        JButton button_reg = new JButton("Don't have an account? Create account");
+        JButton button_log = new JButton("Sign in");
 
         // Add components to the frame
-        frame.add(welcomeMsg);
-        frame.add(buttonLog);
-        frame.add(buttonReg);
+        frame.add(welcome_msg);
+        frame.add(button_log);
+        frame.add(button_reg);
 
-        new WelcomeControl(buttonReg, buttonLog, frame); // Call a controller to set button reactions
+        new WelcomeControl(button_reg, button_log, frame); // Call a controller to set button reactions
 
         frame.setVisible(true); // make frame visible for user
     }
