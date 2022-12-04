@@ -48,7 +48,7 @@ public class RegControl {
                 // If data stored...
                 // First, save user's image to the file
                 try{
-                    int id = new DataFetchControl().fetch_lastID();
+                    int id = new DataFetchControl().fetchLastID();
                     File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
                     ImageIO.write((BufferedImage)picUploader.image, "jpg", fileSavePic);
                 } catch(IOException error){
