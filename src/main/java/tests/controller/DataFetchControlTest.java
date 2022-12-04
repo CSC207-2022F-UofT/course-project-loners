@@ -1,11 +1,11 @@
 package tests.controller;
 
-import contollers.DataFetchControl;
+import controllers.DataFetchControl;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 
-public class DataFetchControlTest extends TestCase {
+public class DataFetchControlTest {
     @Test
     public void testFetch_fromid() {
         Object[] expected = (Object[]) DataFetchControl.fetch_fromid(0)[0];

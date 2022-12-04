@@ -1,4 +1,4 @@
-package contollers;
+package controllers;
 
 
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package usecases;
 
-import contollers.DataFetchControl;
+import controllers.DataFetchControl;
 
 /**
  * check if

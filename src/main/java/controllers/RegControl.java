@@ -1,4 +1,4 @@
-package contollers;
+package controllers;
 
 import usecases.ProfileFactory;
 import usecases.RegChecker;

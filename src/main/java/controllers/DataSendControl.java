@@ -1,4 +1,4 @@
-package contollers;
+package controllers;
 
 import entities.Profile;
 import usecases.DataSendAccess;

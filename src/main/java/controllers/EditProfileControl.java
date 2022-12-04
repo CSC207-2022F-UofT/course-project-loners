@@ -1,4 +1,4 @@
-package contollers;
+package controllers;
 
 import usecases.EditProfile;
 import usecases.LocationConverter;

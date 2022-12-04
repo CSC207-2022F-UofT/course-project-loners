@@ -1,7 +1,7 @@
 package uis;
 
-import contollers.UIController;
-import contollers.EditPreferencesControl;
+import controllers.UIController;
+import controllers.EditPreferencesControl;
 
 import javax.swing.*;
 import java.awt.*;

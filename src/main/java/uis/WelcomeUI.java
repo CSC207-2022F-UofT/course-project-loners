@@ -1,7 +1,7 @@
 package uis;
 
-import contollers.UIController;
-import contollers.WelcomeControl;
+import controllers.UIController;
+import controllers.WelcomeControl;
 
 import javax.swing.*;
 import java.awt.*;

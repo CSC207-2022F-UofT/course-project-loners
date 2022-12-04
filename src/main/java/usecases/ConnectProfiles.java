@@ -1,7 +1,7 @@
 package usecases;
 
 import entities.Preferences;
-import contollers.DataFetchControl;
+import controllers.DataFetchControl;
 
 import java.util.ArrayList;
 import java.util.List;

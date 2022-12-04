@@ -1,6 +1,6 @@
 package uis;
-import contollers.RegControl;
-import contollers.UIController;
+import controllers.RegControl;
+import controllers.UIController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

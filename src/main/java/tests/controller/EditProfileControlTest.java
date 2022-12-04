@@ -1,6 +1,6 @@
 package tests.controller;
 
-import contollers.EditProfileControl;
+import controllers.EditProfileControl;
 import org.junit.Test;
 
 import javax.swing.*;
