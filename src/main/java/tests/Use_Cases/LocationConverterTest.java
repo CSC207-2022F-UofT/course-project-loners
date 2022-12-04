@@ -1,4 +1,4 @@
-package tests.Use_Cases;
+package Use_Cases;
 
 import Use_Cases.LocationConverter;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package tests.Use_Cases;
+package Use_Cases;
 
 public class SwipeTest {
 }
