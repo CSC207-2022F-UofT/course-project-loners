@@ -112,4 +112,3 @@ public class AuthenticatorTest {
         assertFalse(Authenticator.emailMatchPassword(nonExistingEmail, nonExistingPassword));
     }
 }
-

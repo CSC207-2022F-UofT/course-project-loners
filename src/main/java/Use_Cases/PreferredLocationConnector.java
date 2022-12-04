@@ -42,9 +42,9 @@ public class PreferredLocationConnector{
             }
             return ids;
         } else
-        { // case when there is no profile in the database
-            System.out.println("There is no other profile");
-            return null;
+        { 
+        System.out.println("There is no other profile");
+        return null;
         }
     }
 
