@@ -1,3 +1,6 @@
+# Our project
+## Markdown files where you can view how we follow SOLID, Clean Architecture, Design Pattern, and Code Smells.
+
 # Guide to use our Dating app
 ## 1, download all the files in this repository 
 Click the green "Code" button on the top of this page.  
