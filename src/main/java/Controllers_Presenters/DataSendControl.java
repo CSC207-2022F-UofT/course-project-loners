@@ -1,11 +1,13 @@
 package Controllers_Presenters;
 
 import Entities.Profile;
+import Use_Cases.DataSendAccess;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class DataSendControl{
+
+public class DataSendControl implements DataSendAccess {
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
@@ -49,6 +51,11 @@ public class DataSendControl{
 
 
     public DataSendControl() {}
+
+    /**
+     * Implements singleton design pattern for datasend control
+     * @return instance of DataSendControl
+     */
     public static DataSendControl getInstance(){
         return d;
     }
@@ -56,6 +63,7 @@ public class DataSendControl{
      @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      of the profile
      */
+    @Override
     public void send_toid(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
@@ -102,6 +110,7 @@ public class DataSendControl{
      @param profile A Profile object
      @return String representation of the profile data.
      */
+    @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                     profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
