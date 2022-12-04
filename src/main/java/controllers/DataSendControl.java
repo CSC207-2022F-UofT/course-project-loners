@@ -18,10 +18,10 @@ public class DataSendControl implements DataSendAccess {
      @param profile Profile instance whose information will be sent to the database
      */
     public DataSendControl(Profile profile) {
-        int last_id = new DataFetchControl().fetch_lastID();
-        if (last_id == -10) { // if last_id has error
+        int lastID = new DataFetchControl().fetchLastID();
+        if (lastID == -10) { // if last_id has error
             this.status = false;
-        } else if (last_id == -1) { // if the file is empty
+        } else if (lastID == -1) { // if the file is empty
             try {
                 // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
@@ -38,7 +38,7 @@ public class DataSendControl implements DataSendAccess {
                 // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
-                myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
+                myWriter.write((lastID + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
                 myWriter.close();
                 this.status = true;
             } catch (IOException e) {
@@ -64,20 +64,20 @@ public class DataSendControl implements DataSendAccess {
      of the profile
      */
     @Override
-    public void send_toid(int id, Object[] data){
+    public void sendToid(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             // StringBuffer stores the updated data and will be inserted the database.txt
             StringBuilder inputBuffer = new StringBuilder();
             String line = myReader.readLine();
-            int line_id = Integer.parseInt(line.split(", ")[0]);
+            int lineId = Integer.parseInt(line.split(", ")[0]);
             // iterate through lines until the line of database.txt refers to the data we want to modify
-            while (line_id != id){
+            while (lineId != id){
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
                 line = myReader.readLine();
-                line_id = Integer.parseInt(line.split(", ")[0]);
+                lineId = Integer.parseInt(line.split(", ")[0]);
             }
             String hobbies = (String) data[8];
             String likes = (String) data[10];

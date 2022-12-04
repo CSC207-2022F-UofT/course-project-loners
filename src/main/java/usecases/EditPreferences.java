@@ -43,7 +43,7 @@ public class EditPreferences {
      */
     public void writeData() {
         // fetch the user's current profile and preference data from the database
-        Object[] userData = DataFetchControl.fetch_fromid(id);
+        Object[] userData = DataFetchControl.fetchFromid(id);
         userData = (Object[]) userData[0];
 
         // remove id from the array (to be added back by DataSendControl.send_toid)
@@ -58,6 +58,6 @@ public class EditPreferences {
 
         // send the user's profile and new preference data to the database
         DataSendControl dataSendControl = new DataSendControl();
-        dataSendControl.send_toid(id, userDataNoID);
+        dataSendControl.sendToid(id, userDataNoID);
     }
 }

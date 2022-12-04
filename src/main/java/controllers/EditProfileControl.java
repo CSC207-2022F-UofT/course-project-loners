@@ -73,7 +73,7 @@ public class EditProfileControl{
                     location + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataSendControl.getInstance().send_toid(id, str_data.split(", "));
+            DataSendControl.getInstance().sendToid(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

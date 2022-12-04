@@ -57,7 +57,7 @@ public class ConnectProfiles {
             }
 
             // fetch the possible connected user's profile and preference data from the database
-            Object[] userData = DataFetchControl.fetch_fromid(userID);
+            Object[] userData = DataFetchControl.fetchFromid(userID);
             userData = (Object[]) userData[0];
             String userAge = (String) userData[4]; // other user's age
             String userGender = (String) userData[6]; // other user's gender

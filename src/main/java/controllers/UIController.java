@@ -13,10 +13,10 @@ public class UIController {
 
     public UIController(int id){
         this.id = id;
-        this.data = DataFetchControl.fetch_fromid(id);
+        this.data = DataFetchControl.fetchFromid(id);
     }
 
-    public UIController(String email){ this.id = DataFetchControl.fetch_id_fromEmail(email); }
+    public UIController(String email){ this.id = DataFetchControl.fetchIdFromEmail(email); }
 
     public void launchMyProfileUI(){ new MyProfileUI(id); }
     public static void launchWelcomeUI() { WelcomeUI welUI = new WelcomeUI(); welUI.show(); }
