@@ -87,3 +87,19 @@ We do not have this problem because if there are such variables or methods, Inte
 Never used methods, classes.
 Similar to above, we passed checks of IntelliJ
 
+## Couplers
+### Feature Envy
+A method accessing other data more than its own.
+
+### Inappropriate Intimacy
+One class uses another provate fields or methods
+Each class calls public or static methods of another class.
+Some class may use attributes of another class which should not be accessed directly. Instead, get() and set() methods should be defined if needed.
+
+### Message Chains
+A client requests another object but the object also requests a different object and so on.  
+As long as the code follows clean architecture, we don't have this problem. The clean architecture is discussed in CleanArchitecture.md
+
+### Middle Man
+A class does one job and delegate the work to another class.
+We do not have this problem because each of our classes has a reponsibility that cannot be performed by other classes
