@@ -1,8 +1,8 @@
 package tests.Controllers_Presenters;
 
-import Controllers_Presenters.DataFetchControl;
-import Controllers_Presenters.DataSendControl;
-import Controllers_Presenters.LikesController;
+import contollers.DataFetchControl;
+import contollers.DataSendControl;
+import contollers.LikesController;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
-package Controllers_Presenters;
+package contollers;
 
-import Entities.Preferences;
+import entities.Preferences;
 import usecases.ConnectProfiles;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package UIs;
+package uis;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import Controllers_Presenters.*;
+import contollers.*;
 
 /**
  * The ProfileFinderUI adds a window where the user can like or pass on other users.

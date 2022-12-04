@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package contollers;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

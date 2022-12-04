@@ -1,7 +1,7 @@
-package UIs;
+package uis;
 
-import Controllers_Presenters.LogController;
-import Controllers_Presenters.UIController;
+import contollers.LogController;
+import contollers.UIController;
 
 
 import javax.swing.*;

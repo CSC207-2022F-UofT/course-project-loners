@@ -1,8 +1,8 @@
-package Controllers_Presenters;
+package contollers;
 
 
 import usecases.Authenticator;
-import UIs.LogUI;
+import uis.LogUI;
 
 import javax.swing.*;
 

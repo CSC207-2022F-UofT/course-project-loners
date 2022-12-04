@@ -1,6 +1,6 @@
 package usecases;
 
-import Entities.Profile;
+import entities.Profile;
 
 /**
  * A Use Case interface specifying how to access DataSendControl, to be implemented by this Data Access.

@@ -1,7 +1,7 @@
-package UIs;
+package uis;
 
-import Controllers_Presenters.DataFetchControl;
-import Controllers_Presenters.UIController;
+import contollers.DataFetchControl;
+import contollers.UIController;
 import javax.swing.*;
 import java.awt.*;
 

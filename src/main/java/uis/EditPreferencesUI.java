@@ -1,7 +1,7 @@
-package UIs;
+package uis;
 
-import Controllers_Presenters.UIController;
-import Controllers_Presenters.EditPreferencesControl;
+import contollers.UIController;
+import contollers.EditPreferencesControl;
 
 import javax.swing.*;
 import java.awt.*;

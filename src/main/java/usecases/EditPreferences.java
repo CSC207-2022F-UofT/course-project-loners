@@ -1,8 +1,8 @@
 package usecases;
 
-import Entities.Preferences;
-import Controllers_Presenters.DataFetchControl;
-import Controllers_Presenters.DataSendControl;
+import entities.Preferences;
+import contollers.DataFetchControl;
+import contollers.DataSendControl;
 
 import java.util.ArrayList;
 import java.util.List;

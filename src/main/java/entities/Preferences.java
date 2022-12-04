@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 /**
  * An Entity class that stores the preferences of a user, which describe the type of people the user would like to date.
