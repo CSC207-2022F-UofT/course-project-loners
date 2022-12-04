@@ -1,4 +1,4 @@
-package tests.usecases;
+package usecases;
 
 public class EditPreferencesTest {
 }

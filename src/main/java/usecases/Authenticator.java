@@ -1,6 +1,5 @@
 package usecases;
 
-import controllers.DataFetchControl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,8 +87,7 @@ public class Authenticator{
      */
     public static boolean emailExists(String inputEmail){
         // Returns true if email exists; returns false otherwise
-        DataFetchControl fetchObject = new DataFetchControl();
-        ArrayList<String> emailList = fetchObject.fetch_emails();
+        ArrayList<String> emailList = FetchData.fetchEmails();
         for (String email : emailList){
             if (Objects.equals(email, inputEmail)){
                 return true;}
@@ -110,7 +108,7 @@ public class Authenticator{
         // Check email exists in database
         if (emailExists(email)){
             // Case 1: email does not match password (wrong password)
-            String database_password = DataFetchControl.fetch_password(email);
+            String database_password = FetchData.fetchPassword(email);
             if (!Objects.equals(password, database_password)){
                 System.out.println("Incorrect password. Please try again.");
                 return false;
@@ -124,16 +122,4 @@ public class Authenticator{
         return false;
     }
 
-    /**
-     * Our main method. Currently used to test two methods: (1) emailMatchPassword() and (2) isValidEmail()
-     * @param args a list of Strings
-     */
-    public static void main(String[] args) {
-        new Authenticator();
-        // Testing method email_match_password
-        boolean test = Authenticator.emailMatchPassword("email", "a");
-        boolean test1 = Authenticator.isValidEmail("email");
-        System.out.println(test);
-        System.out.println(test1);
-    }
 }

@@ -1,4 +1,4 @@
-package controllers;
+package usecases;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -11,13 +11,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class DataFetchControl {
+
+/*
+* FetchData class is responsible for fetching the data from the Database.
+* In clean architecture, this works as Data Access Interface
+ */
+public class FetchData {
     /**
      * This method fetch the profile data associated to id.
      @param id of the user
      @return Array Object that contains profile data
      */
-    public static Object[] fetch_fromid(int id){
+    public static Object[] fetchFromId(int id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -47,7 +52,7 @@ public class DataFetchControl {
      @param email of the profile
      @return id
      */
-    public static int fetch_id_fromEmail(String email){
+    public static int fetchIdFromEmail(String email){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -71,7 +76,7 @@ public class DataFetchControl {
      * This method fetches the last id in the database.
      @return last id in the database
      */
-    public int fetch_lastID(){
+    public static int fetchLastID(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
             String line = reader.readLine();
@@ -95,7 +100,7 @@ public class DataFetchControl {
      *
      @return ArrayList that contains all the emails
      */
-    public ArrayList<String> fetch_emails(){
+    public static ArrayList<String> fetchEmails(){
         ArrayList<String> emails = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
@@ -115,7 +120,7 @@ public class DataFetchControl {
         }
     }
 
-    public static String fetch_password(String email){
+    public static String fetchPassword(String email){
         // This method assumes the email exists in our database.
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -136,7 +141,7 @@ public class DataFetchControl {
             return null;
         }
     }
-    public static double[] fetch_address_from_id(int input_id){
+    public static double[] fetchAddressFromId(int input_id){
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error
@@ -169,5 +174,4 @@ public class DataFetchControl {
             return new double[]{0.0, 0.0};
         }
     }
-
 }

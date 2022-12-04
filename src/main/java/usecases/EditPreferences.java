@@ -1,9 +1,6 @@
 package usecases;
 
 import entities.Preferences;
-import controllers.DataFetchControl;
-import controllers.DataSendControl;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +40,7 @@ public class EditPreferences {
      */
     public void writeData() {
         // fetch the user's current profile and preference data from the database
-        Object[] userData = DataFetchControl.fetch_fromid(id);
+        Object[] userData = FetchData.fetchFromId(id);
         userData = (Object[]) userData[0];
 
         // remove id from the array (to be added back by DataSendControl.send_toid)
@@ -57,7 +54,6 @@ public class EditPreferences {
         userDataNoID[13] = prefLocationRange;
 
         // send the user's profile and new preference data to the database
-        DataSendControl dataSendControl = new DataSendControl();
-        dataSendControl.send_toid(id, userDataNoID);
+        SendData.getInstance().sendToId(id, userDataNoID);
     }
 }

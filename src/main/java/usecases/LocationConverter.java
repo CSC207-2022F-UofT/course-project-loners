@@ -1,5 +1,6 @@
 package usecases;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
@@ -33,7 +34,7 @@ public class LocationConverter {
      */
     // NOTE: THIS METHOD IS SENSITIVE TO SPACES AND CAPITALIZATION IN THE POSTAL CODES, IT WILL RETURN
     // AN EXCEPTION IF THE CODE IS NOT PROPERLY FORMATTED
-    // PRECONDITION: Postal code is valid and it exists
+    // PRECONDITION: Postal code is valid, and it exists
     public static double[] codeToCoords(String code){
         // Converts a postal code to an array of doubles that represent that location's corresponding
         // coordinates.
@@ -43,7 +44,7 @@ public class LocationConverter {
         scanner.nextLine();
         // skips the title line
 
-        // while there are more lines to the file and we didn't find it yet
+        // while there are more lines to the file, and we didn't find it yet
         while (scanner.hasNext()){
             String curr = scanner.nextLine();
             String[] currArray = curr.split(",");
@@ -55,7 +56,9 @@ public class LocationConverter {
             }
         }
         // Postal code is not in the file! it does not exist.
+        JOptionPane.showMessageDialog(null, "No location found. Type in correct postcode", "Sorry...", JOptionPane.INFORMATION_MESSAGE);
         throw new NoSuchElementException();
+
     }
 
 }

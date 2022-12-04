@@ -174,7 +174,7 @@ public class EditPreferencesUI {
     }
 
     /**
-     * Build the user interface for the user with ID id, by calling the buildBasicLayout and addComponents methods.
+     * Build the user interface for the user with ID, by calling the buildBasicLayout and addComponents methods.
      *
      * @param id ID of the user who is interacting with the EditPreferencesUI
      */

@@ -1,6 +1,6 @@
 package uis;
 
-import controllers.DataFetchControl;
+import controllers.DataController;
 import controllers.EditProfileControl;
 import controllers.UIController;
 
@@ -12,6 +12,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+
+/*
+* EditProfileUI is where the user edits their profile information.
+* This UI will pop up after the user clicked a button from MyProfileUI
+ */
 public class EditProfileUI{
     /*
      *EditProfileUI that enables users to edit their profile
@@ -42,7 +47,7 @@ public class EditProfileUI{
         * GridLayout is used for this UI.
          */
         this.id = id;
-        this.data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]); // Data of the user fetched from the database
+        this.data = ((Object[]) DataController.fetchFromId(id)[0]); // Data of the user fetched from the database
 
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
@@ -115,7 +120,7 @@ public class EditProfileUI{
 
 
         b.addActionListener((e) -> {
-            Object[] data = ((Object[]) DataFetchControl.fetch_fromid(id)[0]);
+            Object[] data = ((Object[]) DataController.fetchFromId(id)[0]);
             HashMap<String, Object> info = new HashMap<>();
             info.put("name", nameField.getText());
             info.put("email", emailField.getText());
@@ -124,7 +129,7 @@ public class EditProfileUI{
             info.put("bio", bioField.getText());
             info.put("gender", genderField.getSelectedItem());
             info.put("orientation", orientationField.getSelectedItem());
-            info.put("location", control.convertLocation(locationField.getText()));
+            info.put("location", locationField.getText());
             info.put("hobbies", hobbiesField.getText());
             info.put("socialMedia", socialMediaField.getText());
             info.put("likes", data[11]);
@@ -140,6 +145,7 @@ public class EditProfileUI{
                     control.sendImage(id);
                 }
                 new UIController(id).launchMyProfileUI();
+                f.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Something went wrong.",
                         "Sorry...", JOptionPane.INFORMATION_MESSAGE);

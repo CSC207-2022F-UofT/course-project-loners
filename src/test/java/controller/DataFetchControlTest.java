@@ -1,4 +1,4 @@
-package tests.controller;
+package controller;
 
 import controllers.DataFetchControl;
 import junit.framework.TestCase;

@@ -2,7 +2,6 @@ package controllers;
 
 
 import usecases.Authenticator;
-import uis.LogUI;
 
 import javax.swing.*;
 
@@ -37,11 +36,4 @@ public class LogController{
         }
     }
 
-    /**
-     * Our main method for the LogController class. Currently, it has no implementation.
-     * @param args a list of Strings
-     */
-    public static void main(String[] args) {
-        new LogUI();
-    }
 }
