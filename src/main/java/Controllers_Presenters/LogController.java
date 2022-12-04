@@ -2,7 +2,6 @@ package Controllers_Presenters;
 
 
 import Use_Cases.Authenticator;
-import UIs.LogUI;
 
 import javax.swing.*;
 
@@ -35,13 +34,5 @@ public class LogController{
                 JOptionPane.showMessageDialog(null, "Incorrect password. Please try again.");
             }
         }
-    }
-
-    /**
-     * Our main method for the LogController class. Currently, it has no implementation.
-     * @param args a list of Strings
-     */
-    public static void main(String[] args) {
-        new LogUI();
     }
 }

@@ -1,3 +1,9 @@
+# Our project
+## Markdown files where you can view how we follow SOLID, Clean Architecture, Design Pattern, and Code Smells.
+[SOLID](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/SOLID.md).  
+[Clean Architecture](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CleanArchitecture.md).  
+[Design Pattern](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/DesignPattern.md).  
+[Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
 # Guide to use our Dating app
 ## 1, download all the files in this repository 
 Click the green "Code" button on the top of this page.  
