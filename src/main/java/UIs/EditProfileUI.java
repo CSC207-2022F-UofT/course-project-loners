@@ -127,10 +127,10 @@ public class EditProfileUI{
             info.put("location", control.convertLocation(locationField.getText()));
             info.put("hobbies", hobbiesField.getText());
             info.put("socialMedia", socialMediaField.getText());
-            info.put("likes", data[10]);
-            info.put("preferredAge", data[11]);
-            info.put("preferredGender", data[12]);
-            info.put("preferredLocation", data[13]);
+            info.put("likes", data[11]);
+            info.put("preferredAge", data[12]);
+            info.put("preferredGender", data[13]);
+            info.put("preferredLocation", data[14]);
 
 
             if (control.send(info, id)) {
@@ -141,7 +141,8 @@ public class EditProfileUI{
                 }
                 new UIController(id).launchMyProfileUI();
             } else {
-                JOptionPane.showMessageDialog(null, "Something went wrong.");
+                JOptionPane.showMessageDialog(null, "Something went wrong.",
+                        "Sorry...", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -149,6 +150,7 @@ public class EditProfileUI{
             JOptionPane.showMessageDialog(null,"Back to your profile!",
                     "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
             new UIController(id).launchMyProfileUI();
+            f.setVisible(false);
         });
     }
 }

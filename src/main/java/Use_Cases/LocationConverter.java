@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class LocationConverter {
 
+
     /**
      * A private method to load in the file we want to use to do location conversions
      * @return A scanner of the file we want to do the conversion with
@@ -32,6 +33,7 @@ public class LocationConverter {
      */
     // NOTE: THIS METHOD IS SENSITIVE TO SPACES AND CAPITALIZATION IN THE POSTAL CODES, IT WILL RETURN
     // AN EXCEPTION IF THE CODE IS NOT PROPERLY FORMATTED
+    // PRECONDITION: Postal code is valid and it exists
     public static double[] codeToCoords(String code){
         // Converts a postal code to an array of doubles that represent that location's corresponding
         // coordinates.
