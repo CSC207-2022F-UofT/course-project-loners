@@ -1,6 +1,5 @@
-package tests.Use_Cases;
+package tests.usecases;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 public class EditProfileTest {

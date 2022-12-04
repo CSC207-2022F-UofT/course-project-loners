@@ -1,4 +1,4 @@
-package tests.Use_Cases;
+package tests.usecases;
 
 import usecases.LocationConverter;
 import org.junit.Assert;
