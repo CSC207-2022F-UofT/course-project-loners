@@ -3,7 +3,6 @@ package controller;
 import controllers.EditProfileControl;
 import org.junit.Test;
 
-import javax.swing.*;
 import java.util.HashMap;
 
 public class EditProfileControlTest {
@@ -31,25 +30,14 @@ public class EditProfileControlTest {
 
     @Test
     public void withHoldImage() {
-//        JFrame f = new JFrame();
-//        EditProfileControl editProfileControl = new EditProfileControl();
-//        f.setVisible(true);
-//        assert editProfileControl.withHoldImage(f);
     }
 
     @Test
     public void sendImage() {
-//        JFrame f = new JFrame();
-//        EditProfileControl editProfileControl = new EditProfileControl();
-//        f.setVisible(true);
-//        editProfileControl.withHoldImage(f);
-//        editProfileControl.sendImage(0);
     }
 
     @Test
     public void convertLocation() {
-//        EditProfileControl editProfileControl = new EditProfileControl();
-//        assert editProfileControl.convertLocation("M5E 2S2").equals("");
     }
 
     @Test
