@@ -2,6 +2,7 @@ package Controllers_Presenters;
 
 import Entities.Preferences;
 import Use_Cases.ConnectProfiles;
+import Use_Cases.FetchData;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ConnectProfilesControl {
      */
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
         // fetch the user's profile and preference data from the database
-        Object[] userData = DataFetchControl.fetchFromId(id);
+        Object[] userData = FetchData.fetchFromId(id);
         userData = (Object[]) userData[0];
 
         // reformat each of the preferences

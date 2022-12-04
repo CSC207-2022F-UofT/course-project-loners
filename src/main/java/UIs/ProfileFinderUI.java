@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import Controllers_Presenters.*;
-
 /**
  * The ProfileFinderUI adds a window where the user can like or pass on other users.
  */
@@ -147,7 +146,7 @@ public class ProfileFinderUI implements ActionListener{
      * @return the corresponding profile to the param id
      */
     public Object[] getProfileWithId(int id){
-        return DataFetchControl.fetchFromId(id);
+        return DataController.fetchFromId(id);
     }
 
     /**

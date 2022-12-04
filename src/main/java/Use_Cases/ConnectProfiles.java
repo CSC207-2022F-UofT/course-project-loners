@@ -1,7 +1,6 @@
 package Use_Cases;
 
 import Entities.Preferences;
-import Controllers_Presenters.DataFetchControl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +56,7 @@ public class ConnectProfiles {
             }
 
             // fetch the possible connected user's profile and preference data from the database
-            Object[] userData = DataFetchControl.fetchFromId(userID);
+            Object[] userData = FetchData.fetchFromId(userID);
             userData = (Object[]) userData[0];
             String userAge = (String) userData[4]; // other user's age
             String userGender = (String) userData[6]; // other user's gender

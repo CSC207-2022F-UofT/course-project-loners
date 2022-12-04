@@ -2,6 +2,7 @@ package Controllers_Presenters;
 
 import Entities.Profile;
 import UIs.*;
+import Use_Cases.FetchData;
 import Use_Cases.ObjectListToProfile;
 
 import javax.swing.*;
@@ -17,14 +18,14 @@ public class UIController {
     String email;
     public UIController(int id){
         this.id = id;
-        this.data = DataFetchControl.fetchFromId(id);
+        this.data = FetchData.fetchFromId(id);
         Profile p = ObjectListToProfile.returnObjListAsProfile(this.data);
         this.email = p.getEmail();
     }
     public UIController() {}
     public UIController(String email) {
         this.email = email;
-        this.id = DataFetchControl.fetchIdFromEmail(email);
+        this.id = FetchData.fetchIdFromEmail(email);
     }
 
     /**

@@ -1,6 +1,6 @@
 package UIs;
 
-import Controllers_Presenters.DataFetchControl;
+import Controllers_Presenters.DataController;
 import Controllers_Presenters.EditProfileControl;
 import Controllers_Presenters.UIController;
 
@@ -42,7 +42,7 @@ public class EditProfileUI{
         * GridLayout is used for this UI.
          */
         this.id = id;
-        this.data = ((Object[]) DataFetchControl.fetchFromId(id)[0]); // Data of the user fetched from the database
+        this.data = ((Object[]) DataController.fetchFromId(id)[0]); // Data of the user fetched from the database
 
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
@@ -115,7 +115,7 @@ public class EditProfileUI{
 
 
         b.addActionListener((e) -> {
-            Object[] data = ((Object[]) DataFetchControl.fetchFromId(id)[0]);
+            Object[] data = ((Object[]) DataController.fetchFromId(id)[0]);
             HashMap<String, Object> info = new HashMap<>();
             info.put("name", nameField.getText());
             info.put("email", emailField.getText());

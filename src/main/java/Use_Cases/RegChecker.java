@@ -1,7 +1,5 @@
 package Use_Cases;
 
-import Controllers_Presenters.DataFetchControl;
-
 /**
  * check if
  * - information of user which is required for register is missing
@@ -115,7 +113,7 @@ public class RegChecker {
     }
 
     private void checkDuplicate(String email){
-        if (new DataFetchControl().fetchEmails().contains(email)){
+        if (new FetchData().fetchEmails().contains(email)){
             this.pass = false;
             this.diagnose += "email is existed; \n";
         }

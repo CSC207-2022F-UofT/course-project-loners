@@ -1,6 +1,6 @@
 package Use_Cases;
 import static java.lang.Math.*;
-import Controllers_Presenters.DataFetchControl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +19,17 @@ public class PreferredLocationConnector{
      * @return the list of ids that are within the preferred location range from the user's address
      */
     public static List<Integer> withinPreferredLocation(int id, double locationRange) {
-        int lastId = new DataFetchControl().fetchLastID(); // get the number of users stored in database
+        int lastId = new FetchData().fetchLastID(); // get the number of users stored in database
         ArrayList<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
-        new DataFetchControl();
-        double[] userAddress = DataFetchControl.fetchAddressFromId(id);
+        new FetchData();
+        double[] userAddress = FetchData.fetchAddressFromId(id);
         double userLatRad = (toRadians(userAddress[0]));
         double userLongRad = (toRadians(userAddress[1]));
         if (lastId > 0) {
             for (int i = 0; i < lastId + 1; i++) {
                 if (i != id) { // when the id matches with i, the for loop should continue
-                    new DataFetchControl();
-                    double[] data = DataFetchControl.fetchAddressFromId(i);
+                    new FetchData();
+                    double[] data = FetchData.fetchAddressFromId(i);
                     double otherLatRad = (toRadians(data[0]));
                     double otherLongRad = (toRadians(data[1]));
                     double dis = (3440.1 * acos((sin(userLatRad) * sin(otherLatRad)) + cos(userLatRad) *

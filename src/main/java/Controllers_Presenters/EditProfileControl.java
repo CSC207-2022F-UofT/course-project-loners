@@ -1,5 +1,6 @@
 package Controllers_Presenters;
 
+import Use_Cases.SendData;
 import Use_Cases.EditProfile;
 import Use_Cases.LocationConverter;
 
@@ -88,7 +89,7 @@ public class EditProfileControl{
                     location + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataSendControl.getInstance().sendToId(id, str_data.split(", "));
+            SendData.getInstance().sendToId(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

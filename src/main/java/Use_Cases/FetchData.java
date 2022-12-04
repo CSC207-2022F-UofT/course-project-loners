@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package Use_Cases;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,7 +14,7 @@ import java.util.Objects;
 /*
 * DataFetchControl class has methods that fetches the data from the database in a way the user wants to
  */
-public class DataFetchControl {
+public class FetchData {
     /**
      * This method fetch the profile data associated to id.
      @param id of the user
@@ -74,7 +74,7 @@ public class DataFetchControl {
      * This method fetches the last id in the database.
      @return last id in the database
      */
-    public int fetchLastID(){
+    public static int fetchLastID(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));
             String line = reader.readLine();
@@ -98,7 +98,7 @@ public class DataFetchControl {
      *
      @return ArrayList that contains all the emails
      */
-    public ArrayList<String> fetchEmails(){
+    public static ArrayList<String> fetchEmails(){
         ArrayList<String> emails = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("database.txt"));

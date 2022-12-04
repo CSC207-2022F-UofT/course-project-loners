@@ -1,13 +1,14 @@
 package Controllers_Presenters;
 
+import Use_Cases.FetchData;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 
-public class DataFetchControlTest extends TestCase {
+public class FetchDataTest extends TestCase {
     @Test
     public void testFetch_fromid() {
-        Object[] expected = (Object[]) DataFetchControl.fetchFromId(0)[0];
+        Object[] expected = (Object[]) FetchData.fetchFromId(0)[0];
         Object[] actual = {"0", "Name", "email@", "null", "20", "bio", "male", "straight", "20.0: 10.0",
                 "play soccer: play violin", "null", "null", "20", "male", "2.0"};
 
@@ -19,32 +20,32 @@ public class DataFetchControlTest extends TestCase {
 
     @Test
     public void testFetch_id_fromEmail() {
-        int expected = DataFetchControl.fetchIdFromEmail("email@");
+        int expected = FetchData.fetchIdFromEmail("email@");
         assert expected == 0;
     }
 
     @Test
     public void testFetch_lastID() {
-        DataFetchControl dataFetchControl = new DataFetchControl();
-        int expected = dataFetchControl.fetchLastID();
+        FetchData fetchData = new FetchData();
+        int expected = fetchData.fetchLastID();
         assert expected == 7;
     }
 
     @Test
     public void testFetch_emails() {
-        DataFetchControl dataFetchControl = new DataFetchControl();
-        ArrayList<String> emails = dataFetchControl.fetchEmails();
+        FetchData fetchData = new FetchData();
+        ArrayList<String> emails = fetchData.fetchEmails();
         assert emails.size() == 8;
     }
 
     @Test
     public void testFetch_password() {
-        String expected = DataFetchControl.fetchPassword("email@");
+        String expected = FetchData.fetchPassword("email@");
         assert expected.equals("null");
     }
     @Test
     public void testFetch_address_from_id() {
-        double[] expected = DataFetchControl.fetchAddressFromId(0);
+        double[] expected = FetchData.fetchAddressFromId(0);
         assert expected.equals(new double[] {20.0, 10.0});
     }
 }

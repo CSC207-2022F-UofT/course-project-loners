@@ -1,8 +1,5 @@
 package Use_Cases;
 
-import Controllers_Presenters.DataFetchControl;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -89,7 +86,7 @@ public class Authenticator{
      */
     public static boolean emailExists(String inputEmail){
         // Returns true if email exists; returns false otherwise
-        DataFetchControl fetchObject = new DataFetchControl();
+        FetchData fetchObject = new FetchData();
         ArrayList<String> emailList = fetchObject.fetchEmails();
         for (String email : emailList){
             if (Objects.equals(email, inputEmail)){
@@ -111,7 +108,7 @@ public class Authenticator{
         // Check email exists in database
         if (emailExists(email)){
             // Case 1: email does not match password (wrong password)
-            String databasePassword = DataFetchControl.fetchPassword(email);
+            String databasePassword = FetchData.fetchPassword(email);
             if (!Objects.equals(password, databasePassword)){
                 System.out.println("Incorrect password. Please try again.");
                 return false;

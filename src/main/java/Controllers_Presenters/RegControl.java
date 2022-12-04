@@ -1,5 +1,6 @@
 package Controllers_Presenters;
 
+import Use_Cases.FetchData;
 import Use_Cases.PicUploader;
 import Use_Cases.RegChecker;
 import Use_Cases.RegDataStore;
@@ -48,7 +49,7 @@ public class RegControl {
                 // If data stored...
                 // First, save user's image to the file
                 try{
-                    int id = new DataFetchControl().fetchLastID();
+                    int id = new FetchData().fetchLastID();
                     File fileSavePic = new File(String.format("saved_images/%s.jpg", id));
                     ImageIO.write((BufferedImage)picUploader.image, "jpg", fileSavePic);
                 } catch(IOException error){

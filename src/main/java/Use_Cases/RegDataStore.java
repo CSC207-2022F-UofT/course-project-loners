@@ -1,6 +1,5 @@
 package Use_Cases;
 
-import Controllers_Presenters.DataSendControl;
 import Entities.Profile;
 
 public class RegDataStore {
@@ -8,7 +7,7 @@ public class RegDataStore {
     public RegDataStore(String social, String email, String password, String name, int age, String gender, String postcode) {
         double[] location = LocationConverter.codeToCoords(postcode);
         Profile profile = new Profile(social, email, password, name, age, gender, location);
-        new DataSendControl(profile);
+        new SendData(profile);
         this.success = true;
     }
 }
