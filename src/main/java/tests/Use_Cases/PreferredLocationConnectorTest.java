@@ -15,6 +15,7 @@ public class PreferredLocationConnectorTest {
      * Check if it correctly outputs the list of ids' of those who are within the preferred location range from
      *      the preferred location of the user with a specific id.
      */
+
     @Test
     public void withinPreferredLocationTest(){
         int idOfUser = 7;
