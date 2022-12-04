@@ -36,12 +36,4 @@ public class ConnectProfilesControl {
         ConnectProfilesPresenter connectProfilesPresenter = new ConnectProfilesPresenter();
         return connectProfilesPresenter.passConnections(connections); // for ProfileFinderUI
     }
-
-//    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file and
-//    saved_images folder
-//        List<Integer> testConnections = ConnectProfilesControl.gatherConnections(3);
-//        for (int testConnection : testConnections) {
-//            System.out.println(testConnection);
-//        }
-//    }
 }

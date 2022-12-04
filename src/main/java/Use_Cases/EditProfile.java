@@ -3,9 +3,18 @@ package Use_Cases;
 
 import java.util.HashMap;
 import java.util.List;
-
+/*
+* This use case is used in EditProfileControl to edit the profile by validating the new input
+*
+ */
 public class EditProfile {
     public Authenticator authenticator = new Authenticator();
+
+    /**
+     *
+     * @param info of the user we want to edit
+     * @return boolean representing whether the editing was successful or not.
+     */
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
@@ -30,22 +39,12 @@ public class EditProfile {
                 }
             } else if (keys[k] == "age") {
                 return Authenticator.isValidAge((int) values[k]);
-            } else if (keys[k] == "gender") {
-                return true;
             } else if (keys[k] == "location") {
-                return true;
-            } else if (keys[k] == "image") {
-                return true;
+                return Authenticator.isValidAddress((String) values[k]);
             } else if (keys[k] == "bio") {
                 return authenticator.isValidBio((String) values[k]);
             } else if (keys[k] == "hobbies") {
                 return authenticator.isValidHobbies((List<String>) values[k]);
-            } else if (keys[k] == "socialMedia") {
-                return true;
-            } else if (keys[k] == "likes") {
-                return true;
-            } else if (keys[k] == "orientation") {
-                return true;
             }
         }
         return true;

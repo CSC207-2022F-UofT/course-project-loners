@@ -11,17 +11,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/*
+ * EditProfileControl class
+ * This class manages editing the profile.
+ */
 public class EditProfileControl{
-    /*
-    * EditProfileControl class
-    * This class manages editing the profile.
-     */
-    public String name;
     private BufferedImage image;
     public  EditProfileControl(){
         this.image = null;
     }
     EditProfile editProfile = new EditProfile();
+
+    /**
+     *
+     * @param f of the JFrame
+     * @return boolean value representing whether it successfully holds the image or not
+     */
     public boolean withHoldImage(JFrame f){
         FileDialog fd = new FileDialog(f, "Open", FileDialog.LOAD);
         fd.setVisible(true);
@@ -34,6 +39,11 @@ public class EditProfileControl{
             return false;
         }
     }
+
+    /**
+     * This method sends the image the user chosen from their local folder to our save_images folder.
+     * @param id of the use we want to send the image to
+     */
     public void sendImage(int id){
         File myObj = new File(String.format("saved_images/%s.jpg", id));
         if(myObj.exists()) {
@@ -48,6 +58,12 @@ public class EditProfileControl{
                 }
         }
     }
+
+    /**
+     *
+     * @param code representing the postal code
+     * @return double[] representing the location in two doubles
+     */
     public double[] convertLocation(String code){
         return LocationConverter.codeToCoords(code);
     }
@@ -66,14 +82,13 @@ public class EditProfileControl{
                 likes = String.join(": ", (String) info.get("likes"));
             }
             String location = (info.get("location")).toString();
-            System.out.println(info.get("location"));
 
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +
                     location + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataSendControl.getInstance().send_toid(id, str_data.split(", "));
+            DataSendControl.getInstance().sendToId(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

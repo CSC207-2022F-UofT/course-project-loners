@@ -6,12 +6,14 @@ import Use_Cases.DataSendAccess;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-
+/*
+* DataSendControl is a class that sends the data to the database in a way the user wants to.
+ */
 public class DataSendControl implements DataSendAccess {
     /*
     * This class sends the given data to database accordingly to how the user wants to.
      */
-    public boolean status;
+    private boolean status;
     private static final DataSendControl d = new DataSendControl();
     /**
      * A constructor for DataSendControl class.
@@ -47,6 +49,9 @@ public class DataSendControl implements DataSendAccess {
                 this.status = false;
             }
         }
+    }
+    public boolean getStatus(){
+        return this.status;
     }
 
 
@@ -105,6 +110,7 @@ public class DataSendControl implements DataSendAccess {
         }
     }
 
+
     /**
      * A helper method used in DataSendControl class.
      @param profile A Profile object
@@ -113,17 +119,19 @@ public class DataSendControl implements DataSendAccess {
     @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
-                    profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                    profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
+                profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
+                profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
 
-        if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
-        else {str += profile.getHobbies() + ", ";}
+        if (profile.getHobbies() != null) {
+            str += String.join(": ", profile.getHobbies()) + ", ";
+        } else {
+            str += profile.getHobbies() + ", ";
+        }
 
         str += profile.getSocialMedia() + ", " + profile.getLikes();
 
         return str;
     }
-
     public static void main(String[] args) {
     }
 }

@@ -8,9 +8,9 @@ import org.junit.Test;
 public class DataSendControlTest extends TestCase {
     @Test
     public void testSend_toid() {
-        DataSendControl dataSendControl = new DataSendControl();
+
         Object[] info = (Object[]) DataFetchControl.fetchFromId(0)[0];
-        dataSendControl.send_toid(0, info);
+        DataSendControl.getInstance().sendToId(0, info);
         for(int i=0; i< info.length; i++){
             System.out.println(info[i]);
             System.out.println(((Object[]) DataFetchControl.fetchFromId(0)[0])[i]);

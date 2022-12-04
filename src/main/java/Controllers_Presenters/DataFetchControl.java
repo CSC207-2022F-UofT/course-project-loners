@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+/*
+* DataFetchControl class has methods that fetches the data from the database in a way the user wants to
+ */
 public class DataFetchControl {
     /**
      * This method fetch the profile data associated to id.

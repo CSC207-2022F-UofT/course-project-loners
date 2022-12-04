@@ -9,13 +9,6 @@ import java.awt.*;
 import java.util.Objects;
 
 public class UIController {
-    public MyProfileUI myProfileUI;
-    public WelcomeUI welUI;
-    public LogUI logUI;
-    public RegUI regUI;
-    public MainUI mainUI;
-    public ProfileFinderUI pffdUI;
-    public EditProfileUI editProfileUI;
     static int id;
     Object[] data;
     String email;
@@ -33,20 +26,20 @@ public class UIController {
     }
 
     public void launchMyProfileUI(){
-        myProfileUI = new MyProfileUI(id);
+        new MyProfileUI(id);
     }
-    public void launchWelcomeUI() { welUI = new WelcomeUI(); welUI.build_n_show();}
-    public void launchLogUI() { logUI = new LogUI(); }
-    public void launchRegUI() { regUI = new RegUI(); regUI.show();}
-    public void launchMainUI() { mainUI = new MainUI(id, email); }
+    public void launchWelcomeUI() { new WelcomeUI().build_n_show();}
+    public void launchLogUI() { new LogUI(); }
+    public void launchRegUI() { new RegUI().show();}
+    public void launchMainUI() { new MainUI(id, email); }
     public void launchEditPreferencesUI() {
         EditPreferencesUI.buildUI(id);
     }
     public void launchEditProfileUI(){
-        editProfileUI = new EditProfileUI(this.id);
+        new EditProfileUI(this.id);
     }
 
-    public void launchProfileFinderUI(){ pffdUI = new ProfileFinderUI(0, Integer.toString(id)); }
+    public void launchProfileFinderUI(){ new ProfileFinderUI(0, Integer.toString(id)); }
 
     public boolean checkifPreference(){
         Object[] dat = (Object[]) this.data[0];

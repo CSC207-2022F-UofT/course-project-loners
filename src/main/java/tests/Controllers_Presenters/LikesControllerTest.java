@@ -25,8 +25,7 @@ public class LikesControllerTest {
         Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2", "19", "male", "5.0" };
-        DataSendControl d = new DataSendControl();
-        d.send_toid(7, profDemo);
+        DataSendControl.getInstance().sendToId(7, profDemo);
     }
 
     /**
@@ -42,7 +41,6 @@ public class LikesControllerTest {
         Object[] profData = (Object[]) Objects.requireNonNull(DataFetchControl.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null", "19", "male", "5.0" };
-        DataSendControl d = new DataSendControl();
-        d.send_toid(7, profDemo);
+        DataSendControl.getInstance().sendToId(7, profDemo);
     }
 }
