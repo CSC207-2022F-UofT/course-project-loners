@@ -8,7 +8,6 @@ import java.util.List;
 *
  */
 public class EditProfile {
-    public Authenticator authenticator = new Authenticator();
 
     /**
      *
@@ -24,7 +23,7 @@ public class EditProfile {
         }
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
-                if(authenticator.isValidName((String) values[k])){
+                if(Authenticator.isValidName((String) values[k])){
                     return true;
                 }else {
                     System.out.println("Invalid Name");
@@ -42,9 +41,9 @@ public class EditProfile {
             } else if (keys[k] == "location") {
                 return Authenticator.isValidAddress((String) values[k]);
             } else if (keys[k] == "bio") {
-                return authenticator.isValidBio((String) values[k]);
+                return Authenticator.isValidBio((String) values[k]);
             } else if (keys[k] == "hobbies") {
-                return authenticator.isValidHobbies((List<String>) values[k]);
+                return Authenticator.isValidHobbies((List<String>) values[k]);
             }
         }
         return true;

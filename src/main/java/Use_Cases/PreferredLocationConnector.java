@@ -19,7 +19,7 @@ public class PreferredLocationConnector{
      * @return the list of ids that are within the preferred location range from the user's address
      */
     public static List<Integer> withinPreferredLocation(int id, double locationRange) {
-        int lastId = new DataFetchControl().fetch_lastID(); // get the number of users stored in database
+        int lastId = new DataFetchControl().fetchLastID(); // get the number of users stored in database
         ArrayList<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
         new DataFetchControl();
         double[] userAddress = DataFetchControl.fetchAddressFromId(id);
