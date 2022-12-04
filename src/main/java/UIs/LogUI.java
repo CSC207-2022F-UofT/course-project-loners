@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * A login page for the application where users enter the email and password they registered with.
+ */
 public class LogUI implements ActionListener {
     JFrame f;
     GridLayout layout = new GridLayout(3, 1, 10, 20);
@@ -20,7 +23,10 @@ public class LogUI implements ActionListener {
     JTextField passwordField = new JTextField(20);
     JButton back = new JButton("Back to Welcome page");
 
-
+    /**
+     * Builds a frame for the login page. There are two text boxes for email and password input.
+     * A button for users to get back to the welcome page, and another button for login.
+     */
     public LogUI() {
         f = new JFrame();
         f.setLayout(layout);
@@ -40,6 +46,11 @@ public class LogUI implements ActionListener {
 
         b.addActionListener(this);
         back.addActionListener(new ActionListener() {
+            /**
+             * This method overrides the actionPerformed method that comes with the package ActionListener.
+             * It closes the login page and calls the UIController to launch the welcome UI page.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
@@ -48,11 +59,20 @@ public class LogUI implements ActionListener {
         });
     }
 
+    /**
+     * This method calls the LogController class and passes in the user's input in the email and password, as well
+     * as the login window to the controller.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         new LogController(emailField.getText(), passwordField.getText(), f);
     }
 
+    /**
+     * Our main method for the LogUI class. It creates a new LogUI object.
+     * @param args a list of Strings.
+     */
     public static void main(String[] args) {
         new LogUI();
     }
