@@ -1,6 +1,6 @@
-package tests.Use_Cases;
+package tests.usecases;
 
-import Use_Cases.Authenticator;
+import usecases.Authenticator;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
