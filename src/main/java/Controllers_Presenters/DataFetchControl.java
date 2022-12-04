@@ -140,32 +140,16 @@ public class DataFetchControl {
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error
-        try {
-            BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
-            String line = myReader.readLine();
-            String[] wholeLine = line.split(", ");
-            String id = wholeLine[0];
-            String address = wholeLine[8];
-            String input_id_str = "" + input_id;
-            while (!Objects.equals(id, input_id_str) ) {
-                line = myReader.readLine();
-                wholeLine = line.split(", ");
-                id = wholeLine[0];
-                address = wholeLine[8];
-            }
-            if(address.matches(".*\\d.*") && address.contains(":")){
-                String[] locationStr = address.split(":");
-                double latitude = Double.parseDouble(locationStr[0]);
-                double longitude = Double.parseDouble(locationStr[1]);
-                return new double[] {latitude, longitude};
-            }
-            else{
-                System.out.println("It only contains String.");
-                return new double[]{0.0, 0.0};
-            }
-        } catch (IOException e){
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+
+        String address = ((String[])fetchFromId(input_id)[0])[8];
+        if(address.matches(".*\\d.*") && address.contains(":")){
+            String[] locationStr = address.split(":");
+            double latitude = Double.parseDouble(locationStr[0]);
+            double longitude = Double.parseDouble(locationStr[1]);
+            return new double[] {latitude, longitude};
+        }
+        else{
+            System.out.println("It only contains String.");
             return new double[]{0.0, 0.0};
         }
     }

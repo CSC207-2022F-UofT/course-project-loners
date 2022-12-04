@@ -57,7 +57,6 @@ public class EditPreferences {
         userDataNoID[13] = prefLocationRange;
 
         // send the user's profile and new preference data to the database
-        DataSendControl dataSendControl = new DataSendControl();
-        dataSendControl.send_toid(id, userDataNoID);
+        DataSendControl.getInstance().sendToId(id, userDataNoID);
     }
 }

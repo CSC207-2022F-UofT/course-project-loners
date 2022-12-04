@@ -64,7 +64,7 @@ public class DataSendControl implements DataSendAccess {
      of the profile
      */
     @Override
-    public void send_toid(int id, Object[] data){
+    public void sendToId(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
