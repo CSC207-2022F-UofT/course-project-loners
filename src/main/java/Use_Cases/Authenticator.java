@@ -1,6 +1,7 @@
 package Use_Cases;
 
 import Controllers_Presenters.DataFetchControl;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public class Authenticator{
      * @param name user input to the username field
      * @return true if input is a valid username, false otherwise.
      */
-    public boolean isValidName(String name){
-        return name.length() <= 20;
+    public static boolean isValidName(String name){
+        return name.matches("([a-zA-Z',.-]+( [a-zA-Z',.-]+)*){2,30}");
     }
 
     /**
@@ -61,7 +62,7 @@ public class Authenticator{
      * @param bio user's bio in their profile
      * @return true if bio is valid, false otherwise.
      */
-    public boolean isValidBio(String bio){
+    public static boolean isValidBio(String bio){
         return bio.length() <= 400;
     }
 
@@ -71,7 +72,7 @@ public class Authenticator{
      * @param hobbies a list of hobbies entered by user in their profile
      * @return true if the list of hobbies is valid, false otherwise.
      */
-    public boolean isValidHobbies(List<String> hobbies){
+    public static boolean isValidHobbies(List<String> hobbies){
         for (String hobby : hobbies) {
             if (hobby.length() > 100) {
                 return false;
