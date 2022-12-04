@@ -1,6 +1,6 @@
 package tests.usecases;
 
-import Use_Cases.PreferredLocationConnector;
+import usecases.PreferredLocationConnector;
 import org.junit.Assert;
 import org.junit.Test;
 
