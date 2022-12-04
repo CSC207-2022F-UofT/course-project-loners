@@ -57,7 +57,7 @@ public class MainUI {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == profileFinder) {
                     UIController controller = new UIController(id);
-                    if (controller.checkifPreference()){
+                    if (controller.checkIfPreference()){
                         JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
                     } else{
                         frame.setVisible(false);
