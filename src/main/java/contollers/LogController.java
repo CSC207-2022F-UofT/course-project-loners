@@ -2,7 +2,7 @@ package contollers;
 
 
 import usecases.Authenticator;
-import uis.LogUI;
+import UIs.LogUI;
 
 import javax.swing.*;
 

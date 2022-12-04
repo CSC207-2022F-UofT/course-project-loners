@@ -25,5 +25,5 @@ We do not have any concern about this principle because we do not have inheritan
 ## Dependency Inversion Principle
 We modified our code after Milestone4 in terms of Dependency Inversion Principle.  
 Before the modification, some of our UI classes had Profile(Entity) instances in them.  
-This was a violation of dependency inversion principle because if we modify the Profile, we have to also modify our uis.  
+This was a violation of dependency inversion principle because if we modify the Profile, we have to also modify our UIs.  
 Now, instead of using Profile instances to get the data of the user, we now use methods in DataFetchControl to get the data of the user. 

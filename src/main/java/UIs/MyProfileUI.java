@@ -1,4 +1,4 @@
-package uis;
+package UIs;
 
 import contollers.DataFetchControl;
 import contollers.UIController;
