@@ -21,15 +21,15 @@ public class DataFetchControl {
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
-            int line_id = Integer.parseInt(line.split(", ")[0]);
-            while(line_id != id){
+            int lineId = Integer.parseInt(line.split(", ")[0]);
+            while(lineId != id){
                 line = myReader.readLine();
-                line_id = Integer.parseInt(line.split(", ")[0]);
+                lineId = Integer.parseInt(line.split(", ")[0]);
             }
-            List<String> profile_data = Arrays.asList(line.split(", "));
+            List<String> profileData = Arrays.asList(line.split(", "));
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", id)));
 
-            Object[] data = profile_data.toArray();
+            Object[] data = profileData.toArray();
 
             return new Object[] {data, image};
 
@@ -53,10 +53,10 @@ public class DataFetchControl {
             String line = myReader.readLine();
             if (line == null){ return -1;} // if file is empty
             else{
-                String line_email = Arrays.asList(line.split(", ")).get(2);
-                while(!Objects.equals(line_email, email)) {
+                String lineEmail = Arrays.asList(line.split(", ")).get(2);
+                while(!Objects.equals(lineEmail, email)) {
                     line = myReader.readLine();
-                    line_email = Arrays.asList(line.split(", ")).get(2);
+                    lineEmail = Arrays.asList(line.split(", ")).get(2);
                 }
             }
             return Integer.parseInt(line.split(", ")[0]);
@@ -81,8 +81,8 @@ public class DataFetchControl {
                 while(line != null){
                     last = line;
                     line = reader.readLine();}
-                List<String> last_lst = Arrays.asList(last.split(", "));
-                return Integer.parseInt(last_lst.get(0));
+                List<String> lastLst = Arrays.asList(last.split(", "));
+                return Integer.parseInt(lastLst.get(0));
             }
         } catch (IOException e){
             System.out.println("An error occurred.");
@@ -103,8 +103,8 @@ public class DataFetchControl {
             String tmp;
             while(line != null) {
                 tmp = line;
-                List<String> lst_line = Arrays.asList(tmp.split(", "));
-                emails.add(lst_line.get(2));
+                List<String> lstLine = Arrays.asList(tmp.split(", "));
+                emails.add(lstLine.get(2));
                 line = reader.readLine();
             }
             return emails;
