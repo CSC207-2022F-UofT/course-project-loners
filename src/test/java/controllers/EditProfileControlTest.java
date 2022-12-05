@@ -1,16 +1,18 @@
-package usecases;
+package controllers;
+
 
 import org.junit.Test;
 
 import java.util.HashMap;
 
 /*
-* This test case tests EditProfile. The edit method is tested here.
-* The test is about whether we can successfully edit the profile or not depending on the authenticator
+* Test case for EditProfileControl. We did not include withHoldImage and sendImage methods
+* because these two methods involve interaction with UIs
  */
-public class EditProfileTest {
+public class EditProfileControlTest {
+
     @Test
-    public void testEdit() {
+    public void send() {
         HashMap<String, Object> info = new HashMap<>();
         info.put("name", "Rick");
         info.put("email", "email@");
@@ -26,6 +28,7 @@ public class EditProfileTest {
         info.put("preferredAge", 20);
         info.put("preferredGender", "female");
         info.put("preferredLocation", "M5S 2E2");
-        assert EditProfile.getInstance().edit(info);
+        assert EditProfileControl.getInstance().send(info,0);
+
     }
 }

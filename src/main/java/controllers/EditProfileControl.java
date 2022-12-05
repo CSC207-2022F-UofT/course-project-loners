@@ -21,7 +21,10 @@ public class EditProfileControl{
     public  EditProfileControl(){
         this.image = null;
     }
-    EditProfile editProfile = new EditProfile();
+    public static final EditProfileControl e = new EditProfileControl();
+    public static EditProfileControl getInstance(){
+        return e;
+    }
     public boolean withHoldImage(JFrame f){
         FileDialog fd = new FileDialog(f, "Open", FileDialog.LOAD);
         fd.setVisible(true);
@@ -54,7 +57,7 @@ public class EditProfileControl{
      */
     public boolean send(HashMap<String, Object> info, int id) {
 
-        if(editProfile.edit(info)) {
+        if(EditProfile.getInstance().edit(info)) {
 
             String likes;
             if (info.get("likes") == null) {
