@@ -11,15 +11,13 @@ public class Authenticator{
 
     /**
      * This method checks the user input to the email field. The input has to have the '@' symbol
-     * and have a length shorter than 20 letters. If the above two conditions are satisfied, the
+     * and '.' afterwards. If the above two conditions are satisfied, the
      * method returns true. Otherwise, it returns false.
      * @param email user input to the email field.
      * @return true if input is a valid email, false otherwise.
      */
     public static boolean isValidEmail(String email){
-        if(email.indexOf('@') == -1){
-            return false;
-        } else return email.length() <= 20;
+        return email.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$");
     }
 
     /**

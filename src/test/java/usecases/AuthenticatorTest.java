@@ -9,8 +9,7 @@ import static org.junit.Assert.*;
  */
 public class AuthenticatorTest {
     /**
-     * Check a working postal code in the location converter
-     * Keep in mind that the precondition must be met
+     * Checks the validity of the conditions for authentication of various actions
      */
 
     @Test(timeout = 50)
