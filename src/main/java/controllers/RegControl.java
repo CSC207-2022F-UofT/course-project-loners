@@ -58,7 +58,7 @@ public class RegControl {
                 JOptionPane.showMessageDialog(null,"Account created! Click OK to the login page.",
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
                 regFrame.setVisible(false);
-                new UIController().launchLogUI();
+                UIController.launchLogUI();
             } else {
                 // if inputs did not save, show an error message
                 JOptionPane.showMessageDialog(null, "Something went wrong when saving you submission, please try again!");

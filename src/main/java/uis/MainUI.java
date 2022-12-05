@@ -81,16 +81,12 @@ public class MainUI {
         });
         profileFinderButton.addActionListener(e -> {
             UIController controller = new UIController(id);
-            if (controller.checkHasPreference()){ // if user doesn't have preference, show a warning and not prevent them open the profileFinderUI
-                JOptionPane.showMessageDialog(null, "Please set up the filter first.", "WARNING", JOptionPane.WARNING_MESSAGE);
-            } else{
+            if (controller.launchProfileFinderUI()){
                 frame.setVisible(false);
-                controller.launchProfileFinderUI();
             }
         });
         logoutButton.addActionListener(e -> {
             frame.setVisible(false);
-            new UIController();
             UIController.launchWelcomeUI();
         });
     }

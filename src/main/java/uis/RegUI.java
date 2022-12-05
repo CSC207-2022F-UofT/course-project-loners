@@ -29,6 +29,7 @@ public class RegUI {
     /**
      * A text box that let user type in their email.
      */
+    private final JButton backButton = new JButton("Back to previous page");
     private final JTextField email = new JTextField();
     /**
      * A text box that let user type in their password.
@@ -116,7 +117,7 @@ public class RegUI {
         frame.add(picLabel);
         // uploader.setLoader(); // add the upload picture button into the frame
         frame.add(picButton);
-        UIController.addBackButton(frame, "WelcomeUI"); // add the back button into the frame
+        frame.add(backButton);
         frame.add(regButton);
     }
 
@@ -154,6 +155,10 @@ public class RegUI {
                     email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
             new RegControl(frame, lstInputs, image); // pass the inputs to the controller
+        });
+        backButton.addActionListener(e -> {
+            frame.setVisible(false);
+            UIController.launchWelcomeUI();
         });
     }
 }

@@ -17,13 +17,13 @@ public class WelcomeControl {
         button_log.addActionListener(e -> {
             if (e.getSource() == button_log) {
                 WelFrame.setVisible(false);
-                new UIController().launchLogUI();
+                UIController.launchLogUI();
             }});
 
         button_reg.addActionListener(e -> {
             if (e.getSource() == button_reg) {
                 WelFrame.setVisible(false);
-                new UIController().launchRegUI();
+                UIController.launchRegUI();
             }});
     }
 }
