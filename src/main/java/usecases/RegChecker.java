@@ -57,7 +57,7 @@ public class RegChecker {
             this.diagnose = "Missing input(s). \n";
         } else if(!picLoaded){ // if inputs are not empty, continues check if an image received in picUploader.
             this.pass = false;
-            this.diagnose = "You did not select an image to upload, \n";
+            this.diagnose = "You did not select an image to upload. \n";
         }
         else {this.pass = true;}
     }

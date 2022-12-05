@@ -32,7 +32,7 @@ public class RegCheckerTest {
         // test when image upload platform did not receive image
         RegChecker checkerNoPic = new RegChecker(platformInfo, email, pw, name, age ,postcode, false);
         assertFalse(checkerNoPic.pass);
-        assertEquals(checkerNoPic.diagnose, "You did not select an image to upload, \n");
+        assertEquals(checkerNoPic.diagnose, "You did not select an image to upload. \n");
 
         // Implicitly test checkValidate:
         // test when email is not valid
