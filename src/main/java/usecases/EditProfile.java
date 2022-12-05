@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EditProfile {
-    public Authenticator authenticator = new Authenticator();
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
@@ -15,7 +14,7 @@ public class EditProfile {
         }
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
-                if(authenticator.isValidName((String) values[k])){
+                if(Authenticator.isValidName((String) values[k])){
                     return true;
                 }else {
                     System.out.println("Invalid Name");
@@ -37,9 +36,9 @@ public class EditProfile {
             } else if (keys[k] == "image") {
                 return true;
             } else if (keys[k] == "bio") {
-                return authenticator.isValidBio((String) values[k]);
+                return Authenticator.isValidBio((String) values[k]);
             } else if (keys[k] == "hobbies") {
-                return authenticator.isValidHobbies((List<String>) values[k]);
+                return Authenticator.isValidHobbies((List<String>) values[k]);
             } else if (keys[k] == "socialMedia") {
                 return true;
             } else if (keys[k] == "likes") {
