@@ -48,9 +48,6 @@ public class EditProfileControl{
                 }
         }
     }
-    public double[] convertLocation(String code){
-        return LocationConverter.codeToCoords(code);
-    }
     /**
      * This method sends the given updated profile data to the database
      @param info representing the updated data.
@@ -65,15 +62,16 @@ public class EditProfileControl{
             } else {
                 likes = String.join(": ", (String) info.get("likes"));
             }
-            String location = (info.get("location")).toString();
+
+            double[] location = LocationConverter.codeToCoords((String) info.get("location"));
             System.out.println(info.get("location"));
 
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +
-                    location + ", " + info.get("hobbies") + ", " +
+                    location[0] + ": "+location[1] + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataSendControl.getInstance().send_toid(id, str_data.split(", "));
+            DataController.sendToID(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

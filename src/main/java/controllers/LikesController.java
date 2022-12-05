@@ -4,7 +4,7 @@ package controllers;
 import java.util.Arrays;
 
 /**
- * Add a class to simplify adding likes to profiles.
+ * Add a class to simplify adding likes to profile.
  */
 public class LikesController {
     /**
@@ -23,6 +23,6 @@ public class LikesController {
         myProfile[11] = newLikes;
         int myId = Integer.parseInt((String)myProfile[0]);
         Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
-        DataSendControl.getInstance().send_toid(myId, myProfileClone);
+        DataController.sendToID(myId, myProfileClone);
     }
 }

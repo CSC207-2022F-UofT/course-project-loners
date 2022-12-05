@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EditProfile {
+    @SuppressWarnings("unchecked")
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();

@@ -1,4 +1,4 @@
-package tests.usecases;
+package usecases;
 
 import entities.Profile;
 import usecases.ObjectListToProfile;
