@@ -49,7 +49,7 @@ public class MainUI {
         // get user's name to show in the main page
         this.id = id;
         Object[] userData = (Object[]) DataController.fetchFromId(id)[0]; // get user info based on id
-        JLabel welcomeMessage = new JLabel("Welcome back, " + userData[0]);
+        JLabel welcomeMessage = new JLabel("Welcome back, " + userData[1]);
 
         // add components to the frame
         frame.add(welcomeMessage);
