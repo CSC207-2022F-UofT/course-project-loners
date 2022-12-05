@@ -40,7 +40,7 @@ public class RegControl {
         boolean picLoaded = image != null;
         RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picLoaded);
         if (!checker.pass) { // If checker did not pass, pop up a failure message window
-            String message = checker.diagnose + "please try again!";
+            String message = checker.diagnose + "Please try again!";
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
             try{ // Save user's image

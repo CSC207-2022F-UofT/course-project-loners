@@ -92,7 +92,8 @@ public class RegUI {
         JLabel ageLabel = new JLabel("Age: ");
         JLabel codeLabel = new JLabel("Postal code (with a white space e.g. M5S 1A4): ");
         JLabel genderLabel = new JLabel("Gender: ");
-        JLabel socialLabel = new JLabel("Social media (Please select a social media platform then enter your user name or url in the following box): ");
+        JLabel socialLabel = new JLabel("Social media (Please select a social media platform then");
+        JLabel socialLabel2 = new JLabel("enter your user name or url in the following box):");
         JLabel picLabel = new JLabel("Upload an image as your icon: ");
 
         // add all components to frame
@@ -108,12 +109,19 @@ public class RegUI {
         frame.add(gender);
         frame.add(codeLabel);
         frame.add(code);
-        frame.add(socialLabel);
+
+        JPanel socialMediaLabel = new JPanel();
+        socialMediaLabel.setLayout(new GridLayout(2,1));
+        socialMediaLabel.add(socialLabel);
+        socialMediaLabel.add(socialLabel2);
+        frame.add(socialMediaLabel);
+
         JPanel socialMedia = new JPanel(); // Claim a panel for asking social media
         socialMedia.setLayout(new GridLayout(2,1));
         socialMedia.add(platform);
         socialMedia.add(platformInfo);
         frame.add(socialMedia); // Add the panel to frame
+
         frame.add(picLabel);
         // uploader.setLoader(); // add the upload picture button into the frame
         frame.add(picButton);

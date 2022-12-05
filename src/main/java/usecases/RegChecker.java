@@ -34,8 +34,8 @@ public class RegChecker {
     public RegChecker(String platform_info, String email, String password, String name, String age, String postcode, boolean picLoaded){
         checkIfMissing(platform_info, email, password, name, age, postcode, picLoaded);
         if (this.pass){
-            checkValidate(email, age, postcode);
             checkDuplicate(email);
+            checkValidate(email, age, postcode);
         }
     }
 
@@ -55,10 +55,10 @@ public class RegChecker {
     private void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, boolean picLoaded){
         if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | soc_med.isEmpty()){
             this.pass = false;
-            this.diagnose = "missing input(s), \n";
+            this.diagnose = "Missing input(s). \n";
         } else if(!picLoaded){ // if inputs are not empty, continues check if an image received in picUploader.
             this.pass = false;
-            this.diagnose = "you did not select any image to upload, \n";
+            this.diagnose = "You did not select an image to upload, \n";
         }
         else {this.pass = true;}
     }
@@ -73,11 +73,23 @@ public class RegChecker {
      * @param age an input of user, for age
      * @param postcode an input of user, for postal code
      */
-    private void checkValidate(String email, String age, String postcode){
+    private void checkValidate(String email, String age, String postcode) {
         // check if email is valid
-        if (!email.contains("@")){
+        if (!email.contains("@")) {
             this.pass = false;
-            this.diagnose += "email is not valid; \n";
+            this.diagnose += "- Email is not valid. \n";
+        }
+
+        // check if age is valid
+        try {
+            int age_int = Integer.parseInt(age);
+            if (!(age_int >= 0 && age_int <= 150)) {
+                this.pass = false;
+                this.diagnose += "- Age is not in a valid range \n";
+            }
+        } catch (NumberFormatException error) { // if user did not enter a number for age
+            this.pass = false;
+            this.diagnose += "- Age is not a number \n";
         }
 
         // check if postcode is valid
@@ -87,24 +99,12 @@ public class RegChecker {
         // Also, the first position does not make use of the letters W or Z.
         // referenced https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
         // https://howtodoinjava.com/java/regex/canada-postal-code-validation/
-        if (postcode.length() != 7){
+        if (postcode.length() != 7) {
             this.pass = false;
-            this.diagnose += "postal code is not valid, remember to enter it with a whitespace like the example provided;\n";
-        } else if (!postcode.matches("^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$")){
+            this.diagnose += "- Postal code is not valid (remember to enter it with a whitespace like the example provided)\n";
+        } else if (!postcode.matches("^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$")) {
             this.pass = false;
-            this.diagnose += "postal code is not a valid Canadian postal code;\n";
-        }
-
-        // check if age is valid
-        try{
-            int age_int = Integer.parseInt(age);
-            if (!(age_int >= 0 && age_int <= 150)){
-                this.pass = false;
-                this.diagnose += "age is not in a valid range; \n";
-            }
-        } catch (NumberFormatException error){ // if user did not enter a number for age
-            this.pass = false;
-            this.diagnose += "age is not a valid input; \n";
+            this.diagnose += "- Postal code is not a Canadian postal code\n";
         }
 
 //        if (!(Authenticator.isValidEmail(email))){
@@ -130,7 +130,7 @@ public class RegChecker {
         // TODO: fix violation??
         if (new DataFetchControl().fetch_emails().contains(email)){
             this.pass = false;
-            this.diagnose += "email is existed; \n";
+            this.diagnose += "- This email has registered \n";
         }
     }
 }
