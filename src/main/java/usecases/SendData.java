@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
  * SendData class is responsible for sending the data to the Database.
  * In clean architecture, this works as Data Access Interface
  */
-public class SendData implements DataSendAccess{
+public class SendData {
     /*
      * This class sends the given data to database accordingly to how the user wants to.
      */
@@ -63,7 +63,6 @@ public class SendData implements DataSendAccess{
      @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      of the profile
      */
-    @Override
     public void sendToId(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
@@ -110,7 +109,6 @@ public class SendData implements DataSendAccess{
      @param profile A Profile object
      @return String representation of the profile data.
      */
-    @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
                 profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +

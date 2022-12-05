@@ -24,7 +24,7 @@ public class ConnectProfiles {
     private final int id;
 
     /**
-     * Construct an ConnectProfiles object, initializing prefAge and prefGender as Strings, preferredLocationRange as
+     * Construct a ConnectProfiles object, initializing prefAge and prefGender as Strings, preferredLocationRange as
      * a double, and id as an int, corresponding to the information in the Preferences object preferences.
      *
      * @param preferences The Input Data containing the preferred age, preferred gender, preferred location range, and
@@ -39,7 +39,7 @@ public class ConnectProfiles {
 
     /**
      * Gather an initial list of IDs within the user's preferred location range using PreferredLocationConnector's
-     * within_preferred_location method. Store in another list only the IDs from this initial list that correspond to
+     * withinPreferredLocation method. Store in another list only the IDs from this initial list that correspond to
      * users whose age and gender match the preferred age and gender of the user.
      *
      * @return A list of IDs corresponding to users whose age, gender, and location match the preferences of the user,
@@ -49,7 +49,7 @@ public class ConnectProfiles {
         List<Integer> connectedIDs = new ArrayList<>();
         List<Integer> idsInLocationRange = PreferredLocationConnector.withinPreferredLocation(id,
                 preferredLocationRange);
-        if (idsInLocationRange==null){
+        if (idsInLocationRange == null){
             return null;
         }
 

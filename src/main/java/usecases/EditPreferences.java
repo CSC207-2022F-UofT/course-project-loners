@@ -43,7 +43,7 @@ public class EditPreferences {
         Object[] userData = FetchData.fetchFromId(id);
         userData = (Object[]) userData[0];
 
-        // remove id from the array (to be added back by DataSendControl.send_toid)
+        // remove id from the array (to be added back by sendToId method in SendData)
         List<Object> tempUserData = new ArrayList<>(List.of(userData));
         tempUserData.remove(0);
         Object[] userDataNoID = tempUserData.toArray();

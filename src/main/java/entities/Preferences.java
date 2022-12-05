@@ -23,7 +23,7 @@ public class Preferences {
      * @param preferredAge The user's preferred age
      * @param preferredGender The user's preferred gender
      * @param preferredLocationRange The user's preferred location range
-     * @param id The user's id
+     * @param id The user's ID
      */
     public Preferences(int preferredAge, String preferredGender, double preferredLocationRange, int id) {
         this.preferredAge = preferredAge;
