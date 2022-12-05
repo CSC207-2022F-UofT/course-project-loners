@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import controllers.DataController;
 import controllers.LikesController;

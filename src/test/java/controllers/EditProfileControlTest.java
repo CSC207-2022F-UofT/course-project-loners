@@ -1,7 +1,6 @@
-package controller;
+package controllers;
 
-import controllers.DataController;
-import controllers.EditProfileControl;
+
 import org.junit.Test;
 
 import java.util.HashMap;
