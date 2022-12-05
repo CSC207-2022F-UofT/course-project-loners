@@ -5,7 +5,7 @@ import usecases.Authenticator;
 
 import javax.swing.*;
 
-public class LogController{
+public class LogController {
 
     /**
      * This method instantiates a LogController, which displays one of three different messages through a pop-up to
@@ -17,23 +17,23 @@ public class LogController{
      * log-in page to the main page.
      * Scenario 3: wrong password. The LogController will prompt the user to try again and stays on the log-in page.
      * -
-     * @param email String, user input to the email field on the log-in page
+     *
+     * @param email    String, user input to the email field on the log-in page
      * @param password String, user input to the password field on the log-in page
      * @param logframe the frame the user sees at the moment
      */
     public LogController(String email, String password, JFrame logframe) {
-        if (!Authenticator.emailExists(email)){
+        if (!Authenticator.emailExists(email)) {
             JOptionPane.showMessageDialog(null,
                     "Email is not registered. Head to the Register page to join us!");
-        } else{
-            if (Authenticator.emailMatchPassword(email, password)){
+        } else {
+            if (Authenticator.emailMatchPassword(email, password)) {
                 JOptionPane.showMessageDialog(null, "Login successful!");
                 logframe.setVisible(false);
                 new UIController(email).launchMainUI();
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Incorrect password. Please try again.");
             }
         }
     }
-
 }

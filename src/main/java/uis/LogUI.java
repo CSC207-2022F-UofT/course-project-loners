@@ -69,12 +69,4 @@ public class LogUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new LogController(emailField.getText(), passwordField.getText(), f);
     }
-
-    /**
-     * Our main method for the LogUI class. It creates a new LogUI object.
-     * @param args a list of Strings.
-     */
-    public static void main(String[] args) {
-        new LogUI();
-    }
 }
