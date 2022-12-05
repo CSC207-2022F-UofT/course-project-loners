@@ -22,7 +22,7 @@ public class RegChecker {
      * First, check any user inputs or image is missing.
      * If this passed, continue to check if user input for email, age, postal code are valid.
      *
-     * @param platform_info an input of user, for social media information
+     * @param platformInfo an input of user, for social media information
      * @param email an input of user, for email
      * @param password an input of user, for password
      * @param name an input of user, for name
@@ -30,8 +30,8 @@ public class RegChecker {
      * @param postcode an input of user, for postal code
      * @param picLoaded true if user has selected an image to upload
      */
-    public RegChecker(String platform_info, String email, String password, String name, String age, String postcode, boolean picLoaded){
-        checkIfMissing(platform_info, email, password, name, age, postcode, picLoaded);
+    public RegChecker(String platformInfo, String email, String password, String name, String age, String postcode, boolean picLoaded){
+        checkIfMissing(platformInfo, email, password, name, age, postcode, picLoaded);
         if (this.pass){
             checkValidate(email, age, postcode);
             checkDuplicate(email);
@@ -43,7 +43,7 @@ public class RegChecker {
      * - any of user inputs is empty, or
      * - picUploader did not receive an image in picUploader
      *
-     * @param soc_med an input of user, for social media information
+     * @param socMed an input of user, for social media information
      * @param email an input of user, for email
      * @param pw an input of user, for password
      * @param name an input of user, for name
@@ -51,8 +51,8 @@ public class RegChecker {
      * @param postcode an input of user, for postal code
      * @param picLoaded true if user has selected an image to upload
      */
-    private void checkIfMissing(String soc_med, String email, String pw, String name, String age, String postcode, boolean picLoaded){
-        if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | soc_med.isEmpty()){
+    private void checkIfMissing(String socMed, String email, String pw, String name, String age, String postcode, boolean picLoaded){
+        if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | socMed.isEmpty()){
             this.pass = false;
             this.diagnose = "missing input(s), \n";
         } else if(!picLoaded){ // if inputs are not empty, continues check if an image received in picUploader.
@@ -96,8 +96,8 @@ public class RegChecker {
 
         // check if age is valid
         try{
-            int age_int = Integer.parseInt(age);
-            if (!(age_int >= 0 && age_int <= 150)){
+            int ageInt = Integer.parseInt(age);
+            if (!(ageInt >= 0 && ageInt <= 150)){
                 this.pass = false;
                 this.diagnose += "age is not in a valid range; \n";
             }
