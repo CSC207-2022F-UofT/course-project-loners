@@ -57,13 +57,13 @@ public class Authenticator{
 
     /**
      * This method checks whether the user's bio is valid. It is valid if the bio contains less than or equal to 400
-     * letters.
+     * letters and does not contain any commas.
      * @param bio user's bio in their profile
      * @return true if bio is valid, false otherwise.
      */
     public static boolean isValidBio(String bio){
-        return bio.length() <= 400;
-    }
+       return !bio.contains(",") & bio.length() <= 400;}
+
 
     /**
      * This method checks whether the user's hobbies are valid. The length of the list of hobbies is less than 100
@@ -122,18 +122,5 @@ public class Authenticator{
         }
         System.out.println("Email is not registered. Head to the Register page to join us!");
         return false;
-    }
-
-    /**
-     * Our main method. Currently used to test two methods: (1) emailMatchPassword() and (2) isValidEmail()
-     * @param args a list of Strings
-     */
-    public static void main(String[] args) {
-        new Authenticator();
-        // Testing method email_match_password
-        boolean test = Authenticator.emailMatchPassword("email", "a");
-        boolean test1 = Authenticator.isValidEmail("email");
-        System.out.println(test);
-        System.out.println(test1);
     }
 }
