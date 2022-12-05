@@ -108,8 +108,8 @@ public class FetchData {
             String tmp;
             while(line != null) {
                 tmp = line;
-                List<String> lst_line = Arrays.asList(tmp.split(", "));
-                emails.add(lst_line.get(2));
+                List<String> lstLine = Arrays.asList(tmp.split(", "));
+                emails.add(lstLine.get(2));
                 line = reader.readLine();
             }
             return emails;
@@ -141,7 +141,7 @@ public class FetchData {
             return null;
         }
     }
-    public static double[] fetchAddressFromId(int input_id){
+    public static double[] fetchAddressFromId(int inputId){
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error
@@ -151,7 +151,7 @@ public class FetchData {
             String[] wholeLine = line.split(", ");
             String id = wholeLine[0];
             String address = wholeLine[8];
-            String inputIdStr = "" + input_id;
+            String inputIdStr = "" + inputId;
             while (!Objects.equals(id, inputIdStr) ) {
                 line = myReader.readLine();
                 wholeLine = line.split(", ");

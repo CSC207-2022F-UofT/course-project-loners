@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class EditProfileControlTest {
     @Test
-    public void test_send(){
+    public void testSend(){
 
     }
 
