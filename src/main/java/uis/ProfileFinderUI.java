@@ -180,6 +180,8 @@ public class ProfileFinderUI implements ActionListener{
             curr++;
             new ProfileFinderUI(curr, id);
         } else if (e.getSource() == passButton) {
+            int negId = -Integer.parseInt((String)otherProfile[0]);
+            LikesController.modifyLikes((String) myProfile[11], negId, myProfile);
             frame.setVisible(false);
             curr++;
             new ProfileFinderUI(curr, id);
