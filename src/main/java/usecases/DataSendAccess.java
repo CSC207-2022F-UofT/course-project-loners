@@ -13,7 +13,7 @@ public interface DataSendAccess {
      * @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
      *                   of the profile
      */
-    void send_toid(int id, Object[] data);
+    void sendToId(int id, Object[] data);
 
     /**
      * A helper method used in DataSendControl class.

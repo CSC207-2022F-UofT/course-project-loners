@@ -1,6 +1,6 @@
 package uis;
 
-import controllers.DataFetchControl;
+import controllers.DataController;
 import controllers.UIController;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class MyProfileUI{
          */
         this.id = id;
         // Define components that will be presented in this profile page
-        Object[] profile_data = DataFetchControl.fetch_fromid(id);
+        Object[] profile_data = DataController.fetchFromId(id);
         JLabel greeting = new JLabel(String.format("Hi, %s! Welcome to your profile page!", ((Object[]) profile_data[0])[1]));
         JLabel age = new JLabel(String.format("Your age: %s", ((Object[]) profile_data[0])[4]));
         JLabel bio = new JLabel(String.format("Your bio: \n %s", ((Object[]) profile_data[0])[5]));

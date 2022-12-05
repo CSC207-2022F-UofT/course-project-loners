@@ -1,8 +1,7 @@
 package usecases;
 
+import controllers.DataController;
 import entities.Preferences;
-import controllers.DataFetchControl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +49,9 @@ public class ConnectProfiles {
         List<Integer> connectedIDs = new ArrayList<>();
         List<Integer> idsInLocationRange = PreferredLocationConnector.withinPreferredLocation(id,
                 preferredLocationRange);
+        if (idsInLocationRange==null){
+            return null;
+        }
 
         for (int userID : idsInLocationRange) {
             if (userID == id) { // don't include the user's own ID in the connected profiles list
@@ -57,7 +59,7 @@ public class ConnectProfiles {
             }
 
             // fetch the possible connected user's profile and preference data from the database
-            Object[] userData = DataFetchControl.fetch_fromid(userID);
+            Object[] userData = DataController.fetchFromId(userID);
             userData = (Object[]) userData[0];
             String userAge = (String) userData[4]; // other user's age
             String userGender = (String) userData[6]; // other user's gender

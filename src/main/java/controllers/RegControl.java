@@ -44,7 +44,7 @@ public class RegControl {
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
             try{ // Save user's image
-                int id = new DataFetchControl().fetch_lastID();
+                int id = DataController.fetchLastID();
                 File fileSavePic = new File(String.format("saved_images/%s.jpg", id + 1));
                 assert image != null;
                 ImageIO.write((BufferedImage)image, "jpg", fileSavePic);
@@ -82,7 +82,7 @@ public class RegControl {
      */
     private boolean regDataStore(String platform, String pfInfo,String email, String pw, String name, String age, String gender, String postcode) {
         try{ // DataSendControl did not have exception i.e. data can be stored to the database
-            new DataSendControl(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
+            DataController.sendData(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
         } catch (Exception e) { // If DataSendControl have exception i.e. data not did store to the database
             return false;
         }

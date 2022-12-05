@@ -1,24 +1,25 @@
-package controllers;
+package usecases;
 
 import entities.Profile;
-import usecases.DataSendAccess;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-
-public class DataSendControl implements DataSendAccess {
+/*
+ * SendData class is responsible for sending the data to the Database.
+ * In clean architecture, this works as Data Access Interface
+ */
+public class SendData implements DataSendAccess{
     /*
-    * This class sends the given data to database accordingly to how the user wants to.
+     * This class sends the given data to database accordingly to how the user wants to.
      */
     public boolean status;
-    private static final DataSendControl d = new DataSendControl();
+    private static final SendData d = new SendData();
     /**
      * A constructor for DataSendControl class.
      @param profile Profile instance whose information will be sent to the database
      */
-    public DataSendControl(Profile profile) {
-        int last_id = new DataFetchControl().fetch_lastID();
+    public SendData(Profile profile) {
+        int last_id = FetchData.fetchLastID();
         if (last_id == -10) { // if last_id has error
             this.status = false;
         } else if (last_id == -1) { // if the file is empty
@@ -49,14 +50,13 @@ public class DataSendControl implements DataSendAccess {
         }
     }
 
-
-    public DataSendControl() {}
+    public SendData() {}
 
     /**
      * Implements singleton design pattern for datasend control
      * @return instance of DataSendControl
      */
-    public static DataSendControl getInstance(){
+    public static SendData getInstance(){
         return d;
     }
     /**
@@ -64,7 +64,7 @@ public class DataSendControl implements DataSendAccess {
      of the profile
      */
     @Override
-    public void send_toid(int id, Object[] data){
+    public void sendToId(int id, Object[] data){
         try{
             // BufferedReader reads database.txt line by line.
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
@@ -91,8 +91,8 @@ public class DataSendControl implements DataSendAccess {
             line = myReader.readLine();
             while (!(line==null)){
                 inputBuffer.append(line);
-                inputBuffer.append('\n');
                 line = myReader.readLine();
+                if(!(line==null)){inputBuffer.append('\n');}
             }
             myReader.close();
             FileOutputStream fileOut = new FileOutputStream("database.txt");
@@ -113,8 +113,8 @@ public class DataSendControl implements DataSendAccess {
     @Override
     public String ProfileConvertStr(Profile profile) {
         String str = profile.getName() + ", " + profile.getEmail() + ", " + profile.getPassword() + ", " + profile.getAge() + ", " +
-                    profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
-                    profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
+                profile.getBio() + ", " + profile.getGender() + ", " + profile.getOrientation() + ", " +
+                profile.getLocation()[0] + ": " + profile.getLocation()[1] + ", ";
 
         if (profile.getHobbies() != null){str += String.join(": ", profile.getHobbies()) + ", ";}
         else {str += profile.getHobbies() + ", ";}
@@ -127,4 +127,3 @@ public class DataSendControl implements DataSendAccess {
     public static void main(String[] args) {
     }
 }
-

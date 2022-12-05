@@ -1,4 +1,4 @@
-package tests.usecases;
+package usecases;
 
 import usecases.Authenticator;
 import org.junit.Test;

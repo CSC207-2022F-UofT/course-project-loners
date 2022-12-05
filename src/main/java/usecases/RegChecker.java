@@ -1,6 +1,5 @@
 package usecases;
 
-import controllers.DataFetchControl;
 
 /**
  * check if
@@ -107,18 +106,6 @@ public class RegChecker {
             this.diagnose += "- Postal code is not a Canadian postal code\n";
         }
 
-//        if (!(Authenticator.isValidEmail(email))){
-//            this.pass = false;
-//            this.diagnose += "email is not valid; \n";
-//        }
-//        if (pos.length() != 7){
-//            this.pass = false;
-//            this.diagnose += "postal code is not valid (remember to enter it with a whitespace like the example provided);\n";
-//        }
-//        if (!(Authenticator.isValidAge(age_int))){
-//            this.pass = false;
-//            this.diagnose += "age is not valid; \n";
-//        }
     }
 
     /**
@@ -128,7 +115,7 @@ public class RegChecker {
      */
     private void checkDuplicate(String email){
         // TODO: fix violation??
-        if (new DataFetchControl().fetch_emails().contains(email)){
+        if (FetchData.fetchEmails().contains(email)){
             this.pass = false;
             this.diagnose += "- This email has registered \n";
         }
