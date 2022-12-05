@@ -1,4 +1,4 @@
-package Controllers_Presenters;
+package controllers;
 
 import org.junit.Before;
 //import org.junit.After;
@@ -31,7 +31,7 @@ public class EditPreferencesControlTest {
         EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, 3);
         editPreferencesControl.passPreferences();
 
-        Object[] userData = DataFetchControl.fetch_fromid(3);
+        Object[] userData = DataController.fetchFromId(3);
         userData = (Object[]) userData[0];
         assertEquals("20", userData[12]);
         assertEquals("male", userData[13]);
