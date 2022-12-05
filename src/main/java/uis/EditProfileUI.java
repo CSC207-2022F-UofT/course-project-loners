@@ -54,7 +54,7 @@ public class EditProfileUI{
         this.passwordField = new JTextField(String.format("%s", data[3]), 20);
         JLabel emailLabel = new JLabel("email: ");
         this.bioField = new JTextField(String.format("%s", data[5]), 100);
-        JLabel bioLabel = new JLabel("bio: ");
+        JLabel bio_label = new JLabel("bio: (no commas please)");
         this.genderField = new JComboBox<>(genders);
         JLabel genderLabel = new JLabel("gender: ");
         this.orientationField = new JComboBox<>(orientations);
