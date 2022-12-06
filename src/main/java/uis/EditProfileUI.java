@@ -51,72 +51,72 @@ public class EditProfileUI{
 
         //Set each component accordingly to how they work
         JButton b=new JButton("Update!");
-        JButton file_load = new JButton("Upload Profile Image");
+        JButton fileLoad = new JButton("Upload Profile Image");
         this.nameField = new JTextField(String.format("%s", data[1]), 20);
-        JLabel name_label = new JLabel("name: ");
+        JLabel nameLabel = new JLabel("name: ");
         this.emailField = new JTextField(String.format("%s", data[2]), 20);
         JLabel passwordLabel = new JLabel("password: ");
         this.passwordField = new JTextField(String.format("%s", data[3]), 20);
-        JLabel email_label = new JLabel("email: ");
+        JLabel emailLabel = new JLabel("email: ");
         this.bioField = new JTextField(String.format("%s", data[5]), 100);
-        JLabel bio_label = new JLabel("bio: (no commas please)");
+        JLabel bioLabel = new JLabel("bio: (no commas please)");
         this.genderField = new JComboBox<>(genders);
-        JLabel gender_label = new JLabel("gender: ");
+        JLabel genderLabel = new JLabel("gender: ");
         this.orientationField = new JComboBox<>(orientations);
-        JLabel orientation_label = new JLabel("orientation: ");
+        JLabel orientationLabel = new JLabel("orientation: ");
         this.locationField = new JTextField("location", 100);
-        JLabel location_label = new JLabel("location: ");
+        JLabel locationLabel = new JLabel("location: ");
         this.hobbiesField = new JTextField(String.format("%s", ((String)data[9]).replaceAll(":", "")), 100);
-        JLabel hobbies_label = new JLabel("hobbies: ");
-        JLabel socialMedia_label = new JLabel("socialMedia: ");
+        JLabel hobbiesLabel = new JLabel("hobbies: ");
+        JLabel socialMediaLabel = new JLabel("socialMedia: ");
         this.socialMediaField = new JTextField(String.format("%s", ((String)data[10]).replaceAll(":", "")), 100);
         SpinnerModel model = new SpinnerNumberModel(20, 0,100, 1);
         this.ageField = new JSpinner(model);
-        JLabel age_label = new JLabel("age: ");
-        JLabel image_label = new JLabel("Profile Image:");
+        JLabel ageLabel = new JLabel("age: ");
+        JLabel imageLabel = new JLabel("Profile Image:");
         JButton backToMyProfile = new JButton("Back to MyProfile");
 
         // Add components to the JFrame
         f.setLayout(new GridLayout(7,4));
         b.setBounds(130,420,100, 40);
         f.setSize(800,600);
-        f.add(name_label);
+        f.add(nameLabel);
         f.add(nameField);
-        f.add(email_label);
+        f.add(emailLabel);
         f.add(emailField);
         f.add(passwordLabel);
         f.add(passwordField);
-        f.add(age_label);
+        f.add(ageLabel);
         f.add(ageField);
-        f.add(bio_label);
+        f.add(bioLabel);
         f.add(bioField);
-        f.add(gender_label);
+        f.add(genderLabel);
         f.add(genderField);
-        f.add(orientation_label);
+        f.add(orientationLabel);
         f.add(orientationField);
-        f.add(location_label);
+        f.add(locationLabel);
         f.add(locationField);
-        f.add(hobbies_label);
+        f.add(hobbiesLabel);
         f.add(hobbiesField);
-        f.add(socialMedia_label);
+        f.add(socialMediaLabel);
         f.add(socialMediaField);
-        f.add(image_label);
+        f.add(imageLabel);
         // Fetch image associated to the user from saved_images folder. The size will be set to 120 by 120
         try {
             BufferedImage image = ImageIO.read(new File(String.format("saved_images/%s.jpg", this.id)));
             ImageIcon imageIcon = new ImageIcon(image); // load the image to a imageIcon
-            Image image_1 = imageIcon.getImage(); // transform it
-            Image new_img = image_1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
-            JLabel label = new JLabel("", new ImageIcon(new_img), SwingConstants.CENTER);
+            Image image1 = imageIcon.getImage(); // transform it
+            Image newImg = image1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+            JLabel label = new JLabel("", new ImageIcon(newImg), SwingConstants.CENTER);
             f.add(label);
         } catch (IOException e){
             return;
         }
-        f.add(file_load);
+        f.add(fileLoad);
         f.add(b);
         f.add(backToMyProfile);
         f.setVisible(true);
-        file_load.addActionListener((e) ->this.isImageUploaded = control.withHoldImage(f));
+        fileLoad.addActionListener((e) ->this.isImageUploaded = control.withHoldImage(f));
 
 
         b.addActionListener((e) -> {

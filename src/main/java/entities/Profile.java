@@ -9,7 +9,7 @@ import java.util.List;
 public class Profile{
     private String email;
     private String name;
-    private String password;
+    private final String password;
     private int age;
     private String gender;
     private String orientation;
@@ -17,43 +17,8 @@ public class Profile{
     private BufferedImage image;
     private String bio;
     private List<String> hobbies;
-    private String socialMedia;
+    private final String socialMedia;
     private List<String> likes;
-
-    /**
-     * Constructor for the user's profile
-     * @param email the user's email
-     * @param password the user's password
-     */
-    public Profile(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    /**
-     * Constructor for the Profile Class
-     * @param name user's name
-     * @param age user's age, from 1 to 100
-     * @param gender user's gender, either male, female, other
-     * @param orientation user's sexual orientation, straight or gay
-     * @param location the user's coordinates
-     * @param image the user's image
-     * @param bio the user's biography
-     * @param hobbies a list of the user's hobbies
-     * @param socialMedia the user's social media profile handle
-     */
-    public Profile(String name, int age, String gender, String orientation, double[] location, BufferedImage image,
-                   String bio, List<String> hobbies, String socialMedia) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.orientation = orientation;
-        this.location = location;
-        this.image = image;
-        this.bio = bio;
-        this.hobbies = hobbies;
-        this.socialMedia = socialMedia;
-    }
 
     /**
      * Constructor for the Profile Class
@@ -265,14 +230,6 @@ public class Profile{
      */
     public String getSocialMedia() {
         return socialMedia;
-    }
-
-    /**
-     * A setter for the user's social media
-     * @param socialMedia the user's social media handle
-     */
-    public void setSocialMedia(String socialMedia) {
-        this.socialMedia = socialMedia;
     }
 
     /**
