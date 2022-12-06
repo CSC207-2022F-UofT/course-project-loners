@@ -1,4 +1,6 @@
 package usecases;
+import dataaccess.FetchData; // implements a Use Case interface
+
 import static java.lang.Math.*;
 import java.util.ArrayList;
 import java.util.List;

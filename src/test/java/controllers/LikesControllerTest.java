@@ -1,7 +1,6 @@
 package controllers;
 
-import controllers.DataController;
-import controllers.LikesController;
+import dataaccess.FetchData;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,7 +20,7 @@ public class LikesControllerTest {
         int otherId = 3;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
         Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2: 3: " , "19", "male", "5.0"};
-        Object[] profData = (Object[]) Objects.requireNonNull(DataController.fetchFromId(7))[0];
+        Object[] profData = (Object[]) Objects.requireNonNull(FetchData.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2", "19", "male", "5.0" };
         DataController.sendToID(7, profDemo);
@@ -37,7 +36,7 @@ public class LikesControllerTest {
         int otherId = 3;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
         Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "3: " , "19", "male", "5.0"};
-        Object[] profData = (Object[]) Objects.requireNonNull(DataController.fetchFromId(7))[0];
+        Object[] profData = (Object[]) Objects.requireNonNull(FetchData.fetchFromId(7))[0];
         Assert.assertArrayEquals(profData, profNow);
         profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null", "19", "male", "5.0" };
         DataController.sendToID(7, profDemo);

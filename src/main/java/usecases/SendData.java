@@ -1,5 +1,6 @@
 package usecases;
 
+import dataaccess.FetchData;
 import entities.Profile;
 import java.io.*;
 import java.nio.charset.StandardCharsets;

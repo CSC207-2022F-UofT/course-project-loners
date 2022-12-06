@@ -1,5 +1,6 @@
 package controllers;
 
+import dataaccess.FetchData; // implements a Use Case interface
 import usecases.ProfileFactory;
 import usecases.RegChecker;
 
@@ -44,7 +45,7 @@ public class RegControl {
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
             try{ // Save user's image
-                int id = DataController.fetchLastID();
+                int id = FetchData.fetchLastID();
                 File fileSavePic = new File(String.format("saved_images/%s.jpg", id + 1));
                 assert image != null;
                 ImageIO.write((BufferedImage)image, "jpg", fileSavePic);

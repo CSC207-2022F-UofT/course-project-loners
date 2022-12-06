@@ -1,6 +1,8 @@
 package usecases;
 
 
+import dataaccess.FetchData; // implements a Use Case interface
+
 /**
  * check if
  * - information of user which is required for register is missing

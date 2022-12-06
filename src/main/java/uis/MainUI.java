@@ -1,7 +1,8 @@
 package uis;
 
-import controllers.DataController;
+import dataaccess.FetchData;
 import controllers.UIController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -48,7 +49,7 @@ public class MainUI {
 
         // get user's name to show in the main page
         this.id = id;
-        Object[] userData = (Object[]) DataController.fetchFromId(id)[0]; // get user info based on id
+        Object[] userData = (Object[]) FetchData.fetchFromId(id)[0]; // get user info based on id
         JLabel welcomeMessage = new JLabel("Welcome back, " + userData[1]);
 
         // add components to the frame

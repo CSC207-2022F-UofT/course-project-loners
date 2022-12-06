@@ -1,5 +1,6 @@
 package controllers;
 
+import dataaccess.FetchData; // implements a Use Case interface
 import org.junit.Before;
 //import org.junit.After;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class EditPreferencesControlTest {
         EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, 3);
         editPreferencesControl.passPreferences();
 
-        Object[] userData = DataController.fetchFromId(3);
+        Object[] userData = FetchData.fetchFromId(3);
         userData = (Object[]) userData[0];
         assertEquals("20", userData[12]);
         assertEquals("male", userData[13]);

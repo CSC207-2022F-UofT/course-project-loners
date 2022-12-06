@@ -1,5 +1,6 @@
 package usecases;
 
+import dataaccess.FetchData;
 import entities.Preferences;
 import java.util.ArrayList;
 import java.util.List;

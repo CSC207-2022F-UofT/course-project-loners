@@ -1,6 +1,7 @@
 package controllers;
 
-import entities.Preferences;
+import dataaccess.FetchData; // implements a Use Case interface
+import entities.Preferences; // acts as a Use Case Input Data
 import usecases.ConnectProfiles;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ConnectProfilesControl {
      */
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
         // fetch the user's profile and preference data from the database
-        Object[] userData = DataController.fetchFromId(id);
+        Object[] userData = FetchData.fetchFromId(id);
         userData = (Object[]) userData[0];
 
         // reformat each of the preferences

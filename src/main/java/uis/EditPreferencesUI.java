@@ -185,7 +185,7 @@ public class EditPreferencesUI {
         });
     }
 
-    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file
-        buildUI(3);
-    }
+//    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file
+//        buildUI(3);
+//    }
 }

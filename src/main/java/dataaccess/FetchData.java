@@ -1,4 +1,6 @@
-package usecases;
+package dataaccess;
+
+import usecases.FetchDataAccess;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,9 +16,9 @@ import java.util.Objects;
 
 /*
 * FetchData class is responsible for fetching the data from the Database.
-* In clean architecture, this works as Data Access Interface
+* In clean architecture, this works as Data Access
  */
-public class FetchData {
+public class FetchData implements FetchDataAccess {
     /**
      * This method fetch the profile data associated to id.
      @param id of the user
