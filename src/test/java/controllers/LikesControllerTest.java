@@ -1,7 +1,5 @@
 package controllers;
 
-import controllers.DataController;
-import controllers.LikesController;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package usecases;
 
-import usecases.Authenticator;
+
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
@@ -13,7 +13,6 @@ public class AuthenticatorTest {
      * Check a working postal code in the location converter
      * Keep in mind that the precondition must be met
      */
-    Authenticator authenticator;
 
     @Test(timeout = 50)
     public void isValidEmailTest(){
