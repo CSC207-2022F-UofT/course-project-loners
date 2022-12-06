@@ -27,7 +27,7 @@ public class MyProfileUI{
          */
         this.id = id;
         // Define components that will be presented in this profile page
-        Object[] profileData = FetchData.fetchFromId(id);
+        Object[] profileData = FetchData.fetchFromID(id);
         JLabel greeting = new JLabel(String.format("Hi, %s! Welcome to your profile page!", ((Object[]) profileData[0])[1]));
         JLabel age = new JLabel(String.format("Your age: %s", ((Object[]) profileData[0])[4]));
         JLabel bio = new JLabel(String.format("Your bio: \n %s", ((Object[]) profileData[0])[5]));

@@ -32,7 +32,7 @@ public class EditPreferencesControlTest {
         EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, 3);
         editPreferencesControl.passPreferences();
 
-        Object[] userData = FetchData.fetchFromId(3);
+        Object[] userData = FetchData.fetchFromID(3);
         userData = (Object[]) userData[0];
         assertEquals("20", userData[12]);
         assertEquals("male", userData[13]);

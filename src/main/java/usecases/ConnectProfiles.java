@@ -1,6 +1,6 @@
 package usecases;
 
-import dataaccess.FetchData;
+import dataaccess.FetchData; // implements a Use Case interface
 import entities.Preferences;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class ConnectProfiles {
             }
 
             // fetch the possible connected user's profile and preference data from the database
-            Object[] userData = FetchData.fetchFromId(userID);
+            Object[] userData = FetchData.fetchFromID(userID);
             userData = (Object[]) userData[0];
             String userAge = (String) userData[4]; // other user's age
             String userGender = (String) userData[6]; // other user's gender

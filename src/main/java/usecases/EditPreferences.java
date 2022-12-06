@@ -1,6 +1,7 @@
 package usecases;
 
-import dataaccess.FetchData;
+import dataaccess.FetchData; // implements a Use Case interface
+import dataaccess.SendData; // implements a Use Case interface
 import entities.Preferences;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +42,10 @@ public class EditPreferences {
      */
     public void writeData() {
         // fetch the user's current profile and preference data from the database
-        Object[] userData = FetchData.fetchFromId(id);
+        Object[] userData = FetchData.fetchFromID(id);
         userData = (Object[]) userData[0];
 
-        // remove id from the array (to be added back by sendToId method in SendData)
+        // remove id from the array (to be added back by sendToID method in SendData)
         List<Object> tempUserData = new ArrayList<>(List.of(userData));
         tempUserData.remove(0);
         Object[] userDataNoID = tempUserData.toArray();
@@ -55,6 +56,6 @@ public class EditPreferences {
         userDataNoID[13] = prefLocationRange;
 
         // send the user's profile and new preference data to the database
-        SendData.getInstance().sendToId(id, userDataNoID);
+        SendData.getInstance().sendToID(id, userDataNoID);
     }
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import dataaccess.FetchData; // implements a Use Case interface
+import dataaccess.SendData; // implements a Use Case interface
 import usecases.ProfileFactory;
 import usecases.RegChecker;
 
@@ -83,7 +84,7 @@ public class RegControl {
      */
     private boolean regDataStore(String platform, String pfInfo,String email, String pw, String name, String age, String gender, String postcode) {
         try{ // DataSendControl did not have exception i.e. data can be stored to the database
-            DataController.sendData(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
+            new SendData(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
         } catch (Exception e) { // If DataSendControl have exception i.e. data not did store to the database
             return false;
         }

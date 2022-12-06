@@ -1,4 +1,5 @@
 package usecases;
+
 import dataaccess.FetchData; // implements a Use Case interface
 
 import static java.lang.Math.*;
@@ -23,13 +24,13 @@ public class PreferredLocationConnector{
         int lastId = FetchData.fetchLastID(); // get the number of users stored in database
         ArrayList<Integer> ids = new ArrayList<>(); // list of the ids who are in the preferred location
 
-        double[] userAddress = FetchData.fetchAddressFromId(id);
+        double[] userAddress = FetchData.fetchAddressFromID(id);
         double userLatRad = (toRadians(userAddress[0]));
         double userLongRad = (toRadians(userAddress[1]));
         if (lastId > 0) {
             for (int i = 0; i < lastId + 1; i++) {
                 if (i != id) { // when the id matches with i, the for loop should continue
-                    double[] data = FetchData.fetchAddressFromId(i);
+                    double[] data = FetchData.fetchAddressFromID(i);
                     double otherLatRad = (toRadians(data[0]));
                     double otherLongRad = (toRadians(data[1]));
                     double dis = (3440.1 * acos((sin(userLatRad) * sin(otherLatRad)) + cos(userLatRad) *

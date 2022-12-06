@@ -148,7 +148,7 @@ public class ProfileFinderUI implements ActionListener{
      * @return the corresponding profile to the param id
      */
     public Object[] getProfileWithId(int id){
-        return FetchData.fetchFromId(id);
+        return FetchData.fetchFromID(id);
     }
 
     /**

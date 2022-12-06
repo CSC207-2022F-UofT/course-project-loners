@@ -1,7 +1,5 @@
 package dataaccess;
 
-
-import controllers.DataController;
 import org.junit.Test;
 
 /*
@@ -10,13 +8,13 @@ import org.junit.Test;
 public class FetchDataTest {
 
     @Test
-    public void fetchFromId() {
-        assert "Rick".equals(((Object[])FetchData.fetchFromId(0)[0])[1]);
+    public void fetchFromID() {
+        assert "Rick".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 
     @Test
-    public void fetchIdFromEmail() {
-        assert 0 == FetchData.fetchIdFromEmail("email@");
+    public void fetchIDFromEmail() {
+        assert 0 == FetchData.fetchIDFromEmail("email@");
     }
 
     @Test

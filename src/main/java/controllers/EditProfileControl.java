@@ -1,5 +1,6 @@
 package controllers;
 
+import dataaccess.SendData; // implements a Use Case interface
 import usecases.EditProfile;
 import usecases.LocationConverter;
 
@@ -74,7 +75,7 @@ public class EditProfileControl{
                     location[0] + ": "+location[1] + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataController.sendToID(id, str_data.split(", "));
+            SendData.getInstance().sendToID(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

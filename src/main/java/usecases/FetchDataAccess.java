@@ -12,7 +12,7 @@ public interface FetchDataAccess {
      @param id of the user
      @return Array Object that contains profile data
      */
-    static Object[] fetchFromId(int id) {
+    static Object[] fetchFromID(int id) {
         return new Object[0];
     }
 
@@ -21,7 +21,7 @@ public interface FetchDataAccess {
      @param email of the profile
      @return id
      */
-    static int fetchIdFromEmail(String email) {
+    static int fetchIDFromEmail(String email) {
         return 0;
     }
 
@@ -45,7 +45,7 @@ public interface FetchDataAccess {
         return null;
     }
 
-    static double[] fetchAddressFromId(int inputId) {
+    static double[] fetchAddressFromID(int inputId) {
         return new double[0];
     }
 }

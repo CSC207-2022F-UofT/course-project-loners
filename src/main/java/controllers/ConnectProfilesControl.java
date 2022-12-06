@@ -20,7 +20,7 @@ public class ConnectProfilesControl {
      */
     public static List<Integer> gatherConnections(int id) { // called by ProfileFinderUI
         // fetch the user's profile and preference data from the database
-        Object[] userData = FetchData.fetchFromId(id);
+        Object[] userData = FetchData.fetchFromID(id);
         userData = (Object[]) userData[0];
 
         // reformat each of the preferences

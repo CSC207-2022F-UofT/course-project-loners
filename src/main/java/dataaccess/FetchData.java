@@ -24,7 +24,7 @@ public class FetchData implements FetchDataAccess {
      @param id of the user
      @return Array Object that contains profile data
      */
-    public static Object[] fetchFromId(int id){
+    public static Object[] fetchFromID(int id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -54,7 +54,7 @@ public class FetchData implements FetchDataAccess {
      @param email of the profile
      @return id
      */
-    public static int fetchIdFromEmail(String email){
+    public static int fetchIDFromEmail(String email){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -143,7 +143,7 @@ public class FetchData implements FetchDataAccess {
             return null;
         }
     }
-    public static double[] fetchAddressFromId(int inputId){
+    public static double[] fetchAddressFromID(int inputId){
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error
