@@ -21,7 +21,6 @@ public class Profile{
     private List<String> likes;
 
 
-
     /**
      * Constructor for the Profile Class
      * @param name user's name

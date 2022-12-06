@@ -19,10 +19,10 @@ public class SendData implements DataSendAccess{
      @param profile Profile instance whose information will be sent to the database
      */
     public SendData(Profile profile) {
-        int last_id = FetchData.fetchLastID();
-        if (last_id == -10) { // if last_id has error
+        int lastID = FetchData.fetchLastID();
+        if (lastID == -10) { // if lastID has error
             this.status = false;
-        } else if (last_id == -1) { // if the file is empty
+        } else if (lastID == -1) { // if the file is empty
             try {
                 // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
@@ -39,7 +39,7 @@ public class SendData implements DataSendAccess{
                 // FileWriter writes the given data to database.txt
                 FileWriter myWriter = new FileWriter("database.txt", StandardCharsets.UTF_8, true);
                 myWriter.write("\n");
-                myWriter.write((last_id + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
+                myWriter.write((lastID + 1) +", "+ ProfileConvertStr(profile) + ", null, null, null, null");
                 myWriter.close();
                 this.status = true;
             } catch (IOException e) {
@@ -71,22 +71,22 @@ public class SendData implements DataSendAccess{
             // StringBuffer stores the updated data and will be inserted the database.txt
             StringBuilder inputBuffer = new StringBuilder();
             String line = myReader.readLine();
-            int line_id = Integer.parseInt(line.split(", ")[0]);
+            int lineId = Integer.parseInt(line.split(", ")[0]);
             // iterate through lines until the line of database.txt refers to the data we want to modify
-            while (line_id != id){
+            while (lineId != id){
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
                 line = myReader.readLine();
-                line_id = Integer.parseInt(line.split(", ")[0]);
+                lineId = Integer.parseInt(line.split(", ")[0]);
             }
             String hobbies = (String) data[8];
             String likes = (String) data[10];
-            String modified_data = id+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
+            String modifiedData = id+", "+ data[0]+", "+data[1]+", "+data[2] + ", " + data[3] + ", "+ data[4] + ", "+ data[5] +
                     ", "+ data[6] + ", "+ data[7] +  ", "+ hobbies + ", "+ data[9] + ", "+ likes +
                     ", "+ data[11] + ", "+ data[12] + ", "+data[13];
 
 
-            inputBuffer.append(modified_data);
+            inputBuffer.append(modifiedData);
             inputBuffer.append('\n');
             line = myReader.readLine();
             while (!(line==null)){
