@@ -1,13 +1,13 @@
-package usecases;
+package controllers;
 
 import dataaccess.FetchData; // implements a Use Case interface
 import dataaccess.SendData; // implements a Use Case interface
-import entities.Preferences;
-import org.junit.After;
 import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -15,15 +15,19 @@ import static org.junit.Assert.*;
 /**
  * Tests for ensuring that preferences are properly stored in the database.
  */
-public class EditPreferencesTest {
+public class EditPreferencesControlTest {
+    /** A mapping of preference labels to their corresponding text input */
+    HashMap<String, String> preferenceMap;
+
     /** The user data stored in the database before the test runs */
     Object[] originalData;
 
     /**
-     * Store the first user's data into originalData.
+     * Initialize an empty HashMap, and store the first user's data into originalData.
      */
     @Before
     public void setUp() {
+        preferenceMap = new HashMap<>();
         originalData = (Object[]) FetchData.fetchFromID(0)[0];
     }
 
@@ -43,10 +47,12 @@ public class EditPreferencesTest {
      * is updated.
      */
     @Test
-    public void testWriteDataWithinRange() {
-        Preferences preferences = new Preferences(20, "male", 5.0, 0);
-        EditPreferences editPreferences = new EditPreferences(preferences);
-        editPreferences.writeData();
+    public void testPassPreferencesWithinRange() {
+        preferenceMap.put("preferred age", "20");
+        preferenceMap.put("preferred gender", "male");
+        preferenceMap.put("preferred location range", "5");
+        EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, 0);
+        editPreferencesControl.passPreferences();
 
         Object[] userData = FetchData.fetchFromID(0);
         userData = (Object[]) userData[0];
@@ -61,10 +67,12 @@ public class EditPreferencesTest {
      * is still updated.
      */
     @Test
-    public void testWriteDataZeroes() {
-        Preferences preferences = new Preferences(0, "other", 0, 0);
-        EditPreferences editPreferences = new EditPreferences(preferences);
-        editPreferences.writeData();
+    public void testPassPreferencesZeroes() {
+        preferenceMap.put("preferred age", "0");
+        preferenceMap.put("preferred gender", "other");
+        preferenceMap.put("preferred location range", "0");
+        EditPreferencesControl editPreferencesControl = new EditPreferencesControl(preferenceMap, 0);
+        editPreferencesControl.passPreferences();
 
         Object[] userData = FetchData.fetchFromID(0);
         userData = (Object[]) userData[0];

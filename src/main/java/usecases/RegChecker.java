@@ -1,5 +1,6 @@
 package usecases;
 
+import dataaccess.FetchData; // implements a Use Case interface
 
 /**
  * check if

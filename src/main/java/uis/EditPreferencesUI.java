@@ -45,7 +45,7 @@ public class EditPreferencesUI {
      * clicks. Check the validity of the inputted preferences, and if valid, pass the preference inputs to
      * EditPreferencesControl along with id.
      *
-     * @param id ID of the user who is interacting with the EditPreferencesUI
+     * @param id ID of the user who is interacting with the window built by EditPreferencesUI
      */
     public static void addComponents(int id) {
         String[] labels = {"Preferred age: ", "Preferred gender (male, female, other): ",
@@ -174,9 +174,9 @@ public class EditPreferencesUI {
     }
 
     /**
-     * Build the user interface for the user with ID, by calling the buildBasicLayout and addComponents methods.
+     * Build the user interface for the user whose ID is id, by calling the buildBasicLayout and addComponents methods.
      *
-     * @param id ID of the user who is interacting with the EditPreferencesUI
+     * @param id ID of the user who is interacting with the window build by EditPreferencesUI
      */
     public static void buildUI(int id) { // called by UIController
         SwingUtilities.invokeLater(() -> { // invoke the methods from the event-dispatching thread
@@ -185,7 +185,7 @@ public class EditPreferencesUI {
         });
     }
 
-    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file
-        buildUI(3);
-    }
+//    public static void main(String[] args) { /// for testing with an appropriately set up database.txt file
+//        buildUI(3);
+//    }
 }

@@ -1,6 +1,5 @@
 package usecases;
 
-import usecases.LocationConverter;
 import org.junit.Assert;
 import org.junit.Test;
 
