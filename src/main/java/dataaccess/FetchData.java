@@ -1,4 +1,6 @@
-package usecases;
+package dataaccess;
+
+import usecases.FetchDataAccess;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,15 +16,15 @@ import java.util.Objects;
 
 /*
 * FetchData class is responsible for fetching the data from the Database.
-* In clean architecture, this works as Data Access Interface
+* In clean architecture, this works as Data Access
  */
-public class FetchData {
+public class FetchData implements FetchDataAccess {
     /**
      * This method fetch the profile data associated to id.
      @param id of the user
      @return Array Object that contains profile data
      */
-    public static Object[] fetchFromId(int id){
+    public static Object[] fetchFromID(int id){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -52,7 +54,7 @@ public class FetchData {
      @param email of the profile
      @return id
      */
-    public static int fetchIdFromEmail(String email){
+    public static int fetchIDFromEmail(String email){
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
@@ -141,7 +143,7 @@ public class FetchData {
             return null;
         }
     }
-    public static double[] fetchAddressFromId(int inputId){
+    public static double[] fetchAddressFromID(int inputId){
         // use id to find location
         // return -1.9 if file is empty
         // return -10 if it has error

@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Preferences;
+import entities.Preferences; // acts as Input Data
 import usecases.EditPreferences;
 
 import java.util.HashMap;

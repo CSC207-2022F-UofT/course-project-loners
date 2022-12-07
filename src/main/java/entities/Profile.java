@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
- * An entity to store the attributes of the user's profile, or information about the user
+ * An entity to store the attributes of the user's profile, or information about the user. Also used as Input Data.
  */
 public class Profile{
     private String email;
