@@ -62,7 +62,9 @@ public class FetchData {
                 String lineEmail = Arrays.asList(line.split(", ")).get(2);
                 while(!Objects.equals(lineEmail, email)) {
                     line = myReader.readLine();
+
                     lineEmail = Arrays.asList(line.split(", ")).get(2);
+
                 }
             }
             return Integer.parseInt(line.split(", ")[0]);

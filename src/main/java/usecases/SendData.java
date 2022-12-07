@@ -59,8 +59,8 @@ public class SendData implements DataSendAccess{
     public SendData() {}
 
     /**
-     * Implements singleton design pattern for datasend control
-     * @return instance of DataSendControl
+     * Implements singleton design pattern for data control
+     * @return instance of DataControl
      */
     public static SendData getInstance(){
         return d;

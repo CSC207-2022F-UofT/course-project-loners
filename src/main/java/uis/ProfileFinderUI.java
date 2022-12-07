@@ -73,7 +73,7 @@ public class ProfileFinderUI implements ActionListener{
     public ProfileFinderUI(int curr, String id){
         this.curr = curr;
         this.id = id;
-        this.uiController = new UIController(id);
+        this.uiController = new UIController(Integer.parseInt(id));
         myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
@@ -192,7 +192,7 @@ public class ProfileFinderUI implements ActionListener{
             curr++;
             uiController.launchProfileFinderUI();
         }else if(e.getSource() == backButton){
-            uiController.launchMyProfileUI();
+            uiController.launchMainUI();
             frame.setVisible(false);
         }
     }
