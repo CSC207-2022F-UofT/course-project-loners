@@ -1,6 +1,8 @@
 package controllers;
 
 
+import dataaccess.SendData; // implements a Use Case interface
+
 import java.util.Arrays;
 
 /**
@@ -23,6 +25,6 @@ public class LikesController {
         myProfile[11] = newLikes;
         int myId = Integer.parseInt((String)myProfile[0]);
         Object[] myProfileClone = Arrays.copyOfRange(myProfile, 1, 15);
-        DataController.sendToID(myId, myProfileClone);
+        SendData.getInstance().sendToID(myId, myProfileClone);
     }
 }

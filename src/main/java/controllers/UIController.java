@@ -1,6 +1,7 @@
 package controllers;
 
 import uis.*;
+import dataaccess.FetchData;
 
 import javax.swing.*;
 import java.util.Objects;
@@ -13,10 +14,10 @@ public class UIController {
 
     public UIController(int id){
         this.id = id;
-        this.data = DataController.fetchFromId(id);
+        this.data = FetchData.fetchFromID(id);
     }
 
-    public UIController(String email){ this.id = DataController.fetchIdFromEmail(email); }
+    public UIController(String email){ this.id = FetchData.fetchIDFromEmail(email); }
 
     public void launchMyProfileUI(){ new MyProfileUI(id); }
     public static void launchWelcomeUI() { WelcomeUI welUI = new WelcomeUI(); welUI.show(); }

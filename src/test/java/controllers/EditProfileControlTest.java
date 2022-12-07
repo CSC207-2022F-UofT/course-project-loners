@@ -1,13 +1,12 @@
 package controllers;
 
-
 import org.junit.Test;
 
 import java.util.HashMap;
 
 /*
-* Test case for EditProfileControl. We did not include withHoldImage and sendImage methods
-* because these two methods involve interaction with UIs
+ * Test case for EditProfileControl. We did not include withHoldImage and sendImage methods
+ * because these two methods involve interaction with UIs
  */
 public class EditProfileControlTest {
 

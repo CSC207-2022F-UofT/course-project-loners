@@ -1,7 +1,6 @@
 package usecases;
 
-import entities.Profile;
-import usecases.ObjectListToProfile;
+import entities.Profile; // acts as Input Data
 import org.junit.Assert;
 import org.junit.Test;
 
