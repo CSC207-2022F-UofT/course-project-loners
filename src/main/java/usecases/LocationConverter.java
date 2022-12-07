@@ -22,7 +22,8 @@ public class LocationConverter {
             return new Scanner(file);
 
         } catch (FileNotFoundException e){
-            System.out.println("didn't do it");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
     }

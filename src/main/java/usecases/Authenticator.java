@@ -1,6 +1,7 @@
 package usecases;
 
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -110,15 +111,20 @@ public class Authenticator{
             // Case 1: email does not match password (wrong password)
             String databasePassword = FetchData.fetchPassword(email);
             if (!Objects.equals(password, databasePassword)){
-                System.out.println("Incorrect password. Please try again.");
+                JOptionPane.showMessageDialog(null,"Incorrect Password. Try again.",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
                 return false;
             }
             // Case 2: email matches password
-            else{System.out.println("Login successful!");
+            else{
+                JOptionPane.showMessageDialog(null,"Login Successful!",
+                        "Nice!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
         }
-        System.out.println("Email is not registered. Head to the Register page to join us!");
+        JOptionPane.showMessageDialog(null,"Email is not registered. " +
+                        "Head to the Register page to join us!",
+                "No Email", JOptionPane.INFORMATION_MESSAGE);
         return false;
     }
 }

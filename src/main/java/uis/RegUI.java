@@ -144,9 +144,11 @@ public class RegUI {
             try{
                 image = ImageIO.read(new File(fileDirectory, fileName)); // load the selected image from user computer
             } catch (IOException error){
-                System.out.println("Something went wrong when loading the picture");
+                JOptionPane.showMessageDialog(null,"Something went wrong when uploading image",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
             } catch (NullPointerException error){
-                System.out.println("Select image window canceled");
+                JOptionPane.showMessageDialog(null,"select image window cancelled",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         regButton.addActionListener(e -> {

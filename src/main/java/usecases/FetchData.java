@@ -1,6 +1,7 @@
 package usecases;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,7 +67,8 @@ public class FetchData {
             }
             return Integer.parseInt(line.split(", ")[0]);
         } catch (IOException e){
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
             return -10;
         }
@@ -90,7 +92,8 @@ public class FetchData {
                 return Integer.parseInt(lastLst.get(0));
             }
         } catch (IOException e){
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
             return -10;
         }
@@ -114,7 +117,8 @@ public class FetchData {
             }
             return emails;
         } catch (IOException e){
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
             return emails;
         }
@@ -136,7 +140,8 @@ public class FetchData {
             }
             return linePassword;
         } catch (IOException e){
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
             return null;
         }
@@ -165,11 +170,13 @@ public class FetchData {
                 return new double[] {latitude, longitude};
             }
             else{
-                System.out.println("It only contains String.");
+                JOptionPane.showMessageDialog(null,"It only contains string",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
                 return new double[]{0.0, 0.0};
             }
         } catch (IOException e){
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
             return new double[]{0.0, 0.0};
         }

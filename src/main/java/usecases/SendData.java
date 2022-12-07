@@ -1,6 +1,8 @@
 package usecases;
 
 import entities.Profile;
+
+import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
@@ -31,6 +33,8 @@ public class SendData implements DataSendAccess{
                 this.status = true;
             } catch (IOException e) {
                 // If the FileWriter fails to write to database.txt, IOException will be raised.
+                JOptionPane.showMessageDialog(null,"Something went wrong",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
                 e.printStackTrace();
                 this.status = false;
             }
@@ -44,6 +48,8 @@ public class SendData implements DataSendAccess{
                 this.status = true;
             } catch (IOException e) {
                 // If the FileWriter fails to write to database.txt, IOException will be raised.
+                JOptionPane.showMessageDialog(null,"Something went wrong",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
                 e.printStackTrace();
                 this.status = false;
             }
@@ -100,7 +106,8 @@ public class SendData implements DataSendAccess{
             fileOut.close();
         } catch (IOException e){
             // If it fails to read or write to database.txt, this Exception will be raised.
-            System.out.println("An error occurred.");
+            JOptionPane.showMessageDialog(null,"Something went wrong",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             e.printStackTrace();
         }
     }

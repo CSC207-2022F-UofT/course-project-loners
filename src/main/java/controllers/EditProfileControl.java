@@ -46,8 +46,12 @@ public class EditProfileControl{
         try{
             this.image = ImageIO.read(new File(fd.getDirectory(), filename));
             return true;
-        } catch (IOException error){
+        } catch (IOException error) {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");
+            return false;
+        } catch (NullPointerException error){
+            JOptionPane.showMessageDialog(null,"select image window cancelled",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
     }
@@ -87,8 +91,6 @@ public class EditProfileControl{
             }
 
             double[] location = LocationConverter.codeToCoords((String) info.get("location"));
-            System.out.println(info.get("location"));
-
             String str_data = info.get("name") + ", " + info.get("email") + ", " + info.get("password") + ", " + info.get("age") + ", " +
                     info.get("bio") + ", " + info.get("gender") + ", " + info.get("orientation") + ", " +
                     location[0] + ": "+location[1] + ", " + info.get("hobbies") + ", " +

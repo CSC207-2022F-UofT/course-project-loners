@@ -1,4 +1,6 @@
 package usecases;
+import javax.swing.*;
+
 import static java.lang.Math.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +43,9 @@ public class PreferredLocationConnector{
             return ids;
         } else
         { // case when there is no profile in the database
-        System.out.println("There is no other profile");
+            JOptionPane.showMessageDialog(null,"There is no other profile",
+                    "Error", JOptionPane.INFORMATION_MESSAGE);
         return null;
         }
-    }
-
-    public static void main(String[] args){
-        List<Integer> abc = withinPreferredLocation(2, 5.0);
-        System.out.println(abc);
     }
 }
