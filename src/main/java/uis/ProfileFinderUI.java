@@ -66,7 +66,7 @@ public class ProfileFinderUI implements ActionListener{
 
     /**
      * Opens a new window displaying the profile to like or pass on
-     * @param curr is the current id in terms of the otherprofiles list
+     * @param curr is the current id in terms of the other profiles list
      * @param id is my id
      */
     public ProfileFinderUI(int curr, String id){
@@ -76,16 +76,21 @@ public class ProfileFinderUI implements ActionListener{
         myProfile = (Object[]) myProfile[0];
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
         if (curr >= allOtherProfiles.size()){
-            System.out.println("no more profiles!");
             JFrame matchFrame = new JFrame();
             matchFrame.setSize(300, 300);
-            GridLayout matchLayout = new GridLayout(1, 1, 0,0);
+            GridLayout matchLayout = new GridLayout(2, 1, 0,0);
             matchFrame.setLayout(matchLayout);
             JLabel statement = new JLabel("There are no more matches for you");
+            JButton backToMain = new JButton("Back to MainUI");
             matchFrame.add(statement);
+            matchFrame.add(backToMain);
             matchFrame.setLocationRelativeTo(null);
-            new MainUI(Integer.parseInt((String)myProfile[0]));
             matchFrame.setVisible(true);
+            backToMain.addActionListener( e -> {
+                MainUI mainUI = new MainUI(Integer.parseInt((String)myProfile[0]));
+                mainUI.show();
+                matchFrame.setVisible(false);
+            });
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
             this.curr++;
             new ProfileFinderUI(this.curr, id);
@@ -157,7 +162,7 @@ public class ProfileFinderUI implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == likeButton){
-            // Use the LikesController to modufy the likes on a profile
+            // Use the LikesController to modify the likes on a profile
             //Facade
             LikesController.modifyLikes((String) myProfile[11], Integer.parseInt((String) otherProfile[0]), myProfile);
 

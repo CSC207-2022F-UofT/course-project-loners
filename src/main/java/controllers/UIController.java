@@ -19,6 +19,7 @@ public class UIController {
         this.data = DataController.fetchFromId(id);
     }
 
+
     public UIController(String email){ this.id = DataController.fetchIdFromEmail(email); }
 
     /**
