@@ -23,8 +23,8 @@ public class DataController {
     public static int fetchLastID(){
         return FetchData.fetchLastID();
     }
-    public static SendData sendData(Profile profile){
-        return new SendData(profile);
+    public static void sendData(Profile profile){
+        new SendData(profile);
     }
     public static void sendToID(int id, Object[] data){
         SendData.getInstance().sendToId(id, data);
