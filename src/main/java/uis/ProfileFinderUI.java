@@ -63,6 +63,7 @@ public class ProfileFinderUI implements ActionListener{
     int curr;
     /**the id of the profile*/
     String id;
+    UIController uiController;
 
     /**
      * Opens a new window displaying the profile to like or pass on
@@ -72,6 +73,7 @@ public class ProfileFinderUI implements ActionListener{
     public ProfileFinderUI(int curr, String id){
         this.curr = curr;
         this.id = id;
+        this.uiController = new UIController(id);
         myProfile = getProfileWithId(Integer.parseInt(id));
         myProfile = (Object[]) myProfile[0];
         allOtherProfiles = ConnectProfilesControl.gatherConnections(Integer.parseInt(id));
@@ -87,8 +89,7 @@ public class ProfileFinderUI implements ActionListener{
             matchFrame.setLocationRelativeTo(null);
             matchFrame.setVisible(true);
             backToMain.addActionListener( e -> {
-                MainUI mainUI = new MainUI(Integer.parseInt((String)myProfile[0]));
-                mainUI.show();
+                uiController.launchMyProfileUI();
                 matchFrame.setVisible(false);
             });
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
@@ -189,10 +190,10 @@ public class ProfileFinderUI implements ActionListener{
             LikesController.modifyLikes((String) myProfile[11], negId, myProfile);
             frame.setVisible(false);
             curr++;
-            new ProfileFinderUI(curr, id);
+            uiController.launchProfileFinderUI();
         }else if(e.getSource() == backButton){
+            uiController.launchMyProfileUI();
             frame.setVisible(false);
-            new MainUI(Integer.parseInt((String)myProfile[0]));
         }
     }
 }
