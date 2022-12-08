@@ -2,7 +2,7 @@ package entities;
 
 /**
  * An Entity class that stores the preferences of a user, which describe the type of people the user would like to date.
- * Also the Input Data for EditPreferences and ConnectProfiles.
+ * Also used as Input Data.
  */
 public class Preferences {
     /** The user's preferred age of other users */
@@ -23,7 +23,7 @@ public class Preferences {
      * @param preferredAge The user's preferred age
      * @param preferredGender The user's preferred gender
      * @param preferredLocationRange The user's preferred location range
-     * @param id The user's id
+     * @param id The user's ID
      */
     public Preferences(int preferredAge, String preferredGender, double preferredLocationRange, int id) {
         this.preferredAge = preferredAge;

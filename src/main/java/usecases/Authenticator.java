@@ -1,5 +1,6 @@
 package usecases;
 
+import dataaccess.FetchData; // implements a Use Case interface
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,8 +109,8 @@ public class Authenticator{
         // Check email exists in database
         if (emailExists(email)){
             // Case 1: email does not match password (wrong password)
-            String database_password = FetchData.fetchPassword(email);
-            if (!Objects.equals(password, database_password)){
+            String databasePassword = FetchData.fetchPassword(email);
+            if (!Objects.equals(password, databasePassword)){
                 System.out.println("Incorrect password. Please try again.");
                 return false;
             }

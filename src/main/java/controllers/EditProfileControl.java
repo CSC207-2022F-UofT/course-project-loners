@@ -1,5 +1,6 @@
 package controllers;
 
+import dataaccess.SendData; // implements a Use Case interface
 import usecases.EditProfile;
 import usecases.LocationConverter;
 
@@ -21,7 +22,10 @@ public class EditProfileControl{
     public  EditProfileControl(){
         this.image = null;
     }
-    EditProfile editProfile = new EditProfile();
+    public static final EditProfileControl e = new EditProfileControl();
+    public static EditProfileControl getInstance(){
+        return e;
+    }
     public boolean withHoldImage(JFrame f){
         FileDialog fd = new FileDialog(f, "Open", FileDialog.LOAD);
         fd.setVisible(true);
@@ -54,7 +58,7 @@ public class EditProfileControl{
      */
     public boolean send(HashMap<String, Object> info, int id) {
 
-        if(editProfile.edit(info)) {
+        if(EditProfile.getInstance().edit(info)) {
 
             String likes;
             if (info.get("likes") == null) {
@@ -71,7 +75,7 @@ public class EditProfileControl{
                     location[0] + ": "+location[1] + ", " + info.get("hobbies") + ", " +
                     info.get("socialMedia") + ", " + likes + ", " + info.get("preferredAge") + ", " +
                     info.get("preferredGender") + ", " + info.get("preferredLocation");
-            DataController.sendToID(id, str_data.split(", "));
+            SendData.getInstance().sendToID(id, str_data.split(", "));
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Something went wrong when editing your profile!");

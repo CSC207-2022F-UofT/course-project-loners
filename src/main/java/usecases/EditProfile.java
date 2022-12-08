@@ -1,10 +1,13 @@
 package usecases;
 
-
 import java.util.HashMap;
 import java.util.List;
 
 public class EditProfile {
+    public static final EditProfile e = new EditProfile();
+    public static EditProfile getInstance(){
+        return e;
+    }
     @SuppressWarnings("unchecked")
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
