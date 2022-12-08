@@ -2,7 +2,7 @@ package controllers;
 
 import dataaccess.FetchData; // implements a Use Case interface
 import dataaccess.SendData; // implements a Use Case interface
-import usecases.ProfileFactory;
+import usecases.ProfileGenerator;
 import usecases.RegChecker;
 
 import javax.imageio.ImageIO;
@@ -42,7 +42,7 @@ public class RegControl {
         boolean picLoaded = image != null;
         RegChecker checker = new RegChecker(pfInfo, email, pw, name, age, code, picLoaded);
         if (!checker.pass) { // If checker did not pass, pop up a failure message window
-            String message = checker.diagnose + "please try again!";
+            String message = checker.diagnose + "Please try again!";
             JOptionPane.showMessageDialog(null, message, "WARNING", JOptionPane.WARNING_MESSAGE);
         } else{
             try{ // Save user's image
@@ -60,7 +60,7 @@ public class RegControl {
                 JOptionPane.showMessageDialog(null,"Account created! Click OK to the login page.",
                         "CONGRATULATION", JOptionPane.INFORMATION_MESSAGE);
                 regFrame.setVisible(false);
-                new UIController().launchLogUI();
+                UIController.launchLogUI();
             } else {
                 // if inputs did not save, show an error message
                 JOptionPane.showMessageDialog(null, "Something went wrong when saving you submission, please try again!");
@@ -84,7 +84,7 @@ public class RegControl {
      */
     private boolean regDataStore(String platform, String pfInfo,String email, String pw, String name, String age, String gender, String postcode) {
         try{ // DataSendControl did not have exception i.e. data can be stored to the database
-            new SendData(ProfileFactory.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
+            new SendData(ProfileGenerator.generateProfile(platform, pfInfo, email, pw, name, age, gender, postcode));
         } catch (Exception e) { // If DataSendControl have exception i.e. data not did store to the database
             return false;
         }

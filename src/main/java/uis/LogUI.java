@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 public class LogUI implements ActionListener {
     JFrame f;
     GridLayout layout = new GridLayout(3, 1, 10, 20);
-
     JButton b = new JButton("Login");
     JLabel label1 = new JLabel("Email: ");
     JTextField emailField = new JTextField(20);
@@ -54,7 +53,6 @@ public class LogUI implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                new UIController();
                 UIController.launchWelcomeUI();
             }
         });

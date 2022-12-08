@@ -2,7 +2,7 @@ package usecases;
 
 import entities.Profile;
 
-public class ProfileFactory {
+public class ProfileGenerator {
     public static Profile generateProfile(String platform, String pfInfo,String email, String pw,
                                           String name, String age, String gender, String postcode){
         int ageInt = Integer.parseInt(age);
