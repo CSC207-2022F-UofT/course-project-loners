@@ -1,6 +1,8 @@
 package usecases;
 
+import dataaccess.FetchData;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -22,6 +24,7 @@ public class RegCheckerTest {
         String postcode = "M5S 1A4";
         RegChecker checkerAllGood = new RegChecker(platformInfo, email, pw, name, age ,postcode, true);
         assertTrue(checkerAllGood.pass);
+        assertEquals(checkerAllGood.diagnose,"");
 
         // Implicitly test checkIfMissing:
         // test when one of inputs is missing
@@ -62,6 +65,10 @@ public class RegCheckerTest {
         assertEquals(checkerAgeNotNum.diagnose, "- Age is not a number \n");
 
         // Implicitly test checkDuplicate:
-        // TODO: virtual database???
+        Object[] data0 = (Object[]) FetchData.fetchFromID(0)[0];
+        String newEmail = (String) data0[2];
+        RegChecker checkerDup = new RegChecker(platformInfo, newEmail, pw, name, age ,postcode, true);
+        assertFalse(checkerDup.pass);
+        assertEquals(checkerDup.diagnose, "- This email has registered \n");
     }
 }

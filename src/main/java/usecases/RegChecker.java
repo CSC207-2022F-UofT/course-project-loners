@@ -115,7 +115,6 @@ public class RegChecker {
      * @param email an input of user, for email
      */
     private void checkDuplicate(String email){
-        // TODO: fix violation??
         if (FetchData.fetchEmails().contains(email)){
             this.pass = false;
             this.diagnose += "- This email has registered \n";
