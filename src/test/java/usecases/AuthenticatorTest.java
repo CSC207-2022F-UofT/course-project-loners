@@ -91,7 +91,7 @@ public class AuthenticatorTest {
 
     @Test(timeout = 50)
     public void testEmailExist(){
-        String existingEmail = "email2";
+        String existingEmail = "kelly@mail";
         String nonExistingEmail = "email12211";
 
         assertTrue(Authenticator.emailExists(existingEmail));
@@ -100,9 +100,9 @@ public class AuthenticatorTest {
 
     @Test(timeout = 50)
     public void testEmailMatchPassword(){
-        String existingEmail = "email2";
+        String existingEmail = "kelly@mail";
         String nonExistingEmail = "email12211";
-        String existingPassword = "password";
+        String existingPassword = "pw";
         String nonExistingPassword = "null";
 
         assertTrue(Authenticator.emailMatchPassword(existingEmail, existingPassword));
