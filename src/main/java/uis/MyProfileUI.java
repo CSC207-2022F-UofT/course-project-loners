@@ -10,21 +10,23 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/*
+ * MyProfileUI class the user's own profile page.
+ */
 public class MyProfileUI{
-    /*
-    * MyProfileUI class the user's own profile page.
-     */
-
+    /* Frame of the UI */
     JFrame f = new JFrame();
+    /* id of the user  */
     int id;
+    /* back button on MyProfileUI */
     JButton back = new JButton("Back to Menu");
 
 
+    /*
+     * Constructor for MyProfileUI.
+     * The UI of the user associated to the given id will be presented.
+     */
     public MyProfileUI(int id){
-        /*
-        * Constructor for MyProfileUI.
-        * The UI of the user associated to the given id will be presented.
-         */
         this.id = id;
         // Define components that will be presented in this profile page
         Object[] profileData = FetchData.fetchFromID(id);

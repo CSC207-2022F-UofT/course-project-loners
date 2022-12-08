@@ -99,7 +99,7 @@ public class FetchData implements FetchDataAccess {
     }
 
     /**
-     *
+     * This methods fetch all the emails from the database
      @return ArrayList that contains all the emails
      */
     public static ArrayList<String> fetchEmails(){
@@ -122,6 +122,11 @@ public class FetchData implements FetchDataAccess {
         }
     }
 
+    /**
+     * This method fetches password based on email
+     * @param email of the profile
+     * @return password of the user associated to email input
+     */
     public static String fetchPassword(String email){
         // This method assumes the email exists in our database.
         try {
@@ -143,6 +148,12 @@ public class FetchData implements FetchDataAccess {
             return null;
         }
     }
+
+    /**
+     * This method fetches address of the user associated to inputId in a list format
+     * @param inputId of the user
+     * @return the address of the user associated to inputId
+     */
     public static double[] fetchAddressFromID(int inputId){
         // use id to find location
         // return -1.9 if file is empty

@@ -6,11 +6,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/*
+* Use case representing profile editing
+ */
 public class EditProfile {
+    /* Singleton Design Pattern */
     public static final EditProfile e = new EditProfile();
     public static EditProfile getInstance(){
         return e;
     }
+
+    /**
+     * This methods checks whether the user has successfully edited their profile or not.
+     * @param info is the new profile data after the user has edited
+     * @return whether user successfully edited the profile or not
+     */
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();

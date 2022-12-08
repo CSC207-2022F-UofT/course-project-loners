@@ -12,20 +12,30 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/*
+ * EditProfileControl class
+ * This class manages editing the profile.
+ */
 public class EditProfileControl{
-    /*
-    * EditProfileControl class
-    * This class manages editing the profile.
-     */
-    public String name;
+
+    /** The image uploaded by the user stored in an instance */
     private BufferedImage image;
+    /** Default image is null */
     public  EditProfileControl(){
         this.image = null;
     }
+    /** Using singleton Design Pattern */
     public static final EditProfileControl e = new EditProfileControl();
+    /** Get instance of this class without defining it */
     public static EditProfileControl getInstance(){
         return e;
     }
+
+    /**
+     * This method enables users to upload images and withhold that image
+     * @param f frame where the image uploading takes place
+     * @return boolean value representing whether the user has successfully uploaded an image or not.
+     */
     public boolean withHoldImage(JFrame f){
         FileDialog fd = new FileDialog(f, "Open", FileDialog.LOAD);
         fd.setVisible(true);
@@ -38,6 +48,11 @@ public class EditProfileControl{
             return false;
         }
     }
+
+    /**
+     * This method saves the uploaded image to saved_images folder
+     * @param id of the user
+     */
     public void sendImage(int id){
         File myObj = new File(String.format("saved_images/%s.jpg", id));
         if(myObj.exists()) {
