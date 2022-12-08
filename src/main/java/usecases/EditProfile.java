@@ -17,7 +17,7 @@ public class EditProfile {
     }
 
     /**
-     * This methods checks whether the user has successfully edited their profile or not.
+     * This method checks whether the user has successfully edited their profile or not.
      * @param info is the new profile data after the user has edited
      * @return whether user successfully edited the profile or not
      */
