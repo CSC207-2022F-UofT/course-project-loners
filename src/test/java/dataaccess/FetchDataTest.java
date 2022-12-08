@@ -10,13 +10,13 @@ public class FetchDataTest {
 
     @Test
     public void fetchFromID() {
-        Assert.assertEquals("Kelly", ((Object[])FetchData.fetchFromID(0)[0])[1]);
+        Assert.assertEquals("Nafisa", ((Object[])FetchData.fetchFromID(4)[0])[1]);
         //assert "Kelly".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 
     @Test
     public void fetchIDFromEmail() {
-        Assert.assertEquals(0, FetchData.fetchIDFromEmail("kelly@mail"));
+        Assert.assertEquals(4, FetchData.fetchIDFromEmail("nafi@mail"));
         //assert 0 == FetchData.fetchIDFromEmail("kelly@mail");
     }
 
