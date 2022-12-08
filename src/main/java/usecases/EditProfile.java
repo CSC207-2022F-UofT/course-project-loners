@@ -1,5 +1,6 @@
 package usecases;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,42 +14,37 @@ public class EditProfile {
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
         if (info.keySet().size() == 0){
-            System.out.println("No change is made");
+            JOptionPane.showMessageDialog(null, "No changes were made to your profile!");
             return false;
         }
         for (int k = 0; k<info.keySet().size();k++){
             if(keys[k] == "name"){
-                if(Authenticator.isValidName((String) values[k])){
-                    return true;
-                }else {
-                    System.out.println("Invalid Name");
+                if(!Authenticator.isValidName((String) values[k])){
+                    JOptionPane.showMessageDialog(null, "Invalid Name!");
                     return false;
                 }
             } else if (keys[k] == "email") {
-                if(Authenticator.isValidEmail((String) values[k])){
-                    return true;
-                } else {
-                    System.out.println("Invalid Email");
+                if(!Authenticator.isValidEmail((String) values[k])){
+                    JOptionPane.showMessageDialog(null, "Invalid Email!");
                     return false;
                 }
             } else if (keys[k] == "age") {
-                return Authenticator.isValidAge((int) values[k]);
-            } else if (keys[k] == "gender") {
-                return true;
-            } else if (keys[k] == "location") {
-                return true;
-            } else if (keys[k] == "image") {
-                return true;
+                if(!Authenticator.isValidAge((int) values[k])){
+                    JOptionPane.showMessageDialog(null, "Invalid Age!");
+                    return false;
+                }
             } else if (keys[k] == "bio") {
-                return Authenticator.isValidBio((String) values[k]);
+                if(!Authenticator.isValidBio((String) values[k])){
+                    JOptionPane.showMessageDialog(null, "Invalid Bio!");
+                    return false;
+                }
+
             } else if (keys[k] == "hobbies") {
-                return Authenticator.isValidHobbies((List<String>) values[k]);
-            } else if (keys[k] == "socialMedia") {
-                return true;
-            } else if (keys[k] == "likes") {
-                return true;
-            } else if (keys[k] == "orientation") {
-                return true;
+                if(!Authenticator.isValidHobbies((List<String>) values[k])){
+                    JOptionPane.showMessageDialog(null, "Invalid Hobbies!");
+                    return false;
+                }
+
             }
         }
         return true;
