@@ -10,6 +10,7 @@ import java.util.Objects;
  * Opening different UIs and unify the frame size of all UIs
  */
 public class UIController {
+
     /**
      * id of the user.
      */
@@ -105,9 +106,9 @@ public class UIController {
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
     }
     /**
-     * If back button is clicked, direct user back to the previous page(WelcomeUI).
-     * @param frame is the frame of the UI
-     * @param targetUI is the UI we want to add back button to.
+     * This method adds a back button to a UI
+     * @param frame of the UI
+     * @param targetUI is the UI we want to add a back button to
      */
     public static void addBackButton(JFrame frame, String targetUI){
         JButton backButton = new JButton("Back to previous page");

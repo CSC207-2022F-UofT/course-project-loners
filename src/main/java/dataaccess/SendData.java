@@ -11,9 +11,7 @@ import java.nio.charset.StandardCharsets;
  * In clean architecture, this works as Data Access
  */
 public class SendData implements SendDataAccess {
-    /*
-     * This class sends the given data to database accordingly to how the user wants to.
-     */
+    /** status of whether we can send the data or not*/
     public boolean status;
     private static SendData d;
     /**

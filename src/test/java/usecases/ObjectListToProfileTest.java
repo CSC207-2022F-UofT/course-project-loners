@@ -20,7 +20,7 @@ public class ObjectListToProfileTest {
      * Test if objectListToProfile returns a proper profile
      */
     @Test
-    public void objectListToProfileTest(){
+    public void testObjectListToProfile(){
         //7, Name8, email8, password, 19, bio, male, orientation, 20.0: 30.0001, hobbies, socialMedia, 3: , 19, male, 5.0
         Profile myProf = new Profile("socialMedia", "email8", "password", "Name8", 19, "male", new double[]{20.0, 30.0001});
         myProf.setBio("bio");

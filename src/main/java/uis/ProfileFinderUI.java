@@ -85,8 +85,11 @@ public class ProfileFinderUI implements ActionListener{
             JLabel statement = new JLabel("There are no more matches for you");
             matchFrame.add(statement);
             matchFrame.setLocationRelativeTo(null);
-            new MainUI(Integer.parseInt((String)myProfile[0]));
             matchFrame.setVisible(true);
+
+            MainUI mainUI = new MainUI(Integer.parseInt((String)myProfile[0]));
+            mainUI.show();
+
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
             this.curr++;
             new ProfileFinderUI(this.curr, id);

@@ -15,7 +15,7 @@ public class AuthenticatorTest {
      */
 
     @Test(timeout = 50)
-    public void isValidEmailTest(){
+    public void testIsValidEmailTest(){
         String validEmail = "1234@gmail.com";
         String invalidEmail = "1234";
         assertTrue(Authenticator.isValidEmail(validEmail));
@@ -23,7 +23,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void isValidNameTest(){
+    public void testIsValidNameTest(){
         String validName = "John";
         String invalidName = "!";
         String invalidName1 = "12";
@@ -33,7 +33,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void isValidAgeTest(){
+    public void testIsValidAgeTest(){
         int validAge = 30;
         int invalidAge = 155;
         assertTrue(Authenticator.isValidAge(validAge));
@@ -41,7 +41,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void isValidAddressTest(){
+    public void testIsValidAddressTest(){
         String validAddress =  "L9M0E5";
         String invalidAddress = "1M12M2";
 
@@ -50,7 +50,7 @@ public class AuthenticatorTest {
     }
 
     @Test
-    public void isValidBioTest(){
+    public void testIsValidBioTest(){
         String validBio = "HiIamJohn";
         String invalidBio = "121312131ye2131121312313141514131515132131108102381289312931873787591dd91912989d1991991" +
                 "919d1999d91d91bb121b2db1bd19b1hd91989182981298192891d1981928d8f81f89189f89f88d989s98s8919889d8f18f8" +
@@ -63,7 +63,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void isValidHobbiesTest(){
+    public void testIsValidHobbiesTest(){
         ArrayList<String> validHobbiesList = new ArrayList<>();
         ArrayList<String> invalidHobbiesList = new ArrayList<>();
         String validHobbies = "playing soccer, watching TV, and partying";
@@ -90,7 +90,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void EmailExistTest(){
+    public void testEmailExist(){
         String existingEmail = "email2";
         String nonExistingEmail = "email12211";
 
@@ -99,7 +99,7 @@ public class AuthenticatorTest {
     }
 
     @Test(timeout = 50)
-    public void EmailMatchPasswordTest(){
+    public void testEmailMatchPassword(){
         String existingEmail = "email2";
         String nonExistingEmail = "email12211";
         String existingPassword = "password";
