@@ -54,6 +54,7 @@ public class MyProfileUI{
             return;
         }
         f.setSize(400,600);
+        //Each component is added to the frame
         f.add(age);
         f.add(bio);
         f.add(socialMedia);

@@ -17,7 +17,6 @@ import java.util.*;
  * This class manages editing the profile.
  */
 public class EditProfileControl{
-
     /** The image uploaded by the user stored in an instance */
     private BufferedImage image;
     /** Default image is null */
@@ -32,9 +31,11 @@ public class EditProfileControl{
     }
 
     /**
+
      * This method enables users to upload images and withhold that image
      * @param f frame where the image uploading takes place
      * @return boolean value representing whether the user has successfully uploaded an image or not.
+
      */
     public boolean withHoldImage(JFrame f){
         FileDialog fd = new FileDialog(f, "Open", FileDialog.LOAD);
@@ -52,6 +53,7 @@ public class EditProfileControl{
     /**
      * This method saves the uploaded image to saved_images folder
      * @param id of the user
+
      */
     public void sendImage(int id){
         File myObj = new File(String.format("saved_images/%s.jpg", id));
