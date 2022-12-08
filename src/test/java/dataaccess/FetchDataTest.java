@@ -9,16 +9,16 @@ public class FetchDataTest {
 
     @Test
     public void fetchFromID() {
-        assert "Rick".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
+        assert "Kelly".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 
     @Test
     public void fetchIDFromEmail() {
-        assert 0 == FetchData.fetchIDFromEmail("email@");
+        assert 0 == FetchData.fetchIDFromEmail("kelly@mail");
     }
 
     @Test
     public void fetchLastID() {
-        assert 7 == FetchData.fetchLastID();
+        assert 14 == FetchData.fetchLastID();
     }
 }
