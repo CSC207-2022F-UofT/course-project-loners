@@ -50,8 +50,6 @@ public class ProfileFinderUI implements ActionListener{
     JTextArea hobbies;
     /**User's bio*/
     JTextArea bio;
-    /**User's image*/
-    JLabel image;
 
     /**Object list for the user's profile*/
     Object[] myProfile;
@@ -104,7 +102,10 @@ public class ProfileFinderUI implements ActionListener{
             bio = new JTextArea((String) otherProfile[5]);
             gender = new JTextArea((String) otherProfile[6]);
             hobbies = new JTextArea((String) otherProfile[9]);
-            image = new JLabel(new ImageIcon(theImage));
+            ImageIcon imageIcon = new ImageIcon(theImage); // load the image to a imageIcon
+            Image image1 = imageIcon.getImage(); // transform it
+            Image newImg = image1.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+            JLabel label = new JLabel("", new ImageIcon(newImg), SwingConstants.CENTER);
             // Now we create the window
 
 
@@ -123,7 +124,7 @@ public class ProfileFinderUI implements ActionListener{
             frame.add(name);
             name.setEditable(false);
             frame.add(imageLabel);
-            frame.add(image);
+            frame.add(label);
             frame.add(genderLabel);
             frame.add(gender);
             gender.setEditable(false);

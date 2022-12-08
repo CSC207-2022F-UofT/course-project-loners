@@ -1,5 +1,6 @@
 package dataaccess;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /*
@@ -8,17 +9,19 @@ import org.junit.Test;
 public class FetchDataTest {
 
     @Test
-    public void testFetchFromID() {
-        assert "Rick".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
+    public void fetchFromID() {
+        Assert.assertEquals("Nafisa", ((Object[])FetchData.fetchFromID(4)[0])[1]);
+        //assert "Kelly".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 
     @Test
-    public void testFetchIDFromEmail() {
-        assert 0 == FetchData.fetchIDFromEmail("email@");
+    public void fetchIDFromEmail() {
+        Assert.assertEquals(4, FetchData.fetchIDFromEmail("nafi@mail"));
+        //assert 0 == FetchData.fetchIDFromEmail("kelly@mail");
     }
 
     @Test
-    public void testFetchLastID() {
-        assert 7 == FetchData.fetchLastID();
+    public void fetchLastID() {
+        assert 14 == FetchData.fetchLastID();
     }
 }

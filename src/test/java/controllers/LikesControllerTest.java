@@ -15,15 +15,15 @@ public class LikesControllerTest {
      * Test a non-null likes list
      */
     @Test
-    public void testModifyLikesTestNotNull(){
-        Object[] profDemo = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2:" , "19", "male", "5.0"};
-        String myLikes = "2: ";
-        int otherId = 3;
+    public void modifyLikesTestNotNull(){
+        Object[] profDemo = {"7", "Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "3: ", "20", "female", "5.0"};
+        String myLikes = "3: ";
+        int otherId = 2;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
-        Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2: 3: " , "19", "male", "5.0"};
+        Object[] profNow = {"7", "Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "3: 2: ", "20", "female", "5.0"};
         Object[] profData = (Object[]) Objects.requireNonNull(FetchData.fetchFromID(7))[0];
         Assert.assertArrayEquals(profData, profNow);
-        profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2", "19", "male", "5.0" };
+        profDemo = new Object[]{"Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "3: ", "20", "female", "5.0"};
         SendData.getInstance().sendToID(7, profDemo);
     }
 
@@ -31,15 +31,15 @@ public class LikesControllerTest {
      * Modify the likes list when it is null (nobody has been liked yet)
      */
     @Test
-    public void testmModifyLikesTestNull(){
-        Object[] profDemo = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null" , "19", "male", "5.0"};
+    public void modifyLikesTestNull(){
+        Object[] profDemo = {"7", "Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "null", "20", "female", "5.0"};
         String myLikes = "null";
         int otherId = 3;
         LikesController.modifyLikes(myLikes, otherId, profDemo);
-        Object[] profNow = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "3: " , "19", "male", "5.0"};
+        Object[] profNow = {"7", "Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "3: ", "20", "female", "5.0"};
         Object[] profData = (Object[]) Objects.requireNonNull(FetchData.fetchFromID(7))[0];
         Assert.assertArrayEquals(profData, profNow);
-        profDemo = new Object[]{"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null", "19", "male", "5.0" };
+        profDemo = new Object[]{"Taka", "taka@dmail.com", "dknnsoi92ld", "20", "Taka is me", "male", "straight", "43.670437: -79.401003", "dance", "instagram taka_taka", "null", "20", "female", "5.0"};
         SendData.getInstance().sendToID(7, profDemo);
     }
 }
