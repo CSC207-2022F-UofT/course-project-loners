@@ -11,6 +11,7 @@ public class EditProfile {
     public static EditProfile getInstance(){
         return e;
     }
+
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
