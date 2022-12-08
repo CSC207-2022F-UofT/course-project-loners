@@ -1,6 +1,8 @@
 package usecases;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,10 +11,10 @@ public class EditProfile {
     public static EditProfile getInstance(){
         return e;
     }
-    @SuppressWarnings("unchecked")
     public boolean edit(HashMap<String, Object> info){
         Object[] keys = info.keySet().toArray();
         Object[] values = info.values().toArray();
+        List<String> hobbies = new ArrayList<>(Arrays.asList(((String)values[7]).split(",")));
         if (info.keySet().size() == 0){
             JOptionPane.showMessageDialog(null, "No changes were made to your profile!");
             return false;
@@ -40,7 +42,7 @@ public class EditProfile {
                 }
 
             } else if (keys[k] == "hobbies") {
-                if(!Authenticator.isValidHobbies((List<String>) values[k])){
+                if(!Authenticator.isValidHobbies(hobbies)){
                     JOptionPane.showMessageDialog(null, "Invalid Hobbies!");
                     return false;
                 }
