@@ -8,9 +8,9 @@ public class SendDataTest {
     @Test
     public void sendToID(){
 
-        String str_data = "Rick, email@, password, 19, student, male, straight, 20.0: 30.0, play soccer, " +
-                "instagram: rick, 3:, 20, female, 20.0";
+        String str_data = "Kelly, kelly@mail, pw, 21, This is Kelly, female, straight, 43.670437: -79.401003, sing, " +
+                "Instagram: kelly, 3: , 21, male, 20.0";
         SendData.getInstance().sendToID(0, str_data.split(", "));
-        assert "Rick".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
+        assert "Kelly".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 }
