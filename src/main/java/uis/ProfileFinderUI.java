@@ -71,6 +71,7 @@ public class ProfileFinderUI implements ActionListener{
      * @param id is my id
      */
     public ProfileFinderUI(int curr, String id){
+        UIController.setFrameSize(frame);
         this.curr = curr;
         this.id = id;
         myProfile = getProfileWithId(Integer.parseInt(id));

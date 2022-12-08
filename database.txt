@@ -1,8 +1,11 @@
-0, Rick, email@, password, 19, student, male, straight, 20.0: 30.0, play soccer, instagram: rick, 3:, 20, female, 20.0
-1, Name2, email2, password, 2, bio, male, orientation, 20.0: 31.0, hobbies, socialMedia, likes, 19, male, 5.0
-2, Name3, email3, password, 19, bio, male, orientation, 20.0: 30.0, hobbies, socialMedia, 3: , 19, male, 5.0
-3, Name4, email@4, password, 20, bio, male, straight, 43.6655594: -79.3973939, hobbies, socialMedia, likes, 20, male, 5.0
-4, Name5, email5, password, 19, bio, female, orientation, 20.0: 30.0001, hobbies, socialMedia, likes, 19, male, 5.0
-5, Name6, email6, password, 19, bio, male, orientation, 19.0: 30.0, hobbies, socialMedia, likes, 19, male, 5.0
-6, Name7, email7, password, 19, bio, male, orientation, 10.0: 40.0, hobbies, socialMedia, likes, 19, male, 5.0
-7, Name8, email8, password, 19, bio, male, orientation, 20.0: 30.0001, hobbies, socialMedia, 3: , 19, male, 5.0
+0, Myles, myles@mail, pw, 23, This is Myles., male, straight, 43.663135: -79.39801, food, Snapchat: myles, null, null, null, null
+1, Helen, helen@mail, pw, 18, This is Helen., female, gay, 43.664797: -79.398693, dance, Twitter: Helen, 0: , 18, female, 20.0
+2, Jack, jack@mail, pw, 22, This is Jack., male, straight, 43.6669867: -79.3907929, sleep, SnapChat: jack, 0: , 22, female, 20.0
+3, Kelly, kelly@mail, pw, 21, This is Kelly, female, straight, 43.670437: -79.401003, sing, Instagram: kelly, 0: , 21, male, 20.0
+4, Nafisa, nafi@mail, pw, 24, This is Nafi., other, other, 43.641971: -79.385991, video game, Facebook: nafi, 0: , 24, other, 20.0
+5. Robert, robert@mail, pw, 23, This is Robert., male, gay, 43.663135: -79.39801, food, Snapchat: nafi, 0:  , 23, male, 20.0
+6, Rick, rick.hey.huang@gmail.com, sodjfoiejfdfds3f, 19, I’m Rick, male, straight, 43.641971: -79.385991, listen to music: play soccer, Instagram: ricky_is_rick, 0: ,20 ,  female, 20.0
+7, Nori, norinori@gmaill.com, siufoi4soi4r, 19, I’m student, male, straight, 43.641971: -79.385991, listen to music, Twitter: norinori, 0: , 25,  female, 20.0
+8, Taka, taka@dmail.com, dknnsoi92ld, 20, Taka is me, male, straight, 43.66487: -79.390974, dance, Instagram: taka_taka, 0: , 22, female, 20.0
+9, Aya, ayaaya@aya.com, w4uf084nosie, 23, I’m working in Japan, female, straight, 43.659535: -79.396541, cafe, Instagram: a_ya34, 0: , 25, male, 20.0
+10, Mei, Mei@mei.com, soufhouseunf4, 19, I’m in Germany, female, straight, 43.663135: -79.39801, sing, Twitter: meimeimei, 0: , 20,  male, 20.0
