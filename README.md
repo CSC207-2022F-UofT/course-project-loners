@@ -4,6 +4,8 @@
 [Clean Architecture](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CleanArchitecture.md).  
 [Design Pattern](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/DesignPattern.md).  
 [Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
+## Test coverage
+[Test Coverage](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/images/MarkdownImage10.png)
 # Guide to use our Dating app
 ## 1, download all the files in this repository 
 Click the green "Code" button on the top of this page.  
