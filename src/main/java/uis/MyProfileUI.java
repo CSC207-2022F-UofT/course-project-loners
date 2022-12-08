@@ -10,10 +10,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/*
+ * MyProfileUI class the user's own profile page.
+ */
 public class MyProfileUI{
-    /*
-    * MyProfileUI class the user's own profile page.
-     */
 
     JFrame f = new JFrame();
     int id;
@@ -52,6 +52,7 @@ public class MyProfileUI{
             return;
         }
         f.setSize(400,600);
+        //Each component is added to the frame
         f.add(age);
         f.add(bio);
         f.add(socialMedia);
