@@ -8,17 +8,17 @@ import org.junit.Test;
 public class FetchDataTest {
 
     @Test
-    public void fetchFromID() {
+    public void testFetchFromID() {
         assert "Rick".equals(((Object[])FetchData.fetchFromID(0)[0])[1]);
     }
 
     @Test
-    public void fetchIDFromEmail() {
+    public void testFetchIDFromEmail() {
         assert 0 == FetchData.fetchIDFromEmail("email@");
     }
 
     @Test
-    public void fetchLastID() {
+    public void testFetchLastID() {
         assert 7 == FetchData.fetchLastID();
     }
 }

@@ -15,7 +15,7 @@ public class LikesControllerTest {
      * Test a non-null likes list
      */
     @Test
-    public void modifyLikesTestNotNull(){
+    public void testModifyLikesTestNotNull(){
         Object[] profDemo = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "2:" , "19", "male", "5.0"};
         String myLikes = "2: ";
         int otherId = 3;
@@ -31,7 +31,7 @@ public class LikesControllerTest {
      * Modify the likes list when it is null (nobody has been liked yet)
      */
     @Test
-    public void modifyLikesTestNull(){
+    public void testmModifyLikesTestNull(){
         Object[] profDemo = {"7", "Name8", "email8", "password", "19", "bio", "male", "orientation", "20.0: 30.0001", "hobbies", "socialMedia", "null" , "19", "male", "5.0"};
         String myLikes = "null";
         int otherId = 3;

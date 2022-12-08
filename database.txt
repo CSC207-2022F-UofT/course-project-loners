@@ -1,4 +1,4 @@
-0, Rick, email@, password, 19, student, male, straight, 20.0: 30.0, play soccer, instagram: rick, 3:, 20, female, 20.0
+0, Rick, email@, password, 32, I'm Rick, male, straight, 43.6655594: -79.3973939, play soccer, instagram: rick, , 20, female, M5S 2E2
 1, Name2, email2, password, 2, bio, male, orientation, 20.0: 31.0, hobbies, socialMedia, likes, 19, male, 5.0
 2, Name3, email3, password, 19, bio, male, orientation, 20.0: 30.0, hobbies, socialMedia, 3: , 19, male, 5.0
 3, Name4, email@4, password, 20, bio, male, straight, 43.6655594: -79.3973939, hobbies, socialMedia, likes, 20, male, 5.0
