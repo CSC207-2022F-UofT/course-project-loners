@@ -143,6 +143,13 @@ public class FetchData implements FetchDataAccess {
             return null;
         }
     }
+
+    /**
+     * This method fetches the address of a user with a specific id stored in a database
+     * @param inputId id of the user
+     * @return the address of the user with the inputId iff there the address is in the database.
+     * Otherwise, return double[]{0.0, 0.0}
+     */
     public static double[] fetchAddressFromID(int inputId){
         // use id to find location
         // return -1.9 if file is empty
