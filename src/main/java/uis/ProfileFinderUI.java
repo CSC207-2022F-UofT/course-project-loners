@@ -80,13 +80,19 @@ public class ProfileFinderUI implements ActionListener{
             System.out.println("no more profiles!");
             JFrame matchFrame = new JFrame();
             matchFrame.setSize(300, 300);
-            GridLayout matchLayout = new GridLayout(1, 1, 0,0);
+            GridLayout matchLayout = new GridLayout(2, 1, 0,0);
             matchFrame.setLayout(matchLayout);
             JLabel statement = new JLabel("There are no more matches for you");
+            JButton backToMain = new JButton("Back to MainUI");
             matchFrame.add(statement);
+            matchFrame.add(backToMain);
             matchFrame.setLocationRelativeTo(null);
-            new MainUI(Integer.parseInt((String)myProfile[0]));
             matchFrame.setVisible(true);
+            backToMain.addActionListener( e -> {
+                MainUI mainUI = new MainUI(Integer.parseInt((String)myProfile[0]));
+                mainUI.show();
+                matchFrame.setVisible(false);
+            });
         } else if (((String)myProfile[11]).contains(Integer.toString(allOtherProfiles.get(curr)))) {
             this.curr++;
             new ProfileFinderUI(this.curr, id);
