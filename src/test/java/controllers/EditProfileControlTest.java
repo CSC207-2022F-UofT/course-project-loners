@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class EditProfileControlTest {
 
     @Test
-    public void send() {
+    public void testSendWorking() {
         HashMap<String, Object> info = new HashMap<>();
         info.put("name", "Rick");
         info.put("email", "email@");

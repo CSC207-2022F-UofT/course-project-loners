@@ -18,28 +18,45 @@ import java.util.HashMap;
 * This UI will pop up after the user clicked a button from MyProfileUI
  */
 public class EditProfileUI{
-    /*
-     *EditProfileUI that enables users to edit their profile
-     */
+    /* Frame on which we put UI components */
     JFrame f= new JFrame();
+    /* genders list that will be used in genderField */
     String[] genders = {"male", "female", "other"}; // Options for gender field
+    /* orientations list that will be used in orientationField */
     String[] orientations = {"straight", "gay", "bisexual", "other"}; // Options for orientation field
-    // The following fields are used to take user input
+    /* Name input field  */
     JTextField nameField;
+    /* email input field  */
     JTextField emailField;
+    /* password input field  */
     JTextField passwordField;
+    /* age input field  */
     JSpinner ageField;
+    /* gender input field  */
     JComboBox<String> genderField;
+    /* orientation input field  */
     JComboBox<String> orientationField;
+    /* bio input field  */
     JTextField bioField;
+    /* location input field  */
     JTextField locationField;
+    /* hobbies input field  */
     JTextField hobbiesField;
+    /* socialMedia input field  */
     JTextField socialMediaField;
+    /*  data of the user */
     Object[] data;
+    /* EditProfileControl instance used for image uploading and sending data  */
     EditProfileControl control = new EditProfileControl();
+    /* id of the user editing the profile */
     int id;
+    /* whether image is uploaded or not  */
     boolean isImageUploaded;
 
+    /**
+     * This constructor builds the edit profile UI.
+     * @param id of the user editing the profile
+     */
     public EditProfileUI(int id){
         /*
         * Constructor of EditProfileUI.

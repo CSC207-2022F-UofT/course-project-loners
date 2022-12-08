@@ -29,6 +29,7 @@ public class RegUI {
     /**
      * A text box that let user type in their email.
      */
+    private final JButton backButton = new JButton("Back to previous page");
     private final JTextField email = new JTextField();
     /**
      * A text box that let user type in their password.
@@ -91,7 +92,8 @@ public class RegUI {
         JLabel ageLabel = new JLabel("Age: ");
         JLabel codeLabel = new JLabel("Postal code (with a white space e.g. M5S 1A4): ");
         JLabel genderLabel = new JLabel("Gender: ");
-        JLabel socialLabel = new JLabel("Social media (Please select a social media platform then enter your user name or url in the following box): ");
+        JLabel socialLabel = new JLabel("Social media (Please select a social media platform then");
+        JLabel socialLabel2 = new JLabel("enter your user name or url in the following box):");
         JLabel picLabel = new JLabel("Upload an image as your icon: ");
 
         // add all components to frame
@@ -107,16 +109,23 @@ public class RegUI {
         frame.add(gender);
         frame.add(codeLabel);
         frame.add(code);
-        frame.add(socialLabel);
+
+        JPanel socialMediaLabel = new JPanel();
+        socialMediaLabel.setLayout(new GridLayout(2,1));
+        socialMediaLabel.add(socialLabel);
+        socialMediaLabel.add(socialLabel2);
+        frame.add(socialMediaLabel);
+
         JPanel socialMedia = new JPanel(); // Claim a panel for asking social media
         socialMedia.setLayout(new GridLayout(2,1));
         socialMedia.add(platform);
         socialMedia.add(platformInfo);
         frame.add(socialMedia); // Add the panel to frame
+
         frame.add(picLabel);
         // uploader.setLoader(); // add the upload picture button into the frame
         frame.add(picButton);
-        UIController.addBackButton(frame, "WelcomeUI"); // add the back button into the frame
+        frame.add(backButton);
         frame.add(regButton);
     }
 
@@ -154,6 +163,10 @@ public class RegUI {
                     email.getText(), pw.getText(), name.getText(), age.getText(), Objects.requireNonNull(
                             gender.getSelectedItem()).toString(), code.getText()}; // a list of all user's inputs
             new RegControl(frame, lstInputs, image); // pass the inputs to the controller
+        });
+        backButton.addActionListener(e -> {
+            frame.setVisible(false);
+            UIController.launchWelcomeUI();
         });
     }
 }

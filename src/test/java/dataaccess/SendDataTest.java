@@ -6,7 +6,7 @@ import org.junit.Test;
  */
 public class SendDataTest {
     @Test
-    public void sendToID(){
+    public void testSendToID(){
 
         String str_data = "Kelly, kelly@mail, pw, 21, This is Kelly, female, straight, 43.670437: -79.401003, sing, " +
                 "Instagram: kelly, 3: , 21, male, 20.0";
