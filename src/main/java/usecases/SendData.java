@@ -93,12 +93,11 @@ public class SendData implements DataSendAccess{
 
 
             inputBuffer.append(modifiedData);
-            inputBuffer.append('\n');
             line = myReader.readLine();
-            while (!(line==null)){
+            while (line!=null){
+                inputBuffer.append('\n');
                 inputBuffer.append(line);
                 line = myReader.readLine();
-                if(!(line==null)){inputBuffer.append('\n');}
             }
             myReader.close();
             FileOutputStream fileOut = new FileOutputStream("database.txt");
@@ -129,8 +128,5 @@ public class SendData implements DataSendAccess{
         str += profile.getSocialMedia() + ", " + profile.getLikes();
 
         return str;
-    }
-
-    public static void main(String[] args) {
     }
 }
