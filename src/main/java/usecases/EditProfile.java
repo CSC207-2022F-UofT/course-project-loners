@@ -15,7 +15,6 @@ public class EditProfile {
     public static EditProfile getInstance(){
         return e;
     }
-
     /**
      * This method checks whether the user has successfully edited their profile or not.
      * @param info is the new profile data after the user has edited

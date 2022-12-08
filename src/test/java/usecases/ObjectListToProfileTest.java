@@ -1,5 +1,6 @@
 package usecases;
 
+
 import entities.Profile; // acts as Input Data
 import org.junit.Assert;
 import org.junit.Test;

@@ -6,6 +6,9 @@ import dataaccess.FetchData;
 import javax.swing.*;
 import java.util.Objects;
 
+/**
+ * UIController class manages the transitions between UIs
+ */
 public class UIController {
     /** id of the user */
     private int id;
@@ -67,7 +70,6 @@ public class UIController {
      * @param targetUI is the UI we want to add a back button to
      */
     public static void addBackButton(JFrame frame, String targetUI){
-        // If back button is clicked, direct user back to the previous page(WelcomeUI).
         JButton backButton = new JButton("Back to previous page");
         frame.add(backButton);
         backButton.addActionListener(e -> {

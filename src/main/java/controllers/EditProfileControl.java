@@ -25,6 +25,7 @@ public class EditProfileControl{
         this.image = null;
     }
     /** Using singleton Design Pattern */
+
     public static final EditProfileControl e = new EditProfileControl();
     /** Get instance of this class without defining it */
     public static EditProfileControl getInstance(){
