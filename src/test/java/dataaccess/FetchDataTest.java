@@ -3,6 +3,8 @@ package dataaccess;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /*
 * Test cases for FetchData
  */
@@ -23,5 +25,11 @@ public class FetchDataTest {
     @Test
     public void fetchLastID() {
         assert 14 == FetchData.fetchLastID();
+    }
+
+    @Test
+    public void fetchAddressFromID() {
+        double[] location = {20.0, 30.0001};
+        assert Arrays.equals(location, FetchData.fetchAddressFromID(7));
     }
 }
