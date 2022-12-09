@@ -6,7 +6,9 @@
 [Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
 ## Test coverage
 <img src="images/MarkdownImage10.png" alt="drawing" width="200"/> 
-(All the data)[https://github.com/CSC207-2022F-UofT/course-project-loners/tree/main/CoverageReport]
+[All the data can be found here](https://github.com/CSC207-2022F-UofT/course-project-loners/tree/main/CoverageReport)
+
+
 # Guide to use our Dating app
 ## 1, download all the files in this repository 
 Click the green "Code" button on the top of this page.  
