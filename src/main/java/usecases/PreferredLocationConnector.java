@@ -48,9 +48,4 @@ public class PreferredLocationConnector{
         return null;
         }
     }
-
-    public static void main(String[] args){
-        List<Integer> abc = withinPreferredLocation(2, 5.0);
-        System.out.println(abc);
-    }
 }
