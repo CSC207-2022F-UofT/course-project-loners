@@ -21,6 +21,8 @@ running them.
 We do not have any concern about this principle because we do not have inheritance relationships among our classes.
 
 ## Interface Segregation Principle
+Each of our class has their sole responsibility and do not have multiple roles
+We for example separated DataController into SendData and FetchData so that DataController does not have multiple roles
 
 ## Dependency Inversion Principle
 We modified our code after Milestone4 in terms of Dependency Inversion Principle.  
