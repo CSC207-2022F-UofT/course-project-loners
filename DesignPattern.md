@@ -1,5 +1,4 @@
 # Design pattern
-We want to decrease couplings and increase cohesion.
 ## Singleton Design Pattern
 SendData class uses Singleton Design Pattern so that other classes which use SendData do not have to create a new instance of it.
 
