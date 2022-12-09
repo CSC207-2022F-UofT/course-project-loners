@@ -7,9 +7,10 @@ import javax.swing.*;
 import java.util.Objects;
 
 /**
- * UIController class manages the transitions between UIs and unify the frame size of all UIs
+ * Opening different UIs and unify the frame size of all UIs
  */
 public class UIController {
+
     /**
      * id of the user.
      */
@@ -89,27 +90,25 @@ public class UIController {
 
     /**
      * Check if the user has set up Preferences.
-     * @return boolean value representing whether the profile information of
-     * the logged-in user contains preferences information or not.
+     * @return true if the user has set up Preferences
      */
-    public boolean checkHasPreference(){
+    private boolean checkHasPreference(){
         Object[] dat = (Object[]) this.data[0];
         return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
     }
 
     /**
-     * This method sets the frame size of the selected UI
-     * @param frame of the UI
+     * Set the size for the frame.
+     * @param frame A frame to set
      */
     public static void setFrameSize(JFrame frame){
         frame.setSize(800, 800);
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
     }
-
     /**
-     * If back button is clicked, direct user back to the previous page(WelcomeUI).
-     * @param frame is the frame of the UI
-     * @param targetUI is the UI we want to add back button to.
+     * This method adds a back button to a UI
+     * @param frame of the UI
+     * @param targetUI is the UI we want to add a back button to
      */
     public static void addBackButton(JFrame frame, String targetUI){
         JButton backButton = new JButton("Back to previous page");

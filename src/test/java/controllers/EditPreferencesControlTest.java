@@ -26,7 +26,7 @@ public class EditPreferencesControlTest {
      * Initialize an empty HashMap, and store the first user's data into originalData.
      */
     @Before
-    public void setUp() {
+    public void testSetUp() {
         preferenceMap = new HashMap<>();
         originalData = (Object[]) FetchData.fetchFromID(0)[0];
     }
@@ -35,7 +35,7 @@ public class EditPreferencesControlTest {
      * Restore the original data to the database, to overwrite any changes made during the test.
      */
     @After
-    public void tearDown() {
+    public void testTearDown() {
         List<Object> tempOriginalData = new ArrayList<>(List.of(originalData));
         tempOriginalData.remove(0);
         Object[] originalDataNoID = tempOriginalData.toArray();
