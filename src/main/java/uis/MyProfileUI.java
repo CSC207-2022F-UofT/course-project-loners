@@ -37,7 +37,7 @@ public class MyProfileUI{
         JLabel socialMedia = new JLabel(String.format("Your social media choice is %s", ((Object[]) profileData[0])[10]));
         JLabel preferredAge = new JLabel(String.format("Your preferred age is %s", ((Object[]) profileData[0])[12]));
         JLabel preferredGender = new JLabel(String.format("Your preferred gender is %s", ((Object[]) profileData[0])[13]));
-        JLabel preferredLocation = new JLabel(String.format("Your preferred location is %s", ((Object[]) profileData[0])[14]));
+        JLabel preferredLocation = new JLabel(String.format("Your preferred location range is %s km", ((Object[]) profileData[0])[14]));
 
 
         f.setLayout(new GridLayout(5,1));
