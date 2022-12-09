@@ -99,7 +99,7 @@ public class FetchData implements FetchDataAccess {
     }
 
     /**
-     * This methods fetch all the emails from the database
+     * This method fetch all the emails from the database
      @return ArrayList that contains all the emails
      */
     public static ArrayList<String> fetchEmails(){
@@ -150,14 +150,11 @@ public class FetchData implements FetchDataAccess {
     }
 
     /**
-     * This method fetches address of the user associated to inputId in a list format
+     * This method fetches the address of the user, associated to inputId in a list format
      * @param inputId of the user
      * @return the address of the user associated to inputId
      */
     public static double[] fetchAddressFromID(int inputId){
-        // use id to find location
-        // return -1.9 if file is empty
-        // return -10 if it has error
         try {
             BufferedReader myReader = new BufferedReader(new FileReader("database.txt"));
             String line = myReader.readLine();
