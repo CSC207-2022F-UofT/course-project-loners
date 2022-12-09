@@ -5,6 +5,7 @@
 [Design Pattern](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/DesignPattern.md).  
 [Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
 ## Test coverage
+### Many of our classes involve UIs which are hard to test with unit test
 <img src="images/MarkdownImage10.png" alt="drawing" width="400"/> 
 [All the data can be found here](https://github.com/CSC207-2022F-UofT/course-project-loners/tree/main/CoverageReport)
 
