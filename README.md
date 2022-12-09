@@ -46,6 +46,4 @@ In EditProfileUI, you will be able to edit your profile. At this moment(Nov 21 8
 Here, you have to upload one "jpg" image to be saved to successfully update your profile.  
 <img src="images/MarkdownImage8.png" alt="drawing" width="400"/>
 
-
-FOR GRADING:
-Download project and run the main method of the WelcomeUI class.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
