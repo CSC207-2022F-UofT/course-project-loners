@@ -16,7 +16,7 @@
 * We introduced some java interfaces for classes that can be abstracted.  
 * We added markdown files.  
 * We added UIcontroller that manages all the UI transitions    
-* We communicated more. Each of us contributed to the project in terms of discussion. We meet every week. Everyone is responsive to messages in discord.
+* We communicated more. Each of us contributed to the project in terms of discussion. We met every week. Everyone is responsive to messages in discord.
 The Insights or the number of commits does not show these processes but we are grateful we could work on this as a team. Wonderful team!  
 ## Markdown files where you can view how we follow SOLID, Clean Architecture, Design Pattern, and Code Smells.
 [SOLID](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/SOLID.md).  
