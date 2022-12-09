@@ -5,7 +5,6 @@ We modified DataSendControl.java so that it follows singleton design pattern. Th
 
 ## Iterator Design Pattern
 ## Observer Design Pattern
-When we need to update a lot of objects at once, we can use observer interface to do this
 
 ## Strategy Design Pattern
 
