@@ -5,6 +5,7 @@
 [Design Pattern](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/DesignPattern.md).  
 [Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
 ## Test coverage
+<images/MarkdownImage10.png>
 [Test Coverage](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/images/MarkdownImage10.png)
 # Guide to use our Dating app
 ## 1, download all the files in this repository 
