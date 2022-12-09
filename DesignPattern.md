@@ -6,7 +6,7 @@ EditProfileControl class also uses Singleton Design Pattern
 ## Command Design Pattern
 UIcontroller uses command design pattern to lauch MainUI for back to main button click
 ## Observer Design Pattern
-
+Our MyProfileUI uses Observer Design Pattern. After user edited their profile information, MyProfileUI uses FetchData to automatically update itself.
 ## Strategy Design Pattern
 
 ## Dependency Injection Design Pattern
