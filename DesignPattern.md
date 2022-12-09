@@ -1,6 +1,7 @@
 # Design pattern
 ## Singleton Design Pattern
 SendData class uses Singleton Design Pattern so that other classes which use SendData do not have to create a new instance of it.
+EditProfileControl class also uses Singleton Design Pattern
 
 ## Iterator Design Pattern
 ## Observer Design Pattern
