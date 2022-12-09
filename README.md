@@ -1,6 +1,6 @@
 # Our project (Group53)
 ## Members
-* Amelia Riddle 
+* Amelia Riddell
 * Ethelia Choi
 * Jamie Yuan
 * Kelly Fan
