@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.Objects;
 
 /**
- * Opening different UIs and unify the frame size of all UIs
+ * UIController class manages the transitions between UIs and unify the frame size of all UIs
  */
 public class UIController {
 
@@ -90,21 +90,23 @@ public class UIController {
 
     /**
      * Check if the user has set up Preferences.
-     * @return true if the user has set up Preferences
+     * @return boolean value representing whether the profile information of
+     * the logged-in user contains preferences information or not.
      */
-    private boolean checkHasPreference(){
+    public boolean checkHasPreference(){
         Object[] dat = (Object[]) this.data[0];
         return (Objects.equals(dat[12], "null") | Objects.equals(dat[13], "null") | Objects.equals(dat[14], "null"));
     }
 
     /**
-     * Set the size for the frame.
-     * @param frame A frame to set
+     * This method sets the frame size of the selected UI
+     * @param frame of the UI
      */
     public static void setFrameSize(JFrame frame){
         frame.setSize(800, 800);
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
     }
+
     /**
      * This method adds a back button to a UI
      * @param frame of the UI

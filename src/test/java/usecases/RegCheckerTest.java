@@ -1,6 +1,7 @@
 package usecases;
 
 import dataaccess.FetchData;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,9 +10,45 @@ import static org.junit.Assert.*;
  * Testing RegCheckerTest
  */
 public class RegCheckerTest {
+    /**
+     * The platform information of the user, in a correct format.
+     */
+    String platformInfo;
+    /**
+     * The email of the user, in a correct format.
+     */
+    String email;
+    /**
+     * The password of the user, in a correct format.
+     */
+    String pw;
+    /**
+     * The name of the user, in a correct format.
+     */
+    String name;
+    /**
+     * The age of the user, in a correct format.
+     */
+    String age;
+    /**
+     * The postcode of the user, in a correct format.
+     */
+    String postcode;
+
+    @Before
+    public void setUp(){
+        // Define correct inputs
+        platformInfo = "social media";
+        email = "@email";
+        pw = "pw";
+        name = "name";
+        age = "18";
+        postcode = "M5S 1A4";
+    }
 
     /**
      * Implicitly test checkIfMissing, checkValidate and checkDuplicate as they are private classes.
+     * Test with all correct user inputs.
      */
     @Test
     public void testRegChecker(){
@@ -25,8 +62,13 @@ public class RegCheckerTest {
         RegChecker checkerAllGood = new RegChecker(platformInfo, email, pw, name, age ,postcode, true);
         assertTrue(checkerAllGood.pass);
         assertEquals(checkerAllGood.diagnose,"");
+    }
 
-        // Implicitly test checkIfMissing:
+    /**
+     * Implicitly test checkIfMissing using the constructor, as it is a private class.
+     */
+    @Test
+    public void testCheckIfMissing(){
         // test when one of inputs is missing
         String emptyEmail = "";
         RegChecker checkerMiss = new RegChecker(platformInfo, emptyEmail, pw, name, age ,postcode, true);
@@ -36,8 +78,13 @@ public class RegCheckerTest {
         RegChecker checkerNoPic = new RegChecker(platformInfo, email, pw, name, age ,postcode, false);
         assertFalse(checkerNoPic.pass);
         assertEquals(checkerNoPic.diagnose, "You did not select an image to upload. \n");
+    }
 
-        // Implicitly test checkValidate:
+    /**
+     * Implicitly test checkValidate using the constructor, as it is a private class.
+     */
+    @Test
+    public void testCheckValidate(){
         // test when email is not valid
         String nonValidEmail = "email";
         RegChecker checkerNonValidEmail = new RegChecker(platformInfo, nonValidEmail, pw, name, age ,postcode, true);
@@ -63,8 +110,13 @@ public class RegCheckerTest {
         RegChecker checkerAgeNotNum = new RegChecker(platformInfo, email, pw, name, ageNotNum ,postcode, true);
         assertFalse(checkerAgeNotNum.pass);
         assertEquals(checkerAgeNotNum.diagnose, "- Age is not a number \n");
+    }
 
-        // Implicitly test checkDuplicate:
+    /**
+     * Implicitly test checkDuplicate using the constructor, as it is a private class.
+     */
+    @Test
+    public void testCheckDuplicate(){
         Object[] data0 = (Object[]) FetchData.fetchFromID(0)[0];
         String newEmail = (String) data0[2];
         RegChecker checkerDup = new RegChecker(platformInfo, newEmail, pw, name, age ,postcode, true);
