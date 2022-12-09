@@ -17,20 +17,20 @@ public class PreferredLocationConnectorTest {
     public void withinPreferredLocationTest(){
         int idOfUser = 7;
         double preferredLocationRange = 5.0;
-        List<Integer> expected = PreferredLocationConnector.withinPreferredLocation(idOfUser, preferredLocationRange);
-        List<Integer> actual = new ArrayList<>();
-        actual.add(0);
-        actual.add(1);
-        actual.add(2);
-        actual.add(3);
-        actual.add(4);
-        actual.add(6);
-        actual.add(9);
-        actual.add(10);
-        actual.add(11);
-        actual.add(12);
-        actual.add(13);
-        actual.add(14);
+        List<Integer> actual = PreferredLocationConnector.withinPreferredLocation(idOfUser, preferredLocationRange);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(0);
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
+        expected.add(4);
+        expected.add(6);
+        expected.add(9);
+        expected.add(10);
+        expected.add(11);
+        expected.add(12);
+        expected.add(13);
+        expected.add(14);
         Assert.assertEquals(actual, expected);
     }
 }
