@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Authenticator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">usecases</a>
+</div>
+
+<h1>Coverage Summary for Class: Authenticator (usecases)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Authenticator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (8/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.3%
+  </span>
+  <span class="absValue">
+    (26/27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package usecases;
+&nbsp;
+&nbsp;import dataaccess.FetchData; // implements a Use Case interface
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;public class Authenticator{</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks the user input to the email field. The input has to have the &#39;@&#39; symbol
+&nbsp;     * and have a length shorter than 20 letters. If the above two conditions are satisfied, the
+&nbsp;     * method returns true. Otherwise, it returns false.
+&nbsp;     * @param email user input to the email field.
+&nbsp;     * @return true if input is a valid email, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidEmail(String email){
+<b class="fc">&nbsp;        if(email.indexOf(&#39;@&#39;) == -1){</b>
+<b class="fc">&nbsp;            return false;</b>
+<b class="fc">&nbsp;        } else return email.length() &lt;= 20;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks the user input to the username field. The input is considered valid if the
+&nbsp;     * length below 20 characters.
+&nbsp;     * @param name user input to the username field
+&nbsp;     * @return true if input is a valid username, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidName(String name){
+<b class="fc">&nbsp;        return name.matches(&quot;([a-zA-Z&#39;,.-]+( [a-zA-Z&#39;,.-]+)*){2,30}&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks the user input to the age field. The input is considered valid if
+&nbsp;     * the entered age is between 1 and 149 (inclusive).
+&nbsp;     * @param age integer value inputted by user
+&nbsp;     * @return true if input is a valid age, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidAge(int age){
+<b class="fc">&nbsp;        return age &gt;= 0 &amp;&amp; age &lt;= 150;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks whether the inputted postal code is valid. A valid postal code has to contain 6 letters in the
+&nbsp;     * format CNC NCN, where C is a letter and N is a digit. There also has to be a space that separates the third and
+&nbsp;     * fourth characters. The first position does not make use of the letters W or Z. None of the letters can involve
+&nbsp;     * D, F, I, O, Q or U. The above criteria is sourced from
+&nbsp;     * &lt;a href=&quot;https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page&quot;&gt;...&lt;/a&gt;
+&nbsp;     * @param postalCode user input to postal code field
+&nbsp;     * @return true if postal code is valid, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidAddress(String postalCode){
+<b class="fc">&nbsp;        return postalCode.matches(&quot;^[A-Z]\\d[A-Z]\\d\\s?[A-Z]\\d$&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks whether the user&#39;s bio is valid. It is valid if the bio contains less than or equal to 400
+&nbsp;     * letters and does not contain any commas.
+&nbsp;     * @param bio user&#39;s bio in their profile
+&nbsp;     * @return true if bio is valid, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidBio(String bio){
+<b class="fc">&nbsp;       return !bio.contains(&quot;,&quot;) &amp; bio.length() &lt;= 400;}</b>
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks whether the user&#39;s hobbies are valid. The length of the list of hobbies is less than 100
+&nbsp;     * letters.
+&nbsp;     * @param hobbies a list of hobbies entered by user in their profile
+&nbsp;     * @return true if the list of hobbies is valid, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean isValidHobbies(List&lt;String&gt; hobbies){
+<b class="fc">&nbsp;        for (String hobby : hobbies) {</b>
+<b class="fc">&nbsp;            if (hobby.length() &gt; 100) {</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks whether the email exists in our database. In other words, it checks whether the email has been
+&nbsp;     * registered in our system.
+&nbsp;     * @param inputEmail email we are examining.
+&nbsp;     * @return true if email exists in our database, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean emailExists(String inputEmail){
+&nbsp;        // Returns true if email exists; returns false otherwise
+<b class="fc">&nbsp;        ArrayList&lt;String&gt; emailList = FetchData.fetchEmails();</b>
+<b class="fc">&nbsp;        for (String email : emailList){</b>
+<b class="fc">&nbsp;            if (Objects.equals(email, inputEmail)){</b>
+<b class="fc">&nbsp;                return true;}</b>
+<b class="fc">&nbsp;        }return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method checks if the given email and password matches our records. If the email is not registered,
+&nbsp;     * i.e. does not exist in our database, the method returns false and prints a warning message.
+&nbsp;     * If the email has been registered, the method checks if the password matches the email.
+&nbsp;     * If it does, we return true. If it does not, we return false.
+&nbsp;     *
+&nbsp;     * @param email String representing email we want to verify
+&nbsp;     * @param password String representing password we want to check
+&nbsp;     * @return true if email matches password, false otherwise.
+&nbsp;     */
+&nbsp;    public static boolean emailMatchPassword(String email, String password){
+&nbsp;        // Check email exists in database
+<b class="fc">&nbsp;        if (emailExists(email)){</b>
+&nbsp;            // Case 1: email does not match password (wrong password)
+<b class="fc">&nbsp;            String databasePassword = FetchData.fetchPassword(email);</b>
+<b class="fc">&nbsp;            if (!Objects.equals(password, databasePassword)){</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Incorrect password. Please try again.&quot;);</b>
+<b class="fc">&nbsp;                return false;</b>
+&nbsp;            }
+&nbsp;            // Case 2: email matches password
+<b class="fc">&nbsp;            else{System.out.println(&quot;Login successful!&quot;);</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        System.out.println(&quot;Email is not registered. Head to the Register page to join us!&quot;);</b>
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 22:57</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SendData</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">dataaccess</a>
+</div>
+
+<h1>Coverage Summary for Class: SendData (dataaccess)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SendData</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45.8%
+  </span>
+  <span class="absValue">
+    (27/59)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package dataaccess;
+&nbsp;
+&nbsp;import entities.Profile; // acts as Input Data
+&nbsp;import usecases.SendDataAccess;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;import java.nio.charset.StandardCharsets;
+&nbsp;
+&nbsp;/*
+&nbsp; * SendData class is responsible for sending the data to the Database.
+&nbsp; * In clean architecture, this works as Data Access
+&nbsp; */
+&nbsp;public class SendData implements SendDataAccess {
+&nbsp;    /** status of whether we can send the data or not*/
+&nbsp;    public boolean status;
+&nbsp;    private static SendData d;
+&nbsp;    /**
+&nbsp;     * A constructor for SendData class.
+&nbsp;     @param profile Profile instance whose information will be sent to the database
+&nbsp;     */
+&nbsp;    public SendData(Profile profile) {
+&nbsp;        int lastID = FetchData.fetchLastID();
+<b class="nc">&nbsp;        if (lastID == -10) { // if lastID has error</b>
+<b class="nc">&nbsp;            this.status = false;</b>
+<b class="nc">&nbsp;        } else if (lastID == -1) { // if the file is empty</b>
+<b class="nc">&nbsp;            try {</b>
+<b class="nc">&nbsp;                // FileWriter writes the given data to database.txt</b>
+&nbsp;                FileWriter myWriter = new FileWriter(&quot;database.txt&quot;, StandardCharsets.UTF_8, true);
+&nbsp;                myWriter.write(&quot;0, &quot;+ profileConvertStr(profile));
+<b class="nc">&nbsp;                myWriter.close();</b>
+<b class="nc">&nbsp;                this.status = true;</b>
+<b class="nc">&nbsp;            } catch (IOException e) {</b>
+<b class="nc">&nbsp;                // If the FileWriter fails to write to database.txt, IOException will be raised.</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+&nbsp;                this.status = false;
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } else { // if the file is not empty</b>
+<b class="nc">&nbsp;            try {</b>
+&nbsp;                // FileWriter writes the given data to database.txt
+&nbsp;                FileWriter myWriter = new FileWriter(&quot;database.txt&quot;, StandardCharsets.UTF_8, true);
+&nbsp;                myWriter.write(&quot;\n&quot;);
+<b class="nc">&nbsp;                myWriter.write((lastID + 1) +&quot;, &quot;+ profileConvertStr(profile) + &quot;, null, null, null, null&quot;);</b>
+<b class="nc">&nbsp;                myWriter.close();</b>
+<b class="nc">&nbsp;                this.status = true;</b>
+<b class="nc">&nbsp;            } catch (IOException e) {</b>
+<b class="nc">&nbsp;                // If the FileWriter fails to write to database.txt, IOException will be raised.</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+&nbsp;                this.status = false;
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public SendData() {}
+&nbsp;
+<b class="fc">&nbsp;    /**</b>
+&nbsp;     * Implements singleton design pattern for SendData
+&nbsp;     * @return instance of SendData
+&nbsp;     */
+&nbsp;    public static SendData getInstance(){
+&nbsp;        if (d == null) {
+&nbsp;            d = new SendData();
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return d;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    /**</b>
+&nbsp;     @param (id, data) id represents the id of the profile the use wants to edit. data represents the updated data
+&nbsp;     of the profile
+&nbsp;     */
+&nbsp;    public void sendToID(int id, Object[] data){
+&nbsp;        try{
+&nbsp;            // BufferedReader reads database.txt line by line.
+&nbsp;            BufferedReader myReader = new BufferedReader(new FileReader(&quot;database.txt&quot;));
+&nbsp;            // StringBuffer stores the updated data and will be inserted the database.txt
+<b class="fc">&nbsp;            StringBuilder inputBuffer = new StringBuilder();</b>
+&nbsp;            String line = myReader.readLine();
+<b class="fc">&nbsp;            int lineId = Integer.parseInt(line.split(&quot;, &quot;)[0]);</b>
+<b class="fc">&nbsp;            // iterate through lines until the line of database.txt refers to the data we want to modify</b>
+<b class="fc">&nbsp;            while (lineId != id){</b>
+&nbsp;                inputBuffer.append(line);
+<b class="fc">&nbsp;                inputBuffer.append(&#39;\n&#39;);</b>
+<b class="fc">&nbsp;                line = myReader.readLine();</b>
+<b class="fc">&nbsp;                lineId = Integer.parseInt(line.split(&quot;, &quot;)[0]);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            String hobbies = (String) data[8];</b>
+&nbsp;            String likes = (String) data[10];
+<b class="fc">&nbsp;            String modifiedData = id+&quot;, &quot;+ data[0]+&quot;, &quot;+data[1]+&quot;, &quot;+data[2] + &quot;, &quot; + data[3] + &quot;, &quot;+ data[4] + &quot;, &quot;+ data[5] +</b>
+<b class="fc">&nbsp;                    &quot;, &quot;+ data[6] + &quot;, &quot;+ data[7] +  &quot;, &quot;+ hobbies + &quot;, &quot;+ data[9] + &quot;, &quot;+ likes +</b>
+<b class="fc">&nbsp;                    &quot;, &quot;+ data[11] + &quot;, &quot;+ data[12] + &quot;, &quot;+data[13];</b>
+&nbsp;
+&nbsp;
+&nbsp;            inputBuffer.append(modifiedData);
+&nbsp;            line = myReader.readLine();
+<b class="fc">&nbsp;            while (!(line==null)){</b>
+<b class="fc">&nbsp;                inputBuffer.append(&#39;\n&#39;);</b>
+<b class="fc">&nbsp;                inputBuffer.append(line);</b>
+<b class="fc">&nbsp;                line = myReader.readLine();</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            myReader.close();</b>
+&nbsp;            FileOutputStream fileOut = new FileOutputStream(&quot;database.txt&quot;);
+<b class="fc">&nbsp;            fileOut.write(inputBuffer.toString().getBytes());</b>
+<b class="fc">&nbsp;            fileOut.close();</b>
+<b class="fc">&nbsp;        } catch (IOException e){</b>
+<b class="fc">&nbsp;            // If it fails to read or write to database.txt, this Exception will be raised.</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+&nbsp;            e.printStackTrace();
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /**
+&nbsp;     * A helper method used in SendData class.
+&nbsp;     @param profile A Profile object
+&nbsp;     @return String representation of the profile data.
+&nbsp;     */
+&nbsp;    public String profileConvertStr(Profile profile) {
+&nbsp;        String str = profile.getName() + &quot;, &quot; + profile.getEmail() + &quot;, &quot; + profile.getPassword() + &quot;, &quot; + profile.getAge() + &quot;, &quot; +
+&nbsp;                profile.getBio() + &quot;, &quot; + profile.getGender() + &quot;, &quot; + profile.getOrientation() + &quot;, &quot; +
+<b class="nc">&nbsp;                profile.getLocation()[0] + &quot;: &quot; + profile.getLocation()[1] + &quot;, &quot;;</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;        if (profile.getHobbies() != null){str += String.join(&quot;: &quot;, profile.getHobbies()) + &quot;, &quot;;}</b>
+&nbsp;        else {str += profile.getHobbies() + &quot;, &quot;;}
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;        str += profile.getSocialMedia() + &quot;, &quot; + profile.getLikes();</b>
+&nbsp;
+<b class="nc">&nbsp;        return str;</b>
+&nbsp;    }
+<b class="nc">&nbsp;}</b>
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 22:57</div>
+</div>
+</body>
+</html>

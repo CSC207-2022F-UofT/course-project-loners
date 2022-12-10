@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EditPreferences</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">usecases</a>
+</div>
+
+<h1>Coverage Summary for Class: EditPreferences (usecases)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EditPreferences</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package usecases;
+&nbsp;
+&nbsp;import dataaccess.FetchData; // implements a Use Case interface
+&nbsp;import dataaccess.SendData; // implements a Use Case interface
+&nbsp;import entities.Preferences;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * A Use Case class that reformats the preferences passed in from a Preferences object, and stores this information
+&nbsp; * in the database.
+&nbsp; */
+&nbsp;public class EditPreferences {
+&nbsp;    /** The user&#39;s preferred age of other users, modified for database storage */
+&nbsp;    private final String prefAge;
+&nbsp;
+&nbsp;    /** The user&#39;s preferred gender (male, female, or other) of other users */
+&nbsp;    private final String prefGender;
+&nbsp;
+&nbsp;    /** The user&#39;s preferred location range, modified for database storage */
+&nbsp;    private final String prefLocationRange;
+&nbsp;
+&nbsp;    /** The user&#39;s ID */
+&nbsp;    private final int id;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Construct an EditPreferences object, initializing prefAge, prefGender, and prefLocationRange as Strings and id
+&nbsp;     * as an int, corresponding to the information in the Preferences object preferences.
+&nbsp;     *
+&nbsp;     * @param preferences The Input Data containing the preferred age, preferred gender, preferred location range, and
+&nbsp;     *                    ID of the user
+&nbsp;     */
+<b class="fc">&nbsp;    public EditPreferences(Preferences preferences) { // passed in by EditPreferencesControl</b>
+<b class="fc">&nbsp;        this.prefAge = String.valueOf(preferences.getPreferredAge());</b>
+<b class="fc">&nbsp;        this.prefGender = preferences.getPreferredGender();</b>
+<b class="fc">&nbsp;        this.prefLocationRange = String.valueOf(preferences.getPreferredLocationRange());</b>
+<b class="fc">&nbsp;        this.id = preferences.getID();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Update the database with the user&#39;s new preferences.
+&nbsp;     */
+&nbsp;    public void writeData() {
+&nbsp;        // fetch the user&#39;s current profile and preference data from the database
+<b class="fc">&nbsp;        Object[] userData = FetchData.fetchFromID(id);</b>
+<b class="fc">&nbsp;        userData = (Object[]) userData[0];</b>
+&nbsp;
+&nbsp;        // remove id from the array (to be added back by sendToID method in SendData)
+<b class="fc">&nbsp;        List&lt;Object&gt; tempUserData = new ArrayList&lt;&gt;(List.of(userData));</b>
+<b class="fc">&nbsp;        tempUserData.remove(0);</b>
+<b class="fc">&nbsp;        Object[] userDataNoID = tempUserData.toArray();</b>
+&nbsp;
+&nbsp;        // add new preference data, or overwrite if they already exist
+<b class="fc">&nbsp;        userDataNoID[11] = prefAge;</b>
+<b class="fc">&nbsp;        userDataNoID[12] = prefGender;</b>
+<b class="fc">&nbsp;        userDataNoID[13] = prefLocationRange;</b>
+&nbsp;
+&nbsp;        // send the user&#39;s profile and new preference data to the database
+<b class="fc">&nbsp;        SendData.getInstance().sendToID(id, userDataNoID);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 22:57</div>
+</div>
+</body>
+</html>

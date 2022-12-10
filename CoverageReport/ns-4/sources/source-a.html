@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegChecker</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">usecases</a>
+</div>
+
+<h1>Coverage Summary for Class: RegChecker (usecases)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegChecker</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    48.5%
+  </span>
+  <span class="absValue">
+    (16/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package usecases;
+&nbsp;
+&nbsp;import dataaccess.FetchData; // implements a Use Case interface
+&nbsp;
+&nbsp;/**
+&nbsp; * check if
+&nbsp; * - information of user which is required for register is missing
+&nbsp; * - email, age and postal code of user are valid
+&nbsp; * - email already exists
+&nbsp; */
+&nbsp;public class RegChecker {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * True if this checker is passed
+&nbsp;     */
+&nbsp;    public boolean pass;
+&nbsp;    /**
+&nbsp;     * A diagnosis summary for this checker, showing which part did not pass.
+&nbsp;     */
+<b class="fc">&nbsp;    public String diagnose = &quot;&quot;;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * First, check any user inputs or image is missing.
+&nbsp;     * If this passed, continue to check if user input for email, age, postal code are valid.
+&nbsp;     *
+&nbsp;     * @param platformInfo an input of user, for social media information
+&nbsp;     * @param email an input of user, for email
+&nbsp;     * @param password an input of user, for password
+&nbsp;     * @param name an input of user, for name
+&nbsp;     * @param age an input of user, for age
+&nbsp;     * @param postcode an input of user, for postal code
+&nbsp;     * @param picLoaded true if user has selected an image to upload
+&nbsp;     */
+<b class="fc">&nbsp;    public RegChecker(String platformInfo, String email, String password, String name, String age, String postcode, boolean picLoaded){</b>
+<b class="fc">&nbsp;        checkIfMissing(platformInfo, email, password, name, age, postcode, picLoaded);</b>
+<b class="fc">&nbsp;        if (this.pass){</b>
+<b class="fc">&nbsp;            checkDuplicate(email);</b>
+<b class="fc">&nbsp;            checkValidate(email, age, postcode);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * pass will be false and diagnose will be updated if
+&nbsp;     * - any of user inputs is empty, or
+&nbsp;     * - picUploader did not receive an image in picUploader
+&nbsp;     *
+&nbsp;     * @param socMed an input of user, for social media information
+&nbsp;     * @param email an input of user, for email
+&nbsp;     * @param pw an input of user, for password
+&nbsp;     * @param name an input of user, for name
+&nbsp;     * @param age an input of user, for age
+&nbsp;     * @param postcode an input of user, for postal code
+&nbsp;     * @param picLoaded true if user has selected an image to upload
+&nbsp;     */
+&nbsp;    private void checkIfMissing(String socMed, String email, String pw, String name, String age, String postcode, boolean picLoaded){
+<b class="fc">&nbsp;        if (email.isEmpty() | pw.isEmpty() | name.isEmpty() | age.isEmpty()| postcode.isEmpty() | socMed.isEmpty()){</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose = &quot;Missing input(s). \n&quot;;</b>
+<b class="fc">&nbsp;        } else if(!picLoaded){ // if inputs are not empty, continues check if an image received in picUploader.</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose = &quot;You did not select an image to upload. \n&quot;;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else {this.pass = true;}</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * pass will be false and diagnose will be updated if email, age or postcode is not valid.
+&nbsp;     * - email is valid when it has an @ inside.
+&nbsp;     * - age is valid when it is a number with range [0,150].
+&nbsp;     * - postcode is valid when it is a Canadian postal code with a whitespace.
+&nbsp;     *
+&nbsp;     * @param email an input of user, for email
+&nbsp;     * @param age an input of user, for age
+&nbsp;     * @param postcode an input of user, for postal code
+&nbsp;     */
+&nbsp;    private void checkValidate(String email, String age, String postcode) {
+&nbsp;        // check if email is valid
+<b class="fc">&nbsp;        if (!email.contains(&quot;@&quot;)) {</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose += &quot;- Email is not valid. \n&quot;;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // check if age is valid
+&nbsp;        try {
+<b class="fc">&nbsp;            int age_int = Integer.parseInt(age);</b>
+<b class="fc">&nbsp;            if (!(age_int &gt;= 0 &amp;&amp; age_int &lt;= 150)) {</b>
+<b class="nc">&nbsp;                this.pass = false;</b>
+<b class="nc">&nbsp;                this.diagnose += &quot;- Age is not in a valid range \n&quot;;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (NumberFormatException error) { // if user did not enter a number for age</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose += &quot;- Age is not a number \n&quot;;</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // check if postcode is valid
+&nbsp;        // Canadian postal code consist of 6 letters with a format CNC NCN, where C is a letter and N is a digit.
+&nbsp;        // There is a space separates the third and fourth characters
+&nbsp;        // it does not include the letters D, F, I, O, Q or U.
+&nbsp;        // Also, the first position does not make use of the letters W or Z.
+&nbsp;        // referenced https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
+&nbsp;        // https://howtodoinjava.com/java/regex/canada-postal-code-validation/
+<b class="fc">&nbsp;        if (postcode.length() != 7) {</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose += &quot;- Postal code is not valid (remember to enter it with a whitespace like the example provided)\n&quot;;</b>
+<b class="fc">&nbsp;        } else if (!postcode.matches(&quot;^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$&quot;)) {</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose += &quot;- Postal code is not a Canadian postal code\n&quot;;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * pass will be false and diagnose will be updated if email is existing in database.
+&nbsp;     *
+&nbsp;     * @param email an input of user, for email
+&nbsp;     */
+&nbsp;    private void checkDuplicate(String email){
+<b class="fc">&nbsp;        if (FetchData.fetchEmails().contains(email)){</b>
+<b class="nc">&nbsp;            this.pass = false;</b>
+<b class="nc">&nbsp;            this.diagnose += &quot;- This email has registered \n&quot;;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 22:57</div>
+</div>
+</body>
+</html>
