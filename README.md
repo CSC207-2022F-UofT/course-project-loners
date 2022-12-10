@@ -1,4 +1,5 @@
 # Our project (Group53)
+## For TAs, you can ignore commits after the deadline. We just fixed an error Occured to our repo
 ## Members
 * Amelia Riddell
 * Ethelia Choi
