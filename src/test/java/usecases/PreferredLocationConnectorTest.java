@@ -31,7 +31,10 @@ public class PreferredLocationConnectorTest {
         expected.add(12);
         expected.add(13);
         expected.add(14);
-        Assert.assertEquals(actual, expected);
+        expected.add(15);
+        expected.add(16);
+        expected.add(17);
+        Assert.assertEquals(expected, actual);
     }
 }
 
