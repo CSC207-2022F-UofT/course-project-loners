@@ -106,20 +106,4 @@ public class UIController {
         frame.setSize(800, 800);
         frame.setLocationRelativeTo(null); // open the window at the center of the screen
     }
-
-    /**
-     * This method adds a back button to a UI
-     * @param frame of the UI
-     * @param targetUI is the UI we want to add a back button to
-     */
-    public static void addBackButton(JFrame frame, String targetUI){
-        JButton backButton = new JButton("Back to previous page");
-        frame.add(backButton);
-        backButton.addActionListener(e -> {
-            frame.setVisible(false);
-            if (Objects.equals(targetUI, "WelcomeUI")){
-                launchWelcomeUI();
-            }
-        });
-    }
 }
