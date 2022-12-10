@@ -25,8 +25,12 @@ Data does not show these processes but we are grateful we could work on this as 
 [Design Pattern](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/DesignPattern.md).  
 [Code Smell](https://github.com/CSC207-2022F-UofT/course-project-loners/blob/main/CodeSmell.md).  
 ## Test coverage
-### Many of our classes involve UIs which are hard to test with unit test
-<img src="images/MarkdownImage10.png" alt="drawing" width="400"/>   
+### Many of our classes involve/collaborate with UIs which are hard to test with unit test. However, we at least make sure that we have unit tests for all the use cases (except interfaces) as they won't touch any UI.
+<img src="images/MarkdownImage11.png" alt="drawing" width="400"/>   
+<img src="images/MarkdownImage12.png" alt="drawing" width="400"/>   
+<img src="images/MarkdownImage13.png" alt="drawing" width="400"/>   
+<img src="images/MarkdownImage14.png" alt="drawing" width="400"/>   
+<img src="images/MarkdownImage15.png" alt="drawing" width="400"/>   
 
 [All the data can be found here](https://github.com/CSC207-2022F-UofT/course-project-loners/tree/main/CoverageReport). 
 
@@ -52,10 +56,10 @@ Main page will show automaticlly after you login successfully.
 ## 3, Main page (mainUI)
 After login, a main page will show up.  
 <img src="images/MarkdownImage6.png" alt="drawing" width="400"/>  
-This UI helps users to transit to other different UI.
-* By clicking the "User Info" button, you will be brought to the MyProfileUI for viewing their personal profile.
-* By clicking the "Filter settings" button, you will be brought to PreferenceEditingUI for editing their preference(filter), our matching algorithm will base on this setting to show users who only meet this setting.
-* By clicking the "...match new people!" button, you will be brought to ProfileFinderUI for matching with other users. Note that user has to set up their preference at least once before they use this feature. A re-login user who has set it before will not be affected.
+This UI helps users to transit to other different UI to use different features.
+* By clicking the "User Info" button, you will be brought to the MyProfileUI for viewing and editing your personal profile.
+* By clicking the "Filter settings" button, you will be brought to PreferenceEditingUI for editing your preference(filter), our matching algorithm will base on this setting to only show users who meet this setting.
+* By clicking the "...match new people!" button, you will be brought to ProfileFinderUI for matching with other users. **Note that user has to set up their preferences at least once before they use this feature.** A re-login user who has set preferences before will not be affected.
 * By clicking the "Log out" button, system will log you out and bring you back to the welcome page.    
 
 Below sessions are some introductions for the MyProfileUI, PreferenceEditingUI and ProfileFinderUI.
@@ -75,9 +79,9 @@ As mentioning before, the references will be used on "filtering" other users whe
 ## 6, ProfileFinderUI
 In ProfileFinderUI, you will see all the profile of users who meet your preference one by one.  
 You can either "like" or "pass" the user. You will get a "You got a match" window if you liked the user who has liked you before, the window will disclose their social media for you to contact them.  
+* For TA(s): if you use this feature with your newly registered account, it is normal that you do not get any matches as other users do not have a chance to view your new profile! So here we prepare an account for you to play with the matching feature -- **user email: myles@mail, password: pw**  
 
-**For TA(s): if you use this feature with your newly registered account, it is normal that you did not get any matches as other users do not have a chance to view your new profile!**  
-So here we prepare an account for you to play with the matching feature -- user email: myles@mail & password: pw
+<img src="images/MarkdownImage10.png" alt="drawing" width="400"/>   
 
 
 <a href="#">Back to top</a>
