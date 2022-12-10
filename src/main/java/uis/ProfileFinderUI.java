@@ -69,7 +69,6 @@ public class ProfileFinderUI implements ActionListener{
      * @param id is my id
      */
     public ProfileFinderUI(int curr, String id){
-        UIController.setFrameSize(frame);
         this.curr = curr;
         this.id = id;
         myProfile = getProfileWithId(Integer.parseInt(id));
@@ -85,9 +84,8 @@ public class ProfileFinderUI implements ActionListener{
             JOptionPane.showMessageDialog(null,"There are no more matches for you",
                     "Sorry...", JOptionPane.INFORMATION_MESSAGE);
             matchFrame.setLocationRelativeTo(null);
+            new UIController(Integer.parseInt((String)myProfile[0])).launchMainUI();
 
-            MainUI mainUI = new MainUI(Integer.parseInt((String)myProfile[0]));
-            mainUI.show();
 
 
 
@@ -181,7 +179,9 @@ public class ProfileFinderUI implements ActionListener{
                 matchFrame.add(social);
                 matchFrame.setLocationRelativeTo(null);
 
-                matchFrame.setVisible(true);
+                String message = "You got a match with " + otherProfile[1] + "!\n" + "Their social media is " + otherProfile[10];
+                JOptionPane.showMessageDialog(null,message,
+                        "Congratulation!", JOptionPane.INFORMATION_MESSAGE);
             }
 
             frame.setVisible(false);
@@ -195,7 +195,7 @@ public class ProfileFinderUI implements ActionListener{
             new ProfileFinderUI(curr, id);
         }else if(e.getSource() == backButton){
             frame.setVisible(false);
-            new MainUI(Integer.parseInt((String)myProfile[0]));
+            new UIController(Integer.parseInt((String)myProfile[0])).launchMainUI();
         }
     }
 }
