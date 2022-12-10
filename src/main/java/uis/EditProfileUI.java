@@ -96,7 +96,8 @@ public class EditProfileUI{
         // Add components to the JFrame
         f.setLayout(new GridLayout(7,4));
         b.setBounds(130,420,100, 40);
-        f.setSize(800,600);
+        UIController.setFrameSize(f);
+//        f.setSize(800,600);
         f.add(nameLabel);
         f.add(nameField);
         f.add(emailLabel);

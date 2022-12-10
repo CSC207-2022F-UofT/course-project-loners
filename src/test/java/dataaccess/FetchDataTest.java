@@ -24,7 +24,7 @@ public class FetchDataTest {
 
     @Test
     public void fetchLastID() {
-        assert 14 == FetchData.fetchLastID();
+        assert 17 == FetchData.fetchLastID();
     }
 
     @Test

@@ -39,7 +39,6 @@ public class MyProfileUI{
         JLabel preferredGender = new JLabel(String.format("Your preferred gender is %s", ((Object[]) profileData[0])[13]));
         JLabel preferredLocation = new JLabel(String.format("Your preferred location range is %s km", ((Object[]) profileData[0])[14]));
 
-
         f.setLayout(new GridLayout(5,1));
         f.add(greeting);
         // Load the profile image of the user.
@@ -53,7 +52,8 @@ public class MyProfileUI{
         } catch (IOException e){
             return;
         }
-        f.setSize(400,600);
+//        f.setSize(400,600);
+        UIController.setFrameSize(f);
         //Each component is added to the frame
         f.add(age);
         f.add(bio);
