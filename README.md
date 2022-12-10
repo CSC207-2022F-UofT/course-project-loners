@@ -46,17 +46,17 @@ A welcome page (WelcomeUI) will pop up and you can see the instruction that lets
 By clicking either of these button, you will be redirected to registration page(RegistrationUI) and login page(LoginUI) respectively.  
 <img src="images/MarkdownImage4.png" alt="drawing" width="400"/>
 <img src="images/MarkdownImage5.png" alt="drawing" width="400"/>  
-Login page will show automaticlly after user finished registration.
-Main page will show automaticlly after user login successfully.
+Login page will show automaticlly after you finished registration.
+Main page will show automaticlly after you login successfully.
 
 ## 3, Main page (mainUI)
-After login, a main page will show to the user.  
+After login, a main page will show up.  
 <img src="images/MarkdownImage6.png" alt="drawing" width="400"/>  
 This UI helps users to transit to other different UI.
-* By clicking the "User Info" button, user will be brought to the MyProfileUI for viewing their personal profile.
-* By clicking the "Filter settings" button, user will be brought to PreferenceEditingUI for editing their preference(filter), our matching algorithm will base on this setting to show user who only meet this setting.
-* By clicking the "...match new people!" button, user will be brought to ProfileFinderUI for matching with other users. Note that user has to set up their preference at least once before they use this feature. A re-login user who has set it before will not be affected.
-* By clicking the "Log out" button, system will log out the user and bring them back to the welcome page.    
+* By clicking the "User Info" button, you will be brought to the MyProfileUI for viewing their personal profile.
+* By clicking the "Filter settings" button, you will be brought to PreferenceEditingUI for editing their preference(filter), our matching algorithm will base on this setting to show users who only meet this setting.
+* By clicking the "...match new people!" button, you will be brought to ProfileFinderUI for matching with other users. Note that user has to set up their preference at least once before they use this feature. A re-login user who has set it before will not be affected.
+* By clicking the "Log out" button, system will log you out and bring you back to the welcome page.    
 
 Below sessions are some introductions for the MyProfileUI, PreferenceEditingUI and ProfileFinderUI.
 
