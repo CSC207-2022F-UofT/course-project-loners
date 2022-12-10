@@ -1,0 +1,354 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Profile</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">entities</a>
+</div>
+
+<h1>Coverage Summary for Class: Profile (entities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Profile</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (18/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86%
+  </span>
+  <span class="absValue">
+    (37/43)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package entities;
+&nbsp;
+&nbsp;import java.awt.image.BufferedImage;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * An entity to store the attributes of the user&#39;s profile, or information about the user. Also used as Input Data.
+&nbsp; */
+&nbsp;public class Profile{
+&nbsp;    private String email;
+&nbsp;    private String name;
+&nbsp;    private final String password;
+&nbsp;    private int age;
+&nbsp;    private String gender;
+&nbsp;    private String orientation;
+&nbsp;    private double[] location;
+&nbsp;    private BufferedImage image;
+&nbsp;    private String bio;
+&nbsp;    private List&lt;String&gt; hobbies;
+&nbsp;    private final String socialMedia;
+&nbsp;    private List&lt;String&gt; likes;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor for the Profile Class
+&nbsp;     * @param name user&#39;s name
+&nbsp;     * @param age user&#39;s age, from 1 to 100
+&nbsp;     * @param gender user&#39;s gender, either male, female, other
+&nbsp;     * @param orientation user&#39;s sexual orientation, straight or gay
+&nbsp;     * @param location the user&#39;s coordinates
+&nbsp;     * @param image the user&#39;s image
+&nbsp;     * @param bio the user&#39;s biography
+&nbsp;     * @param hobbies a list of the user&#39;s hobbies
+&nbsp;     * @param socialMedia the user&#39;s social media profile handle
+&nbsp;     * @param email the user&#39;s email, has to have @
+&nbsp;     * @param likes the list of other profile ids that the user had liked
+&nbsp;     * @param password the user&#39;s password
+&nbsp;     */
+&nbsp;    public Profile(String name, int age, String gender, String orientation, double[] location, BufferedImage image,
+&nbsp;                   String bio, List&lt;String&gt; hobbies, String socialMedia, List&lt;String&gt; likes, String email,
+<b class="fc">&nbsp;                   String password) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.age = age;</b>
+<b class="fc">&nbsp;        this.gender = gender;</b>
+<b class="fc">&nbsp;        this.orientation = orientation;</b>
+<b class="fc">&nbsp;        this.location = location;</b>
+<b class="fc">&nbsp;        this.image = image;</b>
+<b class="fc">&nbsp;        this.bio = bio;</b>
+<b class="fc">&nbsp;        this.hobbies = hobbies;</b>
+<b class="fc">&nbsp;        this.socialMedia = socialMedia;</b>
+<b class="fc">&nbsp;        this.likes = likes;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+<b class="fc">&nbsp;        this.password = password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor for the profile class
+&nbsp;     * @param social the user&#39;s social media
+&nbsp;     * @param email the user&#39;s email
+&nbsp;     * @param password the user&#39;s password
+&nbsp;     * @param name the user&#39;s name
+&nbsp;     * @param age the user&#39;s age, from 1 to 100
+&nbsp;     * @param gender the user&#39;s gender, male, female, or other
+&nbsp;     * @param location the user&#39;s location in coordinates
+&nbsp;     */
+<b class="fc">&nbsp;    public Profile(String social, String email, String password, String name, int age, String gender, double[] location) {</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+<b class="fc">&nbsp;        this.password = password;</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.age = age;</b>
+<b class="fc">&nbsp;        this.gender = gender;</b>
+<b class="fc">&nbsp;        this.location = location;</b>
+<b class="fc">&nbsp;        this.socialMedia = social;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * a getter for the email
+&nbsp;     * @return user&#39;s email
+&nbsp;     */
+&nbsp;    public String getEmail() {
+<b class="fc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the email
+&nbsp;     * @param email the user&#39;s email
+&nbsp;     */
+&nbsp;    public void setEmail(String email) {
+<b class="nc">&nbsp;        this.email = email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * a getter for the name
+&nbsp;     * @return the user&#39;s name
+&nbsp;     */
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * a setter for the name
+&nbsp;     * @param name the user&#39;s name
+&nbsp;     */
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * getter for the user&#39;s password
+&nbsp;     * @return the user&#39;s password
+&nbsp;     */
+&nbsp;    public String getPassword() {
+<b class="fc">&nbsp;        return password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * a getter for the user&#39;s age
+&nbsp;     * @return the user&#39;s age
+&nbsp;     */
+&nbsp;    public int getAge() {
+<b class="fc">&nbsp;        return age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s age
+&nbsp;     * @param age the user&#39;s age from 1 to 100
+&nbsp;     */
+&nbsp;    public void setAge(int age) {
+<b class="nc">&nbsp;        this.age = age;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s gender
+&nbsp;     * @return the user&#39;s gender
+&nbsp;     */
+&nbsp;    public String getGender() {
+<b class="fc">&nbsp;        return gender;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s gender
+&nbsp;     * @param gender the user&#39;s gender, either male, female, or other
+&nbsp;     */
+&nbsp;    public void setGender(String gender) {
+<b class="nc">&nbsp;        this.gender = gender;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s orientation
+&nbsp;     * @return the user&#39;s orientation, either straight or gay
+&nbsp;     */
+&nbsp;    public String getOrientation() {
+<b class="fc">&nbsp;        return orientation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s sexual orientation
+&nbsp;     * @param orientation the user&#39;s sexual orientation
+&nbsp;     */
+&nbsp;    public void setOrientation(String orientation) {
+<b class="fc">&nbsp;        this.orientation = orientation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s location
+&nbsp;     * @return the user&#39;s location coordinates
+&nbsp;     */
+&nbsp;    public double[] getLocation() {
+<b class="fc">&nbsp;        return location;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s location coordinates
+&nbsp;     * @param location the user&#39;s location coordinates
+&nbsp;     */
+&nbsp;    public void setLocation(double[] location) {
+<b class="nc">&nbsp;        this.location = location;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s BufferedImage
+&nbsp;     * @return The user&#39;s image
+&nbsp;     */
+&nbsp;    public BufferedImage getImage() {
+<b class="nc">&nbsp;        return image;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s BufferedImage
+&nbsp;     * @param image the user&#39;s BufferedImage
+&nbsp;     */
+&nbsp;    public void setImage(BufferedImage image) {
+<b class="fc">&nbsp;        this.image = image;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s bio
+&nbsp;     * @return The user&#39;s bio
+&nbsp;     */
+&nbsp;    public String getBio() {
+<b class="fc">&nbsp;        return bio;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s bio
+&nbsp;     * @param bio the user&#39;s bio
+&nbsp;     */
+&nbsp;    public void setBio(String bio) {
+<b class="fc">&nbsp;        this.bio = bio;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s hobby list
+&nbsp;     * @return A list of the user&#39;s hobbies
+&nbsp;     */
+&nbsp;    public List&lt;String&gt; getHobbies() {
+<b class="fc">&nbsp;        return hobbies;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s hobbies
+&nbsp;     * @param hobbies the user&#39;s hobby list
+&nbsp;     */
+&nbsp;    public void setHobbies(List&lt;String&gt; hobbies) {
+<b class="fc">&nbsp;        this.hobbies = hobbies;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s social media handle
+&nbsp;     * @return the user&#39;s social media handle
+&nbsp;     */
+&nbsp;    public String getSocialMedia() {
+<b class="fc">&nbsp;        return socialMedia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A getter for the user&#39;s list of likes
+&nbsp;     * @return A list of users that the user likes
+&nbsp;     */
+&nbsp;    public List&lt;String&gt; getLikes() {
+<b class="fc">&nbsp;        return likes;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A setter for the user&#39;s list of likes
+&nbsp;     * @param likes the list of users that the user likes
+&nbsp;     */
+&nbsp;    public void setLikes(List&lt;String&gt; likes) {
+<b class="fc">&nbsp;        this.likes = likes;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 23:28</div>
+</div>
+</body>
+</html>

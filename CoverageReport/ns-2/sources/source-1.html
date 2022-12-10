@@ -1,0 +1,290 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FetchData</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">dataaccess</a>
+</div>
+
+<h1>Coverage Summary for Class: FetchData (dataaccess)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FetchData</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59.8%
+  </span>
+  <span class="absValue">
+    (64/107)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package dataaccess;
+&nbsp;
+&nbsp;import usecases.FetchDataAccess;
+&nbsp;
+&nbsp;import javax.imageio.ImageIO;
+&nbsp;import java.awt.image.BufferedImage;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;
+&nbsp;/*
+&nbsp;* FetchData class is responsible for fetching the data from the Database.
+&nbsp;* In clean architecture, this works as Data Access
+&nbsp; */
+<b class="nc">&nbsp;public class FetchData implements FetchDataAccess {</b>
+&nbsp;    /**
+&nbsp;     * This method fetch the profile data associated to id.
+&nbsp;     @param id of the user
+&nbsp;     @return Array Object that contains profile data
+&nbsp;     */
+&nbsp;    public static Object[] fetchFromID(int id){
+&nbsp;        try {
+<b class="fc">&nbsp;            BufferedReader myReader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = myReader.readLine();</b>
+<b class="fc">&nbsp;            int lineId = Integer.parseInt(line.split(&quot;, &quot;)[0]);</b>
+<b class="fc">&nbsp;            while(lineId != id){</b>
+<b class="fc">&nbsp;                line = myReader.readLine();</b>
+<b class="fc">&nbsp;                lineId = Integer.parseInt(line.split(&quot;, &quot;)[0]);</b>
+&nbsp;            }
+<b class="fc">&nbsp;            List&lt;String&gt; profileData = Arrays.asList(line.split(&quot;, &quot;));</b>
+<b class="fc">&nbsp;            BufferedImage image = ImageIO.read(new File(String.format(&quot;saved_images/%s.jpg&quot;, id)));</b>
+&nbsp;
+<b class="fc">&nbsp;            Object[] data = profileData.toArray();</b>
+&nbsp;
+<b class="fc">&nbsp;            return new Object[] {data, image};</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return new Object[0];</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method uses email to find id associated to that email
+&nbsp;     * return -1 if file is empty
+&nbsp;     * return -10 if it has error
+&nbsp;     @param email of the profile
+&nbsp;     @return id
+&nbsp;     */
+&nbsp;    public static int fetchIDFromEmail(String email){
+&nbsp;        try {
+<b class="fc">&nbsp;            BufferedReader myReader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = myReader.readLine();</b>
+<b class="fc">&nbsp;            if (line == null){ return -1;} // if file is empty</b>
+&nbsp;            else{
+<b class="fc">&nbsp;                String lineEmail = Arrays.asList(line.split(&quot;, &quot;)).get(2);</b>
+<b class="fc">&nbsp;                while(!Objects.equals(lineEmail, email)) {</b>
+<b class="nc">&nbsp;                    line = myReader.readLine();</b>
+<b class="nc">&nbsp;                    lineEmail = Arrays.asList(line.split(&quot;, &quot;)).get(2);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            return Integer.parseInt(line.split(&quot;, &quot;)[0]);</b>
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return -10;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method fetches the last id in the database.
+&nbsp;     @return last id in the database
+&nbsp;     */
+&nbsp;    public static int fetchLastID(){
+&nbsp;        try {
+<b class="fc">&nbsp;            BufferedReader reader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = reader.readLine();</b>
+<b class="fc">&nbsp;            if (line == null){ return -1; } // if the file is empty, id is -1</b>
+&nbsp;            else {
+<b class="fc">&nbsp;                String last = &quot;&quot;;</b>
+<b class="fc">&nbsp;                while(line != null){</b>
+<b class="fc">&nbsp;                    last = line;</b>
+<b class="fc">&nbsp;                    line = reader.readLine();}</b>
+<b class="fc">&nbsp;                List&lt;String&gt; lastLst = Arrays.asList(last.split(&quot;, &quot;));</b>
+<b class="fc">&nbsp;                return Integer.parseInt(lastLst.get(0));</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return -10;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method fetch all the emails from the database
+&nbsp;     @return ArrayList that contains all the emails
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;String&gt; fetchEmails(){
+<b class="fc">&nbsp;        ArrayList&lt;String&gt; emails = new ArrayList&lt;&gt;();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            BufferedReader reader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = reader.readLine();</b>
+&nbsp;            String tmp;
+<b class="fc">&nbsp;            while(line != null) {</b>
+<b class="fc">&nbsp;                tmp = line;</b>
+<b class="fc">&nbsp;                List&lt;String&gt; lstLine = Arrays.asList(tmp.split(&quot;, &quot;));</b>
+<b class="fc">&nbsp;                emails.add(lstLine.get(2));</b>
+<b class="fc">&nbsp;                line = reader.readLine();</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            return emails;</b>
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return emails;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method fetches password based on email
+&nbsp;     * @param email of the profile
+<b class="fc">&nbsp;     * @return password of the user associated to email input</b>
+<b class="fc">&nbsp;     */</b>
+<b class="fc">&nbsp;    public static String fetchPassword(String email){</b>
+<b class="fc">&nbsp;        // This method assumes the email exists in our database.</b>
+<b class="fc">&nbsp;        try {</b>
+<b class="fc">&nbsp;            BufferedReader myReader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = myReader.readLine();</b>
+<b class="fc">&nbsp;            String[] wholeLine = line.split(&quot;, &quot;);</b>
+<b class="fc">&nbsp;            String lineEmail = wholeLine[2];</b>
+<b class="fc">&nbsp;            String linePassword = wholeLine[3];</b>
+<b class="nc">&nbsp;            while(!Objects.equals(lineEmail, email)){</b>
+<b class="fc">&nbsp;                line = myReader.readLine();</b>
+<b class="nc">&nbsp;                wholeLine = line.split(&quot;, &quot;);</b>
+<b class="nc">&nbsp;                lineEmail = wholeLine[2];</b>
+<b class="nc">&nbsp;                linePassword = wholeLine[3];</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            return linePassword;</b>
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;    /**</b>
+<b class="nc">&nbsp;     * This method fetches the address of the user, associated to inputId in a list format</b>
+<b class="nc">&nbsp;     * @param inputId of the user</b>
+<b class="nc">&nbsp;     * @return the address of the user associated to inputId</b>
+<b class="nc">&nbsp;     */</b>
+<b class="nc">&nbsp;    public static double[] fetchAddressFromID(int inputId){</b>
+<b class="nc">&nbsp;        try {</b>
+<b class="fc">&nbsp;            BufferedReader myReader = new BufferedReader(new FileReader(&quot;database.txt&quot;));</b>
+<b class="fc">&nbsp;            String line = myReader.readLine();</b>
+<b class="fc">&nbsp;            String[] wholeLine = line.split(&quot;, &quot;);</b>
+<b class="fc">&nbsp;            String id = wholeLine[0];</b>
+<b class="fc">&nbsp;            String address = wholeLine[8];</b>
+<b class="fc">&nbsp;            String inputIdStr = &quot;&quot; + inputId;</b>
+<b class="fc">&nbsp;            while (!Objects.equals(id, inputIdStr) ) {</b>
+<b class="fc">&nbsp;                line = myReader.readLine();</b>
+<b class="fc">&nbsp;                wholeLine = line.split(&quot;, &quot;);</b>
+<b class="fc">&nbsp;                id = wholeLine[0];</b>
+<b class="fc">&nbsp;                address = wholeLine[8];</b>
+<b class="nc">&nbsp;            }</b>
+<b class="fc">&nbsp;            if(address.matches(&quot;.*\\d.*&quot;) &amp;&amp; address.contains(&quot;:&quot;)){</b>
+<b class="fc">&nbsp;                String[] locationStr = address.split(&quot;:&quot;);</b>
+<b class="fc">&nbsp;                double latitude = Double.parseDouble(locationStr[0]);</b>
+<b class="fc">&nbsp;                double longitude = Double.parseDouble(locationStr[1]);</b>
+<b class="fc">&nbsp;                return new double[] {latitude, longitude};</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;            else{
+<b class="fc">&nbsp;                System.out.println(&quot;It only contains String.&quot;);</b>
+<b class="fc">&nbsp;                return new double[]{0.0, 0.0};</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (IOException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;An error occurred.&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;            return new double[]{0.0, 0.0};</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 23:28</div>
+</div>
+</body>
+</html>

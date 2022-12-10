@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LocationConverter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">usecases</a>
+</div>
+
+<h1>Coverage Summary for Class: LocationConverter (usecases)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LocationConverter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (15/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package usecases;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.util.NoSuchElementException;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;/**
+&nbsp; * LocationConverter class converts postal code to coordinates
+&nbsp; */
+<b class="fc">&nbsp;public class LocationConverter {</b>
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A private method to load in the file we want to use to do location conversions
+&nbsp;     * @return A scanner of the file we want to do the conversion with
+&nbsp;     */
+&nbsp;    private static Scanner loadFile(){
+&nbsp;        try{
+<b class="fc">&nbsp;            File file = new File(&quot;location_converter.csv&quot;);</b>
+<b class="fc">&nbsp;            return new Scanner(file);</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (FileNotFoundException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;didn&#39;t do it&quot;);</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param code the postal code, formatted as three characters and a space, followed by three more characters.
+&nbsp;     *             All letters are capital.
+&nbsp;     * @return The double that is represented by the postal code based on the file
+&nbsp;     */
+&nbsp;    // NOTE: THIS METHOD IS SENSITIVE TO SPACES AND CAPITALIZATION IN THE POSTAL CODES, IT WILL RETURN
+&nbsp;    // AN EXCEPTION IF THE CODE IS NOT PROPERLY FORMATTED
+&nbsp;    // PRECONDITION: Postal code is valid, and it exists
+&nbsp;    public static double[] codeToCoords(String code){
+&nbsp;        // Converts a postal code to an array of doubles that represent that location&#39;s corresponding
+&nbsp;        // coordinates.
+<b class="fc">&nbsp;        Scanner scanner = loadFile();</b>
+<b class="fc">&nbsp;        assert scanner != null;</b>
+<b class="fc">&nbsp;        scanner.useDelimiter(&quot;,&quot;);</b>
+<b class="fc">&nbsp;        scanner.nextLine();</b>
+&nbsp;        // skips the title line
+&nbsp;
+&nbsp;        // while there are more lines to the file, and we didn&#39;t find it yet
+<b class="fc">&nbsp;        while (scanner.hasNext()){</b>
+<b class="fc">&nbsp;            String curr = scanner.nextLine();</b>
+<b class="fc">&nbsp;            String[] currArray = curr.split(&quot;,&quot;);</b>
+<b class="fc">&nbsp;            if (curr.contains(code)){</b>
+<b class="fc">&nbsp;                double latitude = Double.parseDouble(currArray[4].substring(1, currArray[4].length()-1));</b>
+<b class="fc">&nbsp;                double longitude = Double.parseDouble(currArray[5].substring(1, currArray[5].length()-1));</b>
+&nbsp;
+<b class="fc">&nbsp;                return new double[]{latitude, longitude};</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+&nbsp;        // Postal code is not in the file! it does not exist.
+<b class="nc">&nbsp;        JOptionPane.showMessageDialog(null, &quot;No location found. Type in correct postcode&quot;, &quot;Sorry...&quot;, JOptionPane.INFORMATION_MESSAGE);</b>
+<b class="nc">&nbsp;        throw new NoSuchElementException();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-12-09 23:28</div>
+</div>
+</body>
+</html>
