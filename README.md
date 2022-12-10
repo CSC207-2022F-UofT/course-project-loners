@@ -73,6 +73,11 @@ As mentioning before, the references will be used on "filtering" other users whe
 <img src="images/MarkdownImage9.png" alt="drawing" width="400"/>
 
 ## 6, ProfileFinderUI
-In ProfileFinderUI, you can see users that 
+In ProfileFinderUI, you will see all the profile of users who meet your preference one by one.  
+You can either "like" or "pass" the user. You will get a "You got a match" window if you liked the user who has liked you before, the window will disclose their social media for you to contact them.  
+
+**For TA(s): if you use this feature with your newly registered account, it is normal that you did not get any matches as other users do not have a chance to view your new profile!**  
+So here we prepare an account for you to play with the matching feature -- user email: myles@mail & password: pw
+
 
 <a href="#">Back to top</a>
